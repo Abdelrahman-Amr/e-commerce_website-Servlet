@@ -14,6 +14,7 @@ public class MainServlet extends HttpServlet{
     
      @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+         System.out.println(this);
         response.setContentType("text/html");
         RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
         rd.include(req, response);
