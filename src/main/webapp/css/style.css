@@ -197,7 +197,7 @@ button.w3view-cart:focus{
 	font-size: 40px;
     color: #663300;
     text-decoration: none;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     display: block;
     line-height: 1;
 }
@@ -915,12 +915,17 @@ a.w3_agile_vimeo:hover{
 }
 .login-form-grids input[type="email"],.login-form-grids input[type="password"],.login-form-grids input[type="text"]{
 	outline: none;
-    border: 1px solid #DBDBDB;
+    border: 2px solid #DBDBDB;
     padding: 10px 10px 10px 10px;
-    font-size: 14px;
-    color: var(--main-color);
+    font-size: 18px;
+    color: #000;
     display: block;
     width: 100%;
+}
+.login-form-grids input[type="email"]:hover,.login-form-grids input[type="password"]:hover,.login-form-grids input[type="text"]:hover{
+    outline: none;
+    border: 2px solid var(--main-color);
+
 }
 
 .login-form-grids input[type="password"]{

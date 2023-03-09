@@ -6,6 +6,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -14,7 +16,6 @@ public class LoginServlet extends HttpServlet{
     
      @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-         System.out.println(this);
         response.setContentType("text/html");
         RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
         rd.include(req, response);
@@ -34,8 +35,10 @@ public class LoginServlet extends HttpServlet{
 //        RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
         PrintWriter writer = response.getWriter();
 
-        if(email.equalsIgnoreCase("abdo@iti.com") && password.equals("123"))
+        if(email.equalsIgnoreCase("abdo@iti.com") && password.equals("12345"))
         {
+            HttpSession session = req.getSession(true);
+            session.setAttribute("isLogin","true");
             writer.write("1");
         }else{
             writer.write("0");

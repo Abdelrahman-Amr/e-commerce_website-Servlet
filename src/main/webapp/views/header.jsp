@@ -4,8 +4,10 @@ author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
+
 <head>
 <title>Coffee Point</title>
 <!-- for-mobile-apps -->
@@ -38,8 +40,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 </script>
 
-<!-- Our scripts -->
-	<script src="js/main.js"></script>
+<%--	Our styles--%>
+	<link href="css/myStyles.css" rel="stylesheet" type="text/css" media="all">
+
+	<!-- Our scripts -->
+	<script src="js/login.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
@@ -50,12 +55,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="agileits_header">
 		<div class="container">
 			<div class="w3l_offers">
-				<p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="products.html">SHOP NOW</a></p>
+					<p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="products.html">SHOP NOW</a></p>
+
 			</div>
 			<div class="agile-login">
 				<ul>
 					<li><a href="registered.html"> Create Account </a></li>
-					<li><a href="login.html">Login</a></li>
+					<c:if test="${isLogin !='true'}">
+						<li><a href="login">Login</a></li>
+					</c:if>
+					<c:if test="${isLogin =='true'}">
+						<li onclick="logout()"><a id="logout-link">Logout</a></li>
+					</c:if>
 					<li><a href="contact.html">Help</a></li>
 
 				</ul>
@@ -76,7 +87,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
 					<li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : (+0123) 234 567</li>
-
 				</ul>
 			</div>
 			<div class="w3ls_logo_products_left">
@@ -111,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="index.html" class="act">Home</a></li>
+									<li class="active"><a href="home" class="act">Home</a></li>
 									<!-- Mega Menu -->
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Groceries<b class="caret"></b></a>

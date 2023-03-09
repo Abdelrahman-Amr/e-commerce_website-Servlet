@@ -1,0 +1,12 @@
+:root {
+    --main-color: #663300;
+    --secondary-color: #333333;
+    --white-color: #fff;
+}
+
+#logout-link{
+    cursor: pointer!important;
+}
+a:hover{
+    color: var(--main-color)!important;
+}
