@@ -918,7 +918,7 @@ a.w3_agile_vimeo:hover{
     border: 1px solid #DBDBDB;
     padding: 10px 10px 10px 10px;
     font-size: 14px;
-    color: #999;
+    color: var(--main-color);
     display: block;
     width: 100%;
 }
@@ -929,7 +929,7 @@ a.w3_agile_vimeo:hover{
 .forgot {
     margin: 1.5em 0 0;
 }
-.login-form-grids input[type="submit"]{
+.login-form-grids input[type="submit"], .login-btn{
 	outline: none;
     border: none;
     padding: 10px 0;
@@ -940,7 +940,7 @@ a.w3_agile_vimeo:hover{
     background:var(--main-color);
     margin: 1.5em 0 0;
 }
-.login-form-grids input[type="submit"]:hover{
+.login-form-grids input[type="submit"]:hover, .login-btn:hover{
 	background:var(--secondary-color);
 }
 .login-form-grids ::-webkit-input-placeholder{
