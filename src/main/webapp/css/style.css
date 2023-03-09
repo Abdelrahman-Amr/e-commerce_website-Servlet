@@ -913,7 +913,8 @@ a.w3_agile_vimeo:hover{
 	background:#F7F7F9;
 	margin:3em auto 0;
 }
-.login-form-grids input[type="email"],.login-form-grids input[type="password"],.login-form-grids input[type="text"]{
+.login-form-grids input[type="email"],.login-form-grids input[type="password"],.login-form-grids input[type="text"], 
+.login-form-grids input[type="date"], .login-form-grids input[type="tel"]{
 	outline: none;
     border: 1px solid #DBDBDB;
     padding: 10px 10px 10px 10px;
@@ -923,7 +924,12 @@ a.w3_agile_vimeo:hover{
     width: 100%;
 }
 
-.login-form-grids input[type="password"]{
+/* .register .login-form-grids input[type="text"], .register .login-form-grids input[type="tel"] {
+	margin:1em 0 0;
+} */
+
+.login-form-grids input[type="password"], .login-form-grids input[type="date"], .login-form-grids input[type="text"], 
+.register .login-form-grids input[type="tel"], .register .login-form-grids input[type="email"]{
 	margin:1em 0 0;
 }
 .forgot {

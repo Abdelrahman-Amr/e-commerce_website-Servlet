@@ -10,16 +10,30 @@
        <servlet-name>Main</servlet-name>
        <servlet-class>gov.iti.jets.servlet.MainServlet</servlet-class>
     </servlet>
-    
-   
- 
 
      <servlet-mapping>
     <servlet-name>Main</servlet-name>
     <url-pattern>/main</url-pattern>
     </servlet-mapping> 
     
-      
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.RegisterServlet</servlet-class>
+     </servlet>
+ 
+      <servlet-mapping>
+     <servlet-name>register</servlet-name>
+     <url-pattern>/Register</url-pattern>
+     </servlet-mapping> 
+
+     <servlet>
+        <servlet-name>verifyemail</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.VerifyEmailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>verifyemail</servlet-name>
+        <url-pattern>/VerifyEmail</url-pattern>
+    </servlet-mapping>
 
 
     
