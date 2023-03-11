@@ -17,14 +17,7 @@ function login(event)
 , loginCallBack);
 }
 
-function logout()
-{
 
-    $.get ("logout",
-        {
-        }
-        , logoutCallBack);
-}
 
 function loginCallBack(responseTxt, statusTxt, xhr)
 {
@@ -36,14 +29,7 @@ function loginCallBack(responseTxt, statusTxt, xhr)
     }
 }
 
-function logoutCallBack(responseTxt, statusTxt, xhr)
-{
-    if (statusTxt == "success" && responseTxt =="1"){
-        success("Logged out Successfully");
-    }else{
-        failed('Failed to Logout !!');
-    }
-}
+
 
 function validateEmail(email)
 {

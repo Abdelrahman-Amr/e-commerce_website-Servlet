@@ -1,21 +1,21 @@
 <!-- main-slider -->
 <ul id="demo1">
     <li>
-        <img src="../coffepoint/images/preview imagelarge_preview.jpg" alt="" />
+        <img src="images/preview imagelarge_preview.jpg" alt="" />
         <!--Slider Description example-->
         <div class="slide-desc">
             <h3>Buy Rice Products Are Now On Line With Us</h3>
         </div>
     </li>
     <li>
-        <img src="../images/2621253.jpg" alt="" />
+        <img src="images/2621253.jpg" alt="" />
           <div class="slide-desc">
             <h3>Whole Spices Products Are Now On Line With Us</h3>
         </div>
     </li>
     
     <li>
-        <img src="../images/7088595_3538081.jpg" alt="" />
+        <img src="images/7088595_3538081.jpg" alt="" />
         <div class="slide-desc">
             <h3>Whole Spices Products Are Now On Line With Us</h3>
         </div>
@@ -44,13 +44,13 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block" >
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img title=" " alt=" " src="../images/1.png" /></a>		
+                                                    <a href="products.html"><img title=" " alt=" " src="images/1.png" /></a>		
                                                     <p>Tata-salt</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -87,13 +87,13 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block" >
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img title=" " alt=" " src="../images/2.png" /></a>		
+                                                    <a href="products.html"><img title=" " alt=" " src="images/2.png" /></a>		
                                                     <p>Fortune-sunflower</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -130,13 +130,13 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block">
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img src="../images/3.png" alt=" " class="img-responsive" /></a>
+                                                    <a href="products.html"><img src="images/3.png" alt=" " class="img-responsive" /></a>
                                                     <p>Aashirvaad-atta</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -176,13 +176,13 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block" >
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img title=" " alt=" " src="../images/4.png" /></a>		
+                                                    <a href="products.html"><img title=" " alt=" " src="images/4.png" /></a>		
                                                     <p>Sampann-toor-dal</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -219,13 +219,13 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block" >
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img title=" " alt=" " src="../images/5.png" /></a>		
+                                                    <a href="products.html"><img title=" " alt=" " src="images/5.png" /></a>		
                                                     <p>Parryss-sugar</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -262,16 +262,16 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block">
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img src="../images/6.png" alt=" " class="img-responsive" /></a>
+                                                    <a href="products.html"><img src="images/6.png" alt=" " class="img-responsive" /></a>
                                                     <p>Saffola-gold</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -317,13 +317,13 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block" >
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img title=" " alt=" " src="../images/7.png" /></a>		
+                                                    <a href="products.html"><img title=" " alt=" " src="images/7.png" /></a>		
                                                     <p>Sona-masoori-rice</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -360,13 +360,13 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block" >
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img title=" " alt=" " src="../images/8.png" /></a>		
+                                                    <a href="products.html"><img title=" " alt=" " src="images/8.png" /></a>		
                                                     <p>Milky-mist-paneer</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -403,16 +403,16 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block">
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img src="../images/9.png" alt=" " class="img-responsive" /></a>
+                                                    <a href="products.html"><img src="images/9.png" alt=" " class="img-responsive" /></a>
                                                     <p>Basmati-Rice</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -452,13 +452,13 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block" >
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img title=" " alt=" " src="../images/10.png" /></a>		
+                                                    <a href="products.html"><img title=" " alt=" " src="images/10.png" /></a>		
                                                     <p>Fortune-sunflower</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -495,13 +495,13 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block" >
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img title=" " alt=" " src="../images/12.png" /></a>		
+                                                    <a href="products.html"><img title=" " alt=" " src="images/12.png" /></a>		
                                                     <p>Nestle-a-slim</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -538,13 +538,13 @@
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid">
                                     <div class="agile_top_brand_left_grid_pos">
-                                        <img src="../images/offer.png" alt=" " class="img-responsive" />
+                                        <img src="images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block">
                                                 <div class="snipcart-thumb">
-                                                    <a href="products.html"><img src="../images/13.png" alt=" " class="img-responsive" /></a>
+                                                    <a href="products.html"><img src="images/13.png" alt=" " class="img-responsive" /></a>
                                                     <p>Bread-sandwich</p>
                                                     <div class="stars">
                                                         <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -597,15 +597,15 @@
 </ol>
 <div class="carousel-inner" role="listbox">
 <div class="item active">
- <a href="beverages.html"> <img class="first-slide" src="../images/b1.jpg" alt="First slide"></a>
+ <a href="beverages.html"> <img class="first-slide" src="images/b1.jpg" alt="First slide"></a>
 
 </div>
 <div class="item">
- <a href="personalcare.html"> <img class="second-slide " src="../images/b3.jpg" alt="Second slide"></a>
+ <a href="personalcare.html"> <img class="second-slide " src="images/b3.jpg" alt="Second slide"></a>
  
 </div>
 <div class="item">
-  <a href="household.html"><img class="third-slide " src="../images/b1.jpg" alt="Third slide"></a>
+  <a href="household.html"><img class="third-slide " src="images/b1.jpg" alt="Third slide"></a>
   
 </div>
 </div>
@@ -616,19 +616,19 @@
             <div class="container">
             <div class="col-md-6 ban-bottom3">
                     <div class="ban-top">
-                        <img src="../images/p2.jpg" class="img-responsive" alt=""/>
+                        <img src="images/p2.jpg" class="img-responsive" alt=""/>
                         
                     </div>
                     <div class="ban-img">
                         <div class=" ban-bottom1">
                             <div class="ban-top">
-                                <img src="../images/p3.jpg" class="img-responsive" alt=""/>
+                                <img src="images/p3.jpg" class="img-responsive" alt=""/>
                                 
                             </div>
                         </div>
                         <div class="ban-bottom2">
                             <div class="ban-top">
-                                <img src="../images/p4.jpg" class="img-responsive" alt=""/>
+                                <img src="images/p4.jpg" class="img-responsive" alt=""/>
                                 
                             </div>
                         </div>
@@ -637,7 +637,7 @@
                 </div>
                 <div class="col-md-6 ban-bottom">
                     <div class="ban-top">
-                        <img src="../images/111.jpg" class="img-responsive" alt=""/>
+                        <img src="images/111.jpg" class="img-responsive" alt=""/>
                         
                         
                     </div>
@@ -765,13 +765,13 @@
                 <div class="hover14 column">
                     <div class="agile_top_brand_left_grid">
                         <div class="agile_top_brand_left_grid_pos">
-                            <img src="../images/offer.png" alt=" " class="img-responsive">
+                            <img src="images/offer.png" alt=" " class="img-responsive">
                         </div>
                         <div class="agile_top_brand_left_grid1">
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="products.html"><img title=" " alt=" " src="../images/14.png"></a>		
+                                        <a href="products.html"><img title=" " alt=" " src="images/14.png"></a>		
                                         <p>Fried-gram</p>
                                         <div class="stars">
                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -808,13 +808,13 @@
                 <div class="hover14 column">
                     <div class="agile_top_brand_left_grid">
                         <div class="agile_top_brand_left_grid_pos">
-                            <img src="../images/offer.png" alt=" " class="img-responsive">
+                            <img src="images/offer.png" alt=" " class="img-responsive">
                         </div>
                         <div class="agile_top_brand_left_grid1">
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="products.html"><img title=" " alt=" " src="../images/15.png"></a>		
+                                        <a href="products.html"><img title=" " alt=" " src="images/15.png"></a>		
                                         <p>Navaratan-dal</p>
                                         <div class="stars">
                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -851,16 +851,16 @@
                 <div class="hover14 column">
                     <div class="agile_top_brand_left_grid">
                         <div class="agile_top_brand_left_grid_pos">
-                            <img src="../images/offer.png" alt=" " class="img-responsive">
+                            <img src="images/offer.png" alt=" " class="img-responsive">
                         </div>
                         <div class="agile_top_brand_left_grid_pos">
-                            <img src="../images/offer.png" alt=" " class="img-responsive">
+                            <img src="images/offer.png" alt=" " class="img-responsive">
                         </div>
                         <div class="agile_top_brand_left_grid1">
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="products.html"><img src="../images/16.png" alt=" " class="img-responsive"></a>
+                                        <a href="products.html"><img src="images/16.png" alt=" " class="img-responsive"></a>
                                         <p>White-peasmatar</p>
                                         <div class="stars">
                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -897,13 +897,13 @@
                 <div class="hover14 column">
                     <div class="agile_top_brand_left_grid">
                         <div class="agile_top_brand_left_grid_pos">
-                            <img src="../images/offer.png" alt=" " class="img-responsive">
+                            <img src="images/offer.png" alt=" " class="img-responsive">
                         </div>
                         <div class="agile_top_brand_left_grid1">
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="products.html"><img title=" " alt=" " src="../images/17.png"></a>		
+                                        <a href="products.html"><img title=" " alt=" " src="images/17.png"></a>		
                                         <p>Channa-dal</p>
                                         <div class="stars">
                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>

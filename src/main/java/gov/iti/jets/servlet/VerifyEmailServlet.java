@@ -3,7 +3,7 @@ package gov.iti.jets.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import gov.iti.jets.entities.User;
+import gov.iti.jets.entity.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -30,7 +30,7 @@ public class VerifyEmailServlet extends HttpServlet {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("accountINFO");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        User c = entityManager.find(User.class, 2);
+        Customer c = entityManager.find(Customer.class, 2);
         System.out.println(email);
         if(c!=null) return true;
         return false;

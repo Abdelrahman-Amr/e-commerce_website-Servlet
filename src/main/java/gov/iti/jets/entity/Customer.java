@@ -1,13 +1,9 @@
-package gov.iti.jets.entities;
+package gov.iti.jets.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -15,11 +11,7 @@ import jakarta.persistence.TemporalType;
 @Entity
 @Table(name="customer")
 
-public class User implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Customer extends BaseEntity {
 
     @Column(name = "name")
     private String userName;
@@ -40,15 +32,7 @@ public class User implements Serializable {
     @Column(name = "credit_limit")
     private int creditLimit;
 
-    public User() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public Customer() {
     }
 
     public String getUserName() {
@@ -106,4 +90,6 @@ public class User implements Serializable {
     public void setCreditLimit(int creditLimit) {
         this.creditLimit = creditLimit;
     }
+
+
 }
