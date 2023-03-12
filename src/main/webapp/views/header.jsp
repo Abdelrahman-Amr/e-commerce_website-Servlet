@@ -61,9 +61,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- header -->
 <div class="agileits_header">
     <div class="container">
-        <div class="w3l_offers">
-            <p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="products.html">SHOP NOW</a></p>
-        </div>
+<%--        <div class="w3l_offers">--%>
+<%--            <p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="products.html">SHOP NOW</a></p>--%>
+<%--        </div>--%>
         <div class="agile-login">
             <ul>
                 <li><a href="registered.html"> Create Account </a></li>
@@ -130,7 +130,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="home" class="act">Home</a></li>
+                    <li class="active"><a href="products" class="act">Shop</a></li>
                     <!-- Mega Menu -->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cold Coffee<b class="caret"></b></a>
