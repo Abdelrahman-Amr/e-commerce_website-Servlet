@@ -6,13 +6,13 @@ import jakarta.persistence.EntityManager;
 
 public abstract class BaseDAO <E extends BaseEntity>{
 
-    protected static EntityManager entityManager;
+    protected  EntityManager entityManager;
     private Class<E> entity;
 
-    public BaseDAO (Class<E> entity)
+    public BaseDAO (Class<E> entity, EntityManager entityManager )
     {
         this.entity  = entity;
-        entityManager = DBManager.getInstance();
+        this.entityManager = entityManager;
 
     }
 

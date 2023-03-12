@@ -10,10 +10,11 @@ import java.util.List;
 
 public class CustomerDAO extends BaseDAO<Customer>{
 
-
+//    private final EntityManager entityManager;
     public CustomerDAO()
     {
-        super(Customer.class);
+        super(Customer.class, DBManager.getInstance().createEntityManager());
+//        entityManager =
     }
     public Customer login(String email , String password)
     {

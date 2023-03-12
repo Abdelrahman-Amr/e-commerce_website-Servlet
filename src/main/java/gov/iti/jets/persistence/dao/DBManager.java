@@ -5,22 +5,20 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class DBManager {
-    private volatile static EntityManager entityManager;
+    private volatile static EntityManagerFactory entityManagerFactory;
 
     private DBManager() {
 
     }
 
-    public static EntityManager getInstance() {
-        if (entityManager == null) {
-            synchronized (EntityManager.class) {
-                if (entityManager == null) {
-                    System.out.println("yes");
-                    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("coffee");
-                    entityManager = entityManagerFactory.createEntityManager();
+    public static EntityManagerFactory getInstance() {
+        if (entityManagerFactory == null) {
+            synchronized (EntityManagerFactory.class) {
+                if (entityManagerFactory == null) {
+                     entityManagerFactory = Persistence.createEntityManagerFactory("coffee");
                 }
             }
         }
-        return entityManager;
+        return entityManagerFactory;
     }
 }

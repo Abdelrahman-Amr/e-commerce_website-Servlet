@@ -21,6 +21,7 @@ public class LoginServlet extends HttpServlet{
     @Override
     public void init()
     {
+        customerService = new CustomerService();
     }
 
      @Override
@@ -38,7 +39,6 @@ public class LoginServlet extends HttpServlet{
     
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-        customerService = new CustomerService();
         response.setContentType("application/json");
          String email = req.getParameter("email");
          String password = req.getParameter("password");
