@@ -7,10 +7,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="customer")
-
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customer extends BaseEntity {
 
     @Column(name = "name")
@@ -32,8 +37,6 @@ public class Customer extends BaseEntity {
     @Column(name = "credit_limit")
     private int creditLimit;
 
-    public Customer() {
-    }
 
     public String getUserName() {
         return userName;

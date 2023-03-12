@@ -16,9 +16,9 @@ public abstract class BaseDAO <E extends BaseEntity>{
 
     }
 
-    public E find(long id)
+    public E get(long id)
     {
-      return entityManager.find(entity,id);
+      return entityManager.getReference(entity,id);
     }
 
     public void save(BaseEntity entity)

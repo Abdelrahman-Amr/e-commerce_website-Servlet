@@ -8,9 +8,9 @@ public abstract  class BaseService <E extends BaseEntity>{
     protected BaseDAO<E> dao;
 
 
-    public E find(long id)
+    public E get(long id)
     {
-        return dao.find(id);
+        return dao.get(id);
     }
 
     public void save(BaseEntity entity)
