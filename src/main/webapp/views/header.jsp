@@ -51,6 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <!-- Our scripts -->
     <script src="js/login.js"></script>
+    <script src="js/logout.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/registerjs.js"></script>
 
@@ -66,15 +67,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <%--        </div>--%>
         <div class="agile-login">
             <ul>
-                <li><a href="registered.html"> Create Account </a></li>
+                <c:if test="${isLogin !='true'}">
+                    <li><a href="registered.html"> Create Account </a></li>
+                </c:if>
                 <c:if test="${isLogin !='true'}">
                     <li><a href="login">Login</a></li>
                 </c:if>
                 <c:if test="${isLogin =='true'}">
                     <li onclick="logout()"><a id="logout-link">Logout</a></li>
                 </c:if>
-                <li><a href="contact.html">Help</a></li>
-
+                <%--					<li><a href="contact.html">Help</a></li>--%>
+                <c:if test="${isLogin =='true'}">
+                    <li ><a href="#">Welcome, ${customer.userName}</a></li>
+                </c:if>
             </ul>
         </div>
         <div class="product_list_header">
@@ -210,12 +215,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- //navigation -->
 <!-- breadcrumbs -->
-<div class="breadcrumbs">
-    <div class="container">
-        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Singlepage</li>
-        </ol>
-    </div>
-</div>
+<%--<div class="breadcrumbs">--%>
+<%--    <div class="container">--%>
+<%--        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">--%>
+<%--            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>--%>
+<%--            <li class="active">Singlepage</li>--%>
+<%--        </ol>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <!-- //breadcrumbs -->
