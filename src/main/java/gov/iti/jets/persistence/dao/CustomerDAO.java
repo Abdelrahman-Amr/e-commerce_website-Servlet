@@ -2,20 +2,16 @@ package gov.iti.jets.persistence.dao;
 
 import gov.iti.jets.entity.Customer;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 
-import java.rmi.RemoteException;
 import java.util.List;
 
 public class CustomerDAO extends BaseDAO<Customer>{
 
-//    private final EntityManager entityManager;
     public CustomerDAO()
     {
-        super(Customer.class, DBManager.getInstance().createEntityManager());
-//        entityManager =
+        super(Customer.class, DBFactory.getInstance().createEntityManager());
+
     }
     public Customer login(String email , String password)
     {

@@ -1,6 +1,7 @@
 package gov.iti.jets.persistence.dao;
 
 import gov.iti.jets.entity.BaseEntity;
+import gov.iti.jets.entity.Customer;
 import jakarta.persistence.EntityManager;
 
 
@@ -13,15 +14,14 @@ public abstract class BaseDAO <E extends BaseEntity>{
     {
         this.entity  = entity;
         this.entityManager = entityManager;
-
     }
 
     public E get(long id)
     {
-      return entityManager.getReference(entity,id);
+      return entityManager.find(entity,id);
     }
 
-    public void save(BaseEntity entity)
+    public void save(E entity)
     {
         try{
             entityManager.getTransaction().begin();

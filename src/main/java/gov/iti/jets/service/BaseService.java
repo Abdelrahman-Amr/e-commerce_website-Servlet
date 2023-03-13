@@ -13,7 +13,7 @@ public abstract  class BaseService <E extends BaseEntity>{
         return dao.get(id);
     }
 
-    public void save(BaseEntity entity)
+    public void save(E entity)
     {
         dao.save(entity);
     }

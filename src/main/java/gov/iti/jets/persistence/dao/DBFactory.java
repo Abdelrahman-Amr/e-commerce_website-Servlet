@@ -4,10 +4,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-public class DBManager {
+public class DBFactory {
     private volatile static EntityManagerFactory entityManagerFactory;
 
-    private DBManager() {
+    private DBFactory() {
 
     }
 
