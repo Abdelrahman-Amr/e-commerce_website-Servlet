@@ -54,8 +54,8 @@ public class LoginServlet extends HttpServlet{
             writer.write("1");
         }else{
             writer.write("0");
-
         }
+
     }
     
 }

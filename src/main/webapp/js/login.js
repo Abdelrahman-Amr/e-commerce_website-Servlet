@@ -14,16 +14,18 @@ function login(event)
         email : email,
         password : password,
     }
-, loginCallBack);
+, loginCallBack) .fail(function() {
+        failed('Invalid Email or Password !!');
+    });
 }
 
 
 
 function loginCallBack(responseTxt, statusTxt, xhr)
 {
-  if (statusTxt == "success" && responseTxt =="1"){
+    console.log(xhr.status);
+    if (statusTxt == "success" && responseTxt =="1" &&  xhr.status == 200){
     success("Logged in successfully");
-  
     }else{
       failed('Invalid Email or Password !!');
     }

@@ -60,6 +60,8 @@ function logoutPopup(){
             $.get ("logout",
                 {
                 }
-                , logoutCallBack);
+                , logoutCallBack).fail(function() {
+                failed('Failed to Logout !!');
+            });
         }});
 }

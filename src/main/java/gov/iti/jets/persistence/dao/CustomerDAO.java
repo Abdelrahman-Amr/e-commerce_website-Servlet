@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 public class CustomerDAO extends BaseDAO<Customer>{
@@ -18,7 +19,7 @@ public class CustomerDAO extends BaseDAO<Customer>{
     }
     public Customer login(String email , String password)
     {
-        Query query=entityManager.createQuery("from Customer where email=:u and password =:p");
+        Query query=entityManager.createQuery("from Customer c where c.email=:u and c.password =:p");
         query.setParameter("u",email);
         query.setParameter("p",password);
         List<Customer> customers=query.getResultList();
@@ -26,6 +27,7 @@ public class CustomerDAO extends BaseDAO<Customer>{
         {
             return null;
         }
+
         return customers.get(0);
 
     }

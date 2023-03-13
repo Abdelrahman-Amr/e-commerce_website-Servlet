@@ -23,6 +23,7 @@ public class LogoutServlet extends HttpServlet {
       }else{
             writer.write("0");
         }
+
 //        RequestDispatcher rd = req.getRequestDispatcher("home");
 //       rd.forward(req,response);
     }
