@@ -77,25 +77,22 @@
         <artifactId>guava</artifactId>
         <version>31.1-jre</version>
     </dependency>
+
     <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
         <version>1.18.24</version>
         <!--            <scope>provided</scope>-->
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
     <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <version>RELEASE</version>
-        <scope>compile</scope>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <version>5.0.1</version>
     </dependency>
 
-    <!-- Hibernate c3p0 connection pool -->
-    <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-c3p0</artifactId>
-        <version>3.6.3.Final</version>
-    </dependency>
+
 </dependencies>
 
 
