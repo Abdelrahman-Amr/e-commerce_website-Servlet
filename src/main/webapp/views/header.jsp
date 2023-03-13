@@ -45,6 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!-- Our scripts -->
 	<script src="js/login.js"></script>
+	<script src="js/logout.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="js/registerjs.js"></script>
 
@@ -60,15 +61,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="agile-login">
 				<ul>
-					<li><a href="registered.html"> Create Account </a></li>
+					<c:if test="${isLogin !='true'}">
+						<li><a href="registered.html"> Create Account </a></li>
+					</c:if>
 					<c:if test="${isLogin !='true'}">
 						<li><a href="login">Login</a></li>
 					</c:if>
 					<c:if test="${isLogin =='true'}">
 						<li onclick="logout()"><a id="logout-link">Logout</a></li>
 					</c:if>
-					<li><a href="contact.html">Help</a></li>
-
+<%--					<li><a href="contact.html">Help</a></li>--%>
+                    <c:if test="${isLogin =='true'}">
+                        <li ><a href="#">Welcome, ${customer.userName}</a></li>
+                    </c:if>
 				</ul>
 			</div>
 			<div class="product_list_header">
@@ -90,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 			</div>
 			<div class="w3ls_logo_products_left">
-				<h1><a href="index.html">Coffee Point</a></h1>
+				<h1><a href="home">Coffee Point</a></h1>
 			</div>
 		<div class="w3l_search">
 			<form action="#" method="post">
@@ -231,12 +236,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!-- //navigation -->
 <!-- breadcrumbs -->
-	<div class="breadcrumbs">
-		<div class="container">
-			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">Singlepage</li>
-			</ol>
-		</div>
-	</div>
+<%--	<div class="breadcrumbs">--%>
+<%--		<div class="container">--%>
+<%--			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">--%>
+<%--				<li><a href="home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>--%>
+<%--				<li class="active">Singlepage</li>--%>
+<%--			</ol>--%>
+<%--		</div>--%>
+<%--	</div>--%>
 <!-- //breadcrumbs -->

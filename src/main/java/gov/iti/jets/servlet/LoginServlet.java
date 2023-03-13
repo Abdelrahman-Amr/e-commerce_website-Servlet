@@ -1,6 +1,8 @@
 
 package gov.iti.jets.servlet;
 
+import gov.iti.jets.entity.Customer;
+import gov.iti.jets.service.CustomerService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -13,7 +15,15 @@ import java.io.PrintWriter;
 
 
 public class LoginServlet extends HttpServlet{
-    
+
+    CustomerService customerService;
+
+    @Override
+    public void init()
+    {
+        customerService = new CustomerService();
+    }
+
      @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
@@ -29,21 +39,23 @@ public class LoginServlet extends HttpServlet{
     
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-         response.setContentType("application/json");
+        response.setContentType("application/json");
          String email = req.getParameter("email");
          String password = req.getParameter("password");
-//        RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
+         Customer customer = customerService.login(email,password);
+
         PrintWriter writer = response.getWriter();
 
-        if(email.equalsIgnoreCase("abdo@iti.com") && password.equals("12345"))
+        if(customer!=null)
         {
             HttpSession session = req.getSession(true);
             session.setAttribute("isLogin","true");
+            session.setAttribute("customer",customer);
             writer.write("1");
         }else{
             writer.write("0");
-
         }
+
     }
     
 }

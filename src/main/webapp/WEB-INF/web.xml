@@ -6,6 +6,7 @@
  metadata-complete= "true">
 
 
+    //Servlets
     <servlet>
        <servlet-name>Login</servlet-name>
        <servlet-class>gov.iti.jets.servlet.LoginServlet</servlet-class>
@@ -42,6 +43,7 @@
         <servlet-class>gov.iti.jets.servlet.RegisterServlet</servlet-class>
     </servlet>
 
+    //Mappers
     <servlet-mapping>
         <servlet-name>register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -55,6 +57,15 @@
         <servlet-name>verifyemail</servlet-name>
         <url-pattern>/VerifyEmail</url-pattern>
     </servlet-mapping>
+
+    //Listeners
+
+    <listener>
+        <listener-class>
+            gov.iti.jets.listener.MainListener
+        </listener-class>
+    </listener>
+
 
 
 </web-app>
