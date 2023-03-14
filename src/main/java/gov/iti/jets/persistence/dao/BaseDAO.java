@@ -31,17 +31,18 @@ public abstract class BaseDAO <E extends BaseEntity>{
             entityManager.getTransaction().commit();
         }
     }
-    public void save(E entity)
+    public boolean save(E entity)
     {
+        boolean result = true;
         try{
             entityManager.getTransaction().begin();
             entityManager.persist(entity);
         } catch (Exception e) {
-            return false;
+            result =  false;
         }
         finally{
             entityManager.getTransaction().commit();
         }
-        return true;
+        return result;
     }
 }

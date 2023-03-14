@@ -68,7 +68,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="agile-login">
             <ul>
                 <c:if test="${isLogin !='true'}">
-                    <li><a href="registered.html"> Create Account </a></li>
+                    <li><a href="Register"> Create Account </a></li>
                 </c:if>
                 <c:if test="${isLogin !='true'}">
                     <li><a href="login">Login</a></li>

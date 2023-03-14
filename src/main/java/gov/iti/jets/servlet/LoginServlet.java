@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet{
 
      @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-////         CustomerDTO dto = CustomerDTO.builder().userName("abdo").email("abdo@abdo.com").build();
+//         CustomerDTO dto = CustomerDTO.builder().userName("abdo").email("abdo@abdo.com").build();
 //         Customer customer = customerService.get(52);
 //         customer.setCreditLimit(2000);
 //         customerService.update(customer);

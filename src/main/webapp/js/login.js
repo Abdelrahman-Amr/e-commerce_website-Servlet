@@ -3,7 +3,7 @@ function login(event)
     event.preventDefault();
     var email = $("#email").val();
     var password = $("#password").val();
-    console.log(validateEmail(email),validatePass(password));
+    // console.log(validateEmail(email),validatePass(password));
 //    if(!validateEmail(email)  ||  !validatePass(password))
 //    {
 //        failed('Invalid Email or Password !!');
