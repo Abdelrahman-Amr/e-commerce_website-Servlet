@@ -21,6 +21,16 @@ public abstract class BaseDAO <E extends BaseEntity>{
       return entityManager.find(entity,id);
     }
 
+    public void update(E entity)
+    {
+        try{
+            entityManager.getTransaction().begin();
+            entityManager.merge(entity);
+        }
+        finally{
+            entityManager.getTransaction().commit();
+        }
+    }
     public void save(E entity)
     {
         try{

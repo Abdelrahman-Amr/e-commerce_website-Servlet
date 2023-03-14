@@ -1,7 +1,9 @@
 
 package gov.iti.jets.servlet;
 
+import gov.iti.jets.dto.CustomerDTO;
 import gov.iti.jets.entity.Customer;
+import gov.iti.jets.mapper.CustomerMapper;
 import gov.iti.jets.service.CustomerService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -17,15 +19,21 @@ import java.io.PrintWriter;
 public class LoginServlet extends HttpServlet{
 
     CustomerService customerService;
+    CustomerMapper mapper;
 
     @Override
     public void init()
     {
+        mapper = new CustomerMapper();
         customerService = new CustomerService();
     }
 
      @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+//         CustomerDTO dto = CustomerDTO.builder().userName("abdo").email("abdo@abdo.com").build();
+         Customer customer = customerService.get(52);
+         customer.setCreditLimit(2000);
+         customerService.update(customer);
         response.setContentType("text/html");
         RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
         rd.include(req, response);
