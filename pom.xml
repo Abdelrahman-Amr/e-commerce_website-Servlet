@@ -96,6 +96,13 @@
         <artifactId>mapstruct</artifactId>
         <version>1.5.3.Final</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-mapstruct-binding -->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok-mapstruct-binding</artifactId>
+        <version>0.2.0</version>
+    </dependency>
+
 </dependencies>
 
 
@@ -163,7 +170,7 @@
                       <path>
                           <groupId>org.projectlombok</groupId>
                           <artifactId>lombok</artifactId>
-                          <version>0.2.0</version>
+                          <version>1.18.24</version>
                       </path>
                       <!-- This is needed when using Lombok 1.18.16 and above -->
                       <path>
@@ -178,6 +185,10 @@
                           <version>1.5.3.Final</version>
                       </path>
                   </annotationProcessorPaths>
+                  <compilerArgs>
+                      <arg>-Amapstruct.suppressGeneratorTimestamp=true</arg>
+                      <arg>-Amapstruct.defaultComponentModel=spring</arg>
+                  </compilerArgs>
               </configuration>
           </plugin>
             <plugin> 
@@ -191,6 +202,11 @@
               <path>/coffeepoint</path>
               </configuration>
               </plugin>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-war-plugin</artifactId>
+              <version>3.2.2</version>
+          </plugin>
       </plugins>
     </pluginManagement>
   </build>
