@@ -95,7 +95,9 @@ function success(msg)
         toast:true,
         didDestroy:function(){
           // $("#login-form").submit();
-            window.location.href="home";
+            //window.location.href="home";
+            window.location.href="Profile";
+
         }
       });
 }

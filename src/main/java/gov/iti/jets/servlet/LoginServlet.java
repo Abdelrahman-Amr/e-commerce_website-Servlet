@@ -57,6 +57,7 @@ public class LoginServlet extends HttpServlet{
             HttpSession session = req.getSession(true);
             session.setAttribute("isLogin","true");
             session.setAttribute("customer",customerDto);
+            System.out.println("login "+customerDto.getBirthday());
             writer.write("1");
         }else{
             writer.write("0");

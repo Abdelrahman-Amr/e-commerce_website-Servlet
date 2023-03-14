@@ -54,6 +54,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="js/logout.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/registerjs.js"></script>
+    <script src="js/profile.js"></script>
 
 
     <!-- start-smoth-scrolling -->
@@ -78,7 +79,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </c:if>
                 <%--					<li><a href="contact.html">Help</a></li>--%>
                 <c:if test="${isLogin =='true'}">
-                    <li ><a href="#">Welcome, ${customer.userName}</a></li>
+                    <li ><a href="Profile">Welcome, ${customer.userName}</a></li>
                 </c:if>
             </ul>
         </div>

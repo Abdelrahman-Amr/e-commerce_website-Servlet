@@ -58,6 +58,14 @@
         <url-pattern>/VerifyEmail</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>profile</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>profile</servlet-name>
+        <url-pattern>/Profile</url-pattern>
+    </servlet-mapping>
 <!--    //Listeners-->
 
     <listener>
