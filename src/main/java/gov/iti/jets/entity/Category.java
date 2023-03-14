@@ -1,31 +1,40 @@
 package gov.iti.jets.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
-@Table(name="category")
+@Table(name = "category", schema = "coffee_point")
 public class Category extends BaseEntity{
+
     @Column(name = "creation_time")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date creationTime;
+    private LocalDate creationTime;
+
+    @Column(name = "description")
     private String description;
 
-    @Column(name="image_url")
-    private String imageUrl ;
+    @Column(name = "image_url")
+    private String imageUrl;
 
-    private String name ;
+    @Column(name = "name")
+    private String name;
 
-    private Integer priority ;
-    private Boolean active ;
-    @OneToMany(mappedBy="category",cascade = {
-            CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH
-    })
-    private List<Product> products;
+    @Column(name = "priority")
+    private Integer priority;
+
+    @Column(name = "active")
+    private Boolean active;
+
+    @OneToMany(mappedBy = "catg")
+    private Set<Product> products = new LinkedHashSet<>();
+
 }
