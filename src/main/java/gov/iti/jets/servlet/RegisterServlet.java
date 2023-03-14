@@ -3,7 +3,7 @@ package gov.iti.jets.servlet;
 import java.io.IOException;
 
 import com.google.gson.Gson;
-import gov.iti.jets.dto.CustomerDTO;
+import gov.iti.jets.dto.CustomerDto;
 import gov.iti.jets.dto.RegistrationCustomerDTO;
 import gov.iti.jets.service.CustomerService;
 import jakarta.servlet.RequestDispatcher;

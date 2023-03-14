@@ -1,6 +1,7 @@
 
 package gov.iti.jets.servlet;
 
+import gov.iti.jets.dto.CustomerDto;
 import gov.iti.jets.entity.Customer;
 import gov.iti.jets.mapper.CustomerMapper;
 import gov.iti.jets.service.CustomerService;
@@ -10,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.mapstruct.factory.Mappers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,12 +20,10 @@ import java.io.PrintWriter;
 public class LoginServlet extends HttpServlet{
 
     CustomerService customerService;
-    CustomerMapper mapper;
 
     @Override
     public void init()
     {
-        mapper = new CustomerMapper();
         customerService = new CustomerService();
     }
 
@@ -49,15 +49,14 @@ public class LoginServlet extends HttpServlet{
         response.setContentType("application/json");
          String email = req.getParameter("email");
          String password = req.getParameter("password");
-         Customer customer = customerService.login(email,password);
+         CustomerDto customerDto = customerService.login(email,password);
+         PrintWriter writer = response.getWriter();
 
-        PrintWriter writer = response.getWriter();
-
-        if(customer!=null)
+        if(customerDto!=null)
         {
             HttpSession session = req.getSession(true);
             session.setAttribute("isLogin","true");
-            session.setAttribute("customer",customer);
+            session.setAttribute("customer",customerDto);
             writer.write("1");
         }else{
             writer.write("0");

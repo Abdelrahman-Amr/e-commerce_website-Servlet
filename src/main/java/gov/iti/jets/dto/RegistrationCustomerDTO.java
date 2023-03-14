@@ -2,10 +2,11 @@ package gov.iti.jets.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class RegistrationCustomerDTO extends CustomerDTO {
-    private String password;
+import java.util.Date;
+
+@Data
+public class RegistrationCustomerDTO extends CustomerDto{
+
+    private  String password;
+
 }

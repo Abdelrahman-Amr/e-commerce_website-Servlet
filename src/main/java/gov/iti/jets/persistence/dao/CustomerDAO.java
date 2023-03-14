@@ -1,6 +1,6 @@
 package gov.iti.jets.persistence.dao;
 
-import gov.iti.jets.dto.CustomerDTO;
+import gov.iti.jets.dto.CustomerDto;
 import gov.iti.jets.entity.Customer;
 import gov.iti.jets.mapper.CustomerMapper;
 import jakarta.persistence.EntityManager;
