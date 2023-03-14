@@ -10,7 +10,6 @@ import java.time.LocalDate;
  */
 @Data
 public class ProductDto extends BaseDTO {
-    private final LocalDate creationTime;
     private final Double price;
     private final Double discount;
     private final String imageUrl;

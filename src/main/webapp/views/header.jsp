@@ -103,7 +103,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </ul>
             </div> -->
         <div class="w3ls_logo_products_left">
-            <h1><a href="index.html">Coffee Point</a></h1>
+            <h1><a href="home">Coffee Point</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">

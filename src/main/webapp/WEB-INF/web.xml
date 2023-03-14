@@ -8,6 +8,15 @@
 
 <!--    //Servlets-->
     <servlet>
+        <servlet-name>Main</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.MainServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Main</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
        <servlet-name>Login</servlet-name>
        <servlet-class>gov.iti.jets.servlet.LoginServlet</servlet-class>
     </servlet>
@@ -31,6 +40,7 @@
         <servlet-name>Home</servlet-name>
         <servlet-class>gov.iti.jets.servlet.HomeServlet</servlet-class>
     </servlet>
+
 
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
