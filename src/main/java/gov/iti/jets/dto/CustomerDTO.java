@@ -21,4 +21,5 @@ public class CustomerDTO extends BaseDTO{
     private String email;
 
     private int creditLimit;
+
 }

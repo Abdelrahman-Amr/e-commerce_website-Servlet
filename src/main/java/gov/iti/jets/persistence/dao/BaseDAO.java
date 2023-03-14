@@ -36,9 +36,12 @@ public abstract class BaseDAO <E extends BaseEntity>{
         try{
             entityManager.getTransaction().begin();
             entityManager.persist(entity);
+        } catch (Exception e) {
+            return false;
         }
         finally{
             entityManager.getTransaction().commit();
         }
+        return true;
     }
 }

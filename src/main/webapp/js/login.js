@@ -4,11 +4,11 @@ function login(event)
     var email = $("#email").val();
     var password = $("#password").val();
     console.log(validateEmail(email),validatePass(password));
-    if(!validateEmail(email)  ||  !validatePass(password))
-    {
-        failed('Invalid Email or Password !!');
-        return ;
-    }
+//    if(!validateEmail(email)  ||  !validatePass(password))
+//    {
+//        failed('Invalid Email or Password !!');
+//        return ;
+//    }
     $.post ("login",
     {
         email : email,
@@ -33,24 +33,24 @@ function loginCallBack(responseTxt, statusTxt, xhr)
 
 
 
-function validateEmail(email)
-{
-    let pat=/^(.+)@(.+)\.(.+)$/;
-    if(!pat.test(email))
-    {
-        return false;
-    }
-    return true;
-}
+//function validateEmail(email)
+//{
+//    let pat=/^(.+)@(.+)\.(.+)$/;
+//    if(!pat.test(email))
+//    {
+//        return false;
+//    }
+//    return true;
+//}
 
-function validatePass(password)
-{
-    if(password.trim().length>0)
-    {
-        return true;
-    }
-    return false;
-}
+//function validatePass(password)
+//{
+//    if(password.trim().length>0)
+//    {
+//        return true;
+//    }
+//    return false;
+//}
 
 function success(msg)
 {
