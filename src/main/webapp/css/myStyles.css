@@ -10,3 +10,8 @@
 a:hover{
     color: var(--main-color)!important;
 }
+.register .error {
+    color:red;
+
+    display:none;
+}

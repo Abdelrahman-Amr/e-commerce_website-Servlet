@@ -914,7 +914,7 @@ a.w3_agile_vimeo:hover{
     margin:3em auto 0;
 }
 .login-form-grids input[type="email"],.login-form-grids input[type="password"],.login-form-grids input[type="text"],
-.login-form-grids input[type="date"], .login-form-grids input[type="tel"]{
+.login-form-grids input[type="date"], .login-form-grids input[type="tel"], .login-form-grids input[type="number"]{
     outline: none;
     border: 2px solid #DBDBDB;
     padding: 10px 10px 10px 10px;
@@ -923,7 +923,10 @@ a.w3_agile_vimeo:hover{
     display: block;
     width: 100%;
 }
-.login-form-grids input[type="email"]:hover,.login-form-grids input[type="password"]:hover,.login-form-grids input[type="text"]:hover{
+.login-form-grids input[type="password"]:hover, .login-form-grids input[type="date"]:hover, .login-form-grids input[type="text"]:hover,
+.register .login-form-grids input[type="tel"]:hover, .register .login-form-grids input[type="email"]:hover, .login-form-grids input[type="number"]:hover
+
+{
     outline: none;
     border: 2px solid var(--main-color);
 
@@ -934,7 +937,7 @@ a.w3_agile_vimeo:hover{
 } */
 
 .login-form-grids input[type="password"], .login-form-grids input[type="date"], .login-form-grids input[type="text"],
-.register .login-form-grids input[type="tel"], .register .login-form-grids input[type="email"]{
+.register .login-form-grids input[type="tel"], .register .login-form-grids input[type="email"], .login-form-grids input[type="number"]{
     margin:1em 0 0;
 }
 .forgot {

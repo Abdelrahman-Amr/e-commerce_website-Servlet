@@ -28,7 +28,7 @@ public class CustomerMapper implements BaseMapper<Customer, CustomerDTO>{
         Customer entity= new Customer();
         if(dto!=null)
         {
-            entity.setId(dto.getId());
+            //entity.setId(dto.getId());
             entity.setUserName(dto.getUserName());
             entity.setAddress(dto.getAddress());
             entity.setPhone(dto.getPhone());

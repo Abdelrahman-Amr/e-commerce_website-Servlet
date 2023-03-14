@@ -1,7 +1,7 @@
 package gov.iti.jets.dto;
 
 public abstract class BaseDTO {
-    private long id;
+    private Long id;
 
     public long getId() {
         return id;
