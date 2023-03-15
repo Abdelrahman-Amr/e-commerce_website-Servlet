@@ -15,3 +15,7 @@ a:hover{
 
     display:none;
 }
+
+.active:hover{
+    color: var(--secondary-color)!important;
+}

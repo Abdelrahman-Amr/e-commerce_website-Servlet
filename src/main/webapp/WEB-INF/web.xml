@@ -11,10 +11,10 @@
         <servlet-name>Main</servlet-name>
         <servlet-class>gov.iti.jets.servlet.MainServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>Main</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>Main</servlet-name>-->
+<!--        <url-pattern>/</url-pattern>-->
+<!--    </servlet-mapping>-->
 
     <servlet>
        <servlet-name>Login</servlet-name>
@@ -73,6 +73,12 @@
     <listener>
         <listener-class>
             gov.iti.jets.listener.MainListener
+        </listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>
+            gov.iti.jets.listener.ThreadLocalListener
         </listener-class>
     </listener>
 

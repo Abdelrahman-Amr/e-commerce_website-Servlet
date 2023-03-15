@@ -135,77 +135,80 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="products" class="act">Shop</a></li>
+                    <li class="active"><a href="products" class="act" style="color: red">Shop</a></li>
+                    <c:forEach items="${cats}" var="cat">
+                        <li class="active"><a href="products?catId=${cat.id}" class="act">${cat.name}</a></li>
+                    </c:forEach>
                     <!-- Mega Menu -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cold Coffee<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>All Cold Coffee</h6>
-                                        <li><a href="groceries.html">Iced Coffee</a></li>
-                                        <li><a href="groceries.html">Iced Coffee with Milk</a></li>
-                                        <li><a href="groceries.html">Iced Caffè Americano</a></li>
-                                        <li><a href="groceries.html">Iced Espresso</a></li>
-                                        <li><a href="groceries.html">Iced Flat White</a></li>
-                                        <li><a href="groceries.html"> Iced Caffè Latte</a></li>
-                                        <li><a href="groceries.html">Iced Caramel Macchiato</a></li>
-                                        <li><a href="groceries.html">Iced White Chocolate Mocha</a></li>
-                                        <li><a href="groceries.html">Iced Caffè Mocha</a></li>
-                                    </ul>
-                                </div>
+<%--                    <li class="dropdown">--%>
+<%--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cold Coffee<b class="caret"></b></a>--%>
+<%--                        <ul class="dropdown-menu multi-column columns-3">--%>
+<%--                            <div class="row">--%>
+<%--                                <div class="multi-gd-img">--%>
+<%--                                    <ul class="multi-column-dropdown">--%>
+<%--                                        <h6>All Cold Coffee</h6>--%>
+<%--                                        <li><a href="groceries.html">Iced Coffee</a></li>--%>
+<%--                                        <li><a href="groceries.html">Iced Coffee with Milk</a></li>--%>
+<%--                                        <li><a href="groceries.html">Iced Caffè Americano</a></li>--%>
+<%--                                        <li><a href="groceries.html">Iced Espresso</a></li>--%>
+<%--                                        <li><a href="groceries.html">Iced Flat White</a></li>--%>
+<%--                                        <li><a href="groceries.html"> Iced Caffè Latte</a></li>--%>
+<%--                                        <li><a href="groceries.html">Iced Caramel Macchiato</a></li>--%>
+<%--                                        <li><a href="groceries.html">Iced White Chocolate Mocha</a></li>--%>
+<%--                                        <li><a href="groceries.html">Iced Caffè Mocha</a></li>--%>
+<%--                                    </ul>--%>
+<%--                                </div>--%>
 
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hot Coffee<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>All Hot Coffee</h6>
-                                        <li><a href="groceries.html">Coffee</a></li>
-                                        <li><a href="groceries.html">Coffee with Milk</a></li>
-                                        <li><a href="groceries.html">Caffè Americano</a></li>
-                                        <li><a href="groceries.html">Espresso</a></li>
-                                        <li><a href="groceries.html">Flat White</a></li>
-                                        <li><a href="groceries.html">Caffè Latte</a></li>
-                                        <li><a href="groceries.html">Caramel Macchiato</a></li>
-                                        <li><a href="groceries.html">White Chocolate Mocha</a></li>
-                                        <li><a href="groceries.html">Caffè Mocha</a></li>
-                                    </ul>
-                                </div>
+<%--                            </div>--%>
+<%--                        </ul>--%>
+<%--                    </li>--%>
+<%--                    <li class="dropdown">--%>
+<%--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hot Coffee<b class="caret"></b></a>--%>
+<%--                        <ul class="dropdown-menu multi-column columns-3">--%>
+<%--                            <div class="row">--%>
+<%--                                <div class="multi-gd-img">--%>
+<%--                                    <ul class="multi-column-dropdown">--%>
+<%--                                        <h6>All Hot Coffee</h6>--%>
+<%--                                        <li><a href="groceries.html">Coffee</a></li>--%>
+<%--                                        <li><a href="groceries.html">Coffee with Milk</a></li>--%>
+<%--                                        <li><a href="groceries.html">Caffè Americano</a></li>--%>
+<%--                                        <li><a href="groceries.html">Espresso</a></li>--%>
+<%--                                        <li><a href="groceries.html">Flat White</a></li>--%>
+<%--                                        <li><a href="groceries.html">Caffè Latte</a></li>--%>
+<%--                                        <li><a href="groceries.html">Caramel Macchiato</a></li>--%>
+<%--                                        <li><a href="groceries.html">White Chocolate Mocha</a></li>--%>
+<%--                                        <li><a href="groceries.html">Caffè Mocha</a></li>--%>
+<%--                                    </ul>--%>
+<%--                                </div>--%>
 
 
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bakery<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Croissants</h6>
-                                        <li><a href="personalcare.html">Ham & Swiss Croissant</a></li>
-                                        <li><a href="personalcare.html">Butter Croissant</a></li>
-                                        <li><a href="personalcare.html">Chocolate Croissant</a></li>
-                                        <h6>Cakes</h6>
-                                        <li><a href="personalcare.html">Cinnamon Cake</a></li>
-                                        <li><a href="personalcare.html">Lemon Cake</a></li>
-                                        <li><a href="personalcare.html">Chocolate Cake</a></li>
-                                        <h6>Donuts</h6>
-                                        <li><a href="personalcare.html">Glazed Donut</a></li>
-                                        <li><a href="personalcare.html">Boston Cream Donut</a></li>
-                                        <li><a href="personalcare.html">Chocolate Donut</a></li>
-                                    </ul>
-                                </div>
+<%--                            </div>--%>
+<%--                        </ul>--%>
+<%--                    </li>--%>
+<%--                    <li class="dropdown">--%>
+<%--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bakery<b class="caret"></b></a>--%>
+<%--                        <ul class="dropdown-menu multi-column columns-3">--%>
+<%--                            <div class="row">--%>
+<%--                                <div class="multi-gd-img">--%>
+<%--                                    <ul class="multi-column-dropdown">--%>
+<%--                                        <h6>Croissants</h6>--%>
+<%--                                        <li><a href="personalcare.html">Ham & Swiss Croissant</a></li>--%>
+<%--                                        <li><a href="personalcare.html">Butter Croissant</a></li>--%>
+<%--                                        <li><a href="personalcare.html">Chocolate Croissant</a></li>--%>
+<%--                                        <h6>Cakes</h6>--%>
+<%--                                        <li><a href="personalcare.html">Cinnamon Cake</a></li>--%>
+<%--                                        <li><a href="personalcare.html">Lemon Cake</a></li>--%>
+<%--                                        <li><a href="personalcare.html">Chocolate Cake</a></li>--%>
+<%--                                        <h6>Donuts</h6>--%>
+<%--                                        <li><a href="personalcare.html">Glazed Donut</a></li>--%>
+<%--                                        <li><a href="personalcare.html">Boston Cream Donut</a></li>--%>
+<%--                                        <li><a href="personalcare.html">Chocolate Donut</a></li>--%>
+<%--                                    </ul>--%>
+<%--                                </div>--%>
 
-                            </div>
-                        </ul>
-                    </li>
+<%--                            </div>--%>
+<%--                        </ul>--%>
+<%--                    </li>--%>
                     <li><a href="offers.html">Offers</a></li>
                 </ul>
             </div>

@@ -3,6 +3,8 @@ package gov.iti.jets.persistence.dao;
 import gov.iti.jets.dto.CustomerDto;
 import gov.iti.jets.entity.Customer;
 import gov.iti.jets.mapper.CustomerMapper;
+import gov.iti.jets.service.CustomerService;
+import gov.iti.jets.util.MyLocal;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
@@ -10,10 +12,22 @@ import java.util.Date;
 import java.util.List;
 
 public class CustomerDAO extends BaseDAO<Customer>{
+    private volatile static CustomerDAO customerDAO;
 
-    public CustomerDAO()
+    private CustomerDAO()
     {
-        super(Customer.class, DBFactory.getInstance().createEntityManager());
+        super(Customer.class, MyLocal.getInstance().get());
+    }
+
+    public static CustomerDAO getInstance() {
+        if (customerDAO == null) {
+            synchronized (CustomerDAO.class) {
+                if (customerDAO == null) {
+                    customerDAO = new CustomerDAO();
+                }
+            }
+        }
+        return customerDAO;
     }
     public Customer login(String email , String password)
     {
@@ -41,6 +55,11 @@ public class CustomerDAO extends BaseDAO<Customer>{
             return true;
         }
         return false;
+    }
+
+    public void setManager(EntityManager manager)
+    {
+        entityManager = manager;
     }
 
 }

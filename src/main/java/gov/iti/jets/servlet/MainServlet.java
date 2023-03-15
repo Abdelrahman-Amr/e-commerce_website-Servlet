@@ -14,14 +14,6 @@ import java.io.PrintWriter;
 
 public class MainServlet  extends HttpServlet {
 
-    CustomerService customerService;
-
-    @Override
-    public void init()
-    {
-        customerService = new CustomerService();
-    }
-
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 

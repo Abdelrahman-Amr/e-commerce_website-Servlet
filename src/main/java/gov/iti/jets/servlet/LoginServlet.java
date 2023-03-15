@@ -4,7 +4,9 @@ package gov.iti.jets.servlet;
 import gov.iti.jets.dto.CustomerDto;
 import gov.iti.jets.entity.Customer;
 import gov.iti.jets.mapper.CustomerMapper;
+import gov.iti.jets.persistence.dao.DBFactory;
 import gov.iti.jets.service.CustomerService;
+import gov.iti.jets.util.MyLocal;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -13,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.mapstruct.factory.Mappers;
 
+import javax.persistence.EntityManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -24,7 +27,7 @@ public class LoginServlet extends HttpServlet{
     @Override
     public void init()
     {
-        customerService = new CustomerService();
+        customerService = CustomerService.getInstance();
     }
 
      @Override

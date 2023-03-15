@@ -790,7 +790,7 @@
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="products.html"><img title=" " alt=" " src="images/17.png"></a>
+                                        <a href="products.html"><img title=" " alt=" " src="images/mocha.png"></a>
                                         <p>Channa-dal</p>
                                         <div class="stars">
                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>

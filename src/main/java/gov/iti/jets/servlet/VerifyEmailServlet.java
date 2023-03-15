@@ -26,7 +26,7 @@ public class VerifyEmailServlet extends HttpServlet {
     public void init()
     {
 
-        customerService = new CustomerService();
+        customerService = CustomerService.getInstance();
     }
 
     @Override
