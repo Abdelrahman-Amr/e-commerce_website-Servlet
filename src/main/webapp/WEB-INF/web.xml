@@ -76,6 +76,15 @@
         <servlet-name>profile</servlet-name>
         <url-pattern>/Profile</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>image</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.ProductImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>image</servlet-name>
+        <url-pattern>/image</url-pattern>
+    </servlet-mapping>
 <!--    //Listeners-->
 
     <listener>

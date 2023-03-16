@@ -102,7 +102,7 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
     width: 83%;
     padding:10px;
     font-size: 14px;
-    color: #999;
+    color: black;
     outline: none;
     border: 1px solid #cccccc;
     background: none;
@@ -924,12 +924,11 @@ a.w3_agile_vimeo:hover{
     width: 100%;
 }
 .login-form-grids input[type="password"]:hover, .login-form-grids input[type="date"]:hover, .login-form-grids input[type="text"]:hover,
-.register .login-form-grids input[type="tel"]:hover, .register .login-form-grids input[type="email"]:hover, .login-form-grids input[type="number"]:hover
+ .login-form-grids input[type="tel"]:hover,  .login-form-grids input[type="email"]:hover, .login-form-grids input[type="number"]:hover, input[type="search"]:hover
 
 {
-    outline: none;
-    border: 2px solid var(--main-color);
-
+    outline: none!important;
+    border: 2px solid var(--main-color)!important;
 }
 
 /* .register .login-form-grids input[type="text"], .register .login-form-grids input[type="tel"] {
@@ -937,7 +936,7 @@ a.w3_agile_vimeo:hover{
 } */
 
 .login-form-grids input[type="password"], .login-form-grids input[type="date"], .login-form-grids input[type="text"],
-.register .login-form-grids input[type="tel"], .register .login-form-grids input[type="email"], .login-form-grids input[type="number"]{
+.register .login-form-grids input[type="tel"], .register .login-form-grids input[type="email"], .login-form-grids input[type="number"], input[type="search"]{
     margin:1em 0 0;
 }
 .forgot {

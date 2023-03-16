@@ -30,7 +30,7 @@ public class RegisterServlet extends HttpServlet{
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
         rd.include(request, response);
@@ -43,7 +43,7 @@ public class RegisterServlet extends HttpServlet{
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String customerJson = new String( req.getInputStream().readAllBytes());
         RegistrationCustomerDTO customerDTO = new Gson().fromJson(customerJson, RegistrationCustomerDTO.class);
 
