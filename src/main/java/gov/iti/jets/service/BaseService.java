@@ -8,7 +8,7 @@ public abstract  class BaseService <E extends BaseEntity>{
 
     protected BaseDAO<E> dao;
 
-    public E get(long id)
+    public E get(Long id)
     {
         return dao.get(id);
     }

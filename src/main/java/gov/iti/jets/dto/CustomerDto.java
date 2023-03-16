@@ -10,7 +10,7 @@ import java.util.Date;
  * A DTO for the {@link gov.iti.jets.entity.Customer} entity
  */
 @Data
-public class CustomerDto extends BaseEntity {
+public class CustomerDto extends BaseDTO {
 
     private  String userName;
     private  String address;

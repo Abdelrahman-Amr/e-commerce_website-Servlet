@@ -16,7 +16,7 @@ public abstract class BaseDAO <E extends BaseEntity>{
         this.entityManager = entityManager;
     }
 
-    public E get(long id)
+    public E get(Long id)
     {
       return entityManager.find(entity,id);
     }
@@ -47,5 +47,10 @@ public abstract class BaseDAO <E extends BaseEntity>{
             entityManager.getTransaction().commit();
         }
         return result;
+    }
+
+    public void refresh(E entity)
+    {
+        entityManager.refresh(entity);
     }
 }

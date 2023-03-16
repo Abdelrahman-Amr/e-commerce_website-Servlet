@@ -42,26 +42,26 @@ public class CustomerService extends BaseService<Customer>{
     {
         String hashedPass = Utility.hashPassword(password);
         Customer customer = customerDAO.login(email, hashedPass);
-        //System.out.println("---------------");
-//        System.out.println(customer.getEmail()+" "+customer.getUserName()+" "+customer.getId());
-//        System.out.println(customer.getPassword()+" "+customer.getPhone()+" "+customer.getAddress());
-        //System.out.println(customer);
+
         CustomerDto customerDto = customerMapper.toDto(customer);
-//        System.out.println("-----------------------------");
-//        System.out.println("dto");
-//        System.out.println(customerDto);
+
         return customerDto;
     }
 
     public  boolean signUp(RegistrationCustomerDTO registrationCustomerDTO) {
-        //System.out.println(customerDTO);
         Customer customerEntity = customerMapper.toEntity(registrationCustomerDTO);
         customerEntity.setCreationTime(new Date());
-        //System.out.println(customerEntity.getPassword());
         String hashedPass = Utility.hashPassword(registrationCustomerDTO.getPassword());
         customerEntity.setPassword(hashedPass);
-        //System.out.println(customerEntity);
-        return customerDAO.save(customerEntity);
+        boolean result  = customerDAO.save(customerEntity);
+        if(result)
+        {
+            customerDAO.refresh(customerEntity);
+            Customer customer =customerDAO.get(customerEntity.getId());
+            registrationCustomerDTO.setId(customerEntity.getId());
+            registrationCustomerDTO.setBirthday(customerEntity.getBirthday());
+        }
+        return result;
     }
 
     public void setManager(EntityManager manager)
@@ -80,7 +80,14 @@ public class CustomerService extends BaseService<Customer>{
 //        updatedCustomer.setPassword(customer.getPassword());
 //        updatedCustomer.setCreationTime(customer.getCreationTime());
         customer = customerMapper.partialUpdate(customerDTO, customer);
-        return customerDAO.update(customer);
-        //return false;
+        boolean result =  customerDAO.update(customer);
+        if(result)
+        {
+            customerDAO.refresh(customer);
+            Customer newCustomer =customerDAO.get(customer.getId());
+            customerDTO.setId(newCustomer.getId());
+            customerDTO.setBirthday(newCustomer.getBirthday());
+        }
+        return result;
     }
 }

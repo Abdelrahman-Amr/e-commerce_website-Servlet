@@ -12,6 +12,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ProfileServlet extends HttpServlet {
 
@@ -19,12 +22,11 @@ public class ProfileServlet extends HttpServlet {
     @Override
     public void init()
     {
-        customerService = new CustomerService();
+        customerService =  CustomerService.getInstance();
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println("profile servlet get");
         RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
         rd.include(request, response);
 
@@ -37,20 +39,16 @@ public class ProfileServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //super.doPost(req, resp);
         CustomerDto oldCustomerDto = (CustomerDto) req.getSession(false).getAttribute("customer");
         String customerJson = new String( req.getInputStream().readAllBytes());
-        //System.out.println(customerJson);
         CustomerDto customerDTO = new Gson().fromJson(customerJson, RegistrationCustomerDTO.class);
-        //System.out.println(customerDTO);
-        //System.out.println(customerDTO.getUserName());
+
         customerDTO.setEmail(oldCustomerDto.getEmail());
         customerDTO.setId(oldCustomerDto.getId());
         if(customerService.updateProfile(customerDTO)) {
             HttpSession session = req.getSession(false);
-            //session.setAttribute("isLogin","true");
             session.setAttribute("customer",customerDTO);
-            //System.out.println("updated successfully "+customerDTO.getEmail()+" "+customerDTO.getUserName());
+
             resp.getWriter().write("1");
         } else {
             resp.getWriter().write("0");

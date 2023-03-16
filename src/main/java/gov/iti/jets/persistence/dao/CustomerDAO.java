@@ -37,7 +37,6 @@ public class CustomerDAO extends BaseDAO<Customer>{
         List<Customer> customers=query.getResultList();
         if(customers.size()==0)
         {
-            System.out.println("can't login");
             return null;
         }
 
