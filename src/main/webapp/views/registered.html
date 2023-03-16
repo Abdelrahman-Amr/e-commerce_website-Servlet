@@ -8,10 +8,10 @@
 			<form method="post">
 				<input type="text" placeholder="Name*" required minlength="3" maxlength="30" id="userName" >
 				<!-- <input type="text" placeholder="Last Name..." required=" " > -->
-				<input type="date" placeholder="BirthDate*" required id="birthDate" >
+				<input type="date" placeholder="BirthDate*" required id="birthDate" dataformatas="yyyy-MM-DD">
 				<input type="tel" placeholder="Phone Number*" required id="phone" minlength="11" maxlength="11" pattern="/^(01)([0|1|5|2]){1}([0-9]{9})$/" >
 				<input type="text" placeholder="Address*" required id="address" minlength="5" maxlength="30">
-				<input type="number" placeholder="Credit Limit*" required id="credit" minlength="3" maxlength="30" min="500" max="50000">
+				<input type="number" placeholder="Credit Limit*" required id="credit" minlength="3" maxlength="30" min="0" max="50000">
 			</form>
 			<!-- <div class="register-check-box">
                 <div class="check">

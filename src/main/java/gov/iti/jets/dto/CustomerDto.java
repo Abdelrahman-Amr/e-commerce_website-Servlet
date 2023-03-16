@@ -15,6 +15,7 @@ public class CustomerDto extends BaseEntity {
     private  String userName;
     private  String address;
     private  String phone;
+
     private  Date birthday;
     private  String email;
     private  int creditLimit;

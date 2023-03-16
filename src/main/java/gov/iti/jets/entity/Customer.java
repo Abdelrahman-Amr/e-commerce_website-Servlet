@@ -32,7 +32,7 @@ public class Customer extends BaseEntity {
     private String phone;
 
     @Column(name = "birth_date")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date birthday;
 
     private String email;
