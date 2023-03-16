@@ -85,6 +85,14 @@
         <servlet-name>image</servlet-name>
         <url-pattern>/image</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>productListing</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.ProductListingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>productListing</servlet-name>
+        <url-pattern>/products</url-pattern>
+    </servlet-mapping>
 <!--    //Listeners-->
 
     <listener>
