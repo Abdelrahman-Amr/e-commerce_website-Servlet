@@ -39,4 +39,12 @@ public class ProductService extends BaseService<Product> {
                 .collect(Collectors.toList());
         return productDtos;
     }
+    public List<ProductDto> listAllProductsByCategory(Long categoryId) {
+        List<Product> products = productDAO.listAllProductsByCategory(categoryId);
+        List<ProductDto> productDtos =
+                products.stream()
+                .map(product -> productMapper.toDto(product))
+                .collect(Collectors.toList());
+        return productDtos;
+    }
 }
