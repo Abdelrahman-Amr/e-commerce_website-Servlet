@@ -1,7 +1,8 @@
 .styled-table {
     width: 80%;
     border-collapse: collapse;
-    margin: auto;
+    margin : auto;
+    margin-top: 10px;
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
@@ -30,4 +31,7 @@
     background-color: #663300;
     color: #ffffff;
     text-align: left;
+}
+.page_bar {
+    margin:auto;
 }

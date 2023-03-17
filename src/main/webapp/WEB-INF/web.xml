@@ -76,6 +76,16 @@
         <servlet-name>profile</servlet-name>
         <url-pattern>/Profile</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>previewCustomer</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.PreviewCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>previewCustomer</servlet-name>
+        <url-pattern>/PreviewCustomer</url-pattern>
+    </servlet-mapping>
+
 <!--    //Listeners-->
 
     <listener>

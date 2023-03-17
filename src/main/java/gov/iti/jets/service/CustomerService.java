@@ -12,11 +12,15 @@ import jakarta.persistence.EntityManager;
 import org.mapstruct.factory.Mappers;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.*;
 
 
 public class CustomerService extends BaseService<Customer>{
     private volatile static CustomerService customerService;
+
+    static List<CustomerDto> customerDtoList = new ArrayList<>();
+
+    Map<Integer,List<CustomerDto>> customerDtoMap = new HashMap<>();
 
     CustomerMapper customerMapper;
 
@@ -89,5 +93,34 @@ public class CustomerService extends BaseService<Customer>{
             customerDTO.setBirthday(newCustomer.getBirthday());
         }
         return result;
+    }
+
+    public List<CustomerDto> getCustomerList(int index) {
+
+        if(index==1) {
+            customerDtoList.clear();
+            getAllCustomer();
+            buildCustomerMap();
+        }
+//        List<CustomerDto> l = customerDtoList.subList(startInd,startInd+10);
+//        l.forEach(System.out::println);
+        System.out.println(customerDtoMap.get(index));
+
+        return customerDtoMap.get(index);
+    }
+
+    void getAllCustomer() {
+        customerDtoList = customerMapper.toDTOs(customerDAO.findAll());
+    }
+
+    void buildCustomerMap() {
+        int endInd=10,index=1;
+        while(customerDtoList.size()>0) {
+            if(customerDtoList.size()<10) {
+                endInd=customerDtoList.size();
+            }
+            customerDtoMap.put(index,customerDtoList.subList(0,endInd));
+                    index++;
+        }
     }
 }
