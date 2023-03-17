@@ -107,16 +107,15 @@
             </div>
 
             <c:forEach items="${products}" var="prod" varStatus="counter">
-            <c:if test="${counter.count == 1 || (counter.count) % 4 == 0}">
-            <div class="agile_top_brands_grids">
+                <c:if test="${counter.count == 1 || (counter.count) % 4 == 0}">
+                    <div class="agile_top_brands_grids">
                 </c:if>
 
                 <div class="col-md-4 top_brand_left">
                     <div class="hover14 column">
                         <div class="agile_top_brand_left_grid">
-                            <c:if test="${prod.discount!=prod.price}">
+                            <c:if test="${prod.discount>0}">
                                 <div class="agile_top_brand_left_grid_pos">
-                                        <%--TODO : Add product image using ProductImageServlet--%>
                                     <img src="images/offer.png" alt=" " class="img-responsive">
                                 </div>
                             </c:if>
@@ -124,15 +123,15 @@
                                 <figure>
                                     <div class="snipcart-item block">
                                         <div class="snipcart-thumb">
-                                                <%--                                            TODO: Naviate to product page--%>
-                                            <a href="single.html"><img title=" " alt=" " src="images/pf4.png"></a>
+                                                <%--TODO: add product image--%>
+                                            <a href="item?productId=${prod.id}"><img title=" " alt=" " src="image"></a>
 
                                             <p>${prod.name}</p>
-<%--                                                    TODO: Apply discount condition to display or not--%>
                                             <h4>${prod.price}
-                                                    <c:if test="${prod.discount!=prod.price}">
-                                                          <span>${prod.discount}</span></h4>
-                                                    </c:if>
+                                                <span class="currency">EGP</span>
+                                                <c:if test="${prod.discount>0}">
+                                                <span>${prod.price+prod.discount} EGP</span></h4>
+                                            </c:if>
                                         </div>
                                         <div class="snipcart-details top_brand_home_details">
                                             <form action="#" method="post">
@@ -159,9 +158,9 @@
                 </div>
 
                 <c:if test="${counter.count % 3 == 0}">
-                <div class="clearfix"></div>
-            </div>
-            </c:if>
+                    <div class="clearfix"></div>
+                    </div>
+                </c:if>
             </c:forEach>
 
 

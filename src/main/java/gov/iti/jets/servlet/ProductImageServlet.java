@@ -25,7 +25,7 @@ public class ProductImageServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = request.getServletContext();
-        String path = context.getRealPath("/images/product/mocha.png");
+        String path = context.getRealPath("/images/product/product.jpg");
 //        String path = "images/product/mocha.png";
         BufferedImage bImage = ImageIO.read(new File(path));
         ByteArrayOutputStream bos = new ByteArrayOutputStream();

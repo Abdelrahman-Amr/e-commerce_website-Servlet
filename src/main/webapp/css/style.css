@@ -444,6 +444,12 @@ ul.multi-column-dropdown h6 {
 
 .agile_top_brand_left_grid1 img {
     margin: 0 auto;
+    margin: 0 auto;
+    /* float: left; */
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+
 }
 
 .top-brands {
@@ -462,15 +468,22 @@ ul.multi-column-dropdown h6 {
 
 .agile_top_brand_left_grid1 h4, .agileinfo_single_right_snipcart h4 {
     font-weight: 600;
-    font-size: 1em;
+    font-size: 20px;
     color: #212121;
     text-align: center;
 }
 
 .agile_top_brand_left_grid1 h4 span, .agileinfo_single_right_snipcart h4 span {
-    font-weight: 300;
+    font-size: 14px;
     text-decoration: line-through;
     padding-left: 1em;
+    font-weight: 300;
+}
+.agile_top_brand_left_grid1 h4 span.currency, .agileinfo_single_right_snipcart h4 span.currency {
+    text-decoration: none;
+    padding-left: 0;
+    font-weight: 300;
+    font-size: 14px;
 }
 
 /*-- cart --*/
