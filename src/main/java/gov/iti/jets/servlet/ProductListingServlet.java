@@ -27,9 +27,13 @@ public class ProductListingServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-        List<ProductDto> productDtos = productService.listAllProducts();
-        req.getServletContext().setAttribute("products", productDtos);
+        List<ProductDto> productDtos;
+        if (req.getParameter("catId") != null)
+            productDtos = productService.listAllProductsByCategory(Long.valueOf(req.getParameter("catId")));
+        else
+            productDtos = productService.listAllProducts();
 
+        req.getServletContext().setAttribute("products", productDtos);
         response.setContentType("text/html");
         RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
         rd.include(req, response);
