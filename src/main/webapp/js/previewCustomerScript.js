@@ -14,7 +14,7 @@ function getNextCustomerList(page) {
     //var page = document.getElementById("pageNo").value;
     //console.log(page+9)
         //console.log(${pageNo});
-        $.post ("PreviewCustomer",
+        $.post ("PreviewCustomer?goal=next",
 
             previewCustomerCallBack).fail(function() {
                               failed('loaded Customer List Failed !!');
@@ -23,7 +23,8 @@ function getNextCustomerList(page) {
 function previewCustomerCallBack(responseTxt, statusTxt, xhr) {
    if (statusTxt == "success" && responseTxt =="1"){
     //window.location.href="#";
-    drawTable();
+    console.log("call back")
+    //drawTable();
      //success("Updated Successfully");
 
      }else{
@@ -32,6 +33,7 @@ function previewCustomerCallBack(responseTxt, statusTxt, xhr) {
 }
 
 function drawTable() {
+    console.log("draw table")
     var tableBody = document.getElementById("tableBody").innerHTML;
     tableBody =
         '<c:forEach items="${customerList}" var="current">' +
@@ -43,5 +45,4 @@ function drawTable() {
                         '<td>${current.creditLimit}</td>' +
                     '</tr>' +
                 '</c:forEach>';
-
 }

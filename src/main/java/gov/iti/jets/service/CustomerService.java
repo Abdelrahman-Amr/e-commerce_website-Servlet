@@ -97,16 +97,18 @@ public class CustomerService extends BaseService<Customer>{
 
     public List<CustomerDto> getCustomerList(int index) {
 
-        if(index==1) {
-            customerDtoList.clear();
-            getAllCustomer();
-            buildCustomerMap();
-        }
-//        List<CustomerDto> l = customerDtoList.subList(startInd,startInd+10);
-//        l.forEach(System.out::println);
-        System.out.println(customerDtoMap.get(index));
-
-        return customerDtoMap.get(index);
+//        if(index==1) {
+//            customerDtoList.clear();
+//            getAllCustomer();
+//            buildCustomerMap();
+//        }
+////        List<CustomerDto> l = customerDtoList.subList(startInd,startInd+10);
+////        l.forEach(System.out::println);
+//        System.out.println(customerDtoMap.get(index));
+        List<CustomerDto> l = customerMapper.toDTOs(customerDAO.getCustomerList((index-1)*10));
+//        l.forEach((e)->System.out.println(e.getUserName()));
+//        System.out.println(l);
+        return l;
     }
 
     void getAllCustomer() {

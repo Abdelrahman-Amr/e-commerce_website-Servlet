@@ -25,10 +25,10 @@ public class PreviewCustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //super.doGet(req, resp);
-
+        //System.out.println("get");
         RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
         rd.include(request, response);
-
+        //System.out.println("after header");
         customerList.clear();
         customerList = customerService.getCustomerList(1);
         request.getSession(false).setAttribute("customerList",customerList);
@@ -37,9 +37,12 @@ public class PreviewCustomerServlet extends HttpServlet {
 
         rd = request.getRequestDispatcher("/views/previewCustomers.jsp");
         rd.include(request, response);
+        //System.out.println("after body");
 
         rd = request.getRequestDispatcher("/views/footer.jsp");
         rd.include(request, response);
+        //System.out.println("after footer");
+
     }
 
     @Override
@@ -52,11 +55,16 @@ public class PreviewCustomerServlet extends HttpServlet {
 //            startInd = (Integer) request.getSession(false).getAttribute("startInd");
 //        }
 //        System.out.println(startInd);
-        int pageNo = (Integer)(request.getSession(false).getAttribute("pageNo"));
-        request.getSession(false).setAttribute("pageNo",pageNo+1);
-        System.out.println(pageNo);
-        customerList = customerService.getCustomerList(pageNo+1);
-        request.getSession(false).setAttribute("customerList",customerList);
-        response.getWriter().write("1");
+        if(request.getParameter("goal")=="next") {
+            int pageNo = (Integer) (request.getSession(false).getAttribute("pageNo"));
+            request.getSession(false).setAttribute("pageNo", pageNo + 1);
+            System.out.println("paggggge " + pageNo);
+            customerList = customerService.getCustomerList(pageNo + 1);
+            customerList.forEach((c) -> System.out.println(c.getEmail()));
+            request.getSession(false).setAttribute("customerList", customerList);
+            response.getWriter().write("1"); //1:5
+        } else {
+            response.getWriter().write("0");
+        }
     }
 }

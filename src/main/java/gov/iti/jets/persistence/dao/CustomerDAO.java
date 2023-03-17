@@ -70,4 +70,14 @@ public class CustomerDAO extends BaseDAO<Customer>{
         q1.select(category);
         return  entityManager.createQuery(q1).getResultList();
     }
+
+    public List<Customer> getCustomerList(int index) {
+        Query query=entityManager.createNativeQuery("select * from Customer limit "+index+",10;",Customer.class);
+                //.createQuery("from Customer c limit :ind,10");
+        //query.setParameter("ind",index);
+        List<Customer> customers=query.getResultList();
+//        customers.forEach((e)->System.out.println(e.getUserName()));
+        //System.out.println(customers);
+        return customers;
+    }
 }
