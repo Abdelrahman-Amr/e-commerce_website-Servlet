@@ -57,7 +57,6 @@ public class CustomerService extends BaseService<Customer>{
         if(result)
         {
             customerDAO.refresh(customerEntity);
-            Customer customer =customerDAO.get(customerEntity.getId());
             registrationCustomerDTO.setId(customerEntity.getId());
             registrationCustomerDTO.setBirthday(customerEntity.getBirthday());
         }
@@ -84,9 +83,9 @@ public class CustomerService extends BaseService<Customer>{
         if(result)
         {
             customerDAO.refresh(customer);
-            Customer newCustomer =customerDAO.get(customer.getId());
-            customerDTO.setId(newCustomer.getId());
-            customerDTO.setBirthday(newCustomer.getBirthday());
+//            Customer newCustomer =customerDAO.get(customer.getId());
+            customerDTO.setId(customer.getId());
+            customerDTO.setBirthday(customer.getBirthday());
         }
         return result;
     }
