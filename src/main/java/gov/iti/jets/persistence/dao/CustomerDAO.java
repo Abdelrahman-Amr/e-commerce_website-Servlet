@@ -7,6 +7,8 @@ import gov.iti.jets.service.CustomerService;
 import gov.iti.jets.util.MyLocal;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 import java.util.Date;
 import java.util.List;
@@ -62,4 +64,24 @@ public class CustomerDAO extends BaseDAO<Customer>{
         entityManager = manager;
     }
 
+    public List<Customer> findAll() {
+        CriteriaQuery<Customer> q1 = criteriaBuilder.createQuery(Customer.class);
+        Root<Customer> category = q1.from(Customer.class);
+        q1.select(category);
+        return  entityManager.createQuery(q1).getResultList();
+    }
+
+    public List<Customer> getCustomerList(int index) {
+        Query query=entityManager.createNativeQuery("select * from Customer limit "+index+",10;",Customer.class);
+                //.createQuery("from Customer c limit :ind,10");
+        //query.setParameter("ind",index);
+        List<Customer> customers=query.getResultList();
+//        customers.forEach((e)->System.out.println(e.getUserName()));
+        //System.out.println(customers);
+        return customers;
+    }
+
+    public int getRecordsCount() {
+        return entityManager.createQuery("from Customer c").getResultList().size();
+    }
 }

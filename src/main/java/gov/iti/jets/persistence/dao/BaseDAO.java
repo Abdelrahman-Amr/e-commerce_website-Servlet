@@ -3,17 +3,26 @@ package gov.iti.jets.persistence.dao;
 import gov.iti.jets.entity.BaseEntity;
 import gov.iti.jets.entity.Customer;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+
+import java.util.List;
 
 
 public abstract class BaseDAO <E extends BaseEntity>{
 
     protected  EntityManager entityManager;
+
+    CriteriaBuilder criteriaBuilder;
     private Class<E> entity;
 
     public BaseDAO (Class<E> entity, EntityManager entityManager )
     {
         this.entity  = entity;
         this.entityManager = entityManager;
+        this.criteriaBuilder = entityManager.getCriteriaBuilder();
+
     }
 
     public E get(Long id)
@@ -53,4 +62,6 @@ public abstract class BaseDAO <E extends BaseEntity>{
     {
         entityManager.refresh(entity);
     }
+
+
 }

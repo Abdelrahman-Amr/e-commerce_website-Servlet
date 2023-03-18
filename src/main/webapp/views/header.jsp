@@ -46,6 +46,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
     </script>
 
+<!-- preview customer scripts-->
+    <link href="css/customerTable.css" rel="stylesheet" type="text/css" media="all">
+
     <%--	Our styles--%>
     <link href="css/myStyles.css" rel="stylesheet" type="text/css" media="all">
 
@@ -55,8 +58,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/registerjs.js"></script>
     <script src="js/profile.js"></script>
-
-
+    <script src="js/previewCustomerScript.js"></script>
     <!-- start-smoth-scrolling -->
 </head>
 <body>
