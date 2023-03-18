@@ -28,7 +28,6 @@
             <property name="show_sql" value="true"/>
             <property name = "hibernate.format_sql" value = "true" />
 
-
             <property name="hibernate.hikari.minimumIdle" value="5"/>
             <property name="hibernate.hikari.maximumPoolSize" value="10"/>
             <property name="hibernate.hikari.idleTimeout" value="30000"/>

@@ -3,17 +3,14 @@
     <div class="container">
         <div class="agileinfo_single">
             <div class="col-md-4 agileinfo_single_left">
-                <img id="example" src="images/si1.jpg" alt=" " class="img-responsive">
+                <img id="example" src="image" alt=" " class="img-responsive">
             </div>
             <div class="col-md-8 agileinfo_single_right">
                 <h2></h2>
 
                 <div class="w3agile_description">
                     <h4>${product.name}</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                        officia deserunt mollit anim id est laborum.Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur.</p>
+                    <p>${product.description}</p>
                 </div>
                 <div class="snipcart-item block">
                     <div class="snipcart-thumb agileinfo_single_right_snipcart">
