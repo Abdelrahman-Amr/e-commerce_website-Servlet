@@ -35,6 +35,10 @@ public class PreviewCustomerServlet extends HttpServlet {
         rd.include(request, response);
         //System.out.println("after header");
         pageNum=Math.round(customerService.getRecordsCount()/10f);
+        if(pageNum==0)
+        {
+            pageNum = 1;
+        }
         customerList.clear();
         customerList = customerService.getCustomerList(1);
         request.getSession(false).setAttribute("customerList",customerList);

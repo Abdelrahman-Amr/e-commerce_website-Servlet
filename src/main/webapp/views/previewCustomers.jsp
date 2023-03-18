@@ -24,9 +24,9 @@
 </table>
 <nav class="page-buttons">
     <div class="page-item">
-        <input type="button"  class="page-link" id="prevBTN" value="Previous" onclick="getPrevCustomerList()" disabled>
+        <input type="button"  class="page-link" id="prevBTN" value="<" onclick="getPrevCustomerList()" disabled>
         <label id="pageNo">${pageNo} of ${pageNUM}</label>
-        <input type="button" class="page-link" id="nextBTN" value="Next" onclick="getNextCustomerList(${pageNo})">
+        <input type="button" class="page-link" id="nextBTN" value=">" onclick="getNextCustomerList(${pageNo})">
     </div>
 </nav>
 
