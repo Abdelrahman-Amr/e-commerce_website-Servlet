@@ -80,4 +80,8 @@ public class CustomerDAO extends BaseDAO<Customer>{
         //System.out.println(customers);
         return customers;
     }
+
+    public int getRecordsCount() {
+        return entityManager.createQuery("from Customer c").getResultList().size();
+    }
 }

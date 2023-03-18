@@ -1,6 +1,8 @@
 package gov.iti.jets.servlet;
 
+import com.google.gson.Gson;
 import gov.iti.jets.dto.CustomerDto;
+import gov.iti.jets.dto.CustomerTable;
 import gov.iti.jets.service.CustomerService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,12 +12,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PreviewCustomerServlet extends HttpServlet {
 
     CustomerService customerService;
     List<CustomerDto> customerList;
+
+    int pageNum=0;
     @Override
     public void init()
     {
@@ -29,12 +34,13 @@ public class PreviewCustomerServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
         rd.include(request, response);
         //System.out.println("after header");
+        pageNum=Math.round(customerService.getRecordsCount()/10f);
         customerList.clear();
         customerList = customerService.getCustomerList(1);
         request.getSession(false).setAttribute("customerList",customerList);
         request.getSession(false).setAttribute("pageNo",1);
         //request.getSession(false).setAttribute("startInd",0);
-
+        request.setAttribute("pageNUM",pageNum);
         rd = request.getRequestDispatcher("/views/previewCustomers.jsp");
         rd.include(request, response);
         //System.out.println("after body");
@@ -48,23 +54,28 @@ public class PreviewCustomerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         customerList.clear();
-//        int startInd=0;
-//        System.out.println(request.getSession(false).getAttribute("startInd"));
-//        if(request.getSession(false).getAttribute("startInd")!=null) {
-//            System.out.println("stating index null");
-//            startInd = (Integer) request.getSession(false).getAttribute("startInd");
-//        }
-//        System.out.println(startInd);
-        if(request.getParameter("goal")=="next") {
-            int pageNo = (Integer) (request.getSession(false).getAttribute("pageNo"));
-            request.getSession(false).setAttribute("pageNo", pageNo + 1);
-            System.out.println("paggggge " + pageNo);
-            customerList = customerService.getCustomerList(pageNo + 1);
-            customerList.forEach((c) -> System.out.println(c.getEmail()));
-            request.getSession(false).setAttribute("customerList", customerList);
-            response.getWriter().write("1"); //1:5
+
+        //System.out.println(request.getParameter("goal"));
+        int pageNo = (Integer) (request.getSession(false).getAttribute("pageNo"));
+
+        if(request.getParameter("goal").equals("next")) {
+            pageNo++;
+            if(pageNo>pageNum) pageNo=pageNum;
         } else {
-            response.getWriter().write("0");
+
+            pageNo--;
+            if(pageNo==0) pageNo=1;
         }
+        request.getSession(false).setAttribute("pageNo", pageNo );
+        //System.out.println("paggggge " + pageNo);
+        customerList = customerService.getCustomerList(pageNo);
+        customerList.forEach((c) -> System.out.println(c.getEmail()));
+        request.getSession(false).setAttribute("customerList", customerList);
+        //response.getWriter().write(pageNo+" of "+pageNum); //1:5
+        CustomerTable customerTable = new CustomerTable(customerList,pageNo,pageNum);
+        Gson gson = new Gson();
+        String json = gson.toJson(customerTable);
+        System.out.println(json);
+        response.getWriter().write(json); //1:5
     }
 }

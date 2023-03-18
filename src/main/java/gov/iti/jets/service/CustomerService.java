@@ -97,32 +97,28 @@ public class CustomerService extends BaseService<Customer>{
 
     public List<CustomerDto> getCustomerList(int index) {
 
-//        if(index==1) {
-//            customerDtoList.clear();
-//            getAllCustomer();
-//            buildCustomerMap();
-//        }
-////        List<CustomerDto> l = customerDtoList.subList(startInd,startInd+10);
-////        l.forEach(System.out::println);
-//        System.out.println(customerDtoMap.get(index));
         List<CustomerDto> l = customerMapper.toDTOs(customerDAO.getCustomerList((index-1)*10));
 //        l.forEach((e)->System.out.println(e.getUserName()));
 //        System.out.println(l);
         return l;
     }
 
-    void getAllCustomer() {
-        customerDtoList = customerMapper.toDTOs(customerDAO.findAll());
+    public int getRecordsCount() {
+        return customerDAO.getRecordsCount();
     }
 
-    void buildCustomerMap() {
-        int endInd=10,index=1;
-        while(customerDtoList.size()>0) {
-            if(customerDtoList.size()<10) {
-                endInd=customerDtoList.size();
-            }
-            customerDtoMap.put(index,customerDtoList.subList(0,endInd));
-                    index++;
-        }
-    }
+//    void getAllCustomer() {
+//        customerDtoList = customerMapper.toDTOs(customerDAO.findAll());
+//    }
+//
+//    void buildCustomerMap() {
+//        int endInd=10,index=1;
+//        while(customerDtoList.size()>0) {
+//            if(customerDtoList.size()<10) {
+//                endInd=customerDtoList.size();
+//            }
+//            customerDtoMap.put(index,customerDtoList.subList(0,endInd));
+//                    index++;
+//        }
+//    }
 }
