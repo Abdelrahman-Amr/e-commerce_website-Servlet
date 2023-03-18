@@ -18,5 +18,7 @@ public class CustomerDto extends BaseDTO {
 
     private  Date birthday;
     private  String email;
-    private  int creditLimit;
+    private  Integer creditLimit;
+    private Boolean isAdmin;
+
 }

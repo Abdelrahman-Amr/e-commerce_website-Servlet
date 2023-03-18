@@ -14,5 +14,5 @@ public class OrderDetailDto extends BaseDTO {
     private final String size;
     private final Double total;
     private final ProductDto product;
-    private final Double cusId;
+//    private final Double cusId;
 }

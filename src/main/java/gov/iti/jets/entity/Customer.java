@@ -40,9 +40,10 @@ public class Customer extends BaseEntity {
     private String password;
 
     @Column(name = "credit_limit")
-    private int creditLimit;
+    private Integer creditLimit;
 
-
+    @Column(name = "is_admin")
+    private Boolean isAdmin;
 
 
 }

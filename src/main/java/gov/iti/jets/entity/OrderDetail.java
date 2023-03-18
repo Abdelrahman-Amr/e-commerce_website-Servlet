@@ -40,7 +40,7 @@ public class OrderDetail extends BaseEntity{
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Column(name = "cus_id")
-    private Double cusId;
+//    @Column(name = "cus_id")
+//    private Double cusId;
 
 }
