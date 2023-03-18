@@ -129,9 +129,9 @@
                                             <p>${prod.name}</p>
                                                     <br>
                                             <h4>${prod.price}
-                                                <span class="currency">EGP</span>
+                                                <span class="currency">$</span>
                                                 <c:if test="${prod.discount>0}">
-                                                <span>${prod.price+prod.discount} EGP</span></h4>
+                                                <span>${prod.price+prod.discount} $</span></h4>
                                             </c:if>
                                         </div>
                                         <div class="snipcart-details top_brand_home_details">
