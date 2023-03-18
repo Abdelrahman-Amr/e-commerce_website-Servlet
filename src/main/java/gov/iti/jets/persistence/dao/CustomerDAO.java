@@ -72,7 +72,7 @@ public class CustomerDAO extends BaseDAO<Customer>{
     }
 
     public List<Customer> getCustomerList(int index) {
-        Query query=entityManager.createNativeQuery("select * from Customer limit "+index+",10;",Customer.class);
+        Query query=entityManager.createNativeQuery("select * from coffeepoint.customer limit "+index+",10;",Customer.class);
                 //.createQuery("from Customer c limit :ind,10");
         //query.setParameter("ind",index);
         List<Customer> customers=query.getResultList();
