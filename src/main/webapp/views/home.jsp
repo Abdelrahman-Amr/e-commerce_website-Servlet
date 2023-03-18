@@ -57,7 +57,7 @@
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
                                                         <a href="products.jsp"><img title=" " alt=" "
-                                                                                    src="images/1.png"/></a>
+                                                                                    src="image"/></a>
                                                         <p>Tata-salt</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -104,7 +104,7 @@
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
                                                         <a href="products.jsp"><img title=" " alt=" "
-                                                                                    src="images/2.png"/></a>
+                                                                                    src="image"/></a>
                                                         <p>Fortune-sunflower</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -150,7 +150,7 @@
                                             <figure>
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.jsp"><img src="images/3.png" alt=" "
+                                                        <a href="products.jsp"><img src="image" alt=" "
                                                                                     class="img-responsive"/></a>
                                                         <p>Aashirvaad-atta</p>
                                                         <div class="stars">
@@ -201,7 +201,7 @@
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
                                                         <a href="products.jsp"><img title=" " alt=" "
-                                                                                    src="images/4.png"/></a>
+                                                                                    src="image"/></a>
                                                         <p>Sampann-toor-dal</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -248,7 +248,7 @@
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
                                                         <a href="products.jsp"><img title=" " alt=" "
-                                                                                    src="images/5.png"/></a>
+                                                                                    src="image"/></a>
                                                         <p>Parryss-sugar</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -297,7 +297,7 @@
                                             <figure>
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.jsp"><img src="images/6.png" alt=" "
+                                                        <a href="products.jsp"><img src="image" alt=" "
                                                                                     class="img-responsive"/></a>
                                                         <p>Saffola-gold</p>
                                                         <div class="stars">
@@ -355,7 +355,7 @@
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
                                                         <a href="products.jsp"><img title=" " alt=" "
-                                                                                    src="images/7.png"/></a>
+                                                                                    src="image"/></a>
                                                         <p>Sona-masoori-rice</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -402,7 +402,7 @@
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
                                                         <a href="products.jsp"><img title=" " alt=" "
-                                                                                    src="images/8.png"/></a>
+                                                                                    src="image"/></a>
                                                         <p>Milky-mist-paneer</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -451,7 +451,7 @@
                                             <figure>
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.jsp"><img src="images/9.png" alt=" "
+                                                        <a href="products.jsp"><img src="image" alt=" "
                                                                                     class="img-responsive"/></a>
                                                         <p>Basmati-Rice</p>
                                                         <div class="stars">
@@ -502,7 +502,7 @@
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
                                                         <a href="products.jsp"><img title=" " alt=" "
-                                                                                    src="images/10.png"/></a>
+                                                                                    src="image"/></a>
                                                         <p>Fortune-sunflower</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -549,7 +549,7 @@
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
                                                         <a href="products.jsp"><img title=" " alt=" "
-                                                                                    src="images/12.png"/></a>
+                                                                                    src="image"/></a>
                                                         <p>Nestle-a-slim</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -595,7 +595,7 @@
                                             <figure>
                                                 <div class="snipcart-item block">
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.jsp"><img src="images/13.png" alt=" "
+                                                        <a href="products.jsp"><img src="image" alt=" "
                                                                                     class="img-responsive"/></a>
                                                         <p>Bread-sandwich</p>
                                                         <div class="stars">
@@ -657,7 +657,7 @@
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="products.jsp"><img title=" " alt=" " src="images/14.png"></a>
+                                        <a href="products.jsp"><img title=" " alt=" " src="image"></a>
                                         <p>Fried-gram</p>
                                         <div class="stars">
                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -700,7 +700,7 @@
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="products.jsp"><img title=" " alt=" " src="images/15.png"></a>
+                                        <a href="products.jsp"><img title=" " alt=" " src="image"></a>
                                         <p>Navaratan-dal</p>
                                         <div class="stars">
                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -746,7 +746,7 @@
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="products.jsp"><img src="images/16.png" alt=" "
+                                        <a href="products.jsp"><img src="image" alt=" "
                                                                     class="img-responsive"></a>
                                         <p>White-peasmatar</p>
                                         <div class="stars">
@@ -784,7 +784,7 @@
                 <div class="hover14 column">
                     <div class="agile_top_brand_left_grid">
                         <div class="agile_top_brand_left_grid_pos">
-                            <img src="images/offer.png" alt=" " class="img-responsive">
+                            <img src="image" alt=" " class="img-responsive">
                         </div>
                         <div class="agile_top_brand_left_grid1">
                             <figure>
