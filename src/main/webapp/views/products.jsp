@@ -127,6 +127,7 @@
                                             <a href="item?productId=${prod.id}"><img title=" " alt=" " src="image"></a>
 
                                             <p>${prod.name}</p>
+                                                    <br>
                                             <h4>${prod.price}
                                                 <span class="currency">EGP</span>
                                                 <c:if test="${prod.discount>0}">
