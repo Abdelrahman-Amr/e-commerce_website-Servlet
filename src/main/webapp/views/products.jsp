@@ -63,7 +63,7 @@
             </div>
 
             <c:forEach items="${products}" var="prod" varStatus="counter">
-                <c:if test="${counter.count == 1 || (counter.count) % 4 == 0}">
+                <c:if test="${counter.count == 1 || (counter.count) == 4 ||(counter.count) == 7 }">
                     <div class="agile_top_brands_grids">
                 </c:if>
 
@@ -131,8 +131,8 @@
                     </li>
                     <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
                     <c:forEach begin="1" end="${pagination}" varStatus="loop">
-                    <li><a href="#">${loop.index}</a></li>
-                        </c:forEach>
+                        <li><a href="#">${loop.index}</a></li>
+                    </c:forEach>
                     <li>
                         <a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
