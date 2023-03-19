@@ -51,6 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="css/customerTable.css" rel="stylesheet" type="text/css" media="all">
 
     <!-- Our scripts -->
+    <script src="js/productListing.js"></script>
     <script src="js/previewCustomerScript.js"></script>
     <script src="js/login.js"></script>
     <script src="js/logout.js"></script>

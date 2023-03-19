@@ -1,6 +1,10 @@
+
+
 <!-- //navigation -->
+
+
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
-<script src="js/productListing.js"></script>
+
 <!-- breadcrumbs -->
 <%--	<div class="breadcrumbs">--%>
 <%--		<div class="container">--%>
@@ -19,8 +23,7 @@
                 <%--                <h2>Categories</h2>--%>
                 <ul>
                     <c:forEach items="${cats}" var="cat">
-
-                        <li>
+                        <li class="category-tabs" onclick="this.classList.toggle('active')">
                             <a href="products?catId=${cat.id}">
                                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                     ${cat.name}

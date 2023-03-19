@@ -1758,11 +1758,15 @@ ul.paging {
     border-radius: 5px;
 }
 
+
 .categories ul li a {
     padding: 10px;
     display: block;
     color: #999;
     text-decoration: none;
+}
+#category-tabs ul li.active {
+    background-color: #663300;
 }
 
 .categories ul li a:hover {
