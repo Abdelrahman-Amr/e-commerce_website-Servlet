@@ -47,17 +47,6 @@
                             </option>
                         </select>
                     </div>
-                    <div class="sorting-left">
-                        <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 9
-                            </option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 18
-                            </option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 32
-                            </option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>All</option>
-                        </select>
-                    </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -129,9 +118,9 @@
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-                    <c:forEach begin="1" end="${pagination}" varStatus="loop">
-                        <li><a href="#">${loop.index}</a></li>
+<%--                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>--%>
+                    <c:forEach begin="0" end="${pagination}" varStatus="loop">
+                        <li><a href="#">${(loop.index)+1}</a></li>
                     </c:forEach>
                     <li>
                         <a href="#" aria-label="Next">

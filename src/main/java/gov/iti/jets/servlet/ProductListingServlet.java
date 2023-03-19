@@ -17,7 +17,7 @@ public class ProductListingServlet extends HttpServlet {
 
     ProductService productService;
     ProductMapper productMapper;
-    private static final int PRODUCTS_PER_PAGE = 9;
+    private static final int PRODUCTS_PER_PAGE = 3;
 
     @Override
     public void init() {
@@ -35,12 +35,14 @@ public class ProductListingServlet extends HttpServlet {
         List<ProductDto> productDtos;
         if (req.getParameter("catId") != null) {
             productDtos = productService.listAllProductsByCategory(Long.valueOf(req.getParameter("catId")), (pageNo - 1) * PRODUCTS_PER_PAGE, PRODUCTS_PER_PAGE);
-            pagination = (productService.getNoOfRecords())/PRODUCTS_PER_PAGE;
+            pagination = (productService.getNoOfRecords()) / PRODUCTS_PER_PAGE;
         } else {
             productDtos = productService.listAllProducts((pageNo - 1) * PRODUCTS_PER_PAGE, PRODUCTS_PER_PAGE);
-            pagination = (productService.getNoOfRecords())/PRODUCTS_PER_PAGE;
+            pagination = (productService.getNoOfRecords()) / PRODUCTS_PER_PAGE;
         }
-            req.getServletContext().setAttribute("pagination", pagination);
+        if (pagination < 1)
+            pagination = 1L;
+        req.getServletContext().setAttribute("pagination", pagination);
 
         req.getServletContext().setAttribute("products", productDtos);
         response.setContentType("text/html");
