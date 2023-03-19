@@ -44,10 +44,10 @@ public class ProductDAO extends BaseDAO<Product> {
     }
 
     public List<Product> listAllProductsByCategory(Long categoryId, int offset, int noOfRecords) {
-        TypedQuery<Product> query = entityManager.createQuery("select p from Product p where p.id =:catId", Product.class).setMaxResults(noOfRecords).setFirstResult(offset);
+        TypedQuery<Product> query = entityManager.createQuery("select p from Product p where p.catg.id =:catId", Product.class).setMaxResults(noOfRecords).setFirstResult(offset);
         query.setParameter("catId", categoryId);
         List<Product> result = query.getResultList();
-        Query query2 = entityManager.createQuery("select count(p) from Product p where p.id =:catId");
+        Query query2 = entityManager.createQuery("select count(p) from Product p where p.catg.id =:catId");
         query2.setParameter("catId", categoryId);
         this.noOfRecords = (Long) query2.getSingleResult();
         return result;

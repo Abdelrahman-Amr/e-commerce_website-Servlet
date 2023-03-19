@@ -111,24 +111,35 @@
 
 
             <div class="clearfix"></div>
-            <nav class="numbering">
-                <ul class="pagination paging">
-                    <li>
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-<%--                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>--%>
-                    <c:forEach begin="0" end="${pagination}" varStatus="loop">
-                        <li><a href="products?page=${(loop.index)+1}">${(loop.index)+1}</a></li>
-                    </c:forEach>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <c:if test="${pagination>1}">
+                <nav class="numbering">
+                    <ul class="pagination paging">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                            <%--                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>--%>
+                        <c:forEach begin="1" end="${pagination+1}" varStatus="loop">
+                            <c:url var="pageUrl" value="products">
+                                <c:forEach items="${param}" var="entry">
+                                    <c:if test="${entry.key != 'page'}">
+                                        <c:param name="${entry.key}" value="${entry.value}"/>
+                                    </c:if>
+                                </c:forEach>
+                                <c:param name="page" value="${loop.index}"/>
+                            </c:url>
+                            <li>
+                            <li><a href="${pageUrl}">${loop.index}</a></li>
+                        </c:forEach>
+                        <li>
+                            <a href=" #" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </c:if>
         </div>
         <br>
         <div class="clearfix"></div>
