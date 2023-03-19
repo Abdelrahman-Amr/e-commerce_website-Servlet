@@ -8,7 +8,7 @@
     cursor: pointer!important;
 }
 a:hover{
-    color: var(--main-color)!important;
+    color: var(--main-color);
 }
 .register .error {
     color:red;

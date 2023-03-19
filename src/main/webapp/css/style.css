@@ -1717,7 +1717,7 @@ ul.paging {
 }
 
 .categories, .new-products {
-    border: 1px solid #999;
+    /*border: 1px solid #999;*/
 }
 
 .categories h2 {
@@ -1738,21 +1738,35 @@ ul.paging {
 .categories ul.cate, .new-products-grids {
     padding: 2em;
 }
-
-.categories ul li {
+.categories ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    padding: 10px 10px 0;
+    width: 100%;
+    margin: 0 auto 10px;
+    gap: 7px;
+}
+.categories ul  li:hover {
+    background-color: #663300;
+}
+.categories ul  li {
     display: block;
-    color: #999;
-    font-size: 14px;
     margin-bottom: 1em;
+    width: 100%;
+    background-color: #f0f1f6;
+    border-radius: 5px;
 }
 
 .categories ul li a {
+    padding: 10px;
+    display: block;
     color: #999;
     text-decoration: none;
 }
 
 .categories ul li a:hover {
-    color: #3399cc;
+    color: #ffffff;
 }
 
 .categories ul li span {

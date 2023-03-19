@@ -14,68 +14,24 @@
 <!--- products --->
 <div class="products">
     <div class="container">
-        <div class="col-md-4 products-left">
+        <div>
             <div class="categories">
-                <h2>Categories</h2>
-                <ul class="cate">
-                    <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fruits And Vegetables</a>
-                    </li>
-                    <ul>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Cuts &
-                            Sprouts</a></li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Flowers</a></li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fresh Herbs &
-                            Seasonings</a></li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fresh Vegetables</a>
+                <%--                <h2>Categories</h2>--%>
+                <ul>
+                    <c:forEach items="${cats}" var="cat">
+
+                        <li>
+                            <a href="products?catId=${cat.id}">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                    ${cat.name}
+                            </a>
                         </li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>International
-                            Vegetables</a></li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Organic Fruits &
-                            Vegetables</a></li>
-                    </ul>
-                    <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Grocery & Staples</a>
-                    </li>
-                    <ul>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Dals & Pulses</a>
-                        </li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Dry Fruits</a>
-                        </li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Edible Oils &
-                            Ghee</a></li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Flours &
-                            Sooji</a></li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Masalas & Spices</a>
-                        </li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Organic
-                            Staples</a></li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Rice & Rice
-                            Products</a></li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Salt, Sugar &
-                            Jaggery</a></li>
-                    </ul>
-                    <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>PersonalCare</a></li>
-                    <ul>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Baby Care</a>
-                        </li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Cosmetics</a>
-                        </li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Deos &
-                            Perfumes</a></li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Skin Care</a>
-                        </li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sanitary
-                            Needs</a></li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Oral Care</a>
-                        </li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Personal Hygiene</a>
-                        </li>
-                        <li><a href="products.jsp"><i class="fa fa-arrow-right" aria-hidden="true"></i>Shaving Needs</a>
-                        </li>
-                    </ul>
+                    </c:forEach>
+                </ul>
                 </ul>
             </div>
         </div>
-        <div class="col-md-8 products-right">
+        <div class="col-md-12 products-right">
             <div class="products-right-grid">
                 <div class="products-right-grids">
                     <div class="sorting">
@@ -127,7 +83,7 @@
                                             <a href="item?productId=${prod.id}"><img title=" " alt=" " src="image"></a>
 
                                             <p>${prod.name}</p>
-                                                    <br>
+                                            <br>
                                             <h4>${prod.price}
                                                 <span class="currency">$</span>
                                                 <c:if test="${prod.discount>0}">
