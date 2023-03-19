@@ -2,7 +2,7 @@
     width: 80%;
     border-collapse: collapse;
     margin : auto;
-    margin-top: 10px;
+    margin-top: 25px;
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
@@ -40,7 +40,7 @@
  border: none;
  padding: 1rem;
  font-size: 1rem;
- width: 10em;
+ /*width: 10em;*/
  border-radius: 1rem;
  color: #663300;
  box-shadow: 0 0.4rem #dfd9d9;
