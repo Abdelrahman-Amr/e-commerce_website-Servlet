@@ -1,6 +1,6 @@
 <!-- //navigation -->
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
-
+<script src="js/productListing.js"></script>
 <!-- breadcrumbs -->
 <%--	<div class="breadcrumbs">--%>
 <%--		<div class="container">--%>
@@ -120,7 +120,7 @@
                     </li>
 <%--                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>--%>
                     <c:forEach begin="0" end="${pagination}" varStatus="loop">
-                        <li><a href="#">${(loop.index)+1}</a></li>
+                        <li><a href="products?page=${(loop.index)+1}">${(loop.index)+1}</a></li>
                     </c:forEach>
                     <li>
                         <a href="#" aria-label="Next">
