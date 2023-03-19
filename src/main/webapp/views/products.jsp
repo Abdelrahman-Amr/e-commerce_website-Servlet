@@ -130,10 +130,9 @@
                         </a>
                     </li>
                     <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
+                    <c:forEach begin="1" end="${pagination}" varStatus="loop">
+                    <li><a href="#">${loop.index}</a></li>
+                        </c:forEach>
                     <li>
                         <a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
@@ -142,6 +141,7 @@
                 </ul>
             </nav>
         </div>
+        <br>
         <div class="clearfix"></div>
     </div>
 </div>

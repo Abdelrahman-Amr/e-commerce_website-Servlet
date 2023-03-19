@@ -2,9 +2,7 @@ package gov.iti.jets.service;
 
 import gov.iti.jets.dto.ProductDto;
 import gov.iti.jets.entity.Product;
-import gov.iti.jets.mapper.CategoryMapper;
 import gov.iti.jets.mapper.ProductMapper;
-import gov.iti.jets.persistence.dao.CategoryDAO;
 import gov.iti.jets.persistence.dao.ProductDAO;
 import org.mapstruct.factory.Mappers;
 
@@ -31,20 +29,35 @@ public class ProductService extends BaseService<Product> {
         ProductDto productDto = productMapper.toDto(product);
         return productDto;
     }
-    public List<ProductDto> listAllProducts() {
-        List<Product> products = productDAO.listAllProducts();
+
+    public List<ProductDto> listAllProducts(int offset, int maxNoOfRecordsPerPage) {
+        List<Product> products = productDAO.listAllProducts(offset, maxNoOfRecordsPerPage);
         List<ProductDto> productDtos =
                 products.stream()
-                .map(product -> productMapper.toDto(product))
-                .collect(Collectors.toList());
+                        .map(product -> productMapper.toDto(product))
+                        .collect(Collectors.toList());
         return productDtos;
     }
-    public List<ProductDto> listAllProductsByCategory(Long categoryId) {
-        List<Product> products = productDAO.listAllProductsByCategory(categoryId);
+
+    public List<ProductDto> listAllProductsByCategory(Long categoryId, int offset, int maxNoOfRecordsPerPage) {
+        List<Product> products = productDAO.listAllProductsByCategory(categoryId, offset, maxNoOfRecordsPerPage);
         List<ProductDto> productDtos =
                 products.stream()
-                .map(product -> productMapper.toDto(product))
-                .collect(Collectors.toList());
+                        .map(product -> productMapper.toDto(product))
+                        .collect(Collectors.toList());
         return productDtos;
+    }
+
+    public List<ProductDto> searchProducts(String searchProduct, int offset, int maxNoOfRecordsPerPage) {
+        List<Product> products = productDAO.searchProducts(searchProduct, offset, maxNoOfRecordsPerPage);
+        List<ProductDto> productDtos =
+                products.stream()
+                        .map(product -> productMapper.toDto(product))
+                        .collect(Collectors.toList());
+        return productDtos;
+    }
+
+    public Long getNoOfRecords() {
+        return productDAO.getNoOfRecords();
     }
 }
