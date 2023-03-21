@@ -1,4 +1,5 @@
 <!-- //navigation -->
+<%--<%@ page session="false" %>--%>
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
 
 <!-- breadcrumbs -->
@@ -134,10 +135,10 @@
                                             </c:if>
                                         </div>
                                         <div class="snipcart-details top_brand_home_details">
-                                            <form action="#" method="post">
+                                            <form  method="post" action="cart" onsubmit="addToCart(event)">
                                                 <fieldset>
-                                                    <input type="hidden" name="cmd" value="_cart">
-                                                    <input type="hidden" name="add" value="1">
+                                                    <input type="hidden" name="pdId" value="${prod.id}">
+                                                    <input type="hidden" name="quantity" value="1">
                                                     <input type="hidden" name="business" value=" ">
                                                     <input type="hidden" name="item_name" value="${prod.name}">
                                                     <input type="hidden" name="amount" value="35.99">

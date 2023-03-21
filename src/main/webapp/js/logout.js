@@ -23,6 +23,7 @@ function success(msg)
         showConfirmButton: false,
         timer: 1500,
         toast:true,
+        iconColor:'#663300',
         didDestroy:function(){
             // $("#login-form").submit();
             window.location.href="home";

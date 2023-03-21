@@ -59,10 +59,6 @@ public class CustomerDAO extends BaseDAO<Customer>{
         return false;
     }
 
-    public void setManager(EntityManager manager)
-    {
-        entityManager = manager;
-    }
 
     public List<Customer> findAll() {
         CriteriaQuery<Customer> q1 = criteriaBuilder.createQuery(Customer.class);
@@ -72,9 +68,10 @@ public class CustomerDAO extends BaseDAO<Customer>{
     }
 
     public List<Customer> getCustomerList(int index) {
-        Query query=entityManager.createNativeQuery("select * from coffeepoint.customer limit "+index+",10;",Customer.class);
+//        Query query=entityManager.createNativeQuery("select * from coffee_point.customer limit "+index+",10;",Customer.class);
                 //.createQuery("from Customer c limit :ind,10");
         //query.setParameter("ind",index);
+        Query query=entityManager.createQuery(" from Customer c",Customer.class).setFirstResult(index).setMaxResults(10);
         List<Customer> customers=query.getResultList();
 //        customers.forEach((e)->System.out.println(e.getUserName()));
         //System.out.println(customers);

@@ -21,4 +21,5 @@ public class CustomerDto extends BaseDTO {
     private  Integer creditLimit;
     private Boolean isAdmin;
 
+
 }

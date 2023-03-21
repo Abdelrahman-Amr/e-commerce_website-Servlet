@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
+<%--<%@ page session="false" %>--%>
 <div class="products">
     <div class="container">
         <div class="agileinfo_single">

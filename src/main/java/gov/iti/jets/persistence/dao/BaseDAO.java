@@ -63,5 +63,8 @@ public abstract class BaseDAO <E extends BaseEntity>{
         entityManager.refresh(entity);
     }
 
-
+    public void setManager(EntityManager manager)
+    {
+        entityManager = manager;
+    }
 }

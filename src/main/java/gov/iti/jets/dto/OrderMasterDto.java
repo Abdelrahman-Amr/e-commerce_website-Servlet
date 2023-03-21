@@ -1,6 +1,8 @@
 package gov.iti.jets.dto;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -9,6 +11,7 @@ import java.time.LocalDate;
  * A DTO for the {@link gov.iti.jets.entity.OrderMaster} entity
  */
 @Data
+@Builder
 public class OrderMasterDto extends BaseDTO {
 
     private final LocalDate date;

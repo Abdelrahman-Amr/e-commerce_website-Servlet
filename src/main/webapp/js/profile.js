@@ -38,7 +38,8 @@ function updateProfile(event) {
             showConfirmButton: false,
             timer: 1500,
             toast:true,
-            didDestroy:function(){
+           iconColor:'#663300',
+           didDestroy:function(){
               // $("#login-form").submit();
                 window.location.href="home";
             }

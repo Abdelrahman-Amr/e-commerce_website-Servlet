@@ -1,4 +1,5 @@
 <!-- //footer -->
+<%--<%@ page session="false" %>--%>
 <div class="footer">
     <div class="container">
         <div class="w3_footer_grids">

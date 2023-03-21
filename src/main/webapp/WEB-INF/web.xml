@@ -112,6 +112,15 @@
         <servlet-name>product</servlet-name>
         <url-pattern>/item</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>cart</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cart</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
 <!--    //Listeners-->
 
     <listener>

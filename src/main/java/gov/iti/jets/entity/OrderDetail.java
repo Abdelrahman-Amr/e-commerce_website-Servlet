@@ -24,7 +24,7 @@ public class OrderDetail extends BaseEntity{
     private Double price;
 
     @Column(name = "quantity")
-    private Double quantity;
+    private Integer quantity;
 
     @Column(name = "size")
     private String size;

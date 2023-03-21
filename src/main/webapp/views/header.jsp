@@ -5,6 +5,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
+<%--<%@ page session="false" %>--%>
 <!DOCTYPE html>
 <html>
 
@@ -51,6 +52,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="css/customerTable.css" rel="stylesheet" type="text/css" media="all">
 
     <!-- Our scripts -->
+    <script src="js/cart.js"></script>
     <script src="js/previewCustomerScript.js"></script>
     <script src="js/login.js"></script>
     <script src="js/logout.js"></script>
@@ -86,11 +88,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </ul>
         </div>
         <div class="product_list_header">
-            <form action="#" method="post" class="last">
+            <form action="cart" method="get" class="last">
                 <input type="hidden" name="cmd" value="_cart">
                 <input type="hidden" name="display" value="1">
-                <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down"
-                                                                                    aria-hidden="true"></i></button>
+<%--                <i class="w3view-cart cart">--%>
+<%--                    <span>3</span>--%>
+<%--                </i>--%>
+                <button class="w3view-cart cart " type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down cart"
+                                                                                     aria-hidden="true"><span>${cartSize}</span></i></button>
             </form>
         </div>
         <div class="clearfix"></div>

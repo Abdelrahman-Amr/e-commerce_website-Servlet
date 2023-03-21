@@ -1,4 +1,5 @@
 <!-- register -->
+<%--<%@ page session="false" %>--%>
 <div class="register">
 	<div class="container">
 		<h2>Update Profile</h2>

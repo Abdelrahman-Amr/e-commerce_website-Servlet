@@ -1,7 +1,8 @@
 <!-- main-slider -->
+<%--<%@ page session="false" %>--%>
 <ul id="demo1">
     <li>
-        <img src="images/preview imagelarge_preview.jpg" alt=""/>
+        <img src="images/coffee2.jpg" alt=""/>
         <!--Slider Description example-->
         <div class="slide-desc">
             <h3>Buy Rice Products Are Now On Line With Us</h3>
