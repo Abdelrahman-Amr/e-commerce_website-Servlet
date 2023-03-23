@@ -1741,9 +1741,7 @@ ul.paging {
 .categories ul {
     margin: 0;
     padding: 0;
-    display: flex;
     padding: 10px 10px 0;
-    width: 100%;
     margin: 0 auto 10px;
     gap: 7px;
 }
@@ -1753,9 +1751,7 @@ ul.paging {
 .categories ul  li {
     display: block;
     margin-bottom: 1em;
-    width: 100%;
-    background-color: #f0f1f6;
-    border-radius: 5px;
+
 }
 
 
@@ -1764,6 +1760,8 @@ ul.paging {
     display: block;
     color: #999;
     text-decoration: none;
+    background-color: #f0f1f6;
+    border-radius: 5px;
 }
 #category-tabs ul li.active {
     background-color: #663300;

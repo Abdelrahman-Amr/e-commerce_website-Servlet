@@ -1,5 +1,3 @@
-
-
 <!-- //navigation -->
 
 
@@ -21,9 +19,9 @@
         <div>
             <div class="categories">
                 <%--                <h2>Categories</h2>--%>
-                <ul>
+                <ul class="row">
                     <c:forEach items="${cats}" var="cat">
-                        <li class="category-tabs" onclick="this.classList.toggle('active')">
+                        <li class="col-md-3 col-sm-6 category-tabs column" onclick="this.classList.toggle('active')">
                             <a href="products?catId=${cat.id}">
                                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                     ${cat.name}
@@ -31,24 +29,23 @@
                         </li>
                     </c:forEach>
                 </ul>
-                </ul>
+
             </div>
         </div>
-        <div class="col-md-12 products-right">
+        <div class=" products-right">
             <div class="products-right-grid">
                 <div class="products-right-grids">
                     <div class="sorting">
-                        <select id="country" onchange="change_country(this.value)" class="frm-field required sect">
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting
-                            </option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity
-                            </option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by average
-                                rating
-                            </option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by price
-                            </option>
-                        </select>
+                        <form>
+                            <span>Price  </span>
+                            <div class="switch-field radio-group">
+                                <input type="radio" id="radio-one" name="switch-one" value="yes"/>
+                                <label for="radio-one">Ascending</label>
+                                <input type="radio" id="radio-two" name="switch-one" value="no" />
+                                <label for="radio-two">Descending</label>
+                            </div>
+
+                        </form>
                     </div>
                     <div class="clearfix"></div>
                 </div>
