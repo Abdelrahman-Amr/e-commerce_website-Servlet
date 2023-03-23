@@ -11,7 +11,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.mapstruct.factory.Mappers;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductListingServlet extends HttpServlet {
 
@@ -27,19 +29,19 @@ public class ProductListingServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-        String page = req.getParameter("page");
+        Map<String, String> params = new HashMap<>();
+        params.put("page", req.getParameter("page"));
+        params.put("catId", req.getParameter("catId"));
         int pageNo = 1;
         Long pagination = 1L;
-        if (page != null)
-            pageNo = Integer.parseInt(page);
+        if (params.get("page") != null)
+            pageNo = Integer.parseInt(params.get("page"));
         List<ProductDto> productDtos;
-        if (req.getParameter("catId") != null) {
-            productDtos = productService.listAllProductsByCategory(Long.valueOf(req.getParameter("catId")), (pageNo - 1) * PRODUCTS_PER_PAGE, PRODUCTS_PER_PAGE);
-            pagination = (productService.getNoOfRecords()) / PRODUCTS_PER_PAGE;
-        } else {
-            productDtos = productService.listAllProducts((pageNo - 1) * PRODUCTS_PER_PAGE, PRODUCTS_PER_PAGE);
-            pagination = (productService.getNoOfRecords()) / PRODUCTS_PER_PAGE;
-        }
+
+        productDtos = productService.getProductsByCriteria(params, (pageNo - 1) * PRODUCTS_PER_PAGE, PRODUCTS_PER_PAGE);
+        pagination = (productService.getNoOfReturnedProducts()) / PRODUCTS_PER_PAGE;
+
+
         if (pagination < 1)
             pagination = 1L;
         req.getServletContext().setAttribute("pagination", pagination);

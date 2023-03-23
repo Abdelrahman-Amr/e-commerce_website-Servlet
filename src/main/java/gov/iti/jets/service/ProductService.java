@@ -7,6 +7,7 @@ import gov.iti.jets.persistence.dao.ProductDAO;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ProductService extends BaseService<Product> {
@@ -47,6 +48,14 @@ public class ProductService extends BaseService<Product> {
                         .collect(Collectors.toList());
         return productDtos;
     }
+    public List<ProductDto> getProductsByCriteria(Map<String, String> params, int offset, int maxNoOfRecordsPerPage) {
+        List<Product> products = productDAO.getProductsByCriteria(params, offset, maxNoOfRecordsPerPage);
+        List<ProductDto> productDtos =
+                products.stream()
+                        .map(product -> productMapper.toDto(product))
+                        .collect(Collectors.toList());
+        return productDtos;
+    }
 
     public List<ProductDto> searchProducts(String searchProduct, int offset, int maxNoOfRecordsPerPage) {
         List<Product> products = productDAO.searchProducts(searchProduct, offset, maxNoOfRecordsPerPage);
@@ -56,8 +65,7 @@ public class ProductService extends BaseService<Product> {
                         .collect(Collectors.toList());
         return productDtos;
     }
-
-    public Long getNoOfRecords() {
-        return productDAO.getNoOfRecords();
+    public Long getNoOfReturnedProducts() {
+        return ProductDAO.getInstance().getNoOfRecords();
     }
 }
