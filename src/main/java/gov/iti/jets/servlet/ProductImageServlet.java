@@ -46,15 +46,16 @@ public class ProductImageServlet extends HttpServlet {
         ServletContext context = req.getServletContext();
         String path = context.getRealPath("/images/product/");
         Part filePart = req.getPart("file");
+        String fileName = filePart.getSubmittedFileName();
+        filePart.write(path +fileName);
+
         if(filePart == null)
         {
             resp.getWriter().print("0");
             return ;
         }
-        String fileName = filePart.getSubmittedFileName();
-        for (Part part : req.getParts()){
-            part.write(path +fileName);
-        }
+//        for (Part part : req.getParts()){
+//        }
         resp.getWriter().print("1");
     }
 }

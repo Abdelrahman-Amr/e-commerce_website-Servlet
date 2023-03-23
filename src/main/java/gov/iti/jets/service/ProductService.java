@@ -1,5 +1,6 @@
 package gov.iti.jets.service;
 
+import gov.iti.jets.dto.AdminProductDto;
 import gov.iti.jets.dto.ProductDto;
 import gov.iti.jets.entity.Product;
 import gov.iti.jets.mapper.CategoryMapper;
@@ -8,7 +9,8 @@ import gov.iti.jets.persistence.dao.CategoryDAO;
 import gov.iti.jets.persistence.dao.ProductDAO;
 import org.mapstruct.factory.Mappers;
 
-import java.util.List;
+import javax.xml.crypto.Data;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ProductService extends BaseService<Product> {
@@ -18,6 +20,17 @@ public class ProductService extends BaseService<Product> {
     ProductMapper productMapper;
 
     private ProductDAO productDAO;
+
+    public static ProductService getInstance() {
+        if (productService == null) {
+            synchronized (ProductService.class) {
+                if (productService == null) {
+                    productService = new ProductService();
+                }
+            }
+        }
+        return productService;
+    }
 
     public ProductService() {
         productDAO = ProductDAO.getInstance();
@@ -46,5 +59,17 @@ public class ProductService extends BaseService<Product> {
                 .map(product -> productMapper.toDto(product))
                 .collect(Collectors.toList());
         return productDtos;
+    }
+
+    public Product addNewProduct(ProductDto productDto, Boolean active) {
+
+        Product product = productMapper.toEntity(productDto);
+        product.setCreationTime(new Date());
+        product.setActive(active);
+        if(productDAO.save(product)) {
+            System.out.println(product.getId());
+            return product;
+        }
+        return null;
     }
 }

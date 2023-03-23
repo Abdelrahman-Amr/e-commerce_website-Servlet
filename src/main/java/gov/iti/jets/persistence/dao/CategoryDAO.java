@@ -22,4 +22,15 @@ public class CategoryDAO extends BaseDAO<Category>{
         return  categories;
     }
 
+    public Category getCategoryByName(String categoryName) {
+        Query query = entityManager.createQuery("from Category where name := ?");
+        query.setParameter(1,categoryName);
+        Category category = (Category) query.getSingleResult();
+        if(category!=null) {
+            System.out.println(category.getName());
+            return category;
+        }
+        return null;
+    }
+
 }

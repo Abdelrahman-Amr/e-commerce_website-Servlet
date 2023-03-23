@@ -1,9 +1,11 @@
 package gov.iti.jets.entity;
 
 import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -17,7 +19,8 @@ import java.util.Set;
 public class Product extends BaseEntity{
 
     @Column(name = "creation_time")
-    private LocalDate creationTime;
+    @Timestamp
+    private Date creationTime;
 
     @Column(name = "price")
     private Double price;

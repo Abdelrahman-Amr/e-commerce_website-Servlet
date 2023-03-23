@@ -13,6 +13,19 @@ public class CategoryService extends BaseService<Category>{
 
     private CategoryDAO categoryDAO;
 
+    private volatile static CategoryService categoryService;
+
+    public static CategoryService getInstance() {
+        if (categoryService == null) {
+            synchronized (CategoryService.class) {
+                if (categoryService == null) {
+                    categoryService = new CategoryService();
+                }
+            }
+        }
+        return categoryService;
+    }
+
     public CategoryService() {
         categoryDAO = new CategoryDAO();
         dao = categoryDAO;
@@ -22,5 +35,9 @@ public class CategoryService extends BaseService<Category>{
     public List<CategoryDto> getAll()
     {
         return categoryMapper.toDTOs(categoryDAO.getAll());
+    }
+
+    public Category getCategoryByName(String categoryName) {
+        return categoryDAO.getCategoryByName(categoryName);
     }
 }
