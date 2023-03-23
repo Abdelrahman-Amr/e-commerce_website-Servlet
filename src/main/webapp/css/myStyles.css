@@ -127,3 +127,6 @@ a:hover{
     visibility: hidden;
     display: none;
 }
+.numbering{
+    text-align: center;
+}
