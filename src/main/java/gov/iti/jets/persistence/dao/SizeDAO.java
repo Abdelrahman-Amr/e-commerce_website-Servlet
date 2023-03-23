@@ -38,5 +38,12 @@ public class SizeDAO extends BaseDAO<Size> {
         return sizes;
     }
 
+    public Size  getSizeByName(String name) {
+        TypedQuery query = entityManager.createQuery("from Size s where lower(name) like lower(:name)", Size.class);
+        query.setParameter("name",name);
+        Size size = (Size)query.getSingleResult();
+        return size;
+    }
+
 
 }

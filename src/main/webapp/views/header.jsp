@@ -10,7 +10,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 
 <head>
-    <title>Coffee Point</title>
+    <title>MugLife</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -95,7 +95,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <%--                    <span>3</span>--%>
 <%--                </i>--%>
                 <button class="w3view-cart cart " type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down cart"
-                                                                                     aria-hidden="true"><span>${cartSize}</span></i></button>
+                                                                                     aria-hidden="true"><</i></button>
+                <span class='badge badge-warning' id='lblCartCount'> 5 </span>
+
             </form>
         </div>
         <div class="clearfix"></div>
@@ -111,7 +113,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </ul>
             </div> -->
         <div class="w3ls_logo_products_left">
-            <h1><a href="home">Coffee Point</a></h1>
+            <h1><a href="home">MugLife</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">

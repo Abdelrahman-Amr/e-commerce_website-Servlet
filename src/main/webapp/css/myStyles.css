@@ -29,8 +29,28 @@ a:hover{
     height: 20px;
     text-align: center;
     background: var(--main-color);
-    color: var(--white) !important;
+    color: var( --white-color) !important;
     line-height: 20px;
     border-radius: 50%;
     display: inline-block;
+}
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+    background-color: #c67605;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px;
 }

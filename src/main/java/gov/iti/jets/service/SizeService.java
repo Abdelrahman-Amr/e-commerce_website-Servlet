@@ -55,4 +55,10 @@ public class SizeService extends BaseService<Size>{
         List<SizeDto> sizes = sizeMapper.toDTOs(sizeDAO.listAllSizes());
         return sizes;
     }
+
+    public SizeDto  getSizeByName(String name) {
+
+        SizeDto sizeDto = sizeMapper.toDto(sizeDAO.getSizeByName(name));
+        return sizeDto;
+    }
 }

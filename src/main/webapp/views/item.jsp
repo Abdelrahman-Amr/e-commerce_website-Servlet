@@ -15,12 +15,17 @@
                 </div>
                 <div class="snipcart-item block">
                     <div class="snipcart-thumb agileinfo_single_right_snipcart">
-                        <h4 class="m-sing">$21.00 <span>$25.00</span></h4>
+                        <h4 class="m-sing">${product.price}
+                            <c:if test="${product.discount>0}">
+                                <span>${product.price+product.discount}</span></h4>
+                            </c:if>
+                        </h4>
+
                     </div>
                     <div class="snipcart-details agileinfo_single_right_details">
-                        <form action="#" method="post">
+                        <form action="cart" method="post" onsubmit="addToCart(event)">
                             <fieldset>
-                                <input type="hidden" name="cmd" value="_cart">
+                                <input type="hidden" name="pdId" value="${product.id}">
                                 <input type="hidden" name="add" value="1">
                                 <input type="hidden" name="business" value=" ">
                                 <input type="hidden" name="item_name" value="pulao basmati rice">
@@ -29,7 +34,7 @@
                                 <input type="hidden" name="currency_code" value="USD">
                                 <input type="hidden" name="return" value=" ">
                                 <input type="hidden" name="cancel_return" value=" ">
-                                <input type="submit" name="submit" value="Add to cart" class="button">
+                                <input type="submit" name="submit" value="Add to cart" class="button"  >
                             </fieldset>
                         </form>
                     </div>

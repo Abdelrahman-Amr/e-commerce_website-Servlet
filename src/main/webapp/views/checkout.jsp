@@ -11,7 +11,8 @@
 						<tr>
 							<th>SL No.</th>	
 							<th>Product</th>
-							<th>Quality</th>
+							<th>Size</th>
+							<th>Quantity</th>
 							<th>Product Name</th>
 						
 							<th>Price</th>
@@ -24,17 +25,20 @@
 							<tr class="rem1">
 						<td class="invert">1</td>
 						<td class="invert-image"><a href="item.jsp"><img src="images/1.png" alt=" " class="img-responsive" /></a></td>
+						<td class="invert" >${order.size}</td>
 						<td class="invert">
 							 <div class="quantity"> 
 								<div class="quantity-select">                           
-									<div class="entry value-minus" onclick="decreaseQuan()"></div>
-									<div class="entry value"><span>${order.quantity}</span></div>
-									<div class="entry value-plus active" onclick="increaseQuan()">&nbsp;</div>
+									<div class="entry value-minus" onclick="decreaseQuan(${order.product.id}, q${o})"></div>
+									<input type="hidden" id="${order.product.id}" value="${order.product.id}">
+									<input type="hidden" id="pdQuan" value="${order.quantity}">
+									<input type="hidden" id="pdSize" value="${order.size}">
+									<div class="entry value"><span id="pdQuantity">${order.quantity}</span></div>
+									<div class="entry value-plus active" onclick="increaseQuan(${order.product.id})">&nbsp;</div>
 								</div>
 							</div>
 						</td>
-						<td class="invert">${order.product.name}</td>
-						
+						<td class="invert" >${order.product.name}</td>
 						<td class="invert">${order.product.price}</td>
 						<td class="invert">
 							<div class="rem">
@@ -65,7 +69,6 @@
 					<h4>Continue to basket</h4>
 					<ul>
 						<c:forEach items="${cart}" var="order" varStatus="counter">
-
 							<li>${order.product.name} <i>-</i> <span>${order.total}</span></li>
 						</c:forEach>
 <%--						<li>Product2 <i>-</i> <span>$25.00 </span></li>--%>
