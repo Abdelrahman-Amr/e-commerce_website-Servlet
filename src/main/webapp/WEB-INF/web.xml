@@ -130,7 +130,6 @@
         <url-pattern>/AddingProduct</url-pattern>
     </servlet-mapping>
 <!--    //Listeners-->
-
     <listener>
         <listener-class>
             gov.iti.jets.listener.MainListener
