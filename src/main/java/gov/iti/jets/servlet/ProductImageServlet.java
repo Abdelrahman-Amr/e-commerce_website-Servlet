@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @MultipartConfig(fileSizeThreshold=1024*1024*10, 	// 10 MB
         maxFileSize=1024*1024*50,      	// 50 MB
@@ -43,18 +44,22 @@ public class ProductImageServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("application/json");
+        PrintWriter writer = resp.getWriter();
+
+        System.out.println("imaaaage");
+
         ServletContext context = req.getServletContext();
+        System.out.println(req.getParameter("name"));
         String path = context.getRealPath("/images/product/");
         Part filePart = req.getPart("file");
         if(filePart == null)
         {
-            resp.getWriter().print("0");
+            writer.write("0");
             return ;
         }
         String fileName = filePart.getSubmittedFileName();
-        for (Part part : req.getParts()){
-            part.write(path +fileName);
-        }
-        resp.getWriter().print("1");
+        filePart.write(path +fileName);
+        writer.write("1");
     }
 }

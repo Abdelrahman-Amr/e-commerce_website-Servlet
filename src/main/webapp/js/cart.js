@@ -42,6 +42,68 @@ function  increaseQuan(pdId) {
         $("#pdQuan").val(pdQuan+1);
     });
 }
+//
+// $.ajax({
+//     url: "image",
+//     type: 'POST',
+//     data: formData,
+//     success: function (data) {
+//         console.log("hiiiiiiii");
+//         alert(data);
+//
+//     }
+// });
+$()
+$( '#form' ).submit(function ( e ) {
+
+});
+function  addProduct(event){
+    event.preventDefault();
+    var data;
+
+    data = new FormData();
+    data.append("name","abdo");
+    data.append( 'file', document.getElementById("file").files[0] );
+        // var file =document.getElementById("file")
+    $.ajax({
+        url: '../image',
+        data: data,
+        cache: false,
+        processData: false,
+        contentType: false,
+        method:'POST',
+        type: 'POST',
+        success: function ( data ) {
+            alert( data );
+        }
+    });
+
+}
+
+
+
+
+function uploadCallBack(responseTxt, statusTxt, xhr)
+{
+    console.log(xhr.status);
+    if (statusTxt == "success" && responseTxt =="1" &&  xhr.status == 200){
+        success("Logged in successfully");
+    }else{
+        failed('Invalid Email or Password !!');
+    }
+}
+function  upload(event)
+{
+
+    event.preventDefault();
+    console.log("prevent");
+    var formData = new FormData(this);
+    const image = document.getElementById("file").files[0];
+    $.post("image", {name:"abdo", file:image},function(data, status){
+        successCart("Added Product Successfully");
+    });
+
+}
 function successCart(msg)
 {
     Swal.fire({
