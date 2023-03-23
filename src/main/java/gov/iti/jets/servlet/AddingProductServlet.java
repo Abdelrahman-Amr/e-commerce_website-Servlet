@@ -43,35 +43,36 @@ public class AddingProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        resp.setContentType("application/json");
         PrintWriter writer = resp.getWriter();
 
-        ServletContext servletContext = req.getServletContext();
-        String path = servletContext.getRealPath("/images/");
+        try {
+    resp.setContentType("application/json");
 
-        Part part = req.getPart("file");
-        if(part!=null) {
+    ServletContext servletContext = req.getServletContext();
+    String path = servletContext.getRealPath("/images/");
 
-            Long productId = null;
+    Part part = req.getPart("file");
+    if (part != null) {
 
-            String productJson = new String( req.getParameter("productInfo"));
+        Long productId = null;
+
+        String productJson = new String(req.getParameter("productInfo"));
 //            System.out.println(productJson);
-            ProductDto productDTO = new Gson().fromJson(productJson, ProductDto.class);
+        ProductDto productDTO = new Gson().fromJson(productJson, ProductDto.class);
 
-            Product product = productService.addNewProduct(productDTO,true);
+        Product product = productService.addNewProduct(productDTO, true);
 
-            productId = product.getId();
+        productId = product.getId();
 
-            if(productId != null) {
+        if (productId != null) {
 
-                String[] strArr = part.getSubmittedFileName().split("[.]");
+            String[] strArr = part.getSubmittedFileName().split("[.]");
 
-                String fileName = "product/product_" + productId + "." + strArr[strArr.length-1] ;
+            String fileName = "product/product_" + productId + "." + strArr[strArr.length - 1];
 
-                part.write(path + fileName);
+            part.write(path + fileName);
 
-                product.setImageUrl(fileName);
+            product.setImageUrl(fileName);
 
 //                Category category = new Category();
 //
@@ -81,15 +82,17 @@ public class AddingProductServlet extends HttpServlet {
 //
 //                product.setCatg(categoryService.getCategoryByName(productDTO.getCategory()));
 
-                productService.update(product);
+            productService.update(product);
 
-                writer.write(1);
-            } else {
-                writer.write(0);
-            }
+            writer.write("1");
         } else {
-            writer.write(0);
+            writer.write("0");
         }
-        throw new RuntimeException("jdjdjdj");
+    } else {
+        writer.write("0");
+    }
+}catch (Exception ex){
+    writer.write("0");
+}
     }
 }

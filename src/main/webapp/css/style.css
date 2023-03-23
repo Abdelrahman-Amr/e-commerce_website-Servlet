@@ -400,7 +400,7 @@ ul.multi-column-dropdown h6 {
     right: 10%;
 }
 
-.top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3, .cart-header {
+.top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3, .cart-header , .cat-header{
     text-align: center;
     color: #212121;
     padding-bottom: .5em;
@@ -409,7 +409,7 @@ ul.multi-column-dropdown h6 {
     /*text-transform: uppercase;*/
 }
 
-.top-brands h2:after, .newproducts-w3agile h3:after, .login h2:after, .register h2:after, .faq-w3agile h3:after, .brands h3:after, .cart-header:after {
+.top-brands h2:after, .newproducts-w3agile h3:after, .login h2:after, .register h2:after, .faq-w3agile h3:after, .brands h3:after, .cart-header:after,  .cat-header:after {
     content: '';
     background: var(--main-color);
     height: 2px;
@@ -2965,7 +2965,7 @@ h3.agileits-icons-title {
         padding: 10px 8px !important;
     }
 
-    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 , .cart-header{
+    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 , .cart-header,  .cat-header{
         font-size: 2em;
     }
 
@@ -3615,7 +3615,7 @@ h3.agileits-icons-title {
         width: 50%;
     }
 
-    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 , .cart-header{
+    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 , .cart-header, .cat-header{
         font-size: 1.7em;
     }
 
@@ -3917,7 +3917,7 @@ h3.agileits-icons-title {
         width: 83%;
     }
 
-    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 , .cart-header{
+    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 , .cart-header, .cat-header{
         font-size: 1.4em;
     }
 

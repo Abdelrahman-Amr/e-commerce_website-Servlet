@@ -64,15 +64,15 @@ a:hover{
 /*    display: flex;*/
 /*    justify-content: space-between;*/
 /*}*/
-.cart-header {
+.cart-header ,.cat-header{
 
     font-size: 30px !important;
-    margin-bottom : 40px!important;;
+    margin-bottom : 40px!important;
 }
 @media (max-width: 450px) {
-    .cart-header {
+    .cart-header , .cat-header{
         font-size: 20px !important;
-        margin-bottom : 40px!important;;
+        margin-bottom : 40px!important;
     }
     #empty-cart{
         margin-bottom: 30px;
@@ -129,4 +129,27 @@ a:hover{
 }
 .numbering{
     text-align: center;
+}
+.cat-header{
+    display: none;
+}
+@media (max-width: 450px) {
+ .categories{
+     display: none;
+
+ }
+    .cart-container{
+        text-align: center;
+    }
+    .cat-header{
+        display: block!important;
+        visibility: visible!important;
+    }
+    .sorting{
+        margin: auto;
+        /*padding-left: -20px*/
+    }
+}
+.sorting{
+    padding-left: 20px;
 }

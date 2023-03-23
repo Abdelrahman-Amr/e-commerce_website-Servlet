@@ -18,7 +18,7 @@
 
     <div class="products">
     <div class="container">
-    <div>
+    <div class="cart-container">
         <div class="categories">
                 <%--                <h2>Categories</h2>--%>
             <ul class="row">
@@ -33,14 +33,16 @@
             </ul>
 
         </div>
+        <h2 class="cat-header ">${currentCat}</h2>
+
     </div>
     <div class="sorting">
         <select href="/products?" id="filters" onchange="filterProducts(this, event)" class="frm-field required sect">
             <option class="price-filter" value="default"><i class="fa fa-arrow-right" aria-hidden="true" ></i>Default sorting
             </option>
-            <option class="price-filter" value="asc"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by price ascending
+            <option class="price-filter" value="asc"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by price Asc
             </option>
-            <option class="price-filter" value="desc"><i class="fa fa-arrow-right" aria-hidden="true" ></i>Sort by price descending
+            <option class="price-filter" value="desc"><i class="fa fa-arrow-right" aria-hidden="true" ></i>Sort by price Desc
             </option>
         </select>
     </div>
@@ -70,7 +72,7 @@
                             <div class="snipcart-item block">
                                 <div class="snipcart-thumb">
                                         <%--TODO: add product image--%>
-                                    <a href="item?productId=${prod.id}"><img title=" " alt=" " src="image"></a>
+                                    <a href="item?productId=${prod.id}"><img title=" " alt=" " src="image?imgName=${prod.imageUrl}"></a>
 
                                     <p>${prod.name}</p>
                                     <br>

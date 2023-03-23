@@ -1,6 +1,7 @@
 package gov.iti.jets.servlet;
 
 import com.google.gson.Gson;
+import gov.iti.jets.dto.CategoryDto;
 import gov.iti.jets.dto.ProductDto;
 import gov.iti.jets.mapper.ProductMapper;
 import gov.iti.jets.service.ProductService;
@@ -33,6 +34,21 @@ public class ProductListingServlet extends HttpServlet {
         Map<String, String> params = new HashMap<>();
         params.put("page", req.getParameter("page"));
         params.put("catId", req.getParameter("catId"));
+        if( req.getParameter("catId") !=null){
+            long catId =  Long.parseLong(req.getParameter("catId"));
+            List<CategoryDto> cats = (List<CategoryDto>) req.getServletContext().getAttribute("cats");
+            for(CategoryDto cat : cats)
+            {
+                if(cat.getId() ==  catId)
+                {
+                    req.getServletContext().setAttribute("currentCat",cat.getName());
+                    break;
+                }
+            }
+        }else{
+            req.getServletContext().setAttribute("currentCat","Shop");
+        }
+
         params.put("price", req.getParameter("price"));
         int pageNo = 1;
         int pagination = 1;

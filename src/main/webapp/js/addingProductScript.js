@@ -30,13 +30,18 @@ function addProductAdmin(event) {
             success: function ( data, textStatus ) {
                 console.log(data);
                 console.log("success");
-                success("Adding new product successfully");
-                addingProductCallBack();
+                if(data=="1") {
+                    success("Adding new product successfully");
+                    addingProductCallBack();
+                }else{
+                    failed('Failed to add product !!');
 
-                alert( data );
+                }
+
+                // alert( data );
             },
 
-            fail: failCallBack;
+            fail: failCallBack
     });
 
 }

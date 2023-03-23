@@ -4,7 +4,7 @@
     <div class="container">
         <div class="agileinfo_single">
             <div class="col-md-4 agileinfo_single_left">
-                <img id="example" src="image" alt=" " class="img-responsive">
+                <img id="example" src="image?imgName=${product.imageUrl}" alt=" " class="img-responsive">
             </div>
             <div class="col-md-8 agileinfo_single_right">
                 <h2></h2>

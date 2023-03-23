@@ -37,7 +37,7 @@
 
 						<td class="invert-image" id="row"><a href="item?productId=${order.product.id}">
 							<figure>
-								<img src="image" alt=" " class="img-responsive cart-img" />
+								<img src="image?imgName=${order.product.imageUrl}" alt=" " class="img-responsive cart-img" />
 								<figcaption>${order.product.name}</figcaption>
 							</figure>
 						</a>

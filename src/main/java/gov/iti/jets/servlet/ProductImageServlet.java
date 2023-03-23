@@ -25,7 +25,9 @@ public class ProductImageServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = request.getServletContext();
-        String path = context.getRealPath("/images/product/product.jpg");
+        String imgName = request.getParameter("imgName") ;
+        String path = context.getRealPath("/images/")+imgName;
+        System.out.println(path);
 //        String path = "images/product/mocha.png";
         BufferedImage bImage = ImageIO.read(new File(path));
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -44,7 +46,7 @@ public class ProductImageServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext context = req.getServletContext();
-        String path = context.getRealPath("/images/product/");
+        String path = context.getRealPath("/images/");
         Part filePart = req.getPart("file");
         String fileName = filePart.getSubmittedFileName();
         filePart.write(path +fileName);
