@@ -11,7 +11,6 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -83,6 +82,12 @@ public class ProductDAO extends BaseDAO<Product> {
 
         criteriaQuery.select(productRoot).where(predicate);
         //execute query
+        if (params.get("price") != null) {
+            if (params.get("price").equals("asc"))
+                criteriaQuery.orderBy(criteriaBuilder.asc(productRoot.get(Product_.price)));
+            else if (params.get("price").equals("desc"))
+                criteriaQuery.orderBy(criteriaBuilder.desc(productRoot.get(Product_.price)));
+        }
         List<Product> resultList = entityManager.createQuery(criteriaQuery).setMaxResults(maxNoOfRecordsPerPage).setFirstResult(offset).getResultList();
         return resultList;
     }
