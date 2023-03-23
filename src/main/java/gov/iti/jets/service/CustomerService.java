@@ -18,9 +18,7 @@ import java.util.*;
 public class CustomerService extends BaseService<Customer>{
     private volatile static CustomerService customerService;
 
-    static List<CustomerDto> customerDtoList = new ArrayList<>();
 
-    Map<Integer,List<CustomerDto>> customerDtoMap = new HashMap<>();
 
     CustomerMapper customerMapper;
 

@@ -13,9 +13,10 @@ public class MainListener implements ServletContextListener {
 
     public void contextInitialized (ServletContextEvent cse) {
         DBFactory.getInstance();
-        CategoryService categoryService = new CategoryService();
+        CategoryService categoryService =  CategoryService.getInstance();
         List<CategoryDto> categoryDtos = categoryService.getAll();
         cse.getServletContext().setAttribute("cats", categoryDtos);
+
 
     }
     public void contextDestroyed (ServletContextEvent cse) {

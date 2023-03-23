@@ -26,13 +26,13 @@
                         <form action="cart" method="post" onsubmit="addToCart(event)">
                             <fieldset>
                                 <input type="hidden" name="pdId" value="${product.id}">
-                                <input type="hidden" name="add" value="1">
-                                <input type="hidden" name="business" value=" ">
-                                <input type="hidden" name="item_name" value="pulao basmati rice">
-                                <input type="hidden" name="amount" value="21.00">
-                                <input type="hidden" name="discount_amount" value="1.00">
-                                <input type="hidden" name="currency_code" value="USD">
-                                <input type="hidden" name="return" value=" ">
+                                <p>Please select your favorite Web language:</p>
+                                  <input type="radio" id="html" name="fav_language" value="HTML">
+                                  <label for="html">HTML</label><br>
+                                  <input type="radio" id="css" name="fav_language" value="CSS">
+                                  <label for="css">CSS</label><br>
+                                  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+                                  <label for="javascript">JavaScript</label>
                                 <input type="hidden" name="cancel_return" value=" ">
                                 <input type="submit" name="submit" value="Add to cart" class="button"  >
                             </fieldset>
