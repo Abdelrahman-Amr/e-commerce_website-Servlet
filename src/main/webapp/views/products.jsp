@@ -89,7 +89,7 @@
                                                     <input type="hidden" name="add" value="1">
                                                     <input type="hidden" name="business" value=" ">
                                                     <input type="hidden" name="item_name" value="${prod.name}">
-                                                    <input type="hidden" name="amount" value="35.99">
+                                                    <input type="hidden" name="amount" value="${prod.price}">
                                                     <input type="hidden" name="discount_amount" value="1.00">
                                                     <input type="hidden" name="currency_code" value="USD">
                                                     <input type="hidden" name="return" value=" ">
