@@ -1,15 +1,10 @@
 package gov.iti.jets.dto;
 
-import lombok.Data;
+import jakarta.servlet.http.Part;
+import lombok.*;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-
-/**
- * A DTO for the {@link gov.iti.jets.entity.Product} entity
- */
 @Data
-public class ProductDto extends BaseDTO {
+public class AdminProductDto extends BaseDTO {
     private final String name;
     private final String category;
     private final Double price;
@@ -17,5 +12,5 @@ public class ProductDto extends BaseDTO {
     private final Integer quantity;
     private final Integer priority;
     private final String description;
-    private final String imageUrl;
+    //private final Part imagePart;
 }

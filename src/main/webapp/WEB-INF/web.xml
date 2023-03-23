@@ -121,6 +121,14 @@
         <servlet-name>cart</servlet-name>
         <url-pattern>/cart</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>addingProduct</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.AddingProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addingProduct</servlet-name>
+        <url-pattern>/AddingProduct</url-pattern>
+    </servlet-mapping>
 <!--    //Listeners-->
 
     <listener>
