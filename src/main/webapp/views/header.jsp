@@ -5,7 +5,6 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
-<%--<%@ page session="false" %>--%>
 <!DOCTYPE html>
 <html>
 
@@ -52,6 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="css/customerTable.css" rel="stylesheet" type="text/css" media="all">
 
     <!-- Our scripts -->
+    <script src="js/productListing.js"></script>
     <script src="js/home.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/previewCustomerScript.js"></script>

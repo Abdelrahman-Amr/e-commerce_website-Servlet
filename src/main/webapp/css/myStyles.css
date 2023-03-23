@@ -42,6 +42,7 @@ a:hover{
     border-radius: 9px;
 }
 
+
 .label-warning[href],
 .badge-warning[href] {
     background-color: #c67605;
@@ -87,4 +88,42 @@ a:hover{
 }
 .agile-login{
  width: fit-content!important;
+}
+
+.radio-group label {
+    color: #9a929e;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 12pt;
+    padding: 5px 20px;
+}
+
+.radio-group input[type=radio]:checked + label {
+    color: #ccc8ce;
+    background: #675f6b;
+}
+
+.radio-group label + .radio-group input[type=radio] + .radio-group label {
+    /*border-left: solid 1px #675f6b;*/
+}
+
+.radio-group {
+    /*border: solid 1px #675f6b;*/
+    display: inline-block;
+
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #efefef;
+}
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+/*body {*/
+/*    background: #332f35;*/
+/*    font-family: roboto;*/
+/*}*/
+
+.radio-group input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
 }

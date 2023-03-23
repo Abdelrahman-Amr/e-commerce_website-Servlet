@@ -479,6 +479,7 @@ ul.multi-column-dropdown h6 {
     padding-left: 1em;
     font-weight: 300;
 }
+
 .agile_top_brand_left_grid1 h4 span.currency, .agileinfo_single_right_snipcart h4 span.currency {
     text-decoration: none;
     padding-left: 0;
@@ -1678,7 +1679,7 @@ ul.faq {
 }
 
 .sorting {
-    float: right;
+    /*float: right;*/
     width: 35%;
 }
 
@@ -1689,13 +1690,19 @@ ul.faq {
 }
 
 select#country, select#country1 {
-    border: 1px solid #212121;
-    outline: none;
+    /*border: 1px solid #212121;*/
+    /* outline: none; */
     font-size: 14px;
     color: #212121;
     padding: 0.5em;
     width: 100%;
     cursor: pointer;
+    margin-left: 19px;
+    border-radius: 5px;
+    background-color: #f0f1f6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .products-right-grids {
@@ -1720,7 +1727,7 @@ ul.paging {
 }
 
 .categories, .new-products {
-    border: 1px solid #999;
+    /*border: 1px solid #999;*/
 }
 
 .categories h2 {
@@ -1742,20 +1749,43 @@ ul.paging {
     padding: 2em;
 }
 
-.categories ul li {
-    display: block;
-    color: #999;
-    font-size: 14px;
-    margin-bottom: 1em;
+.categories ul {
+    margin: 0;
+    padding: 0;
+    padding: 10px 10px 0;
+    margin: 0 auto 10px;
+    gap: 7px;
 }
 
+.categories ul li {
+    display: block;
+    margin-bottom: 1em;
+    padding: 6px;
+
+}
+
+.categories ul li a:hover ,.categories ul li a.active {
+    background-color: #663300;
+    color: #FFFFFF;
+}
+
+
 .categories ul li a {
+    padding: 10px;
+    display: block;
     color: #999;
     text-decoration: none;
+    background-color: #f0f1f6;
+    border-radius: 5px;
+
+}
+
+#category-tabs ul li.active {
+    background-color: #663300;
 }
 
 .categories ul li a:hover {
-    color: #3399cc;
+    color: #ffffff;
 }
 
 .categories ul li span {
