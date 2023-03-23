@@ -8,7 +8,7 @@
     cursor: pointer!important;
 }
 a:hover{
-    color: var(--main-color)!important;
+    color: var(--main-color);
 }
 .register .error {
     color:red;
@@ -53,4 +53,38 @@ a:hover{
     padding: 0 5px;
     vertical-align: top;
     margin-left: -10px;
+}
+.cart-img{
+    width: 100px;
+    height: 90px;
+    margin: 0 auto;
+}
+/*.c{*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*}*/
+.cart-header {
+
+    font-size: 30px !important;
+    margin-bottom : 40px!important;;
+}
+@media (max-width: 450px) {
+    .cart-header {
+        font-size: 20px !important;
+        margin-bottom : 40px!important;;
+    }
+    #empty-cart{
+        margin-bottom: 30px;
+        margin-top: -40px
+    }
+}
+.checkout-right-basket{
+    text-align: center;
+}
+#empty-cart{
+    margin-bottom: 30px;
+    margin-top: -20px
+}
+.agile-login{
+ width: fit-content!important;
 }

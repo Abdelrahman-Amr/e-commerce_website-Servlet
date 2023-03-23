@@ -43,9 +43,9 @@
                 <h3>Profile</h3>
                 <ul class="info">
                     <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.jsp">Store</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="checkout.html">My Cart</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.html">Login</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.html">Create Account</a>
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="cart">My Cart</a></li>
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login">Login</a></li>
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="Register">Create Account</a>
                     </li>
                 </ul>
             </div>

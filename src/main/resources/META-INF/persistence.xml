@@ -7,13 +7,13 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>gov.iti.jets.entity.Customer</class>
         <properties>
-<!--            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/coffee_point" />-->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://coffeepointv3-instance-1.cdre4zsucbcq.us-east-1.rds.amazonaws.com:3306/coffeepoint" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/coffee_point" />
+<!--            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://coffeepointv3-instance-1.cdre4zsucbcq.us-east-1.rds.amazonaws.com:3306/coffeepoint" />-->
 
 <!--            coffeepoint.cttkremqwesg.eu-west-3.rds.amazonaws.com-->
-            <property name="jakarta.persistence.jdbc.user" value="admin" />
+            <property name="jakarta.persistence.jdbc.user" value="springstudent" />
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-            <property name="jakarta.persistence.jdbc.password" value="adminadmin" />
+            <property name="jakarta.persistence.jdbc.password" value="springstudent" />
 
             <property name="jakarta.persistence.lock.timeout" value="100" />
             <property name="jakarta.persistence.query.timeout" value="100" />

@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpSession;
 import org.mapstruct.factory.Mappers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class CartServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 //        System.out.println(req.getSession(false));
+
         response.setContentType("text/html");
         RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
         rd.include(req, response);
@@ -52,6 +54,8 @@ public class CartServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+//        response.setContentType("application/json");
+        PrintWriter writer = response.getWriter();
         long productId = Long.parseLong(req.getParameter("pdId"));
 //        int quantity= Integer.parseInt(req.getParameter("quantity"));
         String sizeName= req.getParameter("sizeName");
@@ -78,10 +82,7 @@ public class CartServlet extends HttpServlet {
                     .total(1 * (productDto.getPrice() + productDto.getPrice() * sizeDto.getPercentage()))
                     .build();
             cart.add(orderDetailDto);
-            session.setAttribute("cart", cart);
-            session.setAttribute("cartTotal", calcCartTotal(cart));
-            session.setAttribute("cartSize", calcCartSize(cart));
-            session.setAttribute("dev", Constants.Dev);
+
             }
             else
             {
@@ -95,7 +96,10 @@ public class CartServlet extends HttpServlet {
                     cart.remove(order);
                 }
             }
-
+//            session.setAttribute("cart", cart);
+//            session.setAttribute("cartTotal", calcCartTotal(cart));
+//            session.setAttribute("cartSize", calcCartSize(cart));
+//            session.setAttribute("dev", Constants.Dev);
         }
         else{
            if(order == null)
@@ -124,12 +128,17 @@ public class CartServlet extends HttpServlet {
 
 
 
-            session.setAttribute("cart", cart);
-            session.setAttribute("cartTotal", calcCartTotal(cart));
-            session.setAttribute("cartSize", calcCartSize(cart));
-            session.setAttribute("dev", Constants.Dev);
+//            session.setAttribute("cart", cart);
+//            session.setAttribute("cartTotal", calcCartTotal(cart));
+//            session.setAttribute("cartSize", calcCartSize(cart));
+//            session.setAttribute("dev", Constants.Dev);
         }
 //        doGet(req,response);
+        session.setAttribute("cart", cart);
+        session.setAttribute("cartTotal", calcCartTotal(cart));
+        session.setAttribute("cartSize", calcCartSize(cart));
+        session.setAttribute("dev", Constants.Dev);
+
     }
 
     private Double calcCartTotal(List<OrderDetailDto> orderDetailDtos)

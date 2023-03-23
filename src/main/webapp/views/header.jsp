@@ -52,6 +52,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="css/customerTable.css" rel="stylesheet" type="text/css" media="all">
 
     <!-- Our scripts -->
+    <script src="js/home.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/previewCustomerScript.js"></script>
     <script src="js/login.js"></script>
@@ -83,7 +84,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </c:if>
                 <%--					<li><a href="contact.html">Help</a></li>--%>
                 <c:if test="${isLogin =='true'}">
-                    <li ><a href="Profile">Welcome, ${customer.userName}</a></li>
+
+                    <li title="MyProfile" ><a href="Profile">Welcome, ${customer.userName}</a></li>
+                    <li ><a href="Profile">Credit: ${customer. creditLimit}$</a></li>
                 </c:if>
             </ul>
         </div>
@@ -94,7 +97,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <%--                <i class="w3view-cart cart">--%>
 <%--                    <span>3</span>--%>
 <%--                </i>--%>
-                <button class="w3view-cart cart " type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down cart"
+                <button class="w3view-cart cart " title="MyCart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down cart"
                                                                                      aria-hidden="true"><</i></button>
                 <span class='badge badge-warning' id='lblCartCount'> 5 </span>
 
@@ -113,11 +116,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </ul>
             </div> -->
         <div class="w3ls_logo_products_left">
-            <h1><a href="home">MugLife</a></h1>
+            <h1 title="MugLife"><a href="home">MugLife</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">
-                <input type="search" name="Search" placeholder="Search for a Product..." required="">
+                <input type="search" name="Search" placeholder="Search for a Product" required="">
                 <button type="submit" class="btn btn-default search" aria-label="Left Align">
                     <i class="fa fa-search" aria-hidden="true"> </i>
                 </button>

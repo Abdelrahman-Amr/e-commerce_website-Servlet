@@ -8,55 +8,60 @@ function addToCart(event ) {
 }
 
 
-function  removeFromCart()
+function  removeFromCart(pdId,size)
 {
-        $('.close1').on('click', function(c){
-            $('.rem1').fadeOut('slow', function(c){
-                $('.rem1').remove();
+            $('#r'+pdId+size).fadeOut('slow', function(c){
+                $('#r'+pdId+size).remove();
             });
-        });
+            $('#rr'+pdId+size).fadeOut('slow', function(c){
+                $('#rr'+pdId+size).remove();
+            });
+
 }
 
-function  decreaseQuan(pdId)
+function  decreaseQuan(pdId, size)
 {
-    // var pdId = $("#pdId").val();
-    var pdQuan = +$("#pdQuan").val();
-    var pdSize = $("#pdSize").val();
+    var pdQuan = +$("#q"+pdId+size).html();
+    var pdTotal = +$("#t"+pdId+size).html();
+    var pdPrice = +$("#p"+pdId+size).html();
+    var total=+$("#total").html();;
 
-    if(pdQuan>0) {
-        $.post("cart?pdId=" + pdId + "&sizeName=" + pdSize+"&op=-1", function (data, status) {
-            // successCart("Added Product Successfully");
-            $("#pdQuantity").html(pdQuan - 1);
-            $("#pdQuan").val(pdQuan - 1);
+
+    if(pdQuan>=1) {
+        $.post("cart?pdId=" + pdId + "&sizeName=" + size+"&op=-1", function (data, status) {
+            $("#q"+pdId+size).html(pdQuan-1);
+            $("#t"+pdId+size).html(pdTotal-pdPrice);
+            $("#total").html(total-pdPrice);
+
+            console.log(data);
+            if(pdQuan-1 ==0) {
+                removeFromCart(pdId,size);
+                console.log(document.getElementsByClassName("rem1").length);
+                if(document.getElementsByClassName("rem1").length<=1)
+                {
+
+                    window.location.href="cart";
+                }
+            }
         });
     }
 }
-function  increaseQuan(pdId) {
-    // var pdId = $("#pdId").val();
-    var pdQuan = +$("#pdQuan").val();
-    var pdSize = $("#pdSize").val();
+function  increaseQuan(pdId, size) {
+    var pdQuan = +$("#q"+pdId+size).html();
+    var pdTotal = +$("#t"+pdId+size).html();
+    var pdPrice = +$("#p"+pdId+size).html();
+    var total=+$("#total").html();
 
-    $.post("cart?pdId="+pdId+"&sizeName="+pdSize+"&op=1", function(data, status){
-        // successCart("Added Product Successfully");
-        $("#pdQuantity").html(pdQuan+1);
-        $("#pdQuan").val(pdQuan+1);
+    $.post("cart?pdId="+pdId+"&sizeName="+size+"&op=1", function(data, status){
+        $("#q"+pdId+size).html(pdQuan+1);
+        $("#t"+pdId+size).html(pdTotal+pdPrice);
+        $("#total").text(total+pdPrice);
+
+
     });
 }
-//
-// $.ajax({
-//     url: "image",
-//     type: 'POST',
-//     data: formData,
-//     success: function (data) {
-//         console.log("hiiiiiiii");
-//         alert(data);
-//
-//     }
-// });
-$()
-$( '#form' ).submit(function ( e ) {
 
-});
+
 function  addProduct(event){
     event.preventDefault();
     var data;
@@ -83,27 +88,7 @@ function  addProduct(event){
 
 
 
-function uploadCallBack(responseTxt, statusTxt, xhr)
-{
-    console.log(xhr.status);
-    if (statusTxt == "success" && responseTxt =="1" &&  xhr.status == 200){
-        success("Logged in successfully");
-    }else{
-        failed('Invalid Email or Password !!');
-    }
-}
-function  upload(event)
-{
 
-    event.preventDefault();
-    console.log("prevent");
-    var formData = new FormData(this);
-    const image = document.getElementById("file").files[0];
-    $.post("image", {name:"abdo", file:image},function(data, status){
-        successCart("Added Product Successfully");
-    });
-
-}
 function successCart(msg)
 {
     Swal.fire({

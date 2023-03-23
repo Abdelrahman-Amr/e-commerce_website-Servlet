@@ -47,10 +47,7 @@ public class ProductImageServlet extends HttpServlet {
         resp.setContentType("application/json");
         PrintWriter writer = resp.getWriter();
 
-        System.out.println("imaaaage");
-
         ServletContext context = req.getServletContext();
-        System.out.println(req.getParameter("name"));
         String path = context.getRealPath("/images/product/");
         Part filePart = req.getPart("file");
         if(filePart == null)

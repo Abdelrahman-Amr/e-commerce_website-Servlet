@@ -400,7 +400,7 @@ ul.multi-column-dropdown h6 {
     right: 10%;
 }
 
-.top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 {
+.top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3, .cart-header {
     text-align: center;
     color: #212121;
     padding-bottom: .5em;
@@ -409,7 +409,7 @@ ul.multi-column-dropdown h6 {
     /*text-transform: uppercase;*/
 }
 
-.top-brands h2:after, .newproducts-w3agile h3:after, .login h2:after, .register h2:after, .faq-w3agile h3:after, .brands h3:after {
+.top-brands h2:after, .newproducts-w3agile h3:after, .login h2:after, .register h2:after, .faq-w3agile h3:after, .brands h3:after, .cart-header:after {
     content: '';
     background: var(--main-color);
     height: 2px;
@@ -1308,7 +1308,7 @@ a.w3_agile_vimeo:hover {
 .checkout h2 {
     font-size: 1em;
     color: #212121;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     margin: 0 0 3em;
 }
 
@@ -1457,13 +1457,15 @@ td.invert-image a img {
 }
 
 .checkout-left-basket {
-    float: left;
-    width: 25%;
+    /*float: left;*/
+    /*width: 25%;*/
+    margin: auto;
+    width: 40%;
 }
 
 .checkout-right-basket {
-    float: right;
-    margin: 8em 0 0 0em;
+    /*float: right;*/
+    /*margin: 8em 0 0 0em;*/
 }
 
 .checkout-left-basket ul li span {
@@ -1482,14 +1484,15 @@ td.invert-image a img {
 
 .checkout-right-basket a {
     padding: 10px 30px;
-    color: #fff;
+    color: var(--white-color);
     font-size: 1em;
-    background: #212121;
+    background: var(--main-color);
     text-decoration: none;
 }
 
 .checkout-right-basket a:hover {
-    background: #663300;
+    background: var(--secondary-color);
+    color: white;
 }
 
 .checkout-right-basket a span {
@@ -2932,7 +2935,7 @@ h3.agileits-icons-title {
         padding: 10px 8px !important;
     }
 
-    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 {
+    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 , .cart-header{
         font-size: 2em;
     }
 
@@ -3144,7 +3147,7 @@ h3.agileits-icons-title {
     }
 
     .checkout-left-basket {
-        width: 34%;
+        width: 50%;
     }
 
     .agileinfo_single_left {
@@ -3401,7 +3404,7 @@ h3.agileits-icons-title {
     }
 
     .checkout-left-basket {
-        width: 42%;
+        width: 50%;
     }
 
     .agileinfo_single h2 {
@@ -3582,7 +3585,7 @@ h3.agileits-icons-title {
         width: 50%;
     }
 
-    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 {
+    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 , .cart-header{
         font-size: 1.7em;
     }
 
@@ -3884,7 +3887,7 @@ h3.agileits-icons-title {
         width: 83%;
     }
 
-    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 {
+    .top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3 , .cart-header{
         font-size: 1.4em;
     }
 

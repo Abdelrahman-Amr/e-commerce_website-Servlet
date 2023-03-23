@@ -4,84 +4,91 @@
 <!-- checkout -->
 	<div class="checkout">
 		<div class="container">
-			<h2>Your shopping cart contains: <span>${cartSize} Products</span></h2>
+<%--			<div class="c">--%>
+				<h2 class="cart-header ">Shopping Cart</h2>
+			<c:if test="${cartSize==null || cartSize==0}">
+
+						<div class="checkout-right-basket">
+							<p id="empty-cart" >Your cart is empty !!</p>
+							<a href="products"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+						</div>
+			</c:if>
+<%--			</div>--%>
+				<c:if test="${cartSize!=null && cartSize>0}">
+
 			<div class="checkout-right">
 				<table class="timetable_sub">
 					<thead>
 						<tr>
-							<th>SL No.</th>	
+<%--							<th>SL No.</th>	--%>
 							<th>Product</th>
 							<th>Size</th>
 							<th>Quantity</th>
-							<th>Product Name</th>
-						
+<%--							<th>Name</th>--%>
 							<th>Price</th>
-							<th>Remove</th>
+<%--							<th>Remove</th>--%>
 						</tr>
 					</thead>
 
 						<c:forEach items="${cart}" var="order" varStatus="counter">
 
-							<tr class="rem1">
-						<td class="invert">1</td>
-						<td class="invert-image"><a href="item.jsp"><img src="images/1.png" alt=" " class="img-responsive" /></a></td>
+							<tr class="rem1" id="r${order.product.id}${order.size}">
+<%--						<td class="invert">1</td>--%>
+
+						<td class="invert-image" id="row"><a href="item?productId=${order.product.id}">
+							<figure>
+								<img src="image" alt=" " class="img-responsive cart-img" />
+								<figcaption>${order.product.name}</figcaption>
+							</figure>
+						</a>
+						</td>
 						<td class="invert" >${order.size}</td>
 						<td class="invert">
 							 <div class="quantity"> 
 								<div class="quantity-select">                           
-									<div class="entry value-minus" onclick="decreaseQuan(${order.product.id}, q${o})"></div>
-									<input type="hidden" id="${order.product.id}" value="${order.product.id}">
-									<input type="hidden" id="pdQuan" value="${order.quantity}">
+									<div class="entry value-minus" onclick="decreaseQuan(${order.product.id},'${order.size}')"></div>
+									<input type="hidden" id="${order.product.id}${order.size}" value="${order.product.id}">
+<%--									<input type="hidden" id="q${order.product.id}" value="${order.quantity}">--%>
 									<input type="hidden" id="pdSize" value="${order.size}">
-									<div class="entry value"><span id="pdQuantity">${order.quantity}</span></div>
-									<div class="entry value-plus active" onclick="increaseQuan(${order.product.id})">&nbsp;</div>
+									<div class="entry value"><span id="q${order.product.id}${order.size}">${order.quantity}</span></div>
+									<div class="entry value-plus active" onclick="increaseQuan(${order.product.id},'${order.size}')"></div>
 								</div>
 							</div>
 						</td>
-						<td class="invert" >${order.product.name}</td>
-						<td class="invert">${order.product.price}</td>
-						<td class="invert">
-							<div class="rem">
-								<div class="close1"> </div>
-							</div>
+<%--						<td class="invert" >${order.product.name}</td>--%>
+							<td class="invert">$<span id="p${order.product.id}${order.size}">${order.product.price}</span></td>
+<%--							<td class="invert">--%>
+<%--								<div class="rem">--%>
+<%--									<div class="close1"> </div>--%>
+<%--								</div>--%>
 
-						</td>
-					</tr>
+<%--							</td>--%>
+						</tr>
 						</c:forEach>
 
-								<!--quantity-->
-<%--									<script>--%>
-<%--									$('.value-plus').on('click', function(){--%>
-<%--										var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;--%>
-<%--										divUpd.text(newVal);--%>
-<%--									});--%>
 
-<%--									$('.value-minus').on('click', function(){--%>
-<%--										var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;--%>
-<%--										if(newVal>=1) divUpd.text(newVal);--%>
-<%--									});--%>
-<%--									</script>--%>
-								<!--quantity-->
 				</table>
 			</div>
+
 			<div class="checkout-left">	
 				<div class="checkout-left-basket">
-					<h4>Continue to basket</h4>
+					<h4>Summary</h4>
 					<ul>
 						<c:forEach items="${cart}" var="order" varStatus="counter">
-							<li>${order.product.name} <i>-</i> <span>${order.total}</span></li>
+							<li id="rr${order.product.id}${order.size}">${order.product.name}(${order.size}) <i>-</i><span id="t${order.product.id}${order.size}">${order.total}</span> <span>$</span></li>
 						</c:forEach>
 <%--						<li>Product2 <i>-</i> <span>$25.00 </span></li>--%>
 <%--						<li>Product3 <i>-</i> <span>$29.00 </span></li>--%>
-						<li>Total Service Charges <i>-</i> <span>${dev}</span></li>
-						<li>Total <i>-</i> <span>${cartTotal}</span></li>
+						<li>Delivery fee <i>-</i> <span>$${dev}</span></li>
+						<li>Total <i>-</i> <span id="total">${cartTotal}</span><span>$</span></li>
 					</ul>
 				</div>
-				<div class="checkout-right-basket">
-					<a href="products"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
-				</div>
+<%--				<div class="checkout-right-basket">--%>
+<%--					<a href="products"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>--%>
+<%--				</div>--%>
 				<div class="clearfix"> </div>
 			</div>
+				</c:if>
 		</div>
 	</div>
 <!-- //checkout -->
