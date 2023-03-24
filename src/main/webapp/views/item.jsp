@@ -23,7 +23,7 @@
 
                     </div>
                     <div class="snipcart-details agileinfo_single_right_details">
-                        <form action="cart" method="post" onsubmit="addToCart(event)">
+                        <form action="cart" method="post" onsubmit="addToCart(event,2)">
                             <fieldset>
                                 <input type="hidden" name="pdId" value="${product.id}">
 <%--                                <p>Please select your favorite Web language:</p>--%>

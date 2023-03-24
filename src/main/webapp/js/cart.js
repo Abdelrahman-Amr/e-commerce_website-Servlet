@@ -1,8 +1,22 @@
 
 
-function addToCart(event ) {
+function addToCartSmall(event) {
     event.preventDefault();
     $.post("cart?pdId="+event.target.pdId.value+"&quantity=1&sizeName=Small&op=1", function(data, status){
+        successCart("Added Product Successfully");
+    });
+}
+function addToCart(event) {
+    event.preventDefault();
+    var sizes= document.getElementsByName('sizes');
+    var size = null;
+    for (var s of sizes){
+        if (s.checked) {
+            size=s.value;
+        }
+    }
+    console.log(size);
+    $.post("cart?pdId="+event.target.pdId.value+"&quantity=1&sizeName="+size+"&op=1", function(data, status){
         successCart("Added Product Successfully");
     });
 }

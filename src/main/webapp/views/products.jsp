@@ -83,7 +83,7 @@
                                     </c:if>
                                 </div>
                                 <div class="snipcart-details top_brand_home_details">
-                                    <form  method="post" action="cart" onsubmit="addToCart(event)">
+                                    <form  method="post" action="cart" onsubmit="addToCartSmall(event)">
                                         <fieldset>
                                             <input type="hidden" name="pdId" value="${prod.id}">
                                             <input type="hidden" name="quantity" value="1">
