@@ -10,7 +10,7 @@
                 <h2></h2>
 
                 <div class="w3agile_description">
-                    <h4>${product.name}</h4>
+                    <h3>${product.name}</h3>
                     <p>${product.description}</p>
                 </div>
                 <div class="snipcart-item block">
@@ -20,7 +20,7 @@
                         <input type="hidden" id="discount" value="${product.discount}">
 
 
-                        <h4 class="m-sing" style="display: inline; margin-right: 10px" id="orgPrice">$${product.price}</h4>
+                        <h3 class="m-sing" style="display: inline; margin-right: 10px" id="orgPrice">$${product.price}</h3>
                         <c:if test="${product.discount>0}">
                             <span id="discSpan" style="text-decoration: line-through">$${product.price + product.price*(product.discount/100)}</span>
                         </c:if>
@@ -52,7 +52,7 @@
                                 </c:forEach>
                             </ul>
                                 <input type="hidden" name="cancel_return" value=" ">
-                                <input type="submit" name="submit" value="Add to cart" class="button"  >
+                                <input type="submit" name="submit" value="Add to cart" class="button" id="addTo"  style="margin-top: 15px; width: fit-content; padding: 10px 20px;" >
                             </fieldset>
                         </form>
                     </div>

@@ -82,7 +82,12 @@
 						<li>Delivery fee <i>-</i> <span>$${dev}</span></li>
 						<li>Total <i>-</i> <span id="total">${cartTotal}</span><span>$</span></li>
 					</ul>
-				</div>
+
+                </div>
+                <div class="checkoutBtn">
+                    <button class="button">Confirm Order</button>
+
+                </div>
 <%--				<div class="checkout-right-basket">--%>
 <%--					<a href="products"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>--%>
 <%--				</div>--%>

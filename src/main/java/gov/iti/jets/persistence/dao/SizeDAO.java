@@ -18,7 +18,7 @@ public class SizeDAO extends BaseDAO<Size> {
 
     public static SizeDAO getInstance() {
         if (sizeDAO == null) {
-            synchronized (ProductDAO.class) {
+            synchronized (SizeDAO.class) {
                 if (sizeDAO == null) {
                     sizeDAO = new SizeDAO();
                 }

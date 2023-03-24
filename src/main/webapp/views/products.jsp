@@ -74,12 +74,12 @@
                                         <%--TODO: add product image--%>
                                     <a href="item?productId=${prod.id}"><img title=" " alt=" " src="image?imgName=${prod.imageUrl}"></a>
 
-                                    <p>${prod.name}</p>
+                                    <h4>${prod.name}</h4>
                                     <br>
-                                    <h4>${prod.price}
-                                        <span class="currency">$</span>
+                                    <h4>$${prod.price}
+<%--                                        <span class="currency">$</span>--%>
                                         <c:if test="${prod.discount>0}">
-                                        <span>${prod.price+prod.discount} $</span></h4>
+                                        <span>$${prod.price + prod.price*(prod.discount/100)} </span></h4>
                                     </c:if>
                                 </div>
                                 <div class="snipcart-details top_brand_home_details">

@@ -3,17 +3,29 @@ package gov.iti.jets.persistence.dao;
 import gov.iti.jets.dto.CategoryDto;
 import gov.iti.jets.entity.Category;
 import gov.iti.jets.entity.Customer;
+import gov.iti.jets.entity.Size;
 import jakarta.persistence.Query;
 
 import java.util.List;
 import java.util.Queue;
 
 public class CategoryDAO extends BaseDAO<Category>{
-    public CategoryDAO()
-    {
+    private volatile static CategoryDAO categoryDAO;
+
+    private CategoryDAO() {
         super(Category.class, DBFactory.getInstance().createEntityManager());
     }
 
+    public static CategoryDAO getInstance() {
+        if (categoryDAO == null) {
+            synchronized (CategoryDAO.class) {
+                if (categoryDAO == null) {
+                    categoryDAO = new CategoryDAO();
+                }
+            }
+        }
+        return categoryDAO;
+    }
 
     public List<Category> getAll()
     {

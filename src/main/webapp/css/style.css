@@ -2773,7 +2773,8 @@ a.callbacks1_s3.active, a.callbacks1_s3:focus {
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #777;
+    color: var(--white-color);
+
 }
 
 .codes .bs-glyphicons .glyphicon-class {
@@ -2842,7 +2843,7 @@ h3.agileits-icons-title {
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #777;
+    color: var(--white-color);
 }
 
 .bs-glyphicons .glyphicon-class {
@@ -3634,7 +3635,14 @@ h3.agileits-icons-title {
     .w3_footer_grid h3 {
         margin-bottom: 1em;
     }
-
+    .agileinfo_single_right_details {
+        width: 100% !important;
+        text-align: center;
+    }
+    #addTo {
+        width: 43% !important;
+        text-align: center;
+    }
     .sorting {
         width: 44%;
     }
