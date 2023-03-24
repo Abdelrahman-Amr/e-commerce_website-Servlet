@@ -82,6 +82,7 @@
 						<li>Delivery fee <i>-</i> <span>$${dev}</span></li>
 						<li>Total <i>-</i> <span id="total">${cartTotal}</span><span>$</span></li>
 					</ul>
+
 					<p>Payment: </p>
 					<input type="radio" id="credit" name="payment" value="1">
 					<label for="credit">Credit</label>
