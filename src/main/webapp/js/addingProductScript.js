@@ -2,16 +2,18 @@ function addProductAdmin(event) {
     console.log("enter");
     event.preventDefault();
     var productName = document.getElementById("productName").value;
-    var productCategory = document.getElementById("productCategory").value;
+    var productCategory = document.getElementById("category").value;
     var productPrice = document.getElementById("productPrice").value;
     var productDiscount = document.getElementById("productDiscount").value;
     var productQuantity = document.getElementById("productQuantity").value;
     var productPriority = document.getElementById("productPriority").value;
     var productDescription = document.getElementById("productDescription").value;
 
+//    console.log(productCategory);
+
     var data = new FormData();
 
-    var productInfo = JSON.stringify({name:productName, category:productCategory, price:productPrice, discount:productDiscount,
+    var productInfo = JSON.stringify({name:productName, categoryId:productCategory, price:productPrice, discount:productDiscount,
     quantity:productQuantity, priority:productPriority,  description:productDescription, imageUrl: null});
 
     //console.log(productInfo);
@@ -29,7 +31,7 @@ function addProductAdmin(event) {
             type: 'json',
             success: function ( data, textStatus ) {
                 console.log(data);
-                console.log("success");
+                //console.log("success");
                 if(data=="1") {
                     success("Adding new product successfully");
                     addingProductCallBack();

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Data
 public class ProductDto extends BaseDTO {
     private final String name;
-    private final String category;
+    private final Long categoryId;
     private final Double price;
     private final Double discount;
     private final Integer quantity;
