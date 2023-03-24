@@ -13,7 +13,7 @@ public class SizeDAO extends BaseDAO<Size> {
     private volatile static SizeDAO sizeDAO;
 
     private SizeDAO() {
-        super(Size.class, MyLocal.getInstance().get());
+        super(Size.class, DBFactory.getInstance().createEntityManager());
     }
 
     public static SizeDAO getInstance() {

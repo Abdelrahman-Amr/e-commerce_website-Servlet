@@ -2,6 +2,7 @@ package gov.iti.jets.service;
 
 import gov.iti.jets.entity.BaseEntity;
 import gov.iti.jets.persistence.dao.BaseDAO;
+import jakarta.persistence.EntityManager;
 import org.mapstruct.Mapper;
 
 public abstract  class BaseService <E extends BaseEntity>{
@@ -21,6 +22,11 @@ public abstract  class BaseService <E extends BaseEntity>{
     {
         dao.save(entity);
     }
+    public void setManager(EntityManager manager)
+    {
+        this.dao.setManager(manager);
+    }
+
 
 
 }

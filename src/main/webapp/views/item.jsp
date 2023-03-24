@@ -26,13 +26,11 @@
                         <form action="cart" method="post" onsubmit="addToCart(event)">
                             <fieldset>
                                 <input type="hidden" name="pdId" value="${product.id}">
-                                <p>Please select your favorite Web language:</p>
-                                  <input type="radio" id="html" name="fav_language" value="HTML">
-                                  <label for="html">HTML</label><br>
-                                  <input type="radio" id="css" name="fav_language" value="CSS">
-                                  <label for="css">CSS</label><br>
-                                  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-                                  <label for="javascript">JavaScript</label>
+<%--                                <p>Please select your favorite Web language:</p>--%>
+                                <c:forEach items="${sizes}" var="size" varStatus="counter">
+                                     <input type="radio" id="${size.id}" name="sizes" value="${size.name}">
+                                     <label for="${size.id}">${size.name}</label><br>
+                                </c:forEach>
                                 <input type="hidden" name="cancel_return" value=" ">
                                 <input type="submit" name="submit" value="Add to cart" class="button"  >
                             </fieldset>

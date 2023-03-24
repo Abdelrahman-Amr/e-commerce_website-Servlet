@@ -65,10 +65,6 @@ public class CustomerService extends BaseService<Customer>{
         return result;
     }
 
-    public void setManager(EntityManager manager)
-    {
-        this.customerDAO.setManager(manager);
-    }
 
     public boolean checkEmail(String email) {
         return customerDAO.isEmailExist(email);
