@@ -87,7 +87,7 @@ a:hover{
     margin-top: -20px
 }
 .agile-login{
- width: fit-content!important;
+    width: fit-content!important;
 }
 
 .radio-group label {
@@ -134,10 +134,9 @@ a:hover{
     display: none;
 }
 @media (max-width: 450px) {
- .categories{
-     display: none;
-
- }
+    .categories{
+        display: none;
+    }
     .cart-container{
         text-align: center;
     }
@@ -149,7 +148,35 @@ a:hover{
         margin: auto;
         /*padding-left: -20px*/
     }
+    .products{
+        text-align: center!important;
+    }
 }
 .sorting{
     padding-left: 20px;
+}
+
+.checkoutBtn{
+    text-align: center;
+    width: 100%;
+}
+.checkoutBtn button{
+    font-size: 14px;
+    color: #fff;
+    background: var(--main-color);
+    text-decoration: none;
+    position: relative;
+    border: none;
+    border-radius: 7px;
+    width:fit-content;
+    /* text-transform: uppercase; */
+    /*padding: 0.5em 0;*/
+    outline: none;
+    padding: 10px 20px;
+
+}
+#addTo{
+    margin-top: 15px;
+    width: fit-content;
+    padding: 10px 20px;
 }

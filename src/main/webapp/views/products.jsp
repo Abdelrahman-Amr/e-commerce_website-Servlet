@@ -74,16 +74,16 @@
                                         <%--TODO: add product image--%>
                                     <a href="item?productId=${prod.id}"><img title=" " alt=" " src="image?imgName=${prod.imageUrl}"></a>
 
-                                    <p>${prod.name}</p>
+                                    <h4>${prod.name}</h4>
                                     <br>
-                                    <h4>${prod.price}
-                                        <span class="currency">$</span>
+                                    <h4>$${prod.price}
+                                            <%--                                        <span class="currency">$</span>--%>
                                         <c:if test="${prod.discount>0}">
-                                        <span>${prod.price+prod.discount} $</span></h4>
+                                        <span>$${prod.price + prod.price*(prod.discount/100)} </span></h4>
                                     </c:if>
                                 </div>
                                 <div class="snipcart-details top_brand_home_details">
-                                    <form  method="post" action="cart" onsubmit="addToCart(event)">
+                                    <form  method="post" action="cart" onsubmit="addToCartSmall(event)">
                                         <fieldset>
                                             <input type="hidden" name="pdId" value="${prod.id}">
                                             <input type="hidden" name="quantity" value="1">
@@ -117,11 +117,11 @@
     <c:if test="${pagination>1}">
         <nav class="numbering">
             <ul class="pagination paging">
-<%--                <li>--%>
-<%--                    <a href="#" aria-label="Previous">--%>
-<%--                        <span aria-hidden="true">&laquo;</span>--%>
-<%--                    </a>--%>
-<%--                </li>--%>
+                    <%--                <li>--%>
+                    <%--                    <a href="#" aria-label="Previous">--%>
+                    <%--                        <span aria-hidden="true">&laquo;</span>--%>
+                    <%--                    </a>--%>
+                    <%--                </li>--%>
                     <%--                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>--%>
                 <c:forEach begin="1" end="${pagination}" varStatus="loop">
                     <c:url var="pageUrl" value="products">
@@ -135,11 +135,11 @@
                     <li>
                     <li><a href="${pageUrl}" onclick="loadList(this,event)">${loop.index}</a></li>
                 </c:forEach>
-<%--                <li>--%>
-<%--                    <a href=" #" aria-label="Next">--%>
-<%--                        <span aria-hidden="true">&raquo;</span>--%>
-<%--                    </a>--%>
-<%--                </li>--%>
+                    <%--                <li>--%>
+                    <%--                    <a href=" #" aria-label="Next">--%>
+                    <%--                        <span aria-hidden="true">&raquo;</span>--%>
+                    <%--                    </a>--%>
+                    <%--                </li>--%>
             </ul>
         </nav>
     </c:if>

@@ -1,8 +1,23 @@
 
 
-function addToCart(event ) {
+function addToCartSmall(event) {
     event.preventDefault();
     $.post("cart?pdId="+event.target.pdId.value+"&quantity=1&sizeName=Small&op=1", function(data, status){
+        successCart("Added Product Successfully");
+    });
+}
+function addToCart(event) {
+    event.preventDefault();
+    var sizes= document.getElementsByName('sizes');
+    var size = null;
+    for (var s of sizes){
+        if (s.checked) {
+            size=s.value;
+            size=$('#n'+size).val();
+
+        }
+    }
+    $.post("cart?pdId="+event.target.pdId.value+"&quantity=1&sizeName="+size+"&op=1", function(data, status){
         successCart("Added Product Successfully");
     });
 }
@@ -10,12 +25,12 @@ function addToCart(event ) {
 
 function  removeFromCart(pdId,size)
 {
-            $('#r'+pdId+size).fadeOut('slow', function(c){
-                $('#r'+pdId+size).remove();
-            });
-            $('#rr'+pdId+size).fadeOut('slow', function(c){
-                $('#rr'+pdId+size).remove();
-            });
+    $('#r'+pdId+size).fadeOut('slow', function(c){
+        $('#r'+pdId+size).remove();
+    });
+    $('#rr'+pdId+size).fadeOut('slow', function(c){
+        $('#rr'+pdId+size).remove();
+    });
 
 }
 
@@ -69,7 +84,7 @@ function  addProduct(event){
     data = new FormData();
     data.append("name","abdo");
     data.append( 'file', document.getElementById("file").files[0] );
-        // var file =document.getElementById("file")
+    // var file =document.getElementById("file")
     $.ajax({
         url: '../image',
         data: data,
