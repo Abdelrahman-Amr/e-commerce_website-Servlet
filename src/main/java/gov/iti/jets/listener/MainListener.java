@@ -17,6 +17,7 @@ public class MainListener implements ServletContextListener {
 
     public void contextInitialized (ServletContextEvent cse) {
         DBFactory.getInstance();
+        MyLocal.getInstance().set(DBFactory.getInstance().createEntityManager());
         CategoryService categoryService =  CategoryService.getInstance();
         SizeService sizeService =  SizeService.getInstance();
 

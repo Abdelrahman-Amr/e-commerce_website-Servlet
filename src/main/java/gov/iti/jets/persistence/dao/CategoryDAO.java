@@ -3,6 +3,7 @@ package gov.iti.jets.persistence.dao;
 import gov.iti.jets.dto.CategoryDto;
 import gov.iti.jets.entity.Category;
 import gov.iti.jets.entity.Customer;
+import gov.iti.jets.util.MyLocal;
 import jakarta.persistence.Query;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.Queue;
 public class CategoryDAO extends BaseDAO<Category>{
     public CategoryDAO()
     {
-        super(Category.class, DBFactory.getInstance().createEntityManager());
+        super(Category.class, MyLocal.getInstance().get());
     }
 
 

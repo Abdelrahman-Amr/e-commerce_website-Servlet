@@ -13,12 +13,12 @@ public class SizeDAO extends BaseDAO<Size> {
     private volatile static SizeDAO sizeDAO;
 
     private SizeDAO() {
-        super(Size.class, DBFactory.getInstance().createEntityManager());
+        super(Size.class, MyLocal.getInstance().get());
     }
 
     public static SizeDAO getInstance() {
         if (sizeDAO == null) {
-            synchronized (ProductDAO.class) {
+            synchronized (SizeDAO.class) {
                 if (sizeDAO == null) {
                     sizeDAO = new SizeDAO();
                 }
