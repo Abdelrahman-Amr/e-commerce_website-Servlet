@@ -51,6 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="css/customerTable.css" rel="stylesheet" type="text/css" media="all">
 
     <!-- Our scripts -->
+    <script src="js/item.js"></script>
     <script src="js/productListing.js"></script>
     <script src="js/home.js"></script>
     <script src="js/cart.js"></script>
@@ -223,7 +224,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <%--                            </div>--%>
 <%--                        </ul>--%>
 <%--                    </li>--%>
-                    <li><a href="offers.html">Offers</a></li>
+<%--                    <li><a href="offers.html">Offers</a></li>--%>
                 </ul>
             </div>
         </nav>

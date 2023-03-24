@@ -56,7 +56,7 @@
 							</div>
 						</td>
 <%--						<td class="invert" >${order.product.name}</td>--%>
-							<td class="invert">$<span id="p${order.product.id}${order.size}">${order.product.price}</span></td>
+							<td class="invert">$<span id="p${order.product.id}${order.size}">${order.total / order.quantity}</span></td>
 <%--							<td class="invert">--%>
 <%--								<div class="rem">--%>
 <%--									<div class="close1"> </div>--%>

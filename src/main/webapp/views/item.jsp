@@ -15,22 +15,42 @@
                 </div>
                 <div class="snipcart-item block">
                     <div class="snipcart-thumb agileinfo_single_right_snipcart">
-                        <h4 class="m-sing">${product.price}
-                            <c:if test="${product.discount>0}">
-                                <span>${product.price+product.discount}</span></h4>
-                            </c:if>
-                        </h4>
+                        <input type="hidden" id="pdPrice" value="${product.price}">
+                        <input type="hidden" id="price" value="${product.price}">
+                        <input type="hidden" id="discount" value="${product.discount}">
+
+
+                        <h4 class="m-sing" style="display: inline; margin-right: 10px" id="orgPrice">$${product.price}</h4>
+                        <c:if test="${product.discount>0}">
+                            <span id="discSpan" style="text-decoration: line-through">$${product.price + product.price*(product.discount/100)}</span>
+                        </c:if>
+
+<%--                        </input>--%>
 
                     </div>
                     <div class="snipcart-details agileinfo_single_right_details">
-                        <form action="cart" method="post" onsubmit="addToCart(event,2)">
+                        <form action="cart" method="post" onsubmit="addToCart(event,2)" onchange="updatePrice()">
                             <fieldset>
+                            <ul style="  list-style-type: none;">
                                 <input type="hidden" name="pdId" value="${product.id}">
 <%--                                <p>Please select your favorite Web language:</p>--%>
                                 <c:forEach items="${sizes}" var="size" varStatus="counter">
-                                     <input type="radio" id="${size.id}" name="sizes" value="${size.name}">
-                                     <label for="${size.id}">${size.name}</label><br>
+                                    <li>
+                                        <c:if test="${size.name =='Small'}">
+                                            <input type="radio" id="${size.id}"  name="sizes" value="${size.id}" checked="checked">
+                                            <label for="${size.id}">${size.name}</label>
+                                        </c:if>
+                                        <c:if test="${size.name !='Small'}">
+                                            <input type="radio" id="${size.id}" name="sizes" value="${size.id}">
+                                            <label for="${size.id}">${size.name}</label>
+                                        </c:if>
+<%--                                     <input type="radio" id="${size.id}" name="sizes" value="${size.id}">--%>
+                                        <input type="hidden" name="$sizePrec" id="p${size.id}" value="${size.percentage}">
+<%--                                     <label for="${size.id}">${size.name}</label>--%>
+                                    <input type="hidden" id="n${size.id}" value="${size.name}">
+                                    </li>
                                 </c:forEach>
+                            </ul>
                                 <input type="hidden" name="cancel_return" value=" ">
                                 <input type="submit" name="submit" value="Add to cart" class="button"  >
                             </fieldset>
@@ -45,7 +65,7 @@
 <!-- new -->
 <div class="newproducts-w3agile">
     <div class="container">
-        <h3>New offers</h3>
+        <h3>Related Products</h3>
         <div class="agile_top_brands_grids">
             <div class="col-md-3 top_brand_left-1">
                 <div class="hover14 column">

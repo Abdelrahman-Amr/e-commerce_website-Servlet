@@ -1619,7 +1619,7 @@ ul.faq {
 .w3agile_description h4 {
     font-size: 1em;
     color: #212121;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 .w3agile_description p {

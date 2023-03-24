@@ -13,9 +13,10 @@ function addToCart(event) {
     for (var s of sizes){
         if (s.checked) {
             size=s.value;
+            size=$('#n'+size).val();
+
         }
     }
-    console.log(size);
     $.post("cart?pdId="+event.target.pdId.value+"&quantity=1&sizeName="+size+"&op=1", function(data, status){
         successCart("Added Product Successfully");
     });
