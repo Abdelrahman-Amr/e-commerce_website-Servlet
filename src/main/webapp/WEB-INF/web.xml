@@ -129,6 +129,16 @@
         <servlet-name>addingProduct</servlet-name>
         <url-pattern>/AddingProduct</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>editingProduct</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.EditingProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editingProduct</servlet-name>
+        <url-pattern>/EditingProduct</url-pattern>
+    </servlet-mapping>
+
 <!--    //Listeners-->
     <listener>
         <listener-class>

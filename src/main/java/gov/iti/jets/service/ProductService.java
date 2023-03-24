@@ -40,7 +40,14 @@ public class ProductService extends BaseService<Product> {
     public ProductDto getProductById(Long id) {
         Product product = productDAO.getProductById(id);
         ProductDto productDto = productMapper.toDto(product);
+        productDto.setCatg_id(product.getCatg().getId());
         return productDto;
+    }
+
+    public Product getFullProductById(Long id) {
+        Product product = productDAO.getProductById(id);
+        //ProductDto productDto = productMapper.toDto(product);
+        return product;
     }
 
     public List<ProductDto> listAllProducts(int offset, int maxNoOfRecordsPerPage) {
@@ -60,14 +67,14 @@ public class ProductService extends BaseService<Product> {
                         .collect(Collectors.toList());
         return productDtos;
     }
-    public List<ProductDto> getProductsByCriteria(Map<String, String> params, int offset, int maxNoOfRecordsPerPage) {
-        List<Product> products = productDAO.getProductsByCriteria(params, offset, maxNoOfRecordsPerPage);
-        List<ProductDto> productDtos =
-                products.stream()
-                        .map(product -> productMapper.toDto(product))
-                        .collect(Collectors.toList());
-        return productDtos;
-    }
+//    public List<ProductDto> getProductsByCriteria(Map<String, String> params, int offset, int maxNoOfRecordsPerPage) {
+//        List<Product> products = productDAO.getProductsByCriteria(params, offset, maxNoOfRecordsPerPage);
+//        List<ProductDto> productDtos =
+//                products.stream()
+//                        .map(product -> productMapper.toDto(product))
+//                        .collect(Collectors.toList());
+//        return productDtos;
+//    }
 
     public List<ProductDto> searchProducts(String searchProduct, int offset, int maxNoOfRecordsPerPage) {
         List<Product> products = productDAO.searchProducts(searchProduct, offset, maxNoOfRecordsPerPage);
@@ -90,5 +97,14 @@ public class ProductService extends BaseService<Product> {
             return product;
         }
         return null;
+    }
+
+    public Product editProduct(ProductDto productDto) {
+        Product oldProduct = get(productDto.getId());
+        Product product = productMapper.toEntity(productDto);
+        product.setActive(oldProduct.getActive());
+        product.setCreationTime(oldProduct.getCreationTime());
+        update(product);
+        return product;
     }
 }

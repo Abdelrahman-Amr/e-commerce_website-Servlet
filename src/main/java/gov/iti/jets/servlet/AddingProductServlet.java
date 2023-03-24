@@ -1,11 +1,8 @@
 package gov.iti.jets.servlet;
 
 import com.google.gson.Gson;
-import gov.iti.jets.dto.AdminProductDto;
 import gov.iti.jets.dto.CategoryDto;
 import gov.iti.jets.dto.ProductDto;
-import gov.iti.jets.dto.RegistrationCustomerDTO;
-import gov.iti.jets.entity.Category;
 import gov.iti.jets.entity.Product;
 import gov.iti.jets.service.CategoryService;
 import gov.iti.jets.service.ProductService;
@@ -20,8 +17,6 @@ import jakarta.servlet.annotation.MultipartConfig;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @MultipartConfig
@@ -63,15 +58,19 @@ public class AddingProductServlet extends HttpServlet {
             Part part = req.getPart("file");
             if (part != null) {
 
-                Long productId = null;
+                Long productId;
 
-                String productJson = new String(req.getParameter("productInfo"));
+                String productJson = req.getParameter("productInfo");
 
-//                System.out.println(productJson);
+                System.out.println(productJson);
 
                 ProductDto productDTO = new Gson().fromJson(productJson, ProductDto.class);
 
+                System.out.println(productDTO.getName());
+
                 Product product = productService.addNewProduct(productDTO, true);
+
+                System.out.println(product.getName());
 
                 productId = product.getId();
 
@@ -85,9 +84,9 @@ public class AddingProductServlet extends HttpServlet {
 
                     product.setImageUrl(fileName);
 
-//                    System.out.println(productDTO.getCategoryId());
+//                    System.out.println(req.getParameter("categoryId"));
 
-                    product.setCatg(categoryService.get(productDTO.getCategoryId()));
+                    product.setCatg(categoryService.get(productDTO.getCatg_id()));
 
                     productService.update(product);
 

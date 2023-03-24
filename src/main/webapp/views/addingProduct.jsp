@@ -15,9 +15,9 @@
                     </c:forEach>
 				</select>
 				<input type="number" placeholder="Price*" required id="productPrice" name="productPrice" min="0" max="50000">
-				<input type="number" placeholder="Discount" value="0" id="productDiscount" name="productDiscount" min="0" max="100">
+				<input type="number" placeholder="Discount" id="productDiscount" name="productDiscount" min="0" max="100">
 				<input type="number" placeholder="Quantity*" required id="productQuantity" name="productQuantity" min="0" max="50000">
-				<input type="number" placeholder="Priority*" id="productPriority" name="productPriority" min="0" max="1" step="1" value="0">
+				<input type="number" placeholder="Priority*" id="productPriority" name="productPriority" min="0" max="1" step="1" >
 				<input type="text" placeholder="Description*" required id="productDescription" name="productDescription" minlength="20" maxlength="1000">
 				<input type="file" required id="productImage" name="productImage">
 				<input type="submit" value="Add" >
