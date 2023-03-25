@@ -25,12 +25,12 @@ function addToCart(event) {
 
 function  removeFromCart(pdId,size)
 {
-            $('#r'+pdId+size).fadeOut('slow', function(c){
-                $('#r'+pdId+size).remove();
-            });
-            $('#rr'+pdId+size).fadeOut('slow', function(c){
-                $('#rr'+pdId+size).remove();
-            });
+    $('#r'+pdId+size).fadeOut('slow', function(c){
+        $('#r'+pdId+size).remove();
+    });
+    $('#rr'+pdId+size).fadeOut('slow', function(c){
+        $('#rr'+pdId+size).remove();
+    });
 
 }
 
@@ -76,33 +76,31 @@ function  increaseQuan(pdId, size) {
     });
 }
 
+function  order()
+{
+    var isLogin  = $('#isLogin').val();
+    if(!isLogin || isLogin=="false"){
+        failedToAdd("Please Login First!");
 
-function  addProduct(event){
-    event.preventDefault();
-    var data;
-
-    data = new FormData();
-    data.append("name","abdo");
-    data.append( 'file', document.getElementById("file").files[0] );
-        // var file =document.getElementById("file")
-    $.ajax({
-        url: '../image',
-        data: data,
-        cache: false,
-        processData: false,
-        contentType: false,
-        method:'POST',
-        type: 'POST',
-        success: function ( data ) {
-            alert( data );
+    }else {
+        var credit = null;
+        const total = +$('#total').html();
+        var balance = +$('#creditVal').val();
+        var payment= document.getElementsByName('payment');
+        for (var p of payment){
+            if (p.checked) {
+                credit=p.value;
+            }
         }
-    });
+        // console.log($('#credit').checked,credit,total);
+        if(credit==1 && balance< total)
+        {
+            failedCredit("You don't have enough credit!");
+
+        }
+    }
 
 }
-
-
-
-
 
 function successCart(msg)
 {
@@ -114,11 +112,12 @@ function successCart(msg)
         showConfirmButton: false,
         timer: 1500,
         toast:true,
-        iconColor:'#663300'
+        iconColor:'#663300',
+
     });
 }
 
-function failed(msg)
+function failedToAdd(msg)
 {
     Swal.fire({
         title: 'Failed',
@@ -127,7 +126,25 @@ function failed(msg)
         // showCancelButton: true,
         confirmButtonText: 'Ok',
         confirmButtonColor: '#25aae2',
-        toast:true,
+        toast:true
+    }).then(function (){
+        console.log("yes");
+        sessionStorage.setItem("toCart","true");
+        window.location.href="login";
+
+    });
+
+}
+function failedCredit(msg)
+{
+    Swal.fire({
+        title: 'Failed',
+        text:msg,
+        icon: 'error',
+        // showCancelButton: true,
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#25aae2',
+        toast:true
     });
 
 }

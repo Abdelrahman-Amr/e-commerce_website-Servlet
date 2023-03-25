@@ -25,32 +25,32 @@
                             <span id="discSpan" style="text-decoration: line-through">$${product.price + product.price*(product.discount/100)}</span>
                         </c:if>
 
-<%--                        </input>--%>
+                        <%--                        </input>--%>
 
                     </div>
                     <div class="snipcart-details agileinfo_single_right_details">
                         <form action="cart" method="post" onsubmit="addToCart(event,2)" onchange="updatePrice()">
                             <fieldset>
-                            <ul style="  list-style-type: none;">
-                                <input type="hidden" name="pdId" value="${product.id}">
-<%--                                <p>Please select your favorite Web language:</p>--%>
-                                <c:forEach items="${sizes}" var="size" varStatus="counter">
-                                    <li>
-                                        <c:if test="${size.name =='Small'}">
-                                            <input type="radio" id="${size.id}"  name="sizes" value="${size.id}" checked="checked">
-                                            <label for="${size.id}">${size.name}</label>
-                                        </c:if>
-                                        <c:if test="${size.name !='Small'}">
-                                            <input type="radio" id="${size.id}" name="sizes" value="${size.id}">
-                                            <label for="${size.id}">${size.name}</label>
-                                        </c:if>
-<%--                                     <input type="radio" id="${size.id}" name="sizes" value="${size.id}">--%>
-                                        <input type="hidden" name="$sizePrec" id="p${size.id}" value="${size.percentage}">
-<%--                                     <label for="${size.id}">${size.name}</label>--%>
-                                    <input type="hidden" id="n${size.id}" value="${size.name}">
-                                    </li>
-                                </c:forEach>
-                            </ul>
+                                <ul style="  list-style-type: none;">
+                                    <input type="hidden" name="pdId" value="${product.id}">
+                                    <%--                                <p>Please select your favorite Web language:</p>--%>
+                                    <c:forEach items="${sizes}" var="size" varStatus="counter">
+                                        <li>
+                                            <c:if test="${size.name =='Small'}">
+                                                <input type="radio" id="${size.id}"  name="sizes" value="${size.id}" checked="checked">
+                                                <label for="${size.id}">${size.name}</label>
+                                            </c:if>
+                                            <c:if test="${size.name !='Small'}">
+                                                <input type="radio" id="${size.id}" name="sizes" value="${size.id}">
+                                                <label for="${size.id}">${size.name}</label>
+                                            </c:if>
+                                                <%--                                     <input type="radio" id="${size.id}" name="sizes" value="${size.id}">--%>
+                                            <input type="hidden" name="$sizePrec" id="p${size.id}" value="${size.percentage}">
+                                                <%--                                     <label for="${size.id}">${size.name}</label>--%>
+                                            <input type="hidden" id="n${size.id}" value="${size.name}">
+                                        </li>
+                                    </c:forEach>
+                                </ul>
                                 <input type="hidden" name="cancel_return" value=" ">
                                 <input type="submit" name="submit" value="Add to cart" class="button" id="addTo"  style="margin-top: 15px; width: fit-content; padding: 10px 20px;" >
                             </fieldset>

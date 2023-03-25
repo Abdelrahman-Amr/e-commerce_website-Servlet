@@ -87,7 +87,7 @@ a:hover{
     margin-top: -20px
 }
 .agile-login{
- width: fit-content!important;
+    width: fit-content!important;
 }
 
 .radio-group label {
@@ -134,9 +134,9 @@ a:hover{
     display: none;
 }
 @media (max-width: 450px) {
- .categories{
-     display: none;
- }
+    .categories{
+        display: none;
+    }
     .cart-container{
         text-align: center;
     }
