@@ -74,6 +74,7 @@ public class CartServlet extends HttpServlet {
 
             if(order == null)
             {
+
                 OrderDetailDto orderDetailDto = OrderDetailDto.builder()
                     .price(productDto.getPrice() + productDto.getPrice() * sizeDto.getPercentage())
                     .product(productDto)

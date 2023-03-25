@@ -129,6 +129,15 @@
         <servlet-name>addingProduct</servlet-name>
         <url-pattern>/AddingProduct</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>order</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>order</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
 <!--    //Listeners-->
     <listener>
         <listener-class>

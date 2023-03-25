@@ -20,4 +20,5 @@ public class OrderMasterDto extends BaseDTO {
     private final Integer status;
     private final Double total;
     private final String nameOfUser;
+    private final Boolean isCart;
 }

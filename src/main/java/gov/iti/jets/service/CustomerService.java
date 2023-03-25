@@ -114,5 +114,10 @@ public class CustomerService extends BaseService<Customer>{
 //                    index++;
 //        }
 //    }
+
+    public void  refresh(Customer customer)
+    {
+         customerDAO.refresh(customer);
+    }
 }
 

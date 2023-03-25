@@ -71,8 +71,6 @@ function  increaseQuan(pdId, size) {
         $("#q"+pdId+size).html(pdQuan+1);
         $("#t"+pdId+size).html(pdTotal+pdPrice);
         $("#total").text(total+pdPrice);
-
-
     });
 }
 
@@ -97,6 +95,11 @@ function  order()
         {
             failedCredit("You don't have enough credit!");
 
+        }
+        else{
+            $.get("order?isConfirm=1", function(data, status){
+            successCart("Your Order Confirmed");
+        });
         }
     }
 

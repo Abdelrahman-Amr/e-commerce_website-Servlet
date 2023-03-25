@@ -44,6 +44,10 @@ public class OrderMaster extends BaseEntity{
     @Column(name = "name_of_user")
     private String nameOfUser;
 
+    @Column(name = "is_cart")
+    private  Boolean isCart;
+
+
     @OneToMany(mappedBy = "invo")
     private Set<OrderDetail> orderDetails = new LinkedHashSet<>();
 
