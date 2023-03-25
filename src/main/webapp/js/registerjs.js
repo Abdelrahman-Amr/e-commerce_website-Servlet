@@ -61,7 +61,7 @@ function Register(event) {
 function registerCallBack(responseTxt, statusTxt, xhr)
 {
   if (statusTxt == "success" && responseTxt =="1"){
-    success("Registered Successfully");
+      successLogin("Registered Successfully");
 
     }else{
       failed('Registration Failed !!');

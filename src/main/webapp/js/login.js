@@ -25,7 +25,7 @@ function loginCallBack(responseTxt, statusTxt, xhr)
 {
     console.log(xhr.status);
     if (statusTxt == "success" && responseTxt =="1" &&  xhr.status == 200){
-    success("Logged in successfully");
+    successLogin("Logged in successfully");
     }else{
       failed('Invalid Email or Password !!');
     }
@@ -52,7 +52,7 @@ function loginCallBack(responseTxt, statusTxt, xhr)
 //    return false;
 //}
 
-function success(msg)
+function successLogin(msg)
 {
    Swal.fire({
         // position: 'top-end',
@@ -65,8 +65,14 @@ function success(msg)
        iconColor:'#663300',
        didDestroy:function(){
           // $("#login-form").submit();
-            //window.location.href="home";
-            window.location.href="Profile";
+           if(sessionStorage.getItem("toCart") && sessionStorage.getItem("toCart")=="true")
+           {
+               sessionStorage.setItem("toCart","false");
+               window.location.href="cart";
+           }else {
+               window.location.href = "home";
+           }
+            // window.location.href="Profile";
 
         }
       });
