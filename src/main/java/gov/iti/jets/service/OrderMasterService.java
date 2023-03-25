@@ -5,7 +5,10 @@ import gov.iti.jets.mapper.OrderMasterMapper;
 import gov.iti.jets.mapper.SizeMapper;
 import gov.iti.jets.persistence.dao.OrderMasterDAO;
 import gov.iti.jets.persistence.dao.SizeDAO;
+import jakarta.persistence.Query;
 import org.mapstruct.factory.Mappers;
+
+import java.util.List;
 
 public class OrderMasterService extends BaseService<OrderMaster>{
     private volatile static OrderMasterService orderMasterService;
@@ -32,5 +35,17 @@ public class OrderMasterService extends BaseService<OrderMaster>{
     {
         orderMasterDAO = new OrderMasterDAO();
         orderMasterDAO.save(entity);
+    }
+
+    public OrderMaster searchForCart(Long customerId)
+    {
+        orderMasterDAO = new OrderMasterDAO();
+        return  orderMasterDAO.searchForCart(customerId);
+    }
+
+    public void deleteCart(Long customerId)
+    {
+        orderMasterDAO = new OrderMasterDAO();
+        orderMasterDAO.deleteCart(customerId);
     }
 }

@@ -45,12 +45,13 @@ public class OrderServlet  extends HttpServlet {
         orderMasterMapper = Mappers.getMapper(OrderMasterMapper.class);
         customerMapper = Mappers.getMapper(CustomerMapper.class);
 //        orderDetailMapper = Mappers.getMapper(OrderDetailMapper.class);
-        orderDetailMapper = new MyOrderDetailMapperImpl();
 
 
     }
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+        orderDetailMapper = new MyOrderDetailMapperImpl();
+
         PrintWriter writer = response.getWriter();
 
         HttpSession session = req.getSession(false);
@@ -62,16 +63,11 @@ public class OrderServlet  extends HttpServlet {
         CustomerDto customerDto = (CustomerDto)session.getAttribute("customer");
         Customer customer = customerService.get(customerDto.getId());
         List<OrderDetailDto> orderDetailDtos = ( List<OrderDetailDto>)session.getAttribute("cart");
+        int isCredit = Integer.parseInt(req.getParameter("isCredit"));
 
-//        Long customerId = Long.parseLong(req.getParameter("custId"));
-        Long isConfirm = Long.parseLong(req.getParameter("isConfirm"));
-//        session.setAttribute("cart", cart);
-//        session.setAttribute("cartTotal", calcCartTotal(cart));
-//        session.setAttribute("cartSize", calcCartSize(cart));
-        session.setAttribute("dev", Constants.Dev);
-        if(isConfirm == 1)
-        {
-//            customerService.refresh(customer);
+
+
+            orderMasterService.deleteCart(customer.getId());
             OrderMaster orderMaster = new OrderMaster();
                     orderMaster.setDate(LocalDate.now());
                     orderMaster.setIsDone(false);
@@ -79,20 +75,30 @@ public class OrderServlet  extends HttpServlet {
                     orderMaster.setIsCart(false);
                     orderMaster.setShipping(Constants.Dev);
                     orderMaster.setCust(customer);
-                    orderMaster.setOrderDetails(orderDetailMapper.toEntities(orderDetailDtos));
+//                    orderMaster.setOrderDetails(orderDetailMapper.toEntities(orderDetailDtos));
                     orderMasterService.save(orderMaster);
-                    for(OrderDetail orderDetail :orderMaster.getOrderDetails())
+                    for(OrderDetail orderDetail :orderDetailMapper.toEntities(orderDetailDtos))
                     {
-                        orderDetailService.save(orderDetail);
+                            orderDetail.setInvo(orderMaster);
+                            orderDetailService.save(orderDetail);
                     }
-        }
-        else if(isConfirm == 0){
+                    if(isCredit ==1)
+                    {
+                        if(orderMaster.getTotal()>customer.getCreditLimit())
+                        {
+                            writer.write("0");
+                            return;
+                        }
+                        customer.setCreditLimit(customer.getCreditLimit() - orderMaster.getTotal());
+                        customerService.refresh(customer);
+                        customerDto.setCreditLimit(customer.getCreditLimit());
+                        session.setAttribute("customer",customerDto);
+                    }
+            session.removeAttribute("cart");
+            session.removeAttribute("cartTotal");
+            session.removeAttribute("cartSize");
+            session.removeAttribute("dev");
 
-        }
-        else{
-            writer.write("0");
-            return ;
-        }
     }
 
     @Override

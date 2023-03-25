@@ -86,7 +86,7 @@
 					<p>Payment: </p>
 					<input type="radio" id="credit" name="payment" value="1">
 					<label for="credit">Credit</label>
-					<input type="radio" id="cash" name="payment" value="2" checked="checked">
+					<input type="radio" id="cash" name="payment" value="0" checked="checked">
 					<input type="hidden" id="isLogin" value="${isLogin}">
 					<input type="hidden" id="creditVal" value="${customer.creditLimit}">
 

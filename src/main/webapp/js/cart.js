@@ -3,7 +3,7 @@
 function addToCartSmall(event) {
     event.preventDefault();
     $.post("cart?pdId="+event.target.pdId.value+"&quantity=1&sizeName=Small&op=1", function(data, status){
-        successCart("Added Product Successfully");
+        successAdd("Added Product Successfully");
     });
 }
 function addToCart(event) {
@@ -18,7 +18,7 @@ function addToCart(event) {
         }
     }
     $.post("cart?pdId="+event.target.pdId.value+"&quantity=1&sizeName="+size+"&op=1", function(data, status){
-        successCart("Added Product Successfully");
+        successAdd("Added Product Successfully");
     });
 }
 
@@ -97,14 +97,28 @@ function  order()
 
         }
         else{
-            $.get("order?isConfirm=1", function(data, status){
+            $.get("order?isCredit="+credit, function(data, status){
             successCart("Your Order Confirmed");
         });
         }
     }
 
 }
+function successAdd(msg)
+{
+    Swal.fire({
+        // position: 'top-end',
+        icon: 'success',
+        text:msg,
+        title: 'Success',
+        showConfirmButton: false,
+        timer: 1500,
+        toast:true,
+        iconColor:'#663300',
 
+
+    });
+}
 function successCart(msg)
 {
     Swal.fire({
@@ -116,6 +130,13 @@ function successCart(msg)
         timer: 1500,
         toast:true,
         iconColor:'#663300',
+        didDestroy:function(){
+            var balance = +$('#balance').html();
+            const total = +$('#total').html();
+
+            $('#balance').html(balance - total );
+            window.location.href = "home";
+        }
 
     });
 }

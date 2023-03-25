@@ -3,9 +3,15 @@ package gov.iti.jets.servlet;
 
 import gov.iti.jets.dto.CustomerDto;
 import gov.iti.jets.entity.Customer;
+import gov.iti.jets.entity.OrderMaster;
 import gov.iti.jets.mapper.CustomerMapper;
+import gov.iti.jets.mapper.MyOrderDetailMapperImpl;
+import gov.iti.jets.mapper.OrderDetailMapper;
 import gov.iti.jets.persistence.dao.DBFactory;
 import gov.iti.jets.service.CustomerService;
+import gov.iti.jets.service.OrderDetailService;
+import gov.iti.jets.service.OrderMasterService;
+import gov.iti.jets.util.Constants;
 import gov.iti.jets.util.MyLocal;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -23,19 +29,21 @@ import java.io.PrintWriter;
 public class LoginServlet extends HttpServlet{
 
     CustomerService customerService;
+    OrderMasterService orderMasterService;
+    OrderDetailService orderDetailService;
+    MyOrderDetailMapperImpl orderDetailMapper;
 
     @Override
     public void init()
     {
         customerService = CustomerService.getInstance();
+        orderMasterService = OrderMasterService.getInstance();
+        orderDetailService = OrderDetailService.getInstance();
     }
 
      @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-//         CustomerDTO dto = CustomerDTO.builder().userName("abdo").email("abdo@abdo.com").build();
-//         Customer customer = customerService.get(52);
-//         customer.setCreditLimit(2000);
-//         customerService.update(customer);
+
         response.setContentType("text/html");
         RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
         rd.include(req, response);
@@ -49,7 +57,9 @@ public class LoginServlet extends HttpServlet{
     
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("application/json");
+        orderDetailMapper =new MyOrderDetailMapperImpl();
+
+         response.setContentType("application/json");
          String email = req.getParameter("email");
          String password = req.getParameter("password");
          CustomerDto customerDto = customerService.login(email,password);
@@ -60,7 +70,14 @@ public class LoginServlet extends HttpServlet{
             HttpSession session = req.getSession(true);
             session.setAttribute("isLogin","true");
             session.setAttribute("customer",customerDto);
-            System.out.println("login "+customerDto.getBirthday());
+            OrderMaster cart = orderMasterService.searchForCart(customerDto.getId());
+            if(cart!=null)
+            {
+                session.setAttribute("cart", orderDetailMapper.toDTOs(cart.getOrderDetails()));
+                session.setAttribute("cartTotal", cart.getTotal());
+                session.setAttribute("cartSize", cart.getOrderDetails().size());
+                session.setAttribute("dev", Constants.Dev);
+            }
             writer.write("1");
         }else{
             writer.write("0");

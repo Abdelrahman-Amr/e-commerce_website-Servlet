@@ -8,10 +8,7 @@ import org.mapstruct.factory.Mappers;
 
 import javax.inject.Inject;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static java.util.stream.Collectors.toCollection;
 
@@ -23,12 +20,12 @@ public class MyOrderDetailMapperImpl {
         productMapper = Mappers.getMapper(ProductMapper.class);
 
     }
-     public ArrayList<OrderDetailDto> toDTOs(Collection<OrderDetail> customers) {
+     public List<OrderDetailDto> toDTOs(Collection<OrderDetail> customers) {
         return customers.stream().map(entity -> toDto(entity)).collect(toCollection(ArrayList<OrderDetailDto>::new));
     }
 
-    public  Set<OrderDetail> toEntities(Collection<OrderDetailDto> orderDetailDtos) {
-        return orderDetailDtos.stream().map(dto -> toEntity(dto)).collect(toCollection(HashSet<OrderDetail>::new));
+    public List<OrderDetail> toEntities(Collection<OrderDetailDto> orderDetailDtos) {
+        return orderDetailDtos.stream().map(dto -> toEntity(dto)).collect(toCollection(ArrayList<OrderDetail>::new));
     }
     public OrderDetail toEntity(OrderDetailDto orderDetailDto) {
         if ( orderDetailDto == null ) {

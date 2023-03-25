@@ -88,7 +88,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <c:if test="${isLogin =='true'}">
 
                     <li title="MyProfile" ><a href="Profile">Welcome, ${customer.userName}</a></li>
-                    <li ><a href="Profile">Credit: $${customer. creditLimit}</a></li>
+                    <li ><a href="Profile" id="balance">Credit: $<span>${customer. creditLimit}</span></a></li>
                 </c:if>
             </ul>
         </div>

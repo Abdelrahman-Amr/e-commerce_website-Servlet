@@ -2,16 +2,20 @@ package gov.iti.jets.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+//@ToString
 @Entity
 @Table(name = "order_master", schema = "coffee_point")
 public class OrderMaster extends BaseEntity{
@@ -48,7 +52,7 @@ public class OrderMaster extends BaseEntity{
     private  Boolean isCart;
 
 
-    @OneToMany(mappedBy = "invo")
-    private Set<OrderDetail> orderDetails = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "invo", cascade = CascadeType.ALL)
+    private List<OrderDetail> orderDetails = new ArrayList<>();
 
 }
