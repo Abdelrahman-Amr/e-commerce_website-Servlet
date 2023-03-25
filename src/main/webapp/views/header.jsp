@@ -92,6 +92,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </c:if>
             </ul>
         </div>
+
         <div class="product_list_header">
             <form action="cart" method="get" class="last">
                 <input type="hidden" name="cmd" value="_cart">
