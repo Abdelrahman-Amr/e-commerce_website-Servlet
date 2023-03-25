@@ -8,22 +8,11 @@ import jakarta.persistence.Query;
 import java.util.List;
 
 public class OrderDetailDAO extends BaseDAO<OrderDetail> {
-    private volatile static OrderDetailDAO orderDetailDAO;
 
-    private OrderDetailDAO() {
-        super(OrderDetail.class, MyLocal.getInstance().get());
+    public OrderDetailDAO() {
+        super(OrderDetail.class, DBFactory.getInstance().createEntityManager());
     }
 
-    public static OrderDetailDAO getInstance() {
-        if (orderDetailDAO == null) {
-            synchronized (OrderDetailDAO.class) {
-                if (orderDetailDAO == null) {
-                    orderDetailDAO = new OrderDetailDAO();
-                }
-            }
-        }
-        return orderDetailDAO;
-    }
 
 
     public List<OrderDetail> getAll() {

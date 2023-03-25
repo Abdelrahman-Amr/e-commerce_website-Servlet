@@ -25,8 +25,7 @@ public class SizeService extends BaseService<Size>{
     private SizeDAO sizeDAO;
 
     private SizeService() {
-        sizeDAO =  SizeDAO.getInstance();
-        dao = sizeDAO;
+
         sizeMapper = Mappers.getMapper(SizeMapper.class);
     }
     public static SizeService getInstance() {
@@ -41,23 +40,20 @@ public class SizeService extends BaseService<Size>{
     }
 
 
-    public void setManager(EntityManager manager)
-    {
-        this.sizeDAO.setManager(manager);
-    }
-
     public SizeDto getSizeById(Long id) {
+        sizeDAO =  new SizeDAO();
         Size size = sizeDAO.getSizeById(id);
         return sizeMapper.toDto(size);
     }
 
     public List<SizeDto> listAllSizes() {
+        sizeDAO =  new SizeDAO();
         List<SizeDto> sizes = sizeMapper.toDTOs(sizeDAO.listAllSizes());
         return sizes;
     }
 
     public SizeDto  getSizeByName(String name) {
-
+        sizeDAO =  new SizeDAO();
         SizeDto sizeDto = sizeMapper.toDto(sizeDAO.getSizeByName(name));
         return sizeDto;
     }

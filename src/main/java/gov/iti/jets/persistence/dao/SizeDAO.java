@@ -10,22 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class SizeDAO extends BaseDAO<Size> {
-    private volatile static SizeDAO sizeDAO;
 
-    private SizeDAO() {
-        super(Size.class, MyLocal.getInstance().get());
+    public SizeDAO() {
+        super(Size.class, DBFactory.getInstance().createEntityManager());
     }
 
-    public static SizeDAO getInstance() {
-        if (sizeDAO == null) {
-            synchronized (SizeDAO.class) {
-                if (sizeDAO == null) {
-                    sizeDAO = new SizeDAO();
-                }
-            }
-        }
-        return sizeDAO;
-    }
 
     public Size getSizeById(Long id) {
         Size size = entityManager.find(Size.class, id);

@@ -31,7 +31,7 @@ public class CartServlet extends HttpServlet {
     @Override
     public void init()
     {
-        productService = new ProductService();
+        productService = ProductService.getInstance();
         sizeService =  SizeService.getInstance();
         productMapper = Mappers.getMapper(ProductMapper.class);
     }

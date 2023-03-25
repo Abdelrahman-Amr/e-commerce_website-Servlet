@@ -145,11 +145,11 @@
         </listener-class>
     </listener>
 
-    <listener>
-        <listener-class>
-            gov.iti.jets.listener.ThreadLocalListener
-        </listener-class>
-    </listener>
+<!--    <listener>-->
+<!--        <listener-class>-->
+<!--            gov.iti.jets.listener.ThreadLocalListener-->
+<!--        </listener-class>-->
+<!--    </listener>-->
 
 
 

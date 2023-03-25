@@ -16,24 +16,13 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ProductDAO extends BaseDAO<Product> {
-    private volatile static ProductDAO productDAO;
-    private Long noOfRecords;
+    public Long noOfRecords;
 
 
-    private ProductDAO() {
-        super(Product.class, MyLocal.getInstance().get());
+    public ProductDAO() {
+        super(Product.class, DBFactory.getInstance().createEntityManager());
     }
 
-    public static ProductDAO getInstance() {
-        if (productDAO == null) {
-            synchronized (ProductDAO.class) {
-                if (productDAO == null) {
-                    productDAO = new ProductDAO();
-                }
-            }
-        }
-        return productDAO;
-    }
 
     public Product getProductById(Long id) {
         TypedQuery query = entityManager.createQuery("select p from Product p where p.id= :id", Product.class);

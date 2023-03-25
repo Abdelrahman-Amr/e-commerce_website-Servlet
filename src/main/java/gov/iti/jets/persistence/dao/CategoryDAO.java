@@ -11,23 +11,12 @@ import java.util.List;
 import java.util.Queue;
 
 public class CategoryDAO extends BaseDAO<Category>{
-    private volatile static CategoryDAO categoryDAO;
 
-    private CategoryDAO()
+    public CategoryDAO()
     {
-        super(Category.class, MyLocal.getInstance().get());
+        super(Category.class, DBFactory.getInstance().createEntityManager());
     }
 
-    public static CategoryDAO getInstance() {
-        if (categoryDAO == null) {
-            synchronized (CategoryDAO.class) {
-                if (categoryDAO == null) {
-                    categoryDAO = new CategoryDAO();
-                }
-            }
-        }
-        return categoryDAO;
-    }
 
     public List<Category> getAll()
     {

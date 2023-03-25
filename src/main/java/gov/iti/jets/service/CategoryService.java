@@ -17,8 +17,7 @@ public class CategoryService extends BaseService<Category>{
     private CategoryDAO categoryDAO;
 
     private CategoryService() {
-        categoryDAO =  CategoryDAO.getInstance();
-        dao = categoryDAO;
+
         categoryMapper = Mappers.getMapper(CategoryMapper.class);
     }
     public static CategoryService getInstance() {
@@ -34,6 +33,7 @@ public class CategoryService extends BaseService<Category>{
 
     public List<CategoryDto> getAll()
     {
+        categoryDAO =  new CategoryDAO();
         return categoryMapper.toDTOs(categoryDAO.getAll());
     }
 }

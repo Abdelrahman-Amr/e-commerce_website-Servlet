@@ -30,20 +30,23 @@ public class ProductService extends BaseService<Product> {
         return productService;
     }
 
-    public ProductService() {
-        productDAO = ProductDAO.getInstance();
-        dao = productDAO;
+    private ProductService() {
+        productDAO = new ProductDAO();
+
+
         productMapper = Mappers.getMapper(ProductMapper.class);
     }
 
 
     public ProductDto getProductById(Long id) {
+//        productDAO = new ProductDAO();
         Product product = productDAO.getProductById(id);
         ProductDto productDto = productMapper.toDto(product);
         return productDto;
     }
 
     public List<ProductDto> listAllProducts(int offset, int maxNoOfRecordsPerPage) {
+//        productDAO = new ProductDAO();
         List<Product> products = productDAO.listAllProducts(offset, maxNoOfRecordsPerPage);
         List<ProductDto> productDtos =
                 products.stream()
@@ -53,6 +56,7 @@ public class ProductService extends BaseService<Product> {
     }
 
     public List<ProductDto> listAllProductsByCategory(Long categoryId, int offset, int maxNoOfRecordsPerPage) {
+//        productDAO = new ProductDAO();
         List<Product> products = productDAO.listAllProductsByCategory(categoryId, offset, maxNoOfRecordsPerPage);
         List<ProductDto> productDtos =
                 products.stream()
@@ -61,6 +65,7 @@ public class ProductService extends BaseService<Product> {
         return productDtos;
     }
     public List<ProductDto> getProductsByCriteria(Map<String, String> params, int offset, int maxNoOfRecordsPerPage) {
+//        productDAO = new ProductDAO();
         List<Product> products = productDAO.getProductsByCriteria(params, offset, maxNoOfRecordsPerPage);
         List<ProductDto> productDtos =
                 products.stream()
@@ -70,6 +75,7 @@ public class ProductService extends BaseService<Product> {
     }
 
     public List<ProductDto> searchProducts(String searchProduct, int offset, int maxNoOfRecordsPerPage) {
+//        productDAO = new ProductDAO();
         List<Product> products = productDAO.searchProducts(searchProduct, offset, maxNoOfRecordsPerPage);
         List<ProductDto> productDtos =
                 products.stream()
@@ -77,11 +83,14 @@ public class ProductService extends BaseService<Product> {
                         .collect(Collectors.toList());
         return productDtos;
     }
-    public Long getNoOfReturnedProducts() {
-        return ProductDAO.getInstance().getNoOfRecords();
+    public Long getNoOfReturnedProducts()
+    {
+//        productDAO = new ProductDAO();
+        return productDAO.getNoOfRecords();
     }
     public Product addNewProduct(ProductDto productDto, Boolean active) {
 
+//        productDAO = new ProductDAO();
         Product product = productMapper.toEntity(productDto);
         product.setCreationTime(new Date());
         product.setActive(active);
@@ -90,5 +99,11 @@ public class ProductService extends BaseService<Product> {
             return product;
         }
         return null;
+    }
+
+    public void update(Product entity)
+    {
+        productDAO = new ProductDAO();
+        productDAO.update(entity);
     }
 }

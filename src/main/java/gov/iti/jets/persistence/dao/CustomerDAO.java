@@ -14,23 +14,13 @@ import java.util.Date;
 import java.util.List;
 
 public class CustomerDAO extends BaseDAO<Customer>{
-    private volatile static CustomerDAO customerDAO;
 
-    private CustomerDAO()
+    public CustomerDAO()
     {
-        super(Customer.class, MyLocal.getInstance().get());
+        super(Customer.class, DBFactory.getInstance().createEntityManager());
     }
 
-    public static CustomerDAO getInstance() {
-        if (customerDAO == null) {
-            synchronized (CustomerDAO.class) {
-                if (customerDAO == null) {
-                    customerDAO = new CustomerDAO();
-                }
-            }
-        }
-        return customerDAO;
-    }
+
     public Customer login(String email , String password)
     {
         Query query=entityManager.createQuery("from Customer c where c.email=:u and c.password =:p");

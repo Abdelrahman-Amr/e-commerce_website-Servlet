@@ -17,8 +17,6 @@ public class OrderDetailService extends BaseService<OrderDetail>{
         private OrderDetailDAO orderDetailDAO;
 
     private OrderDetailService() {
-        orderDetailDAO =  OrderDetailDAO.getInstance();
-            dao = orderDetailDAO;
         orderDetailMapper = Mappers.getMapper(OrderDetailMapper.class);
         }
         public static OrderDetailService getInstance() {
@@ -31,7 +29,11 @@ public class OrderDetailService extends BaseService<OrderDetail>{
             }
             return orderDetailService;
         }
-
+    public void save(OrderDetail entity)
+    {
+        orderDetailDAO = new OrderDetailDAO();
+        orderDetailDAO.save(entity);
+    }
 
 
 }

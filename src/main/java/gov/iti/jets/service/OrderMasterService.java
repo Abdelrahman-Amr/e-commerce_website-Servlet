@@ -16,8 +16,6 @@ public class OrderMasterService extends BaseService<OrderMaster>{
     private OrderMasterDAO orderMasterDAO;
 
     private OrderMasterService() {
-        orderMasterDAO =  OrderMasterDAO.getInstance();
-        dao = orderMasterDAO;
         orderMasterMapper = Mappers.getMapper(OrderMasterMapper.class);
     }
     public static OrderMasterService getInstance() {
@@ -30,5 +28,9 @@ public class OrderMasterService extends BaseService<OrderMaster>{
         }
         return orderMasterService;
     }
-
+    public void save(OrderMaster entity)
+    {
+        orderMasterDAO = new OrderMasterDAO();
+        orderMasterDAO.save(entity);
+    }
 }

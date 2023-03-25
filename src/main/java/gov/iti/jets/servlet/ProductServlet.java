@@ -22,7 +22,7 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     public void init() {
-        productService = new ProductService();
+        productService =  ProductService.getInstance();
         productMapper = Mappers.getMapper(ProductMapper.class);
     }
 

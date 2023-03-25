@@ -25,8 +25,7 @@ public class CustomerService extends BaseService<Customer>{
     private CustomerDAO customerDAO;
 
     private CustomerService() {
-        customerDAO =  CustomerDAO.getInstance();
-        dao = customerDAO;
+
         customerMapper = Mappers.getMapper(CustomerMapper.class);
     }
     public static CustomerService getInstance() {
@@ -39,9 +38,15 @@ public class CustomerService extends BaseService<Customer>{
         }
         return customerService;
     }
+    public Customer get(Long id)
+    {
+        customerDAO =  new CustomerDAO();
+        return customerDAO.get(id);
+    }
 
     public CustomerDto login(String email , String password)
     {
+        customerDAO =  new CustomerDAO();
         String hashedPass = Utility.hashPassword(password);
         Customer customer = customerDAO.login(email, hashedPass);
 
@@ -51,6 +56,7 @@ public class CustomerService extends BaseService<Customer>{
     }
 
     public  boolean signUp(RegistrationCustomerDTO registrationCustomerDTO) {
+        customerDAO =  new CustomerDAO();
         Customer customerEntity = customerMapper.toEntity(registrationCustomerDTO);
         customerEntity.setCreationTime(new Date());
         String hashedPass = Utility.hashPassword(registrationCustomerDTO.getPassword());
@@ -67,10 +73,12 @@ public class CustomerService extends BaseService<Customer>{
 
 
     public boolean checkEmail(String email) {
+        customerDAO =  new CustomerDAO();
         return customerDAO.isEmailExist(email);
     }
 
     public boolean updateProfile(CustomerDto customerDTO) {
+        customerDAO =  new CustomerDAO();
         Customer customer = get(customerDTO.getId());
 //        customer.setUserName(customerDTO.getUserName());
 //        Customer updatedCustomer = customerMapper.toEntity(customerDTO);
@@ -89,6 +97,7 @@ public class CustomerService extends BaseService<Customer>{
     }
 
     public List<CustomerDto> getCustomerList(int index) {
+        customerDAO =  new CustomerDAO();
 
         List<CustomerDto> l = customerMapper.toDTOs(customerDAO.getCustomerList((index-1)*10));
 //        l.forEach((e)->System.out.println(e.getUserName()));
@@ -97,26 +106,13 @@ public class CustomerService extends BaseService<Customer>{
     }
 
     public int getRecordsCount() {
+        customerDAO =  new CustomerDAO();
         return customerDAO.getRecordsCount();
     }
 
-//    void getAllCustomer() {
-//        customerDtoList = customerMapper.toDTOs(customerDAO.findAll());
-//    }
-//
-//    void buildCustomerMap() {
-//        int endInd=10,index=1;
-//        while(customerDtoList.size()>0) {
-//            if(customerDtoList.size()<10) {
-//                endInd=customerDtoList.size();
-//            }
-//            customerDtoMap.put(index,customerDtoList.subList(0,endInd));
-//                    index++;
-//        }
-//    }
-
     public void  refresh(Customer customer)
     {
+        customerDAO =  new CustomerDAO();
          customerDAO.refresh(customer);
     }
 }

@@ -9,24 +9,11 @@ import jakarta.persistence.Query;
 import java.util.List;
 
 public class OrderMasterDAO extends BaseDAO<OrderMaster>{
-    private volatile static OrderMasterDAO orderMasterDAO;
 
-    private OrderMasterDAO()
+    public OrderMasterDAO()
     {
-        super(OrderMaster.class, MyLocal.getInstance().get());
+        super(OrderMaster.class, DBFactory.getInstance().createEntityManager());
     }
-
-    public static OrderMasterDAO getInstance() {
-        if (orderMasterDAO == null) {
-            synchronized (OrderMasterDAO.class) {
-                if (orderMasterDAO == null) {
-                    orderMasterDAO = new OrderMasterDAO();
-                }
-            }
-        }
-        return orderMasterDAO;
-    }
-
 
 
     public List<OrderMaster> getAll()
