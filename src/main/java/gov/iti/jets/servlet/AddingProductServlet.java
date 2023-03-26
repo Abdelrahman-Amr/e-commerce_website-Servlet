@@ -6,6 +6,7 @@ import gov.iti.jets.dto.ProductDto;
 import gov.iti.jets.entity.Product;
 import gov.iti.jets.service.CategoryService;
 import gov.iti.jets.service.ProductService;
+import gov.iti.jets.util.Constants;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -53,7 +54,8 @@ public class AddingProductServlet extends HttpServlet {
             resp.setContentType("application/json");
 
             ServletContext servletContext = req.getServletContext();
-            String path = servletContext.getRealPath("/images/");
+//            String path = servletContext.getRealPath("/images/");
+            String path = Constants.imgPath;
 
             Part part = req.getPart("file");
             if (part != null) {

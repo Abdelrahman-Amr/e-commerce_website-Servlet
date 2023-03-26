@@ -1,27 +1,34 @@
 package gov.iti.jets.servlet;
 
 
+import com.google.gson.Gson;
+import gov.iti.jets.dto.CategoryDto;
+import gov.iti.jets.dto.ProductDto;
+import gov.iti.jets.service.CategoryService;
+import gov.iti.jets.service.ProductService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 public class HomeServlet extends HttpServlet {
 
-//    CategoryService categoryService;
+    ProductService productService;
 
 
     @Override
     public void init()
     {
-//        categoryService = new CategoryService();
+        productService =  ProductService.getInstance();
     }
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-//        List<CategoryDto> categoryDtos = categoryService.getAll();
-//        req.getServletContext().setAttribute("cats", categoryDtos);
+        List<ProductDto> productDtos = productService.getOffersProducts();
+        req.getServletContext().setAttribute("offerProducts", productDtos);
 
         response.setContentType("text/html");
         RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
@@ -36,7 +43,26 @@ public class HomeServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-        doGet(req, response);
+            response.setContentType("application/json");
+        PrintWriter writer  = response.getWriter();
+        int sel = Integer.parseInt(req.getParameter("sel"));
+        List<ProductDto> productDtos = null;
+        if(sel==1)
+        {
+            productDtos = productService.getPriorityProducts();
+//            req.getSession(false).setAttribute("priorityProducts", productService.getPriorityProducts());
+        }
+        else if(sel==2)
+        {
+            productDtos = productService.getMostSellingProducts();
+
+        }else{
+            productDtos = productService.getOffersProducts();
+
+        }
+        Gson gson = new Gson();
+        String json = gson.toJson(productDtos);
+        writer.write(json);
     }
 
 }
