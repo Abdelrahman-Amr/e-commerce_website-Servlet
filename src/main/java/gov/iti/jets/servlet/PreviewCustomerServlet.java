@@ -38,6 +38,7 @@ public class PreviewCustomerServlet extends HttpServlet {
         {
             pageNum = 1;
         }
+
         List<CustomerDto>  customerList = customerService.getCustomerList(1);
         request.getSession(false).setAttribute("customerList",customerList);
         request.getSession(false).setAttribute("pageNo",1);
