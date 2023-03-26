@@ -38,7 +38,7 @@ public class ProductService extends BaseService<Product> {
 
 
     public ProductDto getProductById(Long id) {
-//        productDAO = new ProductDAO();
+        productDAO = new ProductDAO();
         Product product = productDAO.getProductById(id);
         ProductDto productDto = productMapper.toDto(product);
         productDto.setCatg_id(product.getCatg().getId());
@@ -55,7 +55,7 @@ public class ProductService extends BaseService<Product> {
     }
 
     public List<ProductDto> listAllProductsByCategory(Long categoryId, int offset, int maxNoOfRecordsPerPage) {
-//        productDAO = new ProductDAO();
+        productDAO = new ProductDAO();
         List<Product> products = productDAO.listAllProductsByCategory(categoryId, offset, maxNoOfRecordsPerPage);
         List<ProductDto> productDtos =
                 products.stream()
@@ -75,7 +75,7 @@ public class ProductService extends BaseService<Product> {
     }
 
     public List<ProductDto> searchProducts(String searchProduct, int offset, int maxNoOfRecordsPerPage) {
-//        productDAO = new ProductDAO();
+        productDAO = new ProductDAO();
         List<Product> products = productDAO.searchProducts(searchProduct, offset, maxNoOfRecordsPerPage);
         List<ProductDto> productDtos =
                 products.stream()
@@ -83,14 +83,14 @@ public class ProductService extends BaseService<Product> {
                         .collect(Collectors.toList());
         return productDtos;
     }
-    public Long getNoOfReturnedProducts()
+    public Long getNoOfReturnedProducts(Map<String,String> params)
     {
-//        productDAO = new ProductDAO();
-        return productDAO.getNoOfRecords();
+        productDAO = new ProductDAO();
+        return productDAO.getReturnedProductsCount(params);
     }
     public Product addNewProduct(ProductDto productDto, Boolean active) {
 
-//        productDAO = new ProductDAO();
+        productDAO = new ProductDAO();
         Product product = productMapper.toEntity(productDto);
         product.setCreationTime(new Date());
         product.setActive(active);
@@ -117,7 +117,7 @@ public class ProductService extends BaseService<Product> {
 
     public Product getFullProductById(Long id) {
         Product product = productDAO.getProductById(id);
-        //ProductDto productDto = productMapper.toDto(product);
+//        ProductDto productDto = productMapper.toDto(product);
         return product;
     }
     public Product get(Long id)

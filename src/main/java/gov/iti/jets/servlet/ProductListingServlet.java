@@ -61,7 +61,7 @@ public class ProductListingServlet extends HttpServlet {
         String json = gson.toJson(productDtos);
         System.out.println(json);
 
-        pagination = (int) Math.ceil((double) productService.getNoOfReturnedProducts() / PRODUCTS_PER_PAGE);
+        pagination = (int) Math.ceil((double) productService.getNoOfReturnedProducts(params) / PRODUCTS_PER_PAGE);
 
         if (pagination < 1)
             pagination = 1;
