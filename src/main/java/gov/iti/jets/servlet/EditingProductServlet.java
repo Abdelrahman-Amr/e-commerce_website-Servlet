@@ -7,6 +7,7 @@ import gov.iti.jets.entity.Category;
 import gov.iti.jets.entity.Product;
 import gov.iti.jets.service.CategoryService;
 import gov.iti.jets.service.ProductService;
+import gov.iti.jets.util.Constants;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -89,7 +90,8 @@ public class EditingProductServlet extends HttpServlet {
             resp.setContentType("application/json");
 
             ServletContext servletContext = request.getServletContext();
-            String path = servletContext.getRealPath("/images/");
+//            String path = servletContext.getRealPath("/images/");
+            String path= Constants.imgPath;
 
             Part part = request.getPart("file");
 
