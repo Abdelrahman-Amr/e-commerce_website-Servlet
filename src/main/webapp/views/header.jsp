@@ -62,6 +62,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="js/registerjs.js"></script>
     <script src="js/profile.js"></script>
     <script src="js/addingProductScript.js"></script>
+    <script src="js/editingProductScript.js"></script>
 
 
     <!-- start-smoth-scrolling -->

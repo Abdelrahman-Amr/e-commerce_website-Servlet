@@ -1,5 +1,5 @@
-function addProductAdmin(event) {
-    console.log("enter");
+function editProductAdmin(event) {
+    console.log("enter editing product");
     event.preventDefault();
     var productName = document.getElementById("productName").value;
     var productCategory = document.getElementById("category").value;
@@ -9,11 +9,17 @@ function addProductAdmin(event) {
     var productPriority = document.getElementById("productPriority").value;
     var productDescription = document.getElementById("productDescription").value;
 
-//    console.log(productCategory);
+   console.log("productName "+ productName);
+   console.log("productCategory " + productCategory);
+   console.log("productPrice " + productPrice);
+   console.log("productDiscount " + productDiscount);
+   console.log("productQuantity " + productQuantity);
+   console.log("productPriority " + productPriority);
+   console.log("productDescription " + productDescription);
 
     var data = new FormData();
 
-    var productInfo = JSON.stringify({name:productName, catg_id: productCategory, price:productPrice, discount:productDiscount,
+    var productInfo = JSON.stringify({name:productName, catg_id:productCategory, price:productPrice, discount:productDiscount,
     quantity:productQuantity, priority:productPriority,  description:productDescription, imageUrl: null});
 
     //console.log(productInfo);
@@ -23,7 +29,7 @@ function addProductAdmin(event) {
     data.append('file', document.getElementById("productImage").files[0]);
 
     $.ajax({
-            url: 'AddingProduct',
+            url: 'EditingProduct',
             data: data,
             cache: false,
             processData: false,
@@ -34,10 +40,10 @@ function addProductAdmin(event) {
                 console.log(data);
                 //console.log("success");
                 if(data=="1") {
-                    success("Adding new product successfully");
+                    success("Editing new product successfully");
                     addingProductCallBack();
                 }else{
-                    failed('Failed to add product !!');
+                    failed('Failed to edit product !!');
 
                 }
 

@@ -1,10 +1,8 @@
 package gov.iti.jets.servlet;
 
 import com.google.gson.Gson;
-import gov.iti.jets.dto.AdminProductDto;
+import gov.iti.jets.dto.CategoryDto;
 import gov.iti.jets.dto.ProductDto;
-import gov.iti.jets.dto.RegistrationCustomerDTO;
-import gov.iti.jets.entity.Category;
 import gov.iti.jets.entity.Product;
 import gov.iti.jets.service.CategoryService;
 import gov.iti.jets.service.ProductService;
@@ -19,7 +17,6 @@ import jakarta.servlet.annotation.MultipartConfig;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.List;
 
 @MultipartConfig
@@ -29,12 +26,19 @@ public class AddingProductServlet extends HttpServlet {
 
     CategoryService categoryService = CategoryService.getInstance();
 
+    List<CategoryDto> categoryList;
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
         rd.include(request, response);
 
-        rd = request.getRequestDispatcher("/views/addingProduct.html");
+        categoryList = categoryService.getAll();
+
+        request.getSession(false).setAttribute("categoryList",categoryList);
+
+        rd = request.getRequestDispatcher("/views/addingProduct.jsp");
         rd.include(request, response);
 
         rd = request.getRequestDispatcher("/views/footer.jsp");
@@ -46,53 +50,56 @@ public class AddingProductServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
 
         try {
-    resp.setContentType("application/json");
+            resp.setContentType("application/json");
 
-    ServletContext servletContext = req.getServletContext();
-    String path = servletContext.getRealPath("/images/");
+            ServletContext servletContext = req.getServletContext();
+            String path = servletContext.getRealPath("/images/");
 
-    Part part = req.getPart("file");
-    if (part != null) {
+            Part part = req.getPart("file");
+            if (part != null) {
 
-        Long productId = null;
+                Long productId;
 
-        String productJson = new String(req.getParameter("productInfo"));
-//            System.out.println(productJson);
-        ProductDto productDTO = new Gson().fromJson(productJson, ProductDto.class);
+                String productJson = req.getParameter("productInfo");
 
-        Product product = productService.addNewProduct(productDTO, true);
+                System.out.println(productJson);
 
-        productId = product.getId();
+                ProductDto productDTO = new Gson().fromJson(productJson, ProductDto.class);
 
-        if (productId != null) {
+                System.out.println(productDTO.getName());
 
-            String[] strArr = part.getSubmittedFileName().split("[.]");
+                Product product = productService.addNewProduct(productDTO, true);
 
-            String fileName = "product/product_" + productId + "." + strArr[strArr.length - 1];
+                System.out.println(product.getName());
 
-            part.write(path + fileName);
+                productId = product.getId();
 
-            product.setImageUrl(fileName);
+                if (productId != null) {
 
-//                Category category = new Category();
-//
-//                category.setName("category1");
-//
-//                categoryService.save(category);
-//
-//                product.setCatg(categoryService.getCategoryByName(productDTO.getCategory()));
+                    String[] strArr = part.getSubmittedFileName().split("[.]");
 
-            productService.update(product);
+                    String fileName = "product/product_" + productId + "." + strArr[strArr.length - 1];
 
-            writer.write("1");
-        } else {
+                    part.write(path + fileName);
+
+                    product.setImageUrl(fileName);
+
+//                    System.out.println(req.getParameter("categoryId"));
+
+                    product.setCatg(categoryService.get(productDTO.getCatg_id()));
+
+                    productService.update(product);
+
+                    writer.write("1");
+                } else {
+                    writer.write("0");
+                }
+            } else {
+                writer.write("0");
+            }
+        } catch (Exception ex){
+            ex.printStackTrace();
             writer.write("0");
         }
-    } else {
-        writer.write("0");
-    }
-}catch (Exception ex){
-    writer.write("0");
-}
     }
 }

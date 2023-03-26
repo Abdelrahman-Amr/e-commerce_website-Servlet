@@ -129,7 +129,14 @@
         <servlet-name>addingProduct</servlet-name>
         <url-pattern>/AddingProduct</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>editingProduct</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.EditingProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editingProduct</servlet-name>
+        <url-pattern>/EditingProduct</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>order</servlet-name>
         <servlet-class>gov.iti.jets.servlet.OrderServlet</servlet-class>
@@ -145,11 +152,11 @@
         </listener-class>
     </listener>
 
-<!--    <listener>-->
-<!--        <listener-class>-->
-<!--            gov.iti.jets.listener.ThreadLocalListener-->
-<!--        </listener-class>-->
-<!--    </listener>-->
+    <listener>
+        <listener-class>
+            gov.iti.jets.listener.ThreadLocalListener
+        </listener-class>
+    </listener>
 
 
 

@@ -1,8 +1,8 @@
 package gov.iti.jets.persistence.dao;
 
-import gov.iti.jets.entity.Category_;
+import gov.iti.jets.entity.Category;
 import gov.iti.jets.entity.Product;
-import gov.iti.jets.entity.Product_;
+import gov.iti.jets.entity.Product;
 import gov.iti.jets.util.MyLocal;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
@@ -62,58 +62,58 @@ public class ProductDAO extends BaseDAO<Product> {
         return result;
     }
 
-    public List<Product> getProductsByCriteria(Map<String, String> params, int offset, int maxNoOfRecordsPerPage) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
-        Root<Product> productRoot = criteriaQuery.from(Product.class);
-        Predicate predicate = getPredicate(params, criteriaBuilder, productRoot);
-        noOfRecords = getReturnedProductsCount(params);
+//    public List<Product> getProductsByCriteria(Map<String, String> params, int offset, int maxNoOfRecordsPerPage) {
+//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//        CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
+//        Root<Product> productRoot = criteriaQuery.from(Product.class);
+//        Predicate predicate = getPredicate(params, criteriaBuilder, productRoot);
+//        noOfRecords = getReturnedProductsCount(params);
+//
+//        criteriaQuery.select(productRoot).where(predicate);
+//        //execute query
+//        if (params.get("price") != null) {
+//            if (params.get("price").equals("asc"))
+//                criteriaQuery.orderBy(criteriaBuilder.asc(productRoot.get(Product.price)));
+//            else if (params.get("price").equals("desc"))
+//                criteriaQuery.orderBy(criteriaBuilder.desc(productRoot.get(Product.price)));
+//        }
+//        List<Product> resultList = entityManager.createQuery(criteriaQuery).setMaxResults(maxNoOfRecordsPerPage).setFirstResult(offset).getResultList();
+//        return resultList;
+//    }
+//
+//    private static Predicate getPredicate(Map<String, String> params, CriteriaBuilder criteriaBuilder, Root<Product> productRoot) {
+//        Predicate predicate = criteriaBuilder.conjunction();
+//        for (Map.Entry<String, String> entry : params.entrySet()) {
+//            String param = entry.getKey();
+//            String value = entry.getValue();
+//            if (value != null) {
+//                switch (param) {
+//                    case "name":
+//                        //add predicate
+//                        break;
+//                    case "catId":
+//                        Predicate newPredicate = criteriaBuilder.and(criteriaBuilder.equal(productRoot.get(Product_.catg).get(Category_.id), Long.valueOf(params.get("catId"))));
+//                        predicate = criteriaBuilder.and(predicate, newPredicate);
+//                        break;
+//                }
+//            }
+//        }
+//        return predicate;
+//    }
 
-        criteriaQuery.select(productRoot).where(predicate);
-        //execute query
-        if (params.get("price") != null) {
-            if (params.get("price").equals("asc"))
-                criteriaQuery.orderBy(criteriaBuilder.asc(productRoot.get(Product_.price)));
-            else if (params.get("price").equals("desc"))
-                criteriaQuery.orderBy(criteriaBuilder.desc(productRoot.get(Product_.price)));
-        }
-        List<Product> resultList = entityManager.createQuery(criteriaQuery).setMaxResults(maxNoOfRecordsPerPage).setFirstResult(offset).getResultList();
-        return resultList;
-    }
-
-    private static Predicate getPredicate(Map<String, String> params, CriteriaBuilder criteriaBuilder, Root<Product> productRoot) {
-        Predicate predicate = criteriaBuilder.conjunction();
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            String param = entry.getKey();
-            String value = entry.getValue();
-            if (value != null) {
-                switch (param) {
-                    case "name":
-                        //add predicate
-                        break;
-                    case "catId":
-                        Predicate newPredicate = criteriaBuilder.and(criteriaBuilder.equal(productRoot.get(Product_.catg).get(Category_.id), Long.valueOf(params.get("catId"))));
-                        predicate = criteriaBuilder.and(predicate, newPredicate);
-                        break;
-                }
-            }
-        }
-        return predicate;
-    }
-
-    public Long getReturnedProductsCount(Map<String, String> params) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
-        Root<Product> productRoot = criteriaQuery.from(Product.class);
-        Predicate predicate = getPredicate(params, criteriaBuilder, productRoot);
-
-        criteriaQuery.select(criteriaBuilder
-                        .count(productRoot))
-                .where(predicate);
-        TypedQuery<Long> typedQuery = entityManager.createQuery(criteriaQuery);
-        System.out.println(typedQuery.unwrap(org.hibernate.query.Query.class).getQueryString());
-        return typedQuery.getResultList().get(0);
-    }
+//    public Long getReturnedProductsCount(Map<String, String> params) {
+//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//        CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
+//        Root<Product> productRoot = criteriaQuery.from(Product.class);
+//        Predicate predicate = getPredicate(params, criteriaBuilder, productRoot);
+//
+//        criteriaQuery.select(criteriaBuilder
+//                        .count(productRoot))
+//                .where(predicate);
+//        TypedQuery<Long> typedQuery = entityManager.createQuery(criteriaQuery);
+//        System.out.println(typedQuery.unwrap(org.hibernate.query.Query.class).getQueryString());
+//        return typedQuery.getResultList().get(0);
+//    }
 
     public Long getNoOfRecords() {
         return noOfRecords;

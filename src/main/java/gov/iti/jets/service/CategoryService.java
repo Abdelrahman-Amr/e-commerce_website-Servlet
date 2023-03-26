@@ -36,4 +36,9 @@ public class CategoryService extends BaseService<Category>{
         categoryDAO =  new CategoryDAO();
         return categoryMapper.toDTOs(categoryDAO.getAll());
     }
+
+    public List<Category> getAllCategories()
+    {
+        return categoryDAO.getAll();
+    }
 }

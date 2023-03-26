@@ -42,11 +42,11 @@ public class ProductService extends BaseService<Product> {
 //        productDAO = new ProductDAO();
         Product product = productDAO.getProductById(id);
         ProductDto productDto = productMapper.toDto(product);
+        productDto.setCatg_id(product.getCatg().getId());
         return productDto;
     }
 
     public List<ProductDto> listAllProducts(int offset, int maxNoOfRecordsPerPage) {
-//        productDAO = new ProductDAO();
         List<Product> products = productDAO.listAllProducts(offset, maxNoOfRecordsPerPage);
         List<ProductDto> productDtos =
                 products.stream()
@@ -105,5 +105,19 @@ public class ProductService extends BaseService<Product> {
     {
         productDAO = new ProductDAO();
         productDAO.update(entity);
+    }
+    public Product editProduct(ProductDto productDto) {
+        Product oldProduct = get(productDto.getId());
+        Product product = productMapper.toEntity(productDto);
+        product.setActive(oldProduct.getActive());
+        product.setCreationTime(oldProduct.getCreationTime());
+        update(product);
+        return product;
+    }
+
+    public Product getFullProductById(Long id) {
+        Product product = productDAO.getProductById(id);
+        //ProductDto productDto = productMapper.toDto(product);
+        return product;
     }
 }
