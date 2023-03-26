@@ -10,9 +10,21 @@
         </div>
     </li>
     <li>
-        <img src="images/2621253.jpg" alt=""/>
+        <img src="images/slider3.jpg" alt=""/>
         <div class="slide-desc">
 <%--            <h3>Whole Spices Products Are Now On Line With Us</h3>--%>
+        </div>
+    </li>
+    <li>
+        <img src="images/slider2.jpg" alt=""/>
+        <div class="slide-desc">
+            <%--            <h3>Whole Spices Products Are Now On Line With Us</h3>--%>
+        </div>
+    </li>
+    <li>
+        <img src="images/slider3.jpg" alt=""/>
+        <div class="slide-desc">
+            <%--            <h3>Whole Spices Products Are Now On Line With Us</h3>--%>
         </div>
     </li>
 
