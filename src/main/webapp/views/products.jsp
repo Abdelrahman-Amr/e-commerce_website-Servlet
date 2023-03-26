@@ -32,7 +32,6 @@
                     <input type="hidden" id="catInput" value="${cat.name}">
                 </c:forEach>
             </ul>
-
         </div>
         <h2 class="cat-header " id="currentCat">${currentCat}</h2>
 
