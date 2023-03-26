@@ -144,4 +144,9 @@ public class ProductService extends BaseService<Product> {
         List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getOffersProducts());
         return  productDtos;
     }
+
+    public Double getTotalRevenue() {
+        productDAO = new ProductDAO();
+        return productDAO.getTotalRevenue();
+    }
 }

@@ -35,5 +35,10 @@ public class OrderDetailService extends BaseService<OrderDetail>{
         orderDetailDAO.save(entity);
     }
 
+    //For Admin Dashboard
+    public Long getOrdersCount() {
+        orderDetailDAO = new OrderDetailDAO();
+        return orderDetailDAO.getTotalOrderCount();
+    }
 
 }

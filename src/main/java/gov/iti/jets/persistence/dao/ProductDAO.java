@@ -142,4 +142,12 @@ public class ProductDAO extends BaseDAO<Product> {
         System.out.println("products = "+ products.size());
         return  products;
     }
+
+    public Double getTotalRevenue() {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Double> cq = cb.createQuery(Double.class);
+        Root<OrderDetail> orderDetailRoot = cq.from(OrderDetail.class);
+        cq.select(cb.sum(orderDetailRoot.get("total")));
+        return entityManager.createQuery(cq).getSingleResult();
+    }
 }
