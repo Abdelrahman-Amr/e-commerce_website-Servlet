@@ -18,29 +18,27 @@ import java.util.List;
 public class PreviewCustomerServlet extends HttpServlet {
 
     CustomerService customerService;
-    List<CustomerDto> customerList;
 
-    int pageNum=0;
     @Override
     public void init()
     {
         customerService = CustomerService.getInstance();
-        customerList = new ArrayList<>();
+
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //super.doGet(req, resp);
         //System.out.println("get");
+
         RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
         rd.include(request, response);
         //System.out.println("after header");
-        pageNum=Math.round(customerService.getRecordsCount()/10f);
+        int pageNum = pageNum=(int)(Math.ceil(customerService.getRecordsCount()/10f));
         if(pageNum==0)
         {
             pageNum = 1;
         }
-        customerList.clear();
-        customerList = customerService.getCustomerList(1);
+        List<CustomerDto>  customerList = customerService.getCustomerList(1);
         request.getSession(false).setAttribute("customerList",customerList);
         request.getSession(false).setAttribute("pageNo",1);
         //request.getSession(false).setAttribute("startInd",0);
@@ -57,14 +55,18 @@ public class PreviewCustomerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        customerList.clear();
+        List<CustomerDto>  customerList = new ArrayList<>();
+
+        int pageNum = pageNum=(int)(Math.ceil(customerService.getRecordsCount()/10f));
 
         //System.out.println(request.getParameter("goal"));
         int pageNo = (Integer) (request.getSession(false).getAttribute("pageNo"));
 
         if(request.getParameter("goal").equals("next")) {
             pageNo++;
-            if(pageNo>pageNum) pageNo=pageNum;
+            if(pageNo>pageNum) {
+                pageNo = (int)pageNum;
+            }
         } else {
 
             pageNo--;

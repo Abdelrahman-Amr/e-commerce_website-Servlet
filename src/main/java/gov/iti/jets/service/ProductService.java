@@ -32,8 +32,6 @@ public class ProductService extends BaseService<Product> {
 
     private ProductService() {
         productDAO = new ProductDAO();
-
-
         productMapper = Mappers.getMapper(ProductMapper.class);
     }
 
@@ -65,12 +63,13 @@ public class ProductService extends BaseService<Product> {
         return productDtos;
     }
     public List<ProductDto> getProductsByCriteria(Map<String, String> params, int offset, int maxNoOfRecordsPerPage) {
-//        productDAO = new ProductDAO();
+        productDAO = new ProductDAO();
         List<Product> products = productDAO.getProductsByCriteria(params, offset, maxNoOfRecordsPerPage);
         List<ProductDto> productDtos =
                 products.stream()
                         .map(product -> productMapper.toDto(product))
                         .collect(Collectors.toList());
+
         return productDtos;
     }
 
@@ -119,5 +118,10 @@ public class ProductService extends BaseService<Product> {
         Product product = productDAO.getProductById(id);
         //ProductDto productDto = productMapper.toDto(product);
         return product;
+    }
+    public Product get(Long id)
+    {
+        productDAO = new ProductDAO();
+        return productDAO.get(id);
     }
 }

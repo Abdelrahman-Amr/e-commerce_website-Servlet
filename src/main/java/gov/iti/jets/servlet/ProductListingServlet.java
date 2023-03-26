@@ -46,7 +46,7 @@ public class ProductListingServlet extends HttpServlet {
                 }
             }
         }else{
-            req.getServletContext().setAttribute("currentCat","Shop");
+//            req.getServletContext().setAttribute("currentCat","Shop");
         }
 
         params.put("price", req.getParameter("price"));

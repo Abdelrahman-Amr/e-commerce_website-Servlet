@@ -29,11 +29,12 @@
                                 ${cat.name}
                         </a>
                     </li>
+                    <input type="hidden" id="catInput" value="${cat.name}">
                 </c:forEach>
             </ul>
 
         </div>
-        <h2 class="cat-header ">${currentCat}</h2>
+        <h2 class="cat-header " id="currentCat"></h2>
 
     </div>
     <div class="sorting">

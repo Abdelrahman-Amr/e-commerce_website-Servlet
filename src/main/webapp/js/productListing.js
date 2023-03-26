@@ -29,6 +29,10 @@ jQuery(function ($) {
 
 function loadList(el, evt) {
     var currentCategory = $('.categories ul li a.active').attr('id');
+    console.log($('#catInput').val());
+
+    $('#currentCat').html($('#catInput').val());
+
     var priceFilter = el.value;
     evt.preventDefault();
     if (currentCategory === undefined)
@@ -43,7 +47,10 @@ function loadList(el, evt) {
 }
 
 function filterProducts(el, evt) {
+    console.log("ihhhh");
     var currentCategory = $('.categories ul li a.active').attr('id');
+    console.log($('#catInput').val());
+    $('#currentCat').html($('#catInput').val());
     var priceFilter = el.value;
     evt.preventDefault();
     if (currentCategory === undefined)

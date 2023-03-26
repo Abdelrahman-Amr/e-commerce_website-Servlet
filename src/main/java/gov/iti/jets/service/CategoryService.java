@@ -2,8 +2,10 @@ package gov.iti.jets.service;
 
 import gov.iti.jets.dto.CategoryDto;
 import gov.iti.jets.entity.Category;
+import gov.iti.jets.entity.Product;
 import gov.iti.jets.mapper.CategoryMapper;
 import gov.iti.jets.persistence.dao.CategoryDAO;
+import gov.iti.jets.persistence.dao.ProductDAO;
 import org.checkerframework.checker.units.qual.C;
 import org.mapstruct.factory.Mappers;
 
@@ -40,5 +42,10 @@ public class CategoryService extends BaseService<Category>{
     public List<Category> getAllCategories()
     {
         return categoryDAO.getAll();
+    }
+    public Category get(Long id)
+    {
+        categoryDAO = new CategoryDAO();
+        return categoryDAO.get(id);
     }
 }
