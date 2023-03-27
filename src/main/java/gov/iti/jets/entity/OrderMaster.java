@@ -1,15 +1,13 @@
 package gov.iti.jets.entity;
 
 import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,13 +19,16 @@ import java.util.Set;
 public class OrderMaster extends BaseEntity{
 
     @Column(name = "creation_time")
-    private LocalDate creationTime;
+    @Temporal(TemporalType.DATE)
+    private Date creationTime;
 
     @Column(name = "update_time")
-    private LocalDate updateTime;
+    @Temporal(TemporalType.DATE)
+    private Date updateTime;
 
     @Column(name = "date")
-    private LocalDate date;
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
     @Column(name = "is_done")
     private Boolean isDone;

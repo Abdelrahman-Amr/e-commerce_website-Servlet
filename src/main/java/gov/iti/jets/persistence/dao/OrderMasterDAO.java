@@ -52,5 +52,15 @@ public class OrderMasterDAO extends BaseDAO<OrderMaster>{
 //        query.executeUpdate();
     }
 
+    public int getRecordsCount() {
+        return getAll().size();
+    }
+
+    public List<OrderMaster> getOrders(int index) {
+        Query query=entityManager.createQuery(" from OrderMaster o",OrderMaster.class).setFirstResult(index).setMaxResults(10);
+        List<OrderMaster> masterOrders=query.getResultList();
+        return masterOrders;
+    }
+
 }
 

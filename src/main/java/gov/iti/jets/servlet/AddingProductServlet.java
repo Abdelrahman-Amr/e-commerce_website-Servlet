@@ -23,17 +23,23 @@ import java.util.List;
 @MultipartConfig
 public class AddingProductServlet extends HttpServlet {
 
-    ProductService productService = ProductService.getInstance();
+    ProductService productService;
 
-    CategoryService categoryService = CategoryService.getInstance();
+    CategoryService categoryService;
 
-    List<CategoryDto> categoryList;
-
+    @Override
+    public void init()
+    {
+        productService = ProductService.getInstance();
+        categoryService = CategoryService.getInstance();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
         rd.include(request, response);
+
+        List<CategoryDto> categoryList;
 
         categoryList = categoryService.getAll();
 
@@ -53,7 +59,6 @@ public class AddingProductServlet extends HttpServlet {
         try {
             resp.setContentType("application/json");
 
-            ServletContext servletContext = req.getServletContext();
 //            String path = servletContext.getRealPath("/images/");
             String path = Constants.imgPath;
 

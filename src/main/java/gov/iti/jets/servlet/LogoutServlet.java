@@ -22,6 +22,7 @@ import org.mapstruct.factory.Mappers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class LogoutServlet extends HttpServlet {
@@ -56,7 +57,7 @@ public class LogoutServlet extends HttpServlet {
           if(cart!=null && cart.size()>0)
           {
               OrderMaster orderMaster = new OrderMaster();
-              orderMaster.setDate(LocalDate.now());
+              orderMaster.setDate(new Date());
               orderMaster.setIsDone(false);
               orderMaster.setTotal((double)session.getAttribute("cartTotal"));
               orderMaster.setIsCart(true);
