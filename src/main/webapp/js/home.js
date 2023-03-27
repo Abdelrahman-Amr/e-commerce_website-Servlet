@@ -28,7 +28,7 @@ function priorityCallback(responseTxt, statusTxt, xhr) {
                     "                                                    <div class=\"snipcart-thumb\">\n" +
                     "                                                        <a href=\'item?productId="+products[i].id+"'><img title=\" \" alt=\" \"\n" +
                     "                                                                                    src=\"image?imgName=" + products[i].imageUrl + "\"/></a>\n" +
-                    "                                                        <<h4>" + products[i].name + "</h4>  <br>\n" +
+                    "                                                        <h4>" + products[i].name + "</h4>  <br>\n" +
                     "                                                        <h4>$" + products[i].price + "<span>$" + disc + "</span></h4>\n" +
                     "                                                    </div>\n" +
                     "                                                    <div class=\"snipcart-details top_brand_home_details\">\n" +

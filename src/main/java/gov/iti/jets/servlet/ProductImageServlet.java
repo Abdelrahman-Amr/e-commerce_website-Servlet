@@ -27,7 +27,7 @@ public class ProductImageServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = request.getServletContext();
         String imgName = request.getParameter("imgName") ;
-//        String path = context.getRealPath("D:\\images/")+imgName;
+//        String path = context.getRealPath("/images/")+imgName;
         String path= Constants.imgPath+imgName;
         File f = new File("D:/x.txt");
         f.createNewFile();
