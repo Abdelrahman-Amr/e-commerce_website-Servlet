@@ -97,7 +97,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>productListing</servlet-name>
-        <servlet-class>gov.iti.jets.servlet.ProductListingServlet</servlet-class>
+        <servlet-class>gov.iti.jets.servlet.DeleteProductServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>productListing</servlet-name>
@@ -153,6 +153,23 @@
         <servlet-name>adminDashboard</servlet-name>
         <url-pattern>/dashboard</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>adminProductListing</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.AdminProductListingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminProductListing</servlet-name>
+        <url-pattern>/adminProductListing</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteProduct</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.DeleteProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteProduct</servlet-name>
+        <url-pattern>/deleteProduct</url-pattern>
+    </servlet-mapping>
+
     <!--    //Listeners-->
     <listener>
         <listener-class>
