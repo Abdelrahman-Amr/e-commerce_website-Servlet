@@ -4,10 +4,9 @@ import gov.iti.jets.dto.ProductDto;
 import gov.iti.jets.entity.Product;
 import gov.iti.jets.mapper.ProductMapper;
 import gov.iti.jets.persistence.dao.ProductDAO;
-import jakarta.persistence.Query;
 import org.mapstruct.factory.Mappers;
 
-import java.util.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -63,6 +62,7 @@ public class ProductService extends BaseService<Product> {
                         .collect(Collectors.toList());
         return productDtos;
     }
+
     public List<ProductDto> getProductsByCriteria(Map<String, String> params, int offset, int maxNoOfRecordsPerPage) {
         productDAO = new ProductDAO();
         List<Product> products = productDAO.getProductsByCriteria(params, offset, maxNoOfRecordsPerPage);
@@ -83,29 +83,30 @@ public class ProductService extends BaseService<Product> {
                         .collect(Collectors.toList());
         return productDtos;
     }
-    public Long getNoOfReturnedProducts(Map<String,String> params)
-    {
+
+    public Long getNoOfReturnedProducts(Map<String, String> params) {
         productDAO = new ProductDAO();
         return productDAO.getReturnedProductsCount(params);
     }
+
     public Product addNewProduct(ProductDto productDto, Boolean active) {
 
         productDAO = new ProductDAO();
         Product product = productMapper.toEntity(productDto);
         product.setCreationTime(new Date());
         product.setActive(active);
-        if(productDAO.save(product)) {
+        if (productDAO.save(product)) {
             System.out.println(product.getId());
             return product;
         }
         return null;
     }
 
-    public void update(Product entity)
-    {
+    public void update(Product entity) {
         productDAO = new ProductDAO();
         productDAO.update(entity);
     }
+
     public Product editProduct(ProductDto productDto) {
         Product oldProduct = get(productDto.getId());
         Product product = productMapper.toEntity(productDto);
@@ -120,33 +121,37 @@ public class ProductService extends BaseService<Product> {
 //        ProductDto productDto = productMapper.toDto(product);
         return product;
     }
-    public Product get(Long id)
-    {
+
+    public Product get(Long id) {
         productDAO = new ProductDAO();
         return productDAO.get(id);
     }
 
-    public List<ProductDto> getPriorityProducts()
-    {
+    public List<ProductDto> getPriorityProducts() {
         productDAO = new ProductDAO();
         List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getPriorityProducts());
-        return  productDtos;
+        return productDtos;
     }
-    public List<ProductDto> getMostSellingProducts()
-    {
+
+    public List<ProductDto> getMostSellingProducts() {
         productDAO = new ProductDAO();
         List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getMostSellingProducts());
-        return  productDtos;
+        return productDtos;
     }
-    public List<ProductDto> getOffersProducts()
-    {
+
+    public List<ProductDto> getOffersProducts() {
         productDAO = new ProductDAO();
         List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getOffersProducts());
-        return  productDtos;
+        return productDtos;
     }
 
     public Double getTotalRevenue() {
         productDAO = new ProductDAO();
         return productDAO.getTotalRevenue();
+    }
+
+    public void deleteProduct(Long id) {
+        productDAO = new ProductDAO();
+        productDAO.deleteProduct(id);
     }
 }

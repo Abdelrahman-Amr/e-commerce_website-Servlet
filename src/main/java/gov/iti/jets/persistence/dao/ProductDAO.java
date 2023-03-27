@@ -1,14 +1,12 @@
 package gov.iti.jets.persistence.dao;
 
-import gov.iti.jets.entity.*;
+import gov.iti.jets.entity.Category_;
+import gov.iti.jets.entity.OrderDetail;
 import gov.iti.jets.entity.Product;
-import gov.iti.jets.util.MyLocal;
+import gov.iti.jets.entity.Product_;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.*;
 
 import java.util.List;
 import java.util.Map;
@@ -73,9 +71,8 @@ public class ProductDAO extends BaseDAO<Product> {
         if (params.get("price") != null) {
             if (params.get("price").equals("asc")) {
                 criteriaQuery.orderBy(criteriaBuilder.asc(productRoot.get("price")));
-            }
-            else if (params.get("price").equals("desc")) {
-                  criteriaQuery.orderBy(criteriaBuilder.desc(productRoot.get("price")));
+            } else if (params.get("price").equals("desc")) {
+                criteriaQuery.orderBy(criteriaBuilder.desc(productRoot.get("price")));
             }
         }
         List<Product> resultList = entityManager.createQuery(criteriaQuery).setMaxResults(maxNoOfRecordsPerPage).setFirstResult(offset).getResultList();
@@ -120,27 +117,24 @@ public class ProductDAO extends BaseDAO<Product> {
         return noOfRecords;
     }
 
-    public List<Product> getPriorityProducts()
-    {
-        Query query=entityManager.createQuery(" from Product p where p.priority=1",Product.class).setMaxResults(6);
-        List<Product> products=query.getResultList();
-        return  products;
+    public List<Product> getPriorityProducts() {
+        Query query = entityManager.createQuery(" from Product p where p.priority=1", Product.class).setMaxResults(6);
+        List<Product> products = query.getResultList();
+        return products;
     }
 
-    public List<Product> getMostSellingProducts()
-    {
-        Query query=entityManager.createQuery(" select o.product from OrderDetail o group by o.product  order by o.quantity desc",Product.class).setMaxResults(6);
-        List<Product> products=query.getResultList();
-        System.out.println("products = "+ products.size());
-        return  products;
+    public List<Product> getMostSellingProducts() {
+        Query query = entityManager.createQuery(" select o.product from OrderDetail o group by o.product  order by o.quantity desc", Product.class).setMaxResults(6);
+        List<Product> products = query.getResultList();
+        System.out.println("products = " + products.size());
+        return products;
     }
 
-    public List<Product> getOffersProducts()
-    {
-        Query query=entityManager.createQuery(" from Product p where p.discount>0 order by p.discount desc",Product.class).setMaxResults(3);
-        List<Product> products=query.getResultList();
-        System.out.println("products = "+ products.size());
-        return  products;
+    public List<Product> getOffersProducts() {
+        Query query = entityManager.createQuery(" from Product p where p.discount>0 order by p.discount desc", Product.class).setMaxResults(3);
+        List<Product> products = query.getResultList();
+        System.out.println("products = " + products.size());
+        return products;
     }
 
     public Double getTotalRevenue() {
@@ -149,5 +143,15 @@ public class ProductDAO extends BaseDAO<Product> {
         Root<OrderDetail> orderDetailRoot = cq.from(OrderDetail.class);
         cq.select(cb.sum(orderDetailRoot.get("total")));
         return entityManager.createQuery(cq).getSingleResult();
+    }
+
+    public void deleteProduct(Long id) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaDelete<Product> delete = cb.createCriteriaDelete(Product.class);
+        Root<Product> root = delete.from(Product.class);
+        delete.where(cb.equal(root.get("id"), id));
+        entityManager.getTransaction().begin();
+        entityManager.createQuery(delete).executeUpdate();
+        entityManager.getTransaction().commit();
     }
 }
