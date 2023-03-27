@@ -87,9 +87,9 @@
                                     <form  method="post" action="cart" onsubmit="addToCartSmall(event)">
                                         <fieldset>
                                             <input type="hidden" name="pdId" value="${prod.id}">
+                                            <input type="hidden" name="item_name" value="${prod.name}">
                                             <input type="hidden" name="quantity" value="1">
                                             <input type="hidden" name="business" value=" ">
-                                            <input type="hidden" name="item_name" value="${prod.name}">
                                             <input type="hidden" name="amount" value="35.99">
                                             <input type="hidden" name="discount_amount" value="1.00">
                                             <input type="hidden" name="currency_code" value="USD">

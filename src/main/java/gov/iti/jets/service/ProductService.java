@@ -144,4 +144,11 @@ public class ProductService extends BaseService<Product> {
         List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getOffersProducts());
         return  productDtos;
     }
+
+    public List<ProductDto> getRelatedProducts(long catId)
+    {
+        productDAO = new ProductDAO();
+        List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getRelatedProducts(catId));
+        return  productDtos;
+    }
 }

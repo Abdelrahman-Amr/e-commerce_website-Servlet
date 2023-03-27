@@ -104,15 +104,9 @@
                                 <figure>
                                     <div class="snipcart-item block">
                                         <div class="snipcart-thumb">
-                                            <a href="products.jsp"><img title=" " alt=" " src="image?imgName=${prod.imageUrl}"></a>
-                                            <p>${prod.name}</p>
-                                            <div class="stars">
-                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
-                                            </div>
+                                            <a href="item?productId=${prod.id}"><img title=" " alt=" " src="image?imgName=${prod.imageUrl}"></a>
+                                            <h4>${prod.name}</h4>
+                                            <br>
                                             <h4>$${prod.price}
                                                 <c:if test="${prod.discount>0}">
                                                     <span>$${prod.price + prod.price* (prod.discount/100)}</span>
@@ -121,9 +115,11 @@
                                              </h4>
                                         </div>
                                         <div class="snipcart-details top_brand_home_details">
-                                            <form action="#" method="post">
+                                            <form  method="post" action="cart" onsubmit="addToCartSmall(event)">
                                                 <fieldset>
                                                     <input type="hidden" name="cmd" value="_cart">
+                                                    <input type="hidden" name="pdId" value="${prod.id}">
+                                                    <input type="hidden" name="item_name" value="${prod.name}">
                                                     <input type="hidden" name="add" value="1">
                                                     <input type="hidden" name="business" value=" ">
                                                     <input type="hidden" name="item_name" value="basmati rise">
