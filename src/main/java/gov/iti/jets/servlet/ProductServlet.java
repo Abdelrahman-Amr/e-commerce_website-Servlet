@@ -9,6 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.mapstruct.factory.Mappers;
 
 import java.io.IOException;
@@ -30,8 +31,17 @@ public class ProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
         String productId = req.getParameter("productId");
         ProductDto productDto = productService.getProductById(Long.valueOf(productId));
-        req.getServletContext().setAttribute("product", productDto);
-
+//        req.getServletContext().setAttribute("product", productDto);
+        HttpSession session = req.getSession(false);
+        if(session ==null)
+        {
+            session = req.getSession(true);
+        }
+        session.setAttribute("product", productDto);
+        if(productDto!=null) {
+            List<ProductDto> relatedProducts = productService.getRelatedProducts(productDto.getCatg_id());
+            session.setAttribute("relatedProducts",relatedProducts);
+        }
         response.setContentType("text/html");
         RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
         rd.include(req, response);
