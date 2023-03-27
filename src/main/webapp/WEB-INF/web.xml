@@ -5,7 +5,6 @@
          version= "5.0"
          metadata-complete= "true">
 
-
 <!--    //Servlets-->
     <servlet>
         <servlet-name>Main</servlet-name>
