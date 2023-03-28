@@ -11,7 +11,7 @@ import java.util.List;
 public class OrderDetailDAO extends BaseDAO<OrderDetail> {
 
     public OrderDetailDAO() {
-        super(OrderDetail.class, DBFactory.getInstance().createEntityManager());
+        super(OrderDetail.class, MyLocal.getInstance().get());
     }
 
 

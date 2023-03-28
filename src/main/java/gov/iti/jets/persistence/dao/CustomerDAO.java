@@ -17,7 +17,7 @@ public class CustomerDAO extends BaseDAO<Customer>{
 
     public CustomerDAO()
     {
-        super(Customer.class, DBFactory.getInstance().createEntityManager());
+        super(Customer.class, MyLocal.getInstance().get());
     }
 
 
