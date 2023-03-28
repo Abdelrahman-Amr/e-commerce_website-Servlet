@@ -93,6 +93,11 @@ public class ProductDAO extends BaseDAO<Product> {
                         Predicate newPredicate = criteriaBuilder.and(criteriaBuilder.equal(productRoot.get(Product_.catg).get(Category_.id), Long.valueOf(params.get("catId"))));
                         predicate = criteriaBuilder.and(predicate, newPredicate);
                         break;
+                    case "Search":
+                        value = value.trim();
+                        newPredicate = criteriaBuilder.and(criteriaBuilder.like(productRoot.get("name"), "%" + value + "%"));
+                        predicate = criteriaBuilder.and(predicate, newPredicate);
+                        break;
                 }
             }
         }
@@ -142,6 +147,7 @@ public class ProductDAO extends BaseDAO<Product> {
         System.out.println("products = " + products.size());
         return products;
     }
+
     public List<Product> getOffersProducts() {
         Query query = entityManager.createQuery(" from Product p where p.discount>0 order by p.discount desc", Product.class).setMaxResults(3);
         List<Product> products = query.getResultList();

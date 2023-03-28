@@ -34,6 +34,7 @@ public class ProductListingServlet extends HttpServlet {
         Map<String, String> params = new HashMap<>();
         params.put("page", req.getParameter("page"));
         params.put("catId", req.getParameter("catId"));
+        params.put("Search", req.getParameter("Search"));
         if( req.getParameter("catId") !=null){
             long catId =  Long.parseLong(req.getParameter("catId"));
             List<CategoryDto> cats = (List<CategoryDto>) req.getServletContext().getAttribute("cats");
