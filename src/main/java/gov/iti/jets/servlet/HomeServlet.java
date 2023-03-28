@@ -55,7 +55,7 @@ public class HomeServlet extends HttpServlet {
         }
         else if(sel==2)
         {
-            req.getServletContext().setAttribute("mostProducts", productService.getPriorityProducts());
+            req.getServletContext().setAttribute("mostProducts", productService.getMostSellingProducts());
 
 
         }else{

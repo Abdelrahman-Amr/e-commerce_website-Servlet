@@ -3,6 +3,7 @@ package gov.iti.jets.dto;
 import gov.iti.jets.entity.Customer;
 import gov.iti.jets.util.LocalDateAdapter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class OrderMasterTableDto {
@@ -11,11 +12,11 @@ public class OrderMasterTableDto {
 
     String customer;
 
-    Date date;
+    LocalDate date;
 
     double total;
 
-    public OrderMasterTableDto(Long id, String customer, Date date, double total) {
+    public OrderMasterTableDto(Long id, String customer, LocalDate date, double total) {
         this.id = id;
         this.customer = customer;
         this.date = date;
@@ -48,11 +49,11 @@ public class OrderMasterTableDto {
         this.customer = customer;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

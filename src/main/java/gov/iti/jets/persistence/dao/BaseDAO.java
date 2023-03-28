@@ -65,6 +65,12 @@ public abstract class BaseDAO <E extends BaseEntity>{
         entityManager.getTransaction().commit();
 //        entityManager.refresh(entity);
     }
+    public void refreshCustomer(E entity)
+    {
+        entityManager.getTransaction().begin();
+        entityManager.refresh(entity);
+        entityManager.getTransaction().commit();
+    }
 
     public void setManager(EntityManager manager)
     {

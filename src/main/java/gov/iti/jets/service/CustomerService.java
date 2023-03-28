@@ -64,7 +64,7 @@ public class CustomerService extends BaseService<Customer>{
         boolean result  = customerDAO.save(customerEntity);
         if(result)
         {
-            customerDAO.refresh(customerEntity);
+            customerDAO.refreshCustomer(customerEntity);
             registrationCustomerDTO.setId(customerEntity.getId());
             registrationCustomerDTO.setBirthday(customerEntity.getBirthday());
         }

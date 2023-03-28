@@ -20,15 +20,15 @@ public class OrderMaster extends BaseEntity{
 
     @Column(name = "creation_time")
     @Temporal(TemporalType.DATE)
-    private Date creationTime;
+    private LocalDate creationTime;
 
     @Column(name = "update_time")
     @Temporal(TemporalType.DATE)
-    private Date updateTime;
+    private LocalDate updateTime;
 
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "is_done")
     private Boolean isDone;

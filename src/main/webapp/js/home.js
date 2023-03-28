@@ -225,8 +225,7 @@ function priorityCallback(responseTxt, statusTxt, xhr) {
     if (statusTxt == "success" && xhr.status == 200) {
 
         var products = responseTxt;
-        console.log(products[i]);
-        for (let i = 2; i < products.length; i++) {
+        for (let i = 0; i < products.length; i++) {
             $('#nn'+products[i].id).html(products[i].name);
             $('#ii'+products[i].id).attr("src",'image?imgName='+products[i].imageUrl);
             $('#pp'+products[i].id).html(products[i].price);
@@ -247,8 +246,7 @@ function mostSellingCallback(responseTxt, statusTxt, xhr) {
     if (statusTxt == "success" && xhr.status == 200) {
 
         var products = responseTxt;
-        console.log(products[i]);
-        for (let i = 2; i < products.length; i++) {
+        for (let i = 0; i < products.length; i++) {
             $('#n'+products[i].id).html(products[i].name);
             $('#i'+products[i].id).attr("src",'image?imgName='+products[i].imageUrl);
             $('#p'+products[i].id).html(products[i].price);

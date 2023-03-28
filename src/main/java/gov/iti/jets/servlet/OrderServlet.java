@@ -69,7 +69,7 @@ public class OrderServlet  extends HttpServlet {
 
             orderMasterService.deleteCart(customer.getId());
             OrderMaster orderMaster = new OrderMaster();
-                    orderMaster.setDate(new Date());
+                    orderMaster.setDate(LocalDate.now());
                     orderMaster.setIsDone(false);
                     orderMaster.setTotal((double)session.getAttribute("cartTotal"));
                     orderMaster.setIsCart(false);
