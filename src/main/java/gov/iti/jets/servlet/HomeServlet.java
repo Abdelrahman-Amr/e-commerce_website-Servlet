@@ -4,8 +4,11 @@ package gov.iti.jets.servlet;
 import com.google.gson.Gson;
 import gov.iti.jets.dto.CategoryDto;
 import gov.iti.jets.dto.ProductDto;
+import gov.iti.jets.dto.SizeDto;
+import gov.iti.jets.persistence.dao.DBFactory;
 import gov.iti.jets.service.CategoryService;
 import gov.iti.jets.service.ProductService;
+import gov.iti.jets.service.SizeService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -27,6 +30,16 @@ public class HomeServlet extends HttpServlet {
     }
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+//        DBFactory.getInstance();
+//        MyLocal.getInstance().set(DBFactory.getInstance().createEntityManager());
+        CategoryService categoryService =  CategoryService.getInstance();
+        SizeService sizeService =  SizeService.getInstance();
+
+        List<CategoryDto> categoryDtos = categoryService.getAll();
+        req.getServletContext().setAttribute("cats", categoryDtos);
+
+        List<SizeDto> sizeDtos = sizeService.listAllSizes();
+        req.getServletContext().setAttribute("sizes", sizeDtos);
         List<ProductDto> productDtos = productService.getOffersProducts();
         req.getServletContext().setAttribute("offerProducts", productDtos);
         productDtos = productService.getMostSellingProducts();
