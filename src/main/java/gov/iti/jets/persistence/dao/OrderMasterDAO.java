@@ -12,7 +12,7 @@ public class OrderMasterDAO extends BaseDAO<OrderMaster>{
 
     public OrderMasterDAO()
     {
-        super(OrderMaster.class, DBFactory.getInstance().createEntityManager());
+        super(OrderMaster.class, MyLocal.getInstance().get());
     }
 
 

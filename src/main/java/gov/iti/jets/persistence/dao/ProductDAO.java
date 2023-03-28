@@ -17,7 +17,7 @@ public class ProductDAO extends BaseDAO<Product> {
 
 
     public ProductDAO() {
-        super(Product.class, DBFactory.getInstance().createEntityManager());
+        super(Product.class, MyLocal.getInstance().get());
     }
 
 

@@ -14,7 +14,7 @@ public class CategoryDAO extends BaseDAO<Category>{
 
     public CategoryDAO()
     {
-        super(Category.class, DBFactory.getInstance().createEntityManager());
+        super(Category.class, MyLocal.getInstance().get());
     }
 
 
@@ -22,6 +22,7 @@ public class CategoryDAO extends BaseDAO<Category>{
     {
         Query query = entityManager.createQuery("from Category");
         List<Category> categories = query.getResultList();
+
         return  categories;
     }
 
