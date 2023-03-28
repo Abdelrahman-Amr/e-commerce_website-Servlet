@@ -31,7 +31,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><i class="fa fa-shopping-cart"></i> Total Orders</h5>
                                 <p class="card-text">${totalOrders}</p>
-                                <a href="order">
+                                <a href="PreviewOrder">
                                     <button class="btn btn-primary btn-sm" style="margin-right: 10px;">order details
                                     </button>
                                 </a>
