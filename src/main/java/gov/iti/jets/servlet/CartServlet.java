@@ -72,59 +72,39 @@ public class CartServlet extends HttpServlet {
         }
         List<OrderDetailDto> cart = (List<OrderDetailDto>) session.getAttribute("cart");
         OrderDetailDto order =  orderMasterService.searchProduct(cart, productId, sizeDto.getName()) ;
-        if(session != null && (session.getAttribute(Constants.IS_LOGIN)==null) || session.getAttribute(Constants.IS_LOGIN).equals("false") ) {
+//        if(session != null && (session.getAttribute(Constants.IS_LOGIN)==null) || session.getAttribute(Constants.IS_LOGIN).equals("false") ) {
 
             if(order == null)
             {
 
-                OrderDetailDto orderDetailDto = OrderDetailDto.builder()
-                    .price(productDto.getPrice() + productDto.getPrice() * sizeDto.getPercentage())
-                    .product(productDto)
-                    .size(sizeDto.getName())
-                    .quantity(1)
-                    .total(1 * (productDto.getPrice() + productDto.getPrice() * sizeDto.getPercentage()))
-                    .build();
-            cart.add(orderDetailDto);
+                orderMasterService.createOrderDetail(productDto, sizeDto, cart);
 
             }
             else
             {
-                order.setPrice(productDto.getPrice() + productDto.getPrice() * sizeDto.getPercentage());
-                order.setProduct(productDto);
-                order.setSize(sizeDto.getName());
-                order.setQuantity(op+ order.getQuantity());
-                order.setTotal(order.getQuantity() * (productDto.getPrice() + productDto.getPrice() * sizeDto.getPercentage()));
+                orderMasterService.updateOrderDetail(productDto, sizeDto, order, op);
                 if(order.getQuantity()==0)
                 {
                     cart.remove(order);
                 }
             }
-        }
-        else{
-           if(order == null)
-           {
-               OrderDetailDto orderDetailDto = OrderDetailDto.builder()
-                       .price(productDto.getPrice() + productDto.getPrice() * sizeDto.getPercentage())
-                       .product(productDto)
-                       .size(sizeDto.getName())
-                       .quantity(1)
-                       .total(1 * (productDto.getPrice() + productDto.getPrice() * sizeDto.getPercentage()))
-                       .build();
-                        cart.add(orderDetailDto);
-           }
-           else
-           {
-                       order.setPrice(productDto.getPrice() + productDto.getPrice() * sizeDto.getPercentage());
-                       order.setProduct(productDto);
-                       order.setSize(sizeDto.getName());
-                       order.setQuantity(op+ order.getQuantity());
-                       order.setTotal(order.getQuantity() * (productDto.getPrice() + productDto.getPrice() * sizeDto.getPercentage()));
-                       if(order.getQuantity()==0)
-                       {
-                           cart.remove(order);
-                       }
-           }
-        }
+//        }
+//        else{
+//           if(order == null)
+//           {
+//               orderMasterService.createOrderDetail(productDto, sizeDto, cart);
+//
+//           }
+//           else
+//           {
+//               orderMasterService.updateOrderDetail(productDto, sizeDto, order, op);
+//
+//               if(order.getQuantity()==0)
+//                       {
+//                           cart.remove(order);
+//                       }
+//           }
+//        }
         CustomerDto customerDto = (CustomerDto) session.getAttribute("customer");
         if(cart.size() == 0 && customerDto!=null)
         {
