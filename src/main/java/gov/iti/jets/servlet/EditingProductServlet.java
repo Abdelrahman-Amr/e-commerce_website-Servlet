@@ -1,7 +1,6 @@
 package gov.iti.jets.servlet;
 
 import com.google.gson.Gson;
-import gov.iti.jets.dto.CategoryDto;
 import gov.iti.jets.dto.ProductDto;
 import gov.iti.jets.entity.Category;
 import gov.iti.jets.entity.Product;
@@ -9,13 +8,9 @@ import gov.iti.jets.service.CategoryService;
 import gov.iti.jets.service.ProductService;
 import gov.iti.jets.util.Constants;
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,12 +23,6 @@ public class EditingProductServlet extends HttpServlet {
 
     CategoryService categoryService;
 
-    List<Category> categoryList;
-
-    Product product;
-
-    Long productId;
-
     @Override
     public void init() {
         productService = ProductService.getInstance();
@@ -42,6 +31,10 @@ public class EditingProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        List<Category> categoryList;
+        long productId;
+        HttpSession httpSession = request.getSession(false);
 
         try {
 
@@ -57,14 +50,14 @@ public class EditingProductServlet extends HttpServlet {
 
             Category currentCategory = categoryService.get(productDto.getCatg_id());
 
-            request.getSession(false).setAttribute("currentProduct", productDto);
-            request.getSession(false).setAttribute("currentProductCategory", currentCategory.getName());
+            httpSession.setAttribute("currentProduct", productDto);
+            httpSession.setAttribute("currentProductCategory", currentCategory.getName());
 
             categoryList = categoryService.getAllCategories();
 
             categoryList.remove(currentCategory);
 
-            request.getSession(false).setAttribute("categoryList", categoryList);
+            httpSession.setAttribute("categoryList", categoryList);
 
             RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
             rd.include(request, response);
@@ -89,7 +82,6 @@ public class EditingProductServlet extends HttpServlet {
         try {
             resp.setContentType("application/json");
 
-            ServletContext servletContext = request.getServletContext();
 //            String path = servletContext.getRealPath("/images/");
             String path= Constants.imgPath;
 

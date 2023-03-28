@@ -29,6 +29,10 @@ public class HomeServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
         List<ProductDto> productDtos = productService.getOffersProducts();
         req.getServletContext().setAttribute("offerProducts", productDtos);
+        productDtos = productService.getMostSellingProducts();
+        req.getServletContext().setAttribute("mostProducts", productDtos);
+
+        req.getServletContext().setAttribute("priorityProducts", productService.getPriorityProducts());
 
         response.setContentType("text/html");
         RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
@@ -50,15 +54,15 @@ public class HomeServlet extends HttpServlet {
         if(sel==1)
         {
             productDtos = productService.getPriorityProducts();
-//            req.getSession(false).setAttribute("priorityProducts", productService.getPriorityProducts());
+
+            req.getServletContext().setAttribute("priorityProducts", productDtos);
         }
         else if(sel==2)
         {
             productDtos = productService.getMostSellingProducts();
-
+            req.getServletContext().setAttribute("mostProducts", productDtos);
         }else{
             productDtos = productService.getOffersProducts();
-
         }
         Gson gson = new Gson();
         String json = gson.toJson(productDtos);

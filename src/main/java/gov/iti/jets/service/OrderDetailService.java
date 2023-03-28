@@ -8,6 +8,8 @@ import gov.iti.jets.persistence.dao.OrderDetailDAO;
 import gov.iti.jets.persistence.dao.OrderMasterDAO;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 public class OrderDetailService extends BaseService<OrderDetail>{
         private volatile static OrderDetailService orderDetailService;
 
@@ -35,10 +37,13 @@ public class OrderDetailService extends BaseService<OrderDetail>{
         orderDetailDAO.save(entity);
     }
 
-    //For Admin Dashboard
-    public Long getOrdersCount() {
+    public List<OrderDetail> getOrderDetailList(OrderMaster orderMaster, int index) {
         orderDetailDAO = new OrderDetailDAO();
-        return orderDetailDAO.getTotalOrderCount();
+        return orderDetailDAO.getOrderDetailList(orderMaster, index);
     }
 
+    public int getOrderDetailCountForOrder(Long orderMasterId) {
+        orderDetailDAO = new OrderDetailDAO();
+        return orderDetailDAO.getOrderDetailCountForOrder(orderMasterId);
+    }
 }

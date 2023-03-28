@@ -51,6 +51,28 @@ public class OrderMasterDAO extends BaseDAO<OrderMaster>{
 //        query.setParameter("customerId",customerId);
 //        query.executeUpdate();
     }
+    public int getRecordsCount() {
+        return getAll().size();
+    }
 
+    public List<OrderMaster> getOrders(int index) {
+        Query query=entityManager.createQuery(" from OrderMaster o",OrderMaster.class).setFirstResult(index).setMaxResults(10);
+        List<OrderMaster> masterOrders=query.getResultList();
+        return masterOrders;
+    }
+    public void removeCart(long customerId)
+    {
+        try {
+            entityManager.getTransaction().begin();
+            OrderMaster orderMaster = searchForCart(customerId);
+            entityManager.remove(orderMaster);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+        finally {
+            entityManager.getTransaction().commit();
+        }
+    }
 }
 

@@ -17,7 +17,9 @@ public class MainServlet  extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 
-        response.sendRedirect("home");
+//        req.getSession(false).invalidate();
+////        response.sendRedirect("login");
+
     }
 
     @Override

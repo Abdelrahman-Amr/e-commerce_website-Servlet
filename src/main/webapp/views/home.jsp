@@ -60,18 +60,116 @@
                                 won't miss out on a great coffee.</p>
                         </div>
                         <div class="agile_top_brands_grids" id="adList">
+                            <c:forEach items="${priorityProducts}" var="prod">
 
+                                <div class="col-md-4 top_brand_left-1">
+                                    <div class="hover14 column">
+                                        <div class="agile_top_brand_left_grid">
+                                            <div class="agile_top_brand_left_grid_pos">
+                                                <c:if test="${prod.discount>0}">
+                                                    <img src="images/offer.png" alt=" " class="img-responsive">
+                                                </c:if>
+                                            </div>
+                                            <div class="agile_top_brand_left_grid1">
+                                                <figure>
+                                                    <div class="snipcart-item block">
+                                                        <div class="snipcart-thumb">
+                                                            <a href="item?productId=${prod.id}"><img title=" " id="ii${prod.id}" alt=" " src="image?imgName=${prod.imageUrl}"></a>
+                                                            <h4 id="nn${prod.id}">${prod.name}</h4>
+                                                            <br>
+                                                            <h4 id="p${prod.id}">$${prod.price}
+                                                                <c:if test="${prod.discount>0}">
+                                                                    <span id="dd${prod.id}">$${prod.price + prod.price* (prod.discount/100)}</span>
+
+                                                                </c:if>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="snipcart-details top_brand_home_details">
+                                                            <form  method="post" action="cart" onsubmit="addToCartSmall(event)">
+                                                                <fieldset>
+                                                                    <input type="hidden" name="cmd" value="_cart">
+                                                                    <input type="hidden" name="pdId" value="${prod.id}">
+                                                                    <input type="hidden" name="item_name" value="${prod.name}">
+                                                                    <input type="hidden" name="add" value="1">
+                                                                    <input type="hidden" name="business" value=" ">
+                                                                    <input type="hidden" name="item_name" value="basmati rise">
+                                                                    <input type="hidden" name="amount" value="30.99">
+                                                                    <input type="hidden" name="discount_amount" value="1.00">
+                                                                    <input type="hidden" name="currency_code" value="USD">
+                                                                    <input type="hidden" name="return" value=" ">
+                                                                    <input type="hidden" name="cancel_return" value=" ">
+                                                                    <input type="submit" name="submit" value="Add to cart" class="button">
+                                                                </fieldset>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                            <div class="clearfix"></div>
                         </div>
 <%--                        </div>--%>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tours" aria-labelledby="tours-tab">
                         <div class="agile-tp">
                             <h5>This week</h5>
-                            <p class="w3l-ad">We've pulled together all our most selling coffee into one place, so you
+                            <p class="w3l-ad">We've pulled together all our top selling coffee into one place, so you
                                 won't miss out on a great coffee.</p>
                         </div>
                         <div class="agile_top_brands_grids" id="mostList">
+                            <c:forEach items="${mostProducts}" var="prod">
 
+                                <div class="col-md-4 top_brand_left-1">
+                                    <div class="hover14 column">
+                                        <div class="agile_top_brand_left_grid">
+                                            <div class="agile_top_brand_left_grid_pos">
+                                                <c:if test="${prod.discount>0}">
+                                                    <img src="images/offer.png" alt=" " class="img-responsive">
+                                                </c:if>
+                                            </div>
+                                            <div class="agile_top_brand_left_grid1">
+                                                <figure>
+                                                    <div class="snipcart-item block">
+                                                        <div class="snipcart-thumb">
+                                                            <a href="item?productId=${prod.id}"><img title=" " id="i${prod.id}" alt=" " src="image?imgName=${prod.imageUrl}"></a>
+                                                            <h4 id="n${prod.id}">${prod.name}</h4>
+                                                            <br>
+                                                            <h4 id="p${prod.id}">$${prod.price}
+                                                                <c:if test="${prod.discount>0}">
+                                                                    <span id="d${prod.id}">$${prod.price + prod.price* (prod.discount/100)}</span>
+
+                                                                </c:if>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="snipcart-details top_brand_home_details">
+                                                            <form  method="post" action="cart" onsubmit="addToCartSmall(event)">
+                                                                <fieldset>
+                                                                    <input type="hidden" name="cmd" value="_cart">
+                                                                    <input type="hidden" name="pdId" value="${prod.id}">
+                                                                    <input type="hidden" name="item_name" value="${prod.name}">
+                                                                    <input type="hidden" name="add" value="1">
+                                                                    <input type="hidden" name="business" value=" ">
+                                                                    <input type="hidden" name="item_name" value="basmati rise">
+                                                                    <input type="hidden" name="amount" value="30.99">
+                                                                    <input type="hidden" name="discount_amount" value="1.00">
+                                                                    <input type="hidden" name="currency_code" value="USD">
+                                                                    <input type="hidden" name="return" value=" ">
+                                                                    <input type="hidden" name="cancel_return" value=" ">
+                                                                    <input type="submit" name="submit" value="Add to cart" class="button">
+                                                                </fieldset>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                            <div class="clearfix"></div>
                         </div>
 <%--                        <div class="agile_top_brands_grids">--%>
 <%--                            --%>
@@ -104,15 +202,9 @@
                                 <figure>
                                     <div class="snipcart-item block">
                                         <div class="snipcart-thumb">
-                                            <a href="products.jsp"><img title=" " alt=" " src="image?imgName=${prod.imageUrl}"></a>
-                                            <p>${prod.name}</p>
-                                            <div class="stars">
-                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
-                                            </div>
+                                            <a href="item?productId=${prod.id}"><img title=" " alt=" " src="image?imgName=${prod.imageUrl}"></a>
+                                            <h4>${prod.name}</h4>
+                                            <br>
                                             <h4>$${prod.price}
                                                 <c:if test="${prod.discount>0}">
                                                     <span>$${prod.price + prod.price* (prod.discount/100)}</span>
@@ -121,9 +213,11 @@
                                              </h4>
                                         </div>
                                         <div class="snipcart-details top_brand_home_details">
-                                            <form action="#" method="post">
+                                            <form  method="post" action="cart" onsubmit="addToCartSmall(event)">
                                                 <fieldset>
                                                     <input type="hidden" name="cmd" value="_cart">
+                                                    <input type="hidden" name="pdId" value="${prod.id}">
+                                                    <input type="hidden" name="item_name" value="${prod.name}">
                                                     <input type="hidden" name="add" value="1">
                                                     <input type="hidden" name="business" value=" ">
                                                     <input type="hidden" name="item_name" value="basmati rise">
@@ -149,6 +243,6 @@
     </div>
 
 </div>
-<script type="text/javascript">
-    getPriorityProducts();
-</script>
+<%--<script type="text/javascript">--%>
+<%--    getPriorityProducts();--%>
+<%--</script>--%>

@@ -22,6 +22,7 @@ import org.mapstruct.factory.Mappers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class LogoutServlet extends HttpServlet {
@@ -51,12 +52,15 @@ public class LogoutServlet extends HttpServlet {
         CustomerDto customerDto = (CustomerDto)session.getAttribute("customer");
         Customer customer = customerService.get(customerDto.getId());
         List<OrderDetailDto> cart = (List<OrderDetailDto>) session.getAttribute("cart");
+
         if(session!=null && session.getAttribute("isLogin").equals("true") )
       {
+          orderMasterService.removeCart(customer.getId());
           if(cart!=null && cart.size()>0)
           {
+//              OrderMaster order = orderMasterService.searchForCart(customer.getId());
               OrderMaster orderMaster = new OrderMaster();
-              orderMaster.setDate(LocalDate.now());
+              orderMaster.setDate(new Date());
               orderMaster.setIsDone(false);
               orderMaster.setTotal((double)session.getAttribute("cartTotal"));
               orderMaster.setIsCart(true);
@@ -74,6 +78,7 @@ public class LogoutServlet extends HttpServlet {
           writer.write("1");
       }else{
             writer.write("0");
+
         }
 
 //        RequestDispatcher rd = req.getRequestDispatcher("home");

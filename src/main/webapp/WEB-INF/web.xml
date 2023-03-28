@@ -1,24 +1,24 @@
-<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+<web-app xmlns= "https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation= "https://jakarta.ee/xml/ns/jakartaee
  https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
-         version="5.0"
-         metadata-complete="true">
+         version= "5.0"
+         metadata-complete= "true">
 
 
-    <!--    //Servlets-->
+<!--    //Servlets-->
     <servlet>
         <servlet-name>Main</servlet-name>
         <servlet-class>gov.iti.jets.servlet.MainServlet</servlet-class>
     </servlet>
-    <!--    <servlet-mapping>-->
-    <!--        <servlet-name>Main</servlet-name>-->
-    <!--        <url-pattern>/</url-pattern>-->
-    <!--    </servlet-mapping>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>Main</servlet-name>-->
+<!--        <url-pattern>/</url-pattern>-->
+<!--    </servlet-mapping>-->
 
     <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>gov.iti.jets.servlet.LoginServlet</servlet-class>
+       <servlet-name>Login</servlet-name>
+       <servlet-class>gov.iti.jets.servlet.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -53,7 +53,7 @@
         <servlet-class>gov.iti.jets.servlet.RegisterServlet</servlet-class>
     </servlet>
 
-    <!--    //Mappers-->
+<!--    //Mappers-->
     <servlet-mapping>
         <servlet-name>register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -97,7 +97,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>productListing</servlet-name>
-        <servlet-class>gov.iti.jets.servlet.DeleteProductServlet</servlet-class>
+        <servlet-class>gov.iti.jets.servlet.ProductListingServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>productListing</servlet-name>
@@ -145,6 +145,26 @@
         <servlet-name>order</servlet-name>
         <url-pattern>/order</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>reviewOrder</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.PreviewOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>reviewOrder</servlet-name>
+        <url-pattern>/PreviewOrder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>reviewOrderDetail</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.OrderDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>reviewOrderDetail</servlet-name>
+        <url-pattern>/PreviewOrderDetails</url-pattern>
+    </servlet-mapping>
+
+<!--    //Listeners-->
     <servlet>
         <servlet-name>adminDashboard</servlet-name>
         <servlet-class>gov.iti.jets.servlet.AdminDashboardServlet</servlet-class>
@@ -182,6 +202,12 @@
             gov.iti.jets.listener.ThreadLocalListener
         </listener-class>
     </listener>
+    <listener>
+        <listener-class>
+            gov.iti.jets.listener.MySessionListener
+        </listener-class>
+    </listener>
+
 
 
 </web-app>

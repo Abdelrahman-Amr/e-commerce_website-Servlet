@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * A DTO for the {@link gov.iti.jets.entity.OrderMaster} entity
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 @Builder
 public class OrderMasterDto extends BaseDTO {
 
-    private final LocalDate date;
+    private final Date date;
     private final Boolean isDone;
     private final Double shipping;
     private final Integer status;

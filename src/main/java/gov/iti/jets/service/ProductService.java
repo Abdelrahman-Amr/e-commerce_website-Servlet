@@ -154,4 +154,11 @@ public class ProductService extends BaseService<Product> {
         productDAO = new ProductDAO();
         productDAO.deleteProduct(id);
     }
+
+    public List<ProductDto> getRelatedProducts(long catId)
+    {
+        productDAO = new ProductDAO();
+        List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getRelatedProducts(catId));
+        return  productDtos;
+    }
 }
