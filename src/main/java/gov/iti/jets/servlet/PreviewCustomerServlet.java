@@ -9,6 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,8 +26,8 @@ public class PreviewCustomerServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //super.doGet(req, resp);
-        //System.out.println("get");
+
+        HttpSession httpSession = request.getSession(false);
 
         RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
         rd.include(request, response);
@@ -38,10 +39,10 @@ public class PreviewCustomerServlet extends HttpServlet {
         }
 
         List<CustomerDto>  customerList = customerService.getCustomerList(1);
-        request.getSession(false).setAttribute("customerList",customerList);
-        request.getSession(false).setAttribute("CustomerPageNo",1);
+        httpSession.setAttribute("customerList",customerList);
+        httpSession.setAttribute("CustomerPageNo",1);
         //request.getSession(false).setAttribute("startInd",0);
-        request.setAttribute("customerTotalPage",pageNum);
+        httpSession.setAttribute("customerTotalPage",pageNum);
         rd = request.getRequestDispatcher("/views/previewCustomers.jsp");
         rd.include(request, response);
         //System.out.println("after body");
@@ -56,6 +57,7 @@ public class PreviewCustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<CustomerDto> customerList;
 
+        HttpSession httpSession = request.getSession(false);
         int pageNum = (int) (Math.ceil(customerService.getRecordsCount() / 10f));
 
         if (pageNum == 1) {
@@ -63,7 +65,7 @@ public class PreviewCustomerServlet extends HttpServlet {
         } else {
 
             //System.out.println(request.getParameter("goal"));
-            int pageNo = (Integer) (request.getSession(false).getAttribute("CustomerPageNo"));
+            int pageNo = (Integer) (httpSession.getAttribute("CustomerPageNo"));
 
             if (request.getParameter("goal").equals("next")) {
                 pageNo++;
@@ -75,12 +77,13 @@ public class PreviewCustomerServlet extends HttpServlet {
                 pageNo--;
                 if (pageNo == 0) pageNo = 1;
             }
-            request.getSession(false).setAttribute("CustomerPageNo", pageNo);
-            //System.out.println("paggggge " + pageNo);
+            httpSession.setAttribute("CustomerPageNo", pageNo);
+
             customerList = customerService.getCustomerList(pageNo);
-            customerList.forEach((c) -> System.out.println(c.getEmail()));
-            request.getSession(false).setAttribute("customerList", customerList);
-            //response.getWriter().write(pageNo+" of "+pageNum); //1:5
+//            customerList.forEach((c) -> System.out.println(c.getEmail()));
+
+            httpSession.setAttribute("customerList", customerList);
+
             CustomerTable customerTable = new CustomerTable(customerList, pageNo, pageNum);
             Gson gson = new Gson();
             String json = gson.toJson(customerTable);

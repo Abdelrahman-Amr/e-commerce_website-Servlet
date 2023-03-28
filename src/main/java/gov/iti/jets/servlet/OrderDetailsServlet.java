@@ -33,17 +33,17 @@ public class OrderDetailsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        //disabled
+        HttpSession httpSession = req.getSession(false);
         Long orderId = Long.parseLong(req.getParameter("orderId")); // 13
-        System.out.println("order details id "+orderId);
+//        System.out.println("order details id "+orderId);
 
         OrderMaster orderMaster = orderMasterService.getOrderMasterById(orderId);
 
         List<OrderDetail> orderDetailList = orderMaster.getOrderDetails();
-        System.out.println("details order list size " + orderDetailList.size()); //13
+//        System.out.println("details order list size " + orderDetailList.size()); //13
 
         int totalPages = (int)(Math.ceil(orderDetailList.size()/10f)); // 2
-        System.out.println("total page before " +totalPages);
+//        System.out.println("total page before " +totalPages);
         if(totalPages==0)
         {
             totalPages = 1;
@@ -52,15 +52,15 @@ public class OrderDetailsServlet extends HttpServlet {
             orderDetailList = orderDetailList.subList(0,10); // [0-9]
         }
 
-        String status ="";
-        if(totalPages>1) status = "disabled";
+//        String status ="";
+//        if(totalPages>1) status = "disabled";
 
-        System.out.println("total page after " + totalPages);
-        req.getSession(false).setAttribute("totalOrderDetailPages",totalPages);
-        req.getSession(false).setAttribute("status",status);
-        req.getSession(false).setAttribute("orderId",orderId);
-        req.getSession(false).setAttribute("pageOrderDetailNo",1);
-        req.getSession(false).setAttribute("orderDetailList",orderDetailList);
+//        System.out.println("total page after " + totalPages);
+        httpSession.setAttribute("totalOrderDetailPages",totalPages);
+//        req.getSession(false).setAttribute("status",status);
+        httpSession.setAttribute("orderId",orderId);
+        httpSession.setAttribute("pageOrderDetailNo",1);
+        httpSession.setAttribute("orderDetailList",orderDetailList);
 
         RequestDispatcher rd = req.getRequestDispatcher("/views/header.jsp");
         rd.include(req, resp);
@@ -86,14 +86,14 @@ public class OrderDetailsServlet extends HttpServlet {
         List<OrderDetail> orderDetailList = orderMaster.getOrderDetails(); // 13
 
         int totalPage = (int)(Math.ceil(orderDetailList.size()/10f)); // 2
-        System.out.println("total page " + totalPage);
+//        System.out.println("total page " + totalPage);
 
         if(totalPage==1) {
             resp.getWriter().write("1");
         } else {
 
             int pageNo = (Integer) (httpSession.getAttribute("pageOrderDetailNo")); // 1
-            System.out.println("page no " + pageNo);
+//            System.out.println("page no " + pageNo);
 
             if (req.getParameter("orderDetailGoal").equals("next")) {
                 pageNo++; // 2
@@ -124,7 +124,7 @@ public class OrderDetailsServlet extends HttpServlet {
 
             Gson gson = new Gson();
             String json = gson.toJson(orderDetailsTable);
-            System.out.println(json);
+//            System.out.println(json);
             resp.getWriter().write(json); //1:5
         }
     }

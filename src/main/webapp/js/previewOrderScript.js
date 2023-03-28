@@ -1,4 +1,18 @@
-
+//function FilterCustomerOrders(event) {
+//    event.preventDefault();
+//    var email = document.getElementById("customerEmailOrder").value;
+//    $.post ("PreviewOrder?filter="+email,
+//        previewOrderCallBack).fail(function() {
+//                          failed('loaded order List Failed !!');
+//                      });
+//}
+//
+//function getAllOrders() {
+//    $.get ("PreviewOrder",
+//            previewOrderCallBack).fail(function() {
+//                              failed('loaded order List Failed !!');
+//                          });
+//}
 function getPrevOrderList() {
 
     console.log("previous list");
@@ -31,7 +45,7 @@ function previewOrderCallBack(responseTxt, statusTxt, xhr) {
     var json = JSON.parse(responseTxt);
     console.log(json);
     var orderList=json.orderList;
-    drawTable(orderList);
+    drawOrderTable(orderList);
     document.getElementById("orderPageNo").innerHTML=json.pageNo+" of "+json.pageCount;
     if(json.pageNo===json.pageCount) {
         document.getElementById("nextOrderBTN").disabled = true;
@@ -51,7 +65,7 @@ function previewOrderCallBack(responseTxt, statusTxt, xhr) {
      }
 }
 //
-function drawTable(customerList) {
+function drawOrderTable(customerList) {
     console.log("draw table")
 //    var tableBody = document.getElementById("tableBody").innerHTML;
 //    tableBody="";

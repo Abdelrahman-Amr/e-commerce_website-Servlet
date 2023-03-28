@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,8 +28,10 @@ public class PreviewOrderServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //super.doGet(req, resp);
-        //System.out.println("get");
+
+//        request.getSession(false).setAttribute("filter",false);
+
+        HttpSession httpSession = request.getSession(false);
 
         RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
         rd.include(request, response);
@@ -39,11 +42,17 @@ public class PreviewOrderServlet extends HttpServlet {
             totalPages = 1;
         }
 
-        List<OrderMaster>  orderList = orderMasterService.getOrderList(1);
+        int pageNo = 1;
 
-        request.getSession(false).setAttribute("orderList",orderList);
-        request.getSession(false).setAttribute("pageOrderNo",1);
-        request.setAttribute("totalOrderPages",totalPages);
+//        if(request.getSession(false).getAttribute("pageOrderNo") != null) {
+//            pageNo = (Integer) request.getSession(false).getAttribute("pageOrderNo");
+//        }
+
+        List<OrderMaster>  orderList = orderMasterService.getOrderList(pageNo);
+
+        httpSession.setAttribute("orderList",orderList);
+        httpSession.setAttribute("pageOrderNo",pageNo);
+        httpSession.setAttribute("totalOrderPages",totalPages);
 
         rd = request.getRequestDispatcher("/views/reviewOrder.jsp");
         rd.include(request, response);
@@ -57,29 +66,48 @@ public class PreviewOrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession httpSession = request.getSession(false);
+
         List<OrderMaster>  orderList;
 
         int pageNum = (int)(Math.ceil(orderMasterService.getRecordsCount()/10f));
 
-        //System.out.println(request.getParameter("goal"));
         int pageNo = (Integer) (request.getSession(false).getAttribute("pageOrderNo"));
 
-        if(request.getParameter("orderGoal").equals("next")) {
-            pageNo++;
-            if(pageNo>pageNum) {
-                pageNo = pageNum;
-            }
-        } else {
+        if(request.getParameter("orderGoal") !=null) {
+            if(request.getParameter("orderGoal").equals("next")) {
+                pageNo++;
+                if(pageNo>pageNum) {
+                    pageNo = pageNum;
+                }
+            } else {
 
-            pageNo--;
-            if(pageNo==0) pageNo=1;
+                pageNo--;
+                if(pageNo==0) pageNo=1;
+            }
         }
-        request.getSession(false).setAttribute("pageOrderNo", pageNo );
-        //System.out.println("paggggge " + pageNo);
+
         orderList = orderMasterService.getOrderList(pageNo);
-        orderList.forEach((c) -> System.out.println(c.getId()));
-        request.getSession(false).setAttribute("orderList", orderList);
-        //response.getWriter().write(pageNo+" of "+pageNum); //1:5
+
+//        if(request.getParameter("filter") != null) {
+//            pageNo = 1;
+//            request.getSession(false).setAttribute("filter",true);
+//            String customerEmail = request.getParameter("filter");
+//            request.getSession(false).setAttribute("customerEmailOrder",customerEmail);
+//            orderList = orderList.stream().filter((o)->
+//                o.getCust().getEmail().equals(customerEmail)
+//
+//                ).toList();
+//        } else if((boolean)request.getSession(false).getAttribute("filter")) {
+//            String customerEmail = (String) request.getSession().getAttribute("customerEmailOrder");
+//            orderList = orderList.stream().filter((o)->
+//                    o.getCust().getEmail().equals(customerEmail)
+//                    ).toList();
+//        }
+//        pageNum = (int)(Math.ceil(orderList.size()/10f));
+
+        httpSession.setAttribute("pageOrderNo", pageNo );
+
         List<OrderMasterTableDto> orderDtoList = new ArrayList<>();
         orderList.forEach((o)->{
             OrderMasterTableDto orderMasterTableDto = toOrderMasterTableDto(o);

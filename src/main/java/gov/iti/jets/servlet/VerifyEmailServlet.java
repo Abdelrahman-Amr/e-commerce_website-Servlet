@@ -23,7 +23,7 @@ public class VerifyEmailServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        //System.out.println("emaillllllllllll   "+req.getParameter("email"));
+
         if(customerService.checkEmail(req.getParameter("email"))) {
             out.write("1");
         } else {

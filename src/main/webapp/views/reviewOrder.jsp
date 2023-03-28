@@ -1,4 +1,18 @@
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
+<!--
+<div class="register">
+	<div class="container">
+		<div class="login-form-grids">
+
+            <form method="post" onsubmit="FilterCustomerOrders(event)">
+                <input type="email" placeholder="Email*" required id="customerEmailOrder"
+                        pattern="^([\w\d_\-]{3,})@([a-zA-Z]+(\.[a-zA-z]+)+)$" onblur="getAllOrders()">
+                <input type="submit" value="Filter" >
+            </form>
+        </div>
+    </div>
+</div>
+-->
 <table class="styled-table">
     <thead>
         <tr>

@@ -10,10 +10,7 @@ import gov.iti.jets.util.Constants;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,6 +34,7 @@ public class EditingProductServlet extends HttpServlet {
 
         List<Category> categoryList;
         long productId;
+        HttpSession httpSession = request.getSession(false);
 
         try {
 
@@ -52,14 +50,14 @@ public class EditingProductServlet extends HttpServlet {
 
             Category currentCategory = categoryService.get(productDto.getCatg_id());
 
-            request.getSession(false).setAttribute("currentProduct", productDto);
-            request.getSession(false).setAttribute("currentProductCategory", currentCategory.getName());
+            httpSession.setAttribute("currentProduct", productDto);
+            httpSession.setAttribute("currentProductCategory", currentCategory.getName());
 
             categoryList = categoryService.getAllCategories();
 
             categoryList.remove(currentCategory);
 
-            request.getSession(false).setAttribute("categoryList", categoryList);
+            httpSession.setAttribute("categoryList", categoryList);
 
             RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
             rd.include(request, response);

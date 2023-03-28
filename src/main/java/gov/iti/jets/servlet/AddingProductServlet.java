@@ -8,7 +8,6 @@ import gov.iti.jets.service.CategoryService;
 import gov.iti.jets.service.ProductService;
 import gov.iti.jets.util.Constants;
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -69,15 +68,15 @@ public class AddingProductServlet extends HttpServlet {
 
                 String productJson = req.getParameter("productInfo");
 
-                System.out.println(productJson);
+//                System.out.println(productJson);
 
                 ProductDto productDTO = new Gson().fromJson(productJson, ProductDto.class);
 
-                System.out.println(productDTO.getName());
+//                System.out.println(productDTO.getName());
 
                 Product product = productService.addNewProduct(productDTO, true);
 
-                System.out.println(product.getName());
+//                System.out.println(product.getName());
 
                 productId = product.getId();
 

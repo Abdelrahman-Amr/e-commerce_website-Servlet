@@ -36,7 +36,7 @@ function previewCustomerCallBack(responseTxt, statusTxt, xhr) {
             var json = JSON.parse(responseTxt);
             console.log(json);
             var CustomerList=json.customerDtoList;
-            drawTable(CustomerList);
+            drawCustomerTable(CustomerList);
             document.getElementById("customerPageNo").innerHTML=json.pageNo+" of "+json.pageCount;
             if(json.pageNo===json.pageCount) {
                 document.getElementById("nextCustomerBTN").disabled = true;
@@ -56,7 +56,7 @@ function previewCustomerCallBack(responseTxt, statusTxt, xhr) {
      }
 }
 
-function drawTable(customerList) {
+function drawCustomerTable(customerList) {
     console.log("draw table")
 //    var tableBody = document.getElementById("tableBody").innerHTML;
 //    tableBody="";
