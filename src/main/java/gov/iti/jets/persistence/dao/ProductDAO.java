@@ -6,10 +6,7 @@ import gov.iti.jets.entity.Product;
 import gov.iti.jets.entity.Product_;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.*;
 
 import java.util.List;
 import java.util.Map;
@@ -116,29 +113,35 @@ public class ProductDAO extends BaseDAO<Product> {
         return typedQuery.getResultList().get(0);
     }
 
-    public Long getNoOfRecords() {
-        return noOfRecords;
-    }
-
     public List<Product> getPriorityProducts() {
         Query query = entityManager.createQuery(" from Product p where p.priority=1", Product.class).setMaxResults(6);
         List<Product> products = query.getResultList();
         return products;
     }
 
+//    public List<Product> getMostSellingProducts() {
+//        Query query = entityManager.createQuery(" select o.product from OrderDetail o group by o.product  order by o.quantity desc", Product.class).setMaxResults(6);
+//        List<Product> products = query.getResultList();
+//        System.out.println("products = " + products.size());
+//        return products;}
+
     public List<Product> getMostSellingProducts() {
-        Query query = entityManager.createQuery(" select o.product from OrderDetail o group by o.product  order by o.quantity desc", Product.class).setMaxResults(6);
-        List<Product> products = query.getResultList();
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Product> cq = cb.createQuery(Product.class);
+        Root<OrderDetail> orderDetail = cq.from(OrderDetail.class);
+
+        cq.select(orderDetail.get("product"))
+                .groupBy(orderDetail.get("product"))
+                .orderBy(cb.desc(cb.sum(orderDetail.get("quantity"))));
+
+        List<Product> products = entityManager.createQuery(cq)
+                .setFirstResult(0)
+                .setMaxResults(6)
+                .getResultList();
+
         System.out.println("products = " + products.size());
         return products;
-    public List<Product> getMostSellingProducts()
-    {
-        Query query=entityManager.createQuery(" select o.product from OrderDetail o group by o.product  order by sum(o.quantity) desc",Product.class).setMaxResults(6);
-        List<Product> products=query.getResultList();
-        System.out.println("products = "+ products.size());
-        return  products;
     }
-
     public List<Product> getOffersProducts() {
         Query query = entityManager.createQuery(" from Product p where p.discount>0 order by p.discount desc", Product.class).setMaxResults(3);
         List<Product> products = query.getResultList();

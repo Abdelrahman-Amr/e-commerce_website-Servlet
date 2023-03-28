@@ -21,7 +21,7 @@ public class ProductListingServlet extends HttpServlet {
 
     ProductService productService;
     ProductMapper productMapper;
-    private static final int PRODUCTS_PER_PAGE = 3;
+    private static final int PRODUCTS_PER_PAGE = 9;
 
     @Override
     public void init() {
