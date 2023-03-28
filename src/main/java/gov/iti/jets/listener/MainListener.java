@@ -21,7 +21,6 @@ public class MainListener implements ServletContextListener {
         CategoryService categoryService =  CategoryService.getInstance();
         SizeService sizeService =  SizeService.getInstance();
 
-
         List<CategoryDto> categoryDtos = categoryService.getAll();
         cse.getServletContext().setAttribute("cats", categoryDtos);
 
