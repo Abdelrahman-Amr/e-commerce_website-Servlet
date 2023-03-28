@@ -52,5 +52,20 @@ public class OrderMasterDAO extends BaseDAO<OrderMaster>{
 //        query.executeUpdate();
     }
 
+    public void removeCart(long customerId)
+    {
+        try {
+            entityManager.getTransaction().begin();
+            OrderMaster orderMaster = searchForCart(customerId);
+            entityManager.remove(orderMaster);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+        finally {
+            entityManager.getTransaction().commit();
+        }
+    }
+
 }
 

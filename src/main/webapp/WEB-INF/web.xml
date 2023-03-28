@@ -12,7 +12,7 @@
     </servlet>
 <!--    <servlet-mapping>-->
 <!--        <servlet-name>Main</servlet-name>-->
-<!--        <url-pattern>/</url-pattern>-->
+<!--        <url-pattern>/main</url-pattern>-->
 <!--    </servlet-mapping>-->
 
     <servlet>
@@ -154,6 +154,11 @@
     <listener>
         <listener-class>
             gov.iti.jets.listener.ThreadLocalListener
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>
+            gov.iti.jets.listener.MySessionListener
         </listener-class>
     </listener>
 

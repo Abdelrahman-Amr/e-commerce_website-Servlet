@@ -1,10 +1,12 @@
 package gov.iti.jets.servlet;
 
 
+import gov.iti.jets.dto.CustomerDto;
 import gov.iti.jets.dto.OrderDetailDto;
 import gov.iti.jets.dto.ProductDto;
 import gov.iti.jets.dto.SizeDto;
 import gov.iti.jets.mapper.ProductMapper;
+import gov.iti.jets.service.OrderMasterService;
 import gov.iti.jets.service.ProductService;
 import gov.iti.jets.service.SizeService;
 import gov.iti.jets.util.Constants;
@@ -26,6 +28,7 @@ public class CartServlet extends HttpServlet {
     ProductService productService;
     ProductMapper productMapper;
     SizeService sizeService;
+    OrderMasterService orderMasterService;
 
 
     @Override
@@ -34,6 +37,7 @@ public class CartServlet extends HttpServlet {
         productService = ProductService.getInstance();
         sizeService =  SizeService.getInstance();
         productMapper = Mappers.getMapper(ProductMapper.class);
+        orderMasterService = OrderMasterService.getInstance();
     }
 
     @Override
@@ -54,10 +58,8 @@ public class CartServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-//        response.setContentType("application/json");
         PrintWriter writer = response.getWriter();
         long productId = Long.parseLong(req.getParameter("pdId"));
-//        int quantity= Integer.parseInt(req.getParameter("quantity"));
         String sizeName= req.getParameter("sizeName");
         int op= Integer.parseInt(req.getParameter("op"));
 
@@ -69,7 +71,7 @@ public class CartServlet extends HttpServlet {
             session.setAttribute("cart", new ArrayList<>());
         }
         List<OrderDetailDto> cart = (List<OrderDetailDto>) session.getAttribute("cart");
-        OrderDetailDto order =  searchProduct(cart, productId, sizeDto.getName()) ;
+        OrderDetailDto order =  orderMasterService.searchProduct(cart, productId, sizeDto.getName()) ;
         if(session != null && (session.getAttribute(Constants.IS_LOGIN)==null) || session.getAttribute(Constants.IS_LOGIN).equals("false") ) {
 
             if(order == null)
@@ -97,10 +99,6 @@ public class CartServlet extends HttpServlet {
                     cart.remove(order);
                 }
             }
-//            session.setAttribute("cart", cart);
-//            session.setAttribute("cartTotal", calcCartTotal(cart));
-//            session.setAttribute("cartSize", calcCartSize(cart));
-//            session.setAttribute("dev", Constants.Dev);
         }
         else{
            if(order == null)
@@ -126,50 +124,17 @@ public class CartServlet extends HttpServlet {
                            cart.remove(order);
                        }
            }
-
-
-
-//            session.setAttribute("cart", cart);
-//            session.setAttribute("cartTotal", calcCartTotal(cart));
-//            session.setAttribute("cartSize", calcCartSize(cart));
-//            session.setAttribute("dev", Constants.Dev);
         }
-//        doGet(req,response);
+        CustomerDto customerDto = (CustomerDto) session.getAttribute("customer");
+        if(cart.size() == 0 && customerDto!=null)
+        {
+            orderMasterService.removeCart(customerDto.getId());
+        }
         session.setAttribute("cart", cart);
-        session.setAttribute("cartTotal", calcCartTotal(cart));
-        session.setAttribute("cartSize", calcCartSize(cart));
+        session.setAttribute("cartTotal", orderMasterService.calcCartTotal(cart));
+        session.setAttribute("cartSize", orderMasterService.calcCartSize(cart));
         session.setAttribute("dev", Constants.Dev);
 
     }
 
-    private Double calcCartTotal(List<OrderDetailDto> orderDetailDtos)
-    {
-        double total =Constants.Dev;
-        for(OrderDetailDto order : orderDetailDtos)
-        {
-            total+=order.getTotal();
-        }
-        return  total;
-    }
-    private int calcCartSize(List<OrderDetailDto> orderDetailDtos)
-    {
-        int size =0;
-        for(OrderDetailDto order : orderDetailDtos)
-        {
-            size+=order.getQuantity();
-        }
-        return  size;
-    }
-
-    private OrderDetailDto searchProduct(List<OrderDetailDto> cart, long pdId, String size)
-    {
-        for(OrderDetailDto orderDetailDto: cart)
-        {
-            if(orderDetailDto.getProduct().getId() == pdId && orderDetailDto.getSize().equals(size))
-            {
-                return orderDetailDto;
-            }
-        }
-        return null;
-    }
 }
