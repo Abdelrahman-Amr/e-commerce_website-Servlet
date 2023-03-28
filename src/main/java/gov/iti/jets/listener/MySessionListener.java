@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpSessionListener;
 import org.mapstruct.factory.Mappers;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class MySessionListener implements HttpSessionListener {
@@ -37,7 +38,7 @@ public class MySessionListener implements HttpSessionListener {
             orderMasterService.removeCart(customer.getId());
             if(cart!=null && cart.size()>0) {
                 OrderMaster orderMaster = new OrderMaster();
-                orderMaster.setDate(LocalDate.now());
+                orderMaster.setDate(new Date());
                 orderMaster.setIsDone(false);
                 orderMaster.setTotal((double) session.getAttribute("cartTotal"));
                 orderMaster.setIsCart(true);

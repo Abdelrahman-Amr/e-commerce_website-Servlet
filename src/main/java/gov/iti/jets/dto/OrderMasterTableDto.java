@@ -12,11 +12,11 @@ public class OrderMasterTableDto {
 
     String customer;
 
-    LocalDate date;
+    Date date;
 
     double total;
 
-    public OrderMasterTableDto(Long id, String customer, LocalDate date, double total) {
+    public OrderMasterTableDto(Long id, String customer, Date date, double total) {
         this.id = id;
         this.customer = customer;
         this.date = date;
@@ -49,11 +49,11 @@ public class OrderMasterTableDto {
         this.customer = customer;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

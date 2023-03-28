@@ -246,6 +246,7 @@ function mostSellingCallback(responseTxt, statusTxt, xhr) {
     if (statusTxt == "success" && xhr.status == 200) {
 
         var products = responseTxt;
+        console.log(products);
         for (let i = 0; i < products.length; i++) {
             $('#n'+products[i].id).html(products[i].name);
             $('#i'+products[i].id).attr("src",'image?imgName='+products[i].imageUrl);

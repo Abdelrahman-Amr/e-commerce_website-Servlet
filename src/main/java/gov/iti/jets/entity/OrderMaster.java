@@ -28,7 +28,7 @@ public class OrderMaster extends BaseEntity{
 
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
-    private LocalDate date;
+    private Date date;
 
     @Column(name = "is_done")
     private Boolean isDone;

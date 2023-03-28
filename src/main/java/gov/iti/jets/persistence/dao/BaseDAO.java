@@ -58,7 +58,7 @@ public abstract class BaseDAO <E extends BaseEntity>{
         return result;
     }
 
-    public void refresh(E entity)
+    public void merge(E entity)
     {
         entityManager.getTransaction().begin();
         entityManager.merge(entity);
