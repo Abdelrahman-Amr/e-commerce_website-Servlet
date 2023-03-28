@@ -16,16 +16,16 @@ import java.util.List;
 public class MainListener implements ServletContextListener {
 
     public void contextInitialized (ServletContextEvent cse) {
-        DBFactory.getInstance();
-//        MyLocal.getInstance().set(DBFactory.getInstance().createEntityManager());
-        CategoryService categoryService =  CategoryService.getInstance();
-        SizeService sizeService =  SizeService.getInstance();
-
-        List<CategoryDto> categoryDtos = categoryService.getAll();
-        cse.getServletContext().setAttribute("cats", categoryDtos);
-
-        List<SizeDto> sizeDtos = sizeService.listAllSizes();
-        cse.getServletContext().setAttribute("sizes", sizeDtos);
+//        DBFactory.getInstance();
+////        MyLocal.getInstance().set(DBFactory.getInstance().createEntityManager());
+//        CategoryService categoryService =  CategoryService.getInstance();
+//        SizeService sizeService =  SizeService.getInstance();
+//
+//        List<CategoryDto> categoryDtos = categoryService.getAll();
+//        cse.getServletContext().setAttribute("cats", categoryDtos);
+//
+//        List<SizeDto> sizeDtos = sizeService.listAllSizes();
+//        cse.getServletContext().setAttribute("sizes", sizeDtos);
 
 
     }
