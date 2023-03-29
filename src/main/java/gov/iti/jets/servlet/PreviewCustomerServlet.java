@@ -38,10 +38,13 @@ public class PreviewCustomerServlet extends HttpServlet {
         }
 
         List<CustomerDto>  customerList = customerService.getCustomerList(1);
+        customerList = customerList.stream().filter((c)->!c.getIsAdmin()).toList();
+
         httpSession.setAttribute("customerList",customerList);
         httpSession.setAttribute("CustomerPageNo",1);
         //request.getSession(false).setAttribute("startInd",0);
         httpSession.setAttribute("customerTotalPage",pageNum);
+
         rd = request.getRequestDispatcher("/views/previewCustomers.jsp");
         rd.include(request, response);
 

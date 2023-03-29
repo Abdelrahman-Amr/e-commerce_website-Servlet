@@ -81,7 +81,15 @@ public class LoginServlet extends HttpServlet{
                 session.setAttribute("cartSize", orderMasterService.calcCartSize(orderDetailDtoList));
                 session.setAttribute("dev", Constants.Dev);
             }
-            writer.write("1");
+            if(customerDto.getIsAdmin()) {
+                session.setAttribute("isAdmin","true");
+                System.out.println("admin");
+                writer.write("2");
+            } else {
+                session.setAttribute("isAdmin","false");
+                System.out.println("user");
+                writer.write("1");
+            }
         }else{
             writer.write("0");
         }
