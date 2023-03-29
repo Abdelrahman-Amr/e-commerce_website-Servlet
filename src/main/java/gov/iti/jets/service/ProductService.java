@@ -152,10 +152,10 @@ public class ProductService extends BaseService<Product> {
         return productDAO.getTotalRevenue();
     }
 
-    public void deleteProduct(Long id) {
-        productDAO = new ProductDAO();
-        productDAO.deleteProduct(id);
-    }
+//    public void deleteProduct(Long id) {
+//        productDAO = new ProductDAO();
+//        productDAO.deleteProduct(id);
+//    }
 
     public List<ProductDto> getRelatedProducts(long catId)
     {
