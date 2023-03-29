@@ -96,6 +96,11 @@ public class ProductDAO extends BaseDAO<Product> {
                         Predicate newPredicate = criteriaBuilder.and(criteriaBuilder.equal(productRoot.get(Product_.catg).get(Category_.id), Long.valueOf(params.get("catId"))));
                         predicate = criteriaBuilder.and(predicate, newPredicate);
                         break;
+                    case "Search":
+                        value = value.trim();
+                        newPredicate = criteriaBuilder.and(criteriaBuilder.like(productRoot.get("name"), "%" + value + "%"));
+                        predicate = criteriaBuilder.and(predicate, newPredicate);
+                        break;
                 }
             }
         }
@@ -116,23 +121,34 @@ public class ProductDAO extends BaseDAO<Product> {
         return typedQuery.getResultList().get(0);
     }
 
-    public Long getNoOfRecords() {
-        return noOfRecords;
-    }
+    public List<Product> getPriorityProducts() {
+        Query query = entityManager.createQuery(" from Product p where p.priority=1", Product.class).setMaxResults(6);
+        List<Product> products = query.getResultList();
+        return products;
+}
 
-    public List<Product> getPriorityProducts()
-    {
-        Query query=entityManager.createQuery(" from Product p where p.priority=1",Product.class).setMaxResults(6);
-        List<Product> products=query.getResultList();
-        return  products;
-    }
+//    public List<Product> getMostSellingProducts() {
+//        Query query = entityManager.createQuery(" select o.product from OrderDetail o group by o.product  order by o.quantity desc", Product.class).setMaxResults(6);
+//        List<Product> products = query.getResultList();
+//        System.out.println("products = " + products.size());
+//        return products;}
 
-    public List<Product> getMostSellingProducts()
-    {
-        Query query=entityManager.createQuery(" select o.product from OrderDetail o group by o.product  order by sum(o.quantity) desc",Product.class).setMaxResults(6);
-        List<Product> products=query.getResultList();
-//        System.out.println("products = "+ products.size());
-        return  products;
+    public List<Product> getMostSellingProducts() {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Product> cq = cb.createQuery(Product.class);
+        Root<OrderDetail> orderDetail = cq.from(OrderDetail.class);
+
+        cq.select(orderDetail.get("product"))
+                .groupBy(orderDetail.get("product"))
+                .orderBy(cb.desc(cb.sum(orderDetail.get("quantity"))));
+
+        List<Product> products = entityManager.createQuery(cq)
+                .setFirstResult(0)
+                .setMaxResults(6)
+                .getResultList();
+
+        System.out.println("products = " + products.size());
+        return products;
     }
 
     public List<Product> getOffersProducts()
@@ -150,5 +166,23 @@ public class ProductDAO extends BaseDAO<Product> {
         List<Product> products=query.getResultList();
 //        System.out.println("products = "+ products.size());
         return  products;
+    }
+
+    public Double getTotalRevenue() {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Double> cq = cb.createQuery(Double.class);
+        Root<OrderDetail> orderDetailRoot = cq.from(OrderDetail.class);
+        cq.select(cb.sum(orderDetailRoot.get("total")));
+        return entityManager.createQuery(cq).getSingleResult();
+    }
+
+    public void deleteProduct(Long id) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaDelete<Product> delete = cb.createCriteriaDelete(Product.class);
+        Root<Product> root = delete.from(Product.class);
+        delete.where(cb.equal(root.get("id"), id));
+        entityManager.getTransaction().begin();
+        entityManager.createQuery(delete).executeUpdate();
+        entityManager.getTransaction().commit();
     }
 }

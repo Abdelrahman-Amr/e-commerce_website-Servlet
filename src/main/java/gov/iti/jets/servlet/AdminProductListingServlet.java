@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProductListingServlet extends HttpServlet {
+public class AdminProductListingServlet extends HttpServlet {
 
     ProductService productService;
     ProductMapper productMapper;
@@ -34,7 +34,6 @@ public class ProductListingServlet extends HttpServlet {
         Map<String, String> params = new HashMap<>();
         params.put("page", req.getParameter("page"));
         params.put("catId", req.getParameter("catId"));
-        params.put("Search", req.getParameter("Search"));
         if( req.getParameter("catId") !=null){
             long catId =  Long.parseLong(req.getParameter("catId"));
             List<CategoryDto> cats = (List<CategoryDto>) req.getServletContext().getAttribute("cats");
@@ -60,7 +59,7 @@ public class ProductListingServlet extends HttpServlet {
         productDtos = productService.getProductsByCriteria(params, (pageNo - 1) * PRODUCTS_PER_PAGE, PRODUCTS_PER_PAGE);
         Gson gson = new Gson();
         String json = gson.toJson(productDtos);
-//        System.out.println(json);
+        System.out.println(json);
 
         pagination = (int) Math.ceil((double) productService.getNoOfReturnedProducts(params) / PRODUCTS_PER_PAGE);
 
@@ -79,7 +78,7 @@ public class ProductListingServlet extends HttpServlet {
             rd.include(req, response);
         }
 
-        rd = req.getRequestDispatcher("/views/products.jsp");
+        rd = req.getRequestDispatcher("/views/admin-products.jsp");
         rd.include(req, response);
 
         if (!isAJAX) {

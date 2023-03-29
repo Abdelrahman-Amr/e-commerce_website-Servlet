@@ -50,7 +50,6 @@ public class PreviewCustomerServlet extends HttpServlet {
         rd = request.getRequestDispatcher("/views/footer.jsp");
         rd.include(request, response);
         //System.out.println("after footer");
-
     }
 
     @Override
