@@ -4,6 +4,7 @@ import gov.iti.jets.entity.Category_;
 import gov.iti.jets.entity.OrderDetail;
 import gov.iti.jets.entity.Product;
 import gov.iti.jets.entity.Product_;
+import gov.iti.jets.util.MyLocal;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
