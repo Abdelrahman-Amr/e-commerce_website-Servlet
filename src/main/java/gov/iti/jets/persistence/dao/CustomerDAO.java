@@ -41,7 +41,7 @@ public class CustomerDAO extends BaseDAO<Customer>{
         Query query=entityManager.createQuery("from Customer c where c.email=:u ");
         query.setParameter("u",email);
         List<Customer> customers=query.getResultList();
-        System.out.println(customers.size());
+//        System.out.println(customers.size());
         if(customers.size()>0)
         {
             return true;
