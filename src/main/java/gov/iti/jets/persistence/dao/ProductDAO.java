@@ -143,8 +143,6 @@ public class ProductDAO extends BaseDAO<Product> {
                 .setFirstResult(0)
                 .setMaxResults(6)
                 .getResultList();
-
-        System.out.println("products = " + products.size());
         return products;
     }
 
@@ -152,7 +150,6 @@ public class ProductDAO extends BaseDAO<Product> {
     {
         Query query=entityManager.createQuery(" from Product p where p.discount>0 order by p.discount desc",Product.class).setMaxResults(3);
         List<Product> products=query.getResultList();
-//        System.out.println("products = "+ products.size());
         return  products;
     }
 
@@ -161,7 +158,6 @@ public class ProductDAO extends BaseDAO<Product> {
         Query query=entityManager.createQuery(" from Product p where p.catg.id  = :catId ",Product.class).setMaxResults(4);
         query.setParameter("catId",catId);
         List<Product> products=query.getResultList();
-//        System.out.println("products = "+ products.size());
         return  products;
     }
 

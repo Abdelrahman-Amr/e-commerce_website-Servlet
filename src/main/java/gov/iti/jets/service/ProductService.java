@@ -96,7 +96,6 @@ public class ProductService extends BaseService<Product> {
         product.setCreationTime(new Date());
         product.setActive(active);
         if (productDAO.save(product)) {
-            System.out.println(product.getId());
             return product;
         }
         return null;

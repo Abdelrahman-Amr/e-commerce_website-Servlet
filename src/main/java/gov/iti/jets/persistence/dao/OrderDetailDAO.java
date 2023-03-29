@@ -30,7 +30,6 @@ public class OrderDetailDAO extends BaseDAO<OrderDetail> {
         Query query=entityManager.createQuery(" from OrderDetail o where invo =?1",OrderDetail.class)
                 .setParameter(1,orderMaster).setFirstResult(index).setMaxResults(10);
         List<OrderDetail> orders=query.getResultList();
-        System.out.println(orders);
         return orders;
     }
 

@@ -31,7 +31,6 @@ public class PreviewCustomerServlet extends HttpServlet {
 
         RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
         rd.include(request, response);
-        //System.out.println("after header");
         int pageNum = (int)(Math.ceil(customerService.getRecordsCount()/10f));
         if(pageNum==0)
         {
@@ -45,11 +44,9 @@ public class PreviewCustomerServlet extends HttpServlet {
         httpSession.setAttribute("customerTotalPage",pageNum);
         rd = request.getRequestDispatcher("/views/previewCustomers.jsp");
         rd.include(request, response);
-        //System.out.println("after body");
 
         rd = request.getRequestDispatcher("/views/footer.jsp");
         rd.include(request, response);
-        //System.out.println("after footer");
 
     }
 
@@ -64,7 +61,6 @@ public class PreviewCustomerServlet extends HttpServlet {
             response.getWriter().write("1");
         } else {
 
-            //System.out.println(request.getParameter("goal"));
             int pageNo = (Integer) (httpSession.getAttribute("CustomerPageNo"));
 
             if (request.getParameter("goal").equals("next")) {
@@ -80,14 +76,12 @@ public class PreviewCustomerServlet extends HttpServlet {
             httpSession.setAttribute("CustomerPageNo", pageNo);
 
             customerList = customerService.getCustomerList(pageNo);
-//            customerList.forEach((c) -> System.out.println(c.getEmail()));
 
             httpSession.setAttribute("customerList", customerList);
 
             CustomerTable customerTable = new CustomerTable(customerList, pageNo, pageNum);
             Gson gson = new Gson();
             String json = gson.toJson(customerTable);
-            System.out.println(json);
             response.getWriter().write(json); //1:5
         }
     }
