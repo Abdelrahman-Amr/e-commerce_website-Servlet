@@ -26,7 +26,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- font-awesome icons -->
     <link href="css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-UoLe+gMuITw6+H1Ie0lBzfg2++o8O6CO9AVv4FbxE7VQ2FYDhmg7iZvSFnzt+n7gjL8hpbzXlv1Hg27dRnFO1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- //font-awesome icons -->
     <!-- js -->
     <script src="js/jquery-1.11.1.min.js"></script>
@@ -132,7 +131,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <h1 title="MugLife"><a href="home">MugLife</a></h1>
         </div>
         <div class="w3l_search">
-            <form action="products" method="get">
+            <form action="#" method="post">
                 <input type="search" name="Search" placeholder="Search for a Product" required="">
                 <button type="submit" class="btn btn-default search" aria-label="Left Align">
                     <i class="fa fa-search" aria-hidden="true"> </i>

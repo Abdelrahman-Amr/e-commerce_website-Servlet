@@ -21,7 +21,7 @@ public class ProductListingServlet extends HttpServlet {
 
     ProductService productService;
     ProductMapper productMapper;
-    private static final int PRODUCTS_PER_PAGE = 9;
+    private static final int PRODUCTS_PER_PAGE = 3;
 
     @Override
     public void init() {
@@ -34,7 +34,6 @@ public class ProductListingServlet extends HttpServlet {
         Map<String, String> params = new HashMap<>();
         params.put("page", req.getParameter("page"));
         params.put("catId", req.getParameter("catId"));
-        params.put("Search", req.getParameter("Search"));
         if( req.getParameter("catId") !=null){
             long catId =  Long.parseLong(req.getParameter("catId"));
             List<CategoryDto> cats = (List<CategoryDto>) req.getServletContext().getAttribute("cats");
@@ -62,7 +61,7 @@ public class ProductListingServlet extends HttpServlet {
         String json = gson.toJson(productDtos);
 //        System.out.println(json);
 
-        pagination = (int) Math.ceil((double) productService.getNoOfReturnedProducts(params) / PRODUCTS_PER_PAGE);
+        pagination = (int) Math.ceil((double) productService.getNoOfReturnedProducts() / PRODUCTS_PER_PAGE);
 
         if (pagination < 1)
             pagination = 1;

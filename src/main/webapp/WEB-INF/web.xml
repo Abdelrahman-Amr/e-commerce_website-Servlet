@@ -5,7 +5,6 @@
          version= "5.0"
          metadata-complete= "true">
 
-
 <!--    //Servlets-->
     <servlet>
         <servlet-name>Main</servlet-name>
@@ -13,7 +12,7 @@
     </servlet>
 <!--    <servlet-mapping>-->
 <!--        <servlet-name>Main</servlet-name>-->
-<!--        <url-pattern>/</url-pattern>-->
+<!--        <url-pattern>/main</url-pattern>-->
 <!--    </servlet-mapping>-->
 
     <servlet>
@@ -165,32 +164,6 @@
     </servlet-mapping>
 
 <!--    //Listeners-->
-    <servlet>
-        <servlet-name>adminDashboard</servlet-name>
-        <servlet-class>gov.iti.jets.servlet.AdminDashboardServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>adminDashboard</servlet-name>
-        <url-pattern>/dashboard</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>adminProductListing</servlet-name>
-        <servlet-class>gov.iti.jets.servlet.AdminProductListingServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>adminProductListing</servlet-name>
-        <url-pattern>/adminProductListing</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>deleteProduct</servlet-name>
-        <servlet-class>gov.iti.jets.servlet.DeleteProductServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>deleteProduct</servlet-name>
-        <url-pattern>/deleteProduct</url-pattern>
-    </servlet-mapping>
-
-    <!--    //Listeners-->
     <listener>
         <listener-class>
             gov.iti.jets.listener.MainListener

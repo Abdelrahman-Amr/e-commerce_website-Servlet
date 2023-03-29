@@ -46,9 +46,4 @@ public class OrderDetailService extends BaseService<OrderDetail>{
         orderDetailDAO = new OrderDetailDAO();
         return orderDetailDAO.getOrderDetailCountForOrder(orderMasterId);
     }
-    public Long getOrdersCount() {
-        orderDetailDAO = new OrderDetailDAO();
-        return orderDetailDAO.getTotalOrderCount();
-    }
-
 }
