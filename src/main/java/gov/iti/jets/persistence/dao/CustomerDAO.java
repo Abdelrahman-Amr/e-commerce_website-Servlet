@@ -37,11 +37,9 @@ public class CustomerDAO extends BaseDAO<Customer>{
     }
 
     public boolean isEmailExist(String email) {
-        System.out.println(email);
         Query query=entityManager.createQuery("from Customer c where c.email=:u ");
         query.setParameter("u",email);
         List<Customer> customers=query.getResultList();
-//        System.out.println(customers.size());
         if(customers.size()>0)
         {
             return true;
@@ -63,8 +61,6 @@ public class CustomerDAO extends BaseDAO<Customer>{
         //query.setParameter("ind",index);
         Query query=entityManager.createQuery(" from Customer c",Customer.class).setFirstResult(index).setMaxResults(10);
         List<Customer> customers=query.getResultList();
-//        customers.forEach((e)->System.out.println(e.getUserName()));
-        //System.out.println(customers);
         return customers;
     }
 

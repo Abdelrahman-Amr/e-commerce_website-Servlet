@@ -96,8 +96,6 @@ public class CustomerService extends BaseService<Customer>{
         customerDAO =  new CustomerDAO();
 
         List<CustomerDto> l = customerMapper.toDTOs(customerDAO.getCustomerList((index-1)*10));
-//        l.forEach((e)->System.out.println(e.getUserName()));
-//        System.out.println(l);
         return l;
     }
 
