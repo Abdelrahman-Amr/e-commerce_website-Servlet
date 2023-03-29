@@ -7,7 +7,7 @@ function addProductAdmin(event) {
     var productDiscount = document.getElementById("productDiscount").value;
     var productQuantity = document.getElementById("productQuantity").value;
     var productPriority = document.getElementById("productPriority").value;
-    var productDescription = document.getElementById("productDescription").value;
+    var productDescription = $('#productDescription').val();
 
 //    console.log(productCategory);
 
