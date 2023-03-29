@@ -133,7 +133,13 @@ a:hover{
 .cat-header{
     display: none;
 }
-@media (max-width: 450px) {
+@media (max-width: 450px){
+    #addTo{
+        margin-top: 25px;
+        width: fit-content;
+        padding: 10px 20px;
+        float: none!important;
+    }
     html{
         width:102%;
     }
@@ -182,6 +188,7 @@ a:hover{
     margin-top: 15px;
     width: fit-content;
     padding: 10px 20px;
+    float: left;
 }
 .badge{
 
