@@ -193,6 +193,15 @@
     <!-- filters   -->
 
     <filter>
+        <filter-name>userFilter</filter-name>
+        <filter-class>gov.iti.jets.filter.UserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>userFilter</filter-name>
+        <url-pattern> /Profile </url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>adminFilter</filter-name>
         <filter-class>gov.iti.jets.filter.AdminFilter</filter-class>
     </filter>
