@@ -43,7 +43,7 @@
                                     </c:forEach>
                                 </ul>
                                 <input type="hidden" name="cancel_return" value=" ">
-                                <input type="submit" name="submit" value="Add to cart" class="button" id="addTo" style="margin-top: 15px; width: fit-content; padding: 10px 20px;">
+                                <input type="submit" name="submit" value="Add to cart" class="button" id="addTo" style="margin-top: 15px; width: fit-content; padding: 10px 20px; float: left">
                             </fieldset>
                         </form>
                     </div>

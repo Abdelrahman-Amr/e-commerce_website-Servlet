@@ -178,6 +178,7 @@ a:hover {
 }
 
 .checkoutBtn {
+    margin-top: 20px;
     text-align: center;
     width: 100%;
 }
@@ -270,70 +271,64 @@ button.btn-secondary {
     flex-direction: row;
     justify-content: center;
 }
-.tab-container {
+
+.tab-container, .payment-container {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style-type: none;
-    margin: 0;
     padding: 0;
 }
 
-.tab-container li {
+.tab-container li, .payment-container li{
     position: relative;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
-.tab-container input[type="radio"] {
-    display: none;
-}
-
-.tab-container label {
-    display: block;
-    padding: 10px 15px;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    cursor: pointer;
-}
-
-.tab-container input[type="radio"]:checked + label {
-    background-color: var(--main-color);
-    color: #fff;
-}
-
-.tab-container label:hover {
-    background-color: #ddd;
-}
-.payment-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-.payment-tab {
-    display: block;
-    padding: 10px 15px;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    cursor: pointer;
-}
-
-.payment-tab:hover {
-    background-color: #ddd;
-}
-
+.tab-container input[type="radio"],
 .payment-container input[type="radio"] {
     display: none;
 }
 
-.payment-container input[type="radio"]:checked + .payment-tab:before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-bottom: 10px solid #4CAF50;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+.tab-container label, .payment-container label {
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    cursor: pointer;
 }
+
+.tab-container input[type="radio"]:checked + label,
+.payment-container input[type="radio"]:checked + label {
+    background-color: var(--main-color);
+    color: #fff;
+}
+/*
+
+.payment-container label:hover {
+    background-color: #ddd;
+}
+
+!* Remove default radio button styles *!
+.payment-container input[type="radio"] {
+    display: none;
+}
+
+!* Style label as tabs *!
+.payment-container label {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+!* Style the checked label *!
+.payment-container input[type="radio"]:checked + label {
+    background-color: red;
+    border-bottom: 1px solid white;
+}
+*/

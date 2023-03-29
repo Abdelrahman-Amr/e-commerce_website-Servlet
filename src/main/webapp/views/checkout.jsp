@@ -91,30 +91,24 @@
                         <li>Delivery fee <i>-</i> <span>$${dev}</span></li>
                         <li>Total <i>-</i> <span id="total">${cartTotal}</span><span>$</span></li>
                         <li>Payment <i>-</i> <span id="payment">
-                            <div class="payment-container">
-                                  <div class="payment-option">
-                                <label for="credit" class="payment-tab">Credit</label>
-                                <input type="radio" id="credit" name="payment" value="1">
-                                  </div>
-                                <input type="hidden" id="isLogin" value="${isLogin}">
-                                <input type="hidden" id="creditVal" value="${customer.creditLimit}">
-                                  <div class="payment-option">
-
-                                <label for="cash" class="payment-tab">Cash</label>
-                                <input type="radio" id="cash" name="payment" value="0" checked="checked">
-                                  </div>
-                            </div>
+                    <ul class="payment-container">
+						<li>
+                        <input type="radio" id="credit" name="payment" value="1">
+                        <label for="credit">Credit</label></li>
+						<li><input type="radio" id="cash" name="payment" value="0" checked="checked">
+                        <label for="cash">Cash</label></li>
+                    </ul>
                         </span></li>
                     </ul>
+                    <input type="hidden" id="isLogin" value="${isLogin}">
+                    <input type="hidden" id="creditVal" value="${customer.creditLimit}">
+                    <br>
                 </div>
-                <br>
+                <div class="clearfix"></div>
                 <div class="checkoutBtn">
                     <button class="button" onclick="order()">Confirm Order</button>
+
                 </div>
-                    <%--				<div class="checkout-right-basket">--%>
-                    <%--					<a href="products"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>--%>
-                    <%--				</div>--%>
-                <div class="clearfix"></div>
             </div>
         </c:if>
     </div>
