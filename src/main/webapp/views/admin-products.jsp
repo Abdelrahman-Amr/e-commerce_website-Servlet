@@ -37,7 +37,7 @@
 
     </div>
     <div class="sorting">
-        <select href="/products?" id="filters" onchange="filterProducts(this, event)" class="frm-field required sect">
+        <select data-url="adminProductListing?" id="filters" onchange="filterProducts(this, event)" class="frm-field required sect">
             <option class="price-filter" value="default"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default
                 sorting
             </option>
@@ -122,7 +122,7 @@
                     <%--                </li>--%>
                     <%--                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>--%>
                 <c:forEach begin="1" end="${pagination}" varStatus="loop">
-                    <c:url var="pageUrl" value="products">
+                    <c:url var="pageUrl" value="adminProductListing">
                         <c:forEach items="${param}" var="entry">
                             <c:if test="${entry.key != 'page'}">
                                 <c:param name="${entry.key}" value="${entry.value}"/>

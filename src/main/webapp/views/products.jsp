@@ -37,7 +37,7 @@
 
     </div>
     <div class="sorting">
-        <select href="/products?" id="filters" onchange="filterProducts(this, event)" class="frm-field required sect">
+        <select data-url="products?" id="filters" onchange="filterProducts(this, event)" class="frm-field required sect">
             <option class="price-filter" value="default"><i class="fa fa-arrow-right" aria-hidden="true" ></i>Default sorting
             </option>
             <option class="price-filter" value="asc"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by price Asc

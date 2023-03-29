@@ -61,7 +61,7 @@ function filterProducts(el, evt) {
     if (priceFilter === 'default')
         priceFilter = '';
     else priceFilter = 'price=' + priceFilter;
-    $.get('products?' + priceFilter + '&' + currentCategory, function (data) {
+    $.get($(el).data('url') +  priceFilter + '&' + currentCategory, function (data) {
         $('#product-list').html(data);
     });
 
