@@ -169,7 +169,6 @@ public class ProductDAO extends BaseDAO<Product> {
         cq.select(cb.sum(orderDetailRoot.get("total")));
         return entityManager.createQuery(cq).getSingleResult();
     }
-
     public void deleteProduct(Long id) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaDelete<Product> delete = cb.createCriteriaDelete(Product.class);
