@@ -190,6 +190,51 @@
         <url-pattern>/deleteProduct</url-pattern>
     </servlet-mapping>
 
+    <!-- filters   -->
+
+    <filter>
+        <filter-name>adminFilter</filter-name>
+        <filter-class>gov.iti.jets.filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /PreviewCustomer </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /adminProductListing </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /AddingProduct </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /EditingProduct </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /deleteProduct </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /dashboard </url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /PreviewOrder </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /PreviewOrderDetails </url-pattern>
+    </filter-mapping>
+
     <!--    //Listeners-->
     <listener>
         <listener-class>

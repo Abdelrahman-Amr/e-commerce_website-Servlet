@@ -34,8 +34,8 @@ function addProductAdmin(event) {
                 console.log(data);
                 //console.log("success");
                 if(data=="1") {
-                    success("Adding new product successfully");
-                    addingProductCallBack();
+                    successLoginAdmin("Adding new product successfully");
+//                    addingProductCallBack();
                 }else{
                     failed('Failed to add product !!');
 
@@ -52,9 +52,9 @@ function addProductAdmin(event) {
 function failCallBack(xhr, textStatus, errorThrown){
     console.log("fail");
                failed('Failed to add product !!');
-               alert('request failed');
+//               alert('request failed');
             }
 
-function addingProductCallBack() {
-    console.log("done");
-}
+//function addingProductCallBack() {
+//    console.log("done");
+//}
