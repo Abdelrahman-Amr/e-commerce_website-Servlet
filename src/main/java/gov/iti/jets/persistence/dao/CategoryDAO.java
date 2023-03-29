@@ -31,7 +31,7 @@ public class CategoryDAO extends BaseDAO<Category>{
         query.setParameter(1,categoryName);
         Category category = (Category) query.getSingleResult();
         if(category!=null) {
-            System.out.println(category.getName());
+//            System.out.println(category.getName());
             return category;
         }
         return null;

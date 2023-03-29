@@ -63,7 +63,7 @@ public class OrderMasterDAO extends BaseDAO<OrderMaster>{
         try {
             entityManager.getTransaction().begin();
             OrderMaster orderMaster = searchForCart(customerId);
-            System.out.println(orderMaster);
+//            System.out.println(orderMaster);
             entityManager.remove(orderMaster);
         }catch(Exception ex){
             ex.printStackTrace();
