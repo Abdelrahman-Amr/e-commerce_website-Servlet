@@ -29,7 +29,7 @@
     </li>
 
     <li>
-        <img src="images/7088595_3538081.jpg" alt=""/>
+        <img src="images/slider1.jpg" alt=""/>
         <div class="slide-desc">
 <%--            <h3>Whole Spices Products Are Now On Line With Us</h3>--%>
         </div>
