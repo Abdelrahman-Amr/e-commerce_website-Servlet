@@ -41,14 +41,14 @@ function  removeFromCart(pdId,size)
 
 function  decreaseQuan(pdId, size)
 {
+
+
     var pdQuan = +$("#q"+pdId+size).html();
-    var pdTotal = +$("#t"+pdId+size).html();
-    var pdPrice = +$("#p"+pdId+size).html();
-    var total=+$("#total").html();
-
-
     if(pdQuan>=1) {
         $.post("cart?pdId=" + pdId + "&sizeName=" + size+"&op=-1", function (data, status) {
+            var pdTotal = +$("#t"+pdId+size).html();
+            var pdPrice = +$("#p"+pdId+size).html();
+            var total=+$("#total").html();
             $("#q"+pdId+size).html(pdQuan-1);
             $("#t"+pdId+size).html(pdTotal-pdPrice);
             $("#total").html(total-pdPrice);
@@ -67,12 +67,13 @@ function  decreaseQuan(pdId, size)
     }
 }
 function  increaseQuan(pdId, size) {
-    var pdQuan = +$("#q"+pdId+size).html();
-    var pdTotal = +$("#t"+pdId+size).html();
-    var pdPrice = +$("#p"+pdId+size).html();
-    var total=+$("#total").html();
+
 
     $.post("cart?pdId="+pdId+"&sizeName="+size+"&op=1", function(data, status){
+        var pdQuan = +$("#q"+pdId+size).html();
+        var pdTotal = +$("#t"+pdId+size).html();
+        var pdPrice = +$("#p"+pdId+size).html();
+        var total=+$("#total").html();
         $("#q"+pdId+size).html(pdQuan+1);
         $("#t"+pdId+size).html(pdTotal+pdPrice);
         $("#total").text(total+pdPrice);

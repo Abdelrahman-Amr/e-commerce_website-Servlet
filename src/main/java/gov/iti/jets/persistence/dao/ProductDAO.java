@@ -120,7 +120,7 @@ public class ProductDAO extends BaseDAO<Product> {
 
     public List<Product> getPriorityProducts()
     {
-        Query query=entityManager.createQuery(" from Product p where p.priority=1",Product.class).setMaxResults(6);
+        Query query=entityManager.createQuery(" from Product p where p.priority=1 and p.active=true",Product.class).setMaxResults(6);
         List<Product> products=query.getResultList();
         return  products;
     }
@@ -149,7 +149,7 @@ public class ProductDAO extends BaseDAO<Product> {
 
     public List<Product> getOffersProducts()
     {
-        Query query=entityManager.createQuery(" from Product p where p.discount>0 order by p.discount desc",Product.class).setMaxResults(3);
+        Query query=entityManager.createQuery(" from Product p where p.discount>0 and p.active=true order by p.discount desc",Product.class).setMaxResults(3);
         List<Product> products=query.getResultList();
         return  products;
     }
@@ -178,5 +178,21 @@ public class ProductDAO extends BaseDAO<Product> {
         entityManager.getTransaction().begin();
         entityManager.createQuery(delete).executeUpdate();
         entityManager.getTransaction().commit();
+    }
+
+    public void deleteProduct2(Long id) {
+
+        Query query=entityManager.createQuery(" from Product p where p.id  = :id ",Product.class);
+        query.setParameter("id",id);
+        List<Product> products=query.getResultList();
+        if(products!=null && products.size()>0)
+        {
+            Product product = products.get(0);
+            entityManager.getTransaction().begin();
+            product.setActive(false);
+            entityManager.merge(product);
+            entityManager.getTransaction().commit();
+        }
+
     }
 }

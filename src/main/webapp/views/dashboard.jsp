@@ -6,7 +6,7 @@
 
 <div class="dashboard">
     <div class="container">
-<%--        <h2>Admin Dashboard</h2>--%>
+        <h2>Admin Dashboard</h2>
         <div class="cart-container">
             <div class="stats">
                 <ul class="row">

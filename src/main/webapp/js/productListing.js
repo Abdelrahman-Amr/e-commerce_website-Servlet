@@ -73,3 +73,58 @@ function  setCat(cat)
     $('#currentCat').html(cat);
 
 }
+function deleteProduct(pdId)
+{
+    deletePopup(pdId);
+}
+
+function deleteCallback(responseTxt, statusTxt, xhr)
+    {
+        if (statusTxt == "success" &&   xhr.status == 200){
+            successDelete("Deleted successfully");
+        }else{
+            failed('Failed to Remove Product !!');
+        }
+
+
+}
+function deletePopup(pdId){
+    Swal.fire({
+        title: 'Are you sure you want to Remove this Product ?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        confirmButtonColor: '#25aae2',
+        toast:true
+        // cancelButtonColor: '#25aae2',
+        // denyButtonColor: '#25aae2',
+
+    }).then((result) => {
+        if (result.value) {
+            $.get ('deleteProduct?id='+pdId,
+                {
+                }
+                , deleteCallback).fail(function() {
+                failed('Failed to Remove Product !!');
+            });
+        }});
+}
+function successDelete(msg)
+{
+    Swal.fire({
+        // position: 'top-end',
+        icon: 'success',
+        text:msg,
+        title: 'Success',
+        showConfirmButton: false,
+        timer: 1500,
+        toast:true,
+        iconColor:'#663300',
+        didDestroy:function(){
+
+                location.reload();
+            }
+
+    });
+}

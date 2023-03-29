@@ -22,7 +22,7 @@ public class DeleteProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
         Long id = Long.valueOf(req.getParameter("id"));
-        productService.deleteProduct(id);
+        productService.deleteProduct2(id);
 
         RequestDispatcher rd = req.getRequestDispatcher("adminProductListing");
         rd.include(req, response);

@@ -400,7 +400,7 @@ ul.multi-column-dropdown h6 {
     right: 10%;
 }
 
-.top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3, .cart-header , .cat-header{
+.top-brands h2, .newproducts-w3agile h3, .login h2, .register h2, .faq-w3agile h3, .brands h3, .cart-header , .cat-header .dashboard h2{
     text-align: center;
     color: #212121;
     padding-bottom: .5em;

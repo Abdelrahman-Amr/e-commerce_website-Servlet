@@ -163,4 +163,9 @@ public class ProductService extends BaseService<Product> {
         List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getRelatedProducts(catId));
         return  productDtos;
     }
+
+    public void deleteProduct2(Long id) {
+        productDAO = new ProductDAO();
+        productDAO.deleteProduct2(id);
+    }
 }

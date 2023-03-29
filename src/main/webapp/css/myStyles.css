@@ -134,6 +134,10 @@ a:hover{
     display: none;
 }
 @media (max-width: 450px){
+    .dashboard h2 , #currentCat{
+        font-size: 1.7em!important;
+
+    }
     #addTo{
         margin-top: 25px;
         width: fit-content;
@@ -317,3 +321,23 @@ button.btn-secondary {
     border-bottom: 1px solid white;
 }
 */
+.dashboard h2{
+    text-align: center;
+    margin:30px;
+    position: relative;
+}
+#currentCat {
+    position: relative;
+    /*margin-bottom: 15px!important;*/
+}
+
+ .dashboard h2:after ,#currentCat:after{
+    content: '';
+    background: var(--main-color);
+    height: 2px;
+    width: 15%;
+    position: absolute;
+    bottom: 0%;
+    left: 43%;
+    top: 50px;
+}
