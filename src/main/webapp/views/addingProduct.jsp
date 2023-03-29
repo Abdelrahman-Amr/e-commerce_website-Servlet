@@ -19,8 +19,7 @@
 				<input type="hidden" placeholder="Quantity*" value="100" id="productQuantity" name="productQuantity" min="0" max="50000" >
 				<input type="number" placeholder="Priority*" required id="productPriority" name="productPriority" min="0" max="1" step="1" >
 <%--				<input type="text" placeholder="Description*" required id="productDescription" name="productDescription" minlength="20" maxlength="1000">--%>
-				<textarea  placeholder="Description*" required  name="productDescription" id="productDescription" minlength="20" maxlength="1000" rows="5" style="width: 100%;margin-top:20px">
-				</textarea>
+				<textarea  placeholder="Description*" required  name="productDescription" id="productDescription" minlength="20" maxlength="1000" rows="5" style="width: 100%;margin-top:20px"></textarea>
 				<input type="file" required id="productImage" name="productImage">
 				<input type="submit" value="Add" >
 			</form>
