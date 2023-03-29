@@ -24,7 +24,7 @@
             <ul class="row">
                 <c:forEach items="${cats}" var="cat">
                     <li class="col-md-3 col-sm-6 category-tabs column">
-                        <a id="${cat.id}" href="products?catId=${cat.id}" onclick="setCat('${cat.name}')">
+                        <a id="${cat.id}" href="adminProductListing?catId=${cat.id}" onclick="setCat('${cat.name}')">
                             <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                 ${cat.name}
                         </a>
