@@ -2,6 +2,7 @@
 package gov.iti.jets.servlet;
 
 import gov.iti.jets.dto.CustomerDto;
+import gov.iti.jets.dto.OrderDetailDto;
 import gov.iti.jets.entity.Customer;
 import gov.iti.jets.entity.OrderMaster;
 import gov.iti.jets.mapper.CustomerMapper;
@@ -24,6 +25,7 @@ import org.mapstruct.factory.Mappers;
 import javax.persistence.EntityManager;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 
 public class LoginServlet extends HttpServlet{
@@ -73,9 +75,10 @@ public class LoginServlet extends HttpServlet{
             OrderMaster cart = orderMasterService.searchForCart(customerDto.getId());
             if(cart!=null)
             {
+                List<OrderDetailDto> orderDetailDtoList = orderDetailMapper.toDTOs(cart.getOrderDetails());
                 session.setAttribute("cart", orderDetailMapper.toDTOs(cart.getOrderDetails()));
-                session.setAttribute("cartTotal", cart.getTotal());
-                session.setAttribute("cartSize", cart.getOrderDetails().size());
+                session.setAttribute("cartTotal",orderMasterService.calcCartTotal(orderDetailDtoList));
+                session.setAttribute("cartSize", orderMasterService.calcCartSize(orderDetailDtoList));
                 session.setAttribute("dev", Constants.Dev);
             }
             writer.write("1");
