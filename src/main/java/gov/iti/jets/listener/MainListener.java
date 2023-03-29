@@ -30,5 +30,6 @@ public class MainListener implements ServletContextListener {
 
     }
     public void contextDestroyed (ServletContextEvent cse) {
+        System.out.println("Application shut down");
     }
 }

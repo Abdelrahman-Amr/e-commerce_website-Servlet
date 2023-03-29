@@ -118,10 +118,11 @@ public class ProductDAO extends BaseDAO<Product> {
         return typedQuery.getResultList().get(0);
     }
 
-    public List<Product> getPriorityProducts() {
-        Query query = entityManager.createQuery(" from Product p where p.priority=1", Product.class).setMaxResults(6);
-        List<Product> products = query.getResultList();
-        return products;
+    public List<Product> getPriorityProducts()
+    {
+        Query query=entityManager.createQuery(" from Product p where p.priority=1",Product.class).setMaxResults(6);
+        List<Product> products=query.getResultList();
+        return  products;
     }
 
 //    public List<Product> getMostSellingProducts() {
