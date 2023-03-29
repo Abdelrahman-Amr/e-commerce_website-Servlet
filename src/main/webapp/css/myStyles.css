@@ -321,7 +321,7 @@ button.btn-secondary {
     border-bottom: 1px solid white;
 }
 */
-.dashboard h2{
+.dashboard h2, .head{
     text-align: center;
     margin:30px;
     position: relative;
@@ -331,7 +331,7 @@ button.btn-secondary {
     /*margin-bottom: 15px!important;*/
 }
 
- .dashboard h2:after ,#currentCat:after{
+ .dashboard h2:after ,#currentCat:after, .head:after{
     content: '';
     background: var(--main-color);
     height: 2px;

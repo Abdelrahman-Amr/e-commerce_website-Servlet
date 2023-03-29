@@ -57,7 +57,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="fa fa-dollar"></i> Total Revenue</h5>
-                                <p class="card-text">${totalRevenue} $</p>
+                                <p class="card-text">$ ${totalRevenue} </p>
                             </div>
                         </div>
                     </li>

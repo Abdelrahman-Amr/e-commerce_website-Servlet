@@ -13,6 +13,8 @@
     </div>
 </div>
 -->
+<h2 class="head" style="margin-bottom: 40px;">Orders</h2>
+
 <table class="styled-table">
     <thead>
         <tr>
