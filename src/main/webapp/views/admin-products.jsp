@@ -89,7 +89,7 @@
                                             <button class="btn btn-primary btn-sm" style="margin-right: 10px;"><i class="fa fa-edit"></i>   Edit product
                                             </button>
                                         </a>
-                                        <a href="deleteProduct?id=${prod.id}">
+                                        <a  onclick="deleteProduct(${prod.id})" href="#">
                                             <button class="btn btn-secondary btn-sm delete"><i class="fa fa-trash"></i></button>
                                         </a>
                                     </div>

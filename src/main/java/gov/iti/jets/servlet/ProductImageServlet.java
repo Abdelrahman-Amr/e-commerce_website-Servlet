@@ -29,8 +29,6 @@ public class ProductImageServlet extends HttpServlet {
         String imgName = request.getParameter("imgName") ;
 //        String path = context.getRealPath("/images/")+imgName;
         String path= Constants.imgPath+imgName;
-        File f = new File("D:/x.txt");
-        f.createNewFile();
         BufferedImage bImage = ImageIO.read(new File(path));
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         String tokens[] = path.split("[.]",0);
