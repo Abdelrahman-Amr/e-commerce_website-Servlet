@@ -24,7 +24,7 @@ public class ThreadLocalListener implements ServletRequestListener {
     @Override
     public void requestDestroyed(ServletRequestEvent sre){
 
-//        MyLocal.getInstance().remove();
+        MyLocal.getInstance().remove();
     }
 
 }

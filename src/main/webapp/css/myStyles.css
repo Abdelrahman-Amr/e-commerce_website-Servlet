@@ -4,40 +4,36 @@
     --white-color: #fff;
 }
 
-#logout-link {
-    cursor: pointer !important;
+#logout-link{
+    cursor: pointer!important;
 }
-
-a:hover {
+a:hover{
     color: var(--main-color);
 }
-
 .register .error {
-    color: red;
+    color:red;
 
-    display: none;
+    display:none;
 }
 
-.active:hover {
-    color: var(--secondary-color) !important;
+.active:hover{
+    color: var(--secondary-color)!important;
 }
-
-.cart::after {
-    content: attr(data-cart);
-    font-size: 0.6em;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    background: var(--main-color);
-    color: var(--white-color) !important;
-    line-height: 20px;
-    border-radius: 50%;
-    display: inline-block;
-}
-
+/*.cart::after {*/
+/*    content: attr(data-cart);*/
+/*    font-size: 0.6em;*/
+/*    position: absolute;*/
+/*    top: -10px;*/
+/*    right: -10px;*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    text-align: center;*/
+/*    background: var(--main-color);*/
+/*    color: var( --white-color) !important;*/
+/*    line-height: 20px;*/
+/*    border-radius: 50%;*/
+/*    display: inline-block;*/
+/*}*/
 .badge {
     padding-left: 9px;
     padding-right: 9px;
@@ -51,7 +47,6 @@ a:hover {
 .badge-warning[href] {
     background-color: #c67605;
 }
-
 #lblCartCount {
     font-size: 18px;
     background: var(--main-color);
@@ -60,46 +55,39 @@ a:hover {
     vertical-align: top;
     margin-left: -10px;
 }
-
-.cart-img {
+.cart-img{
     width: 100px;
     height: 90px;
     margin: 0 auto;
 }
-
 /*.c{*/
 /*    display: flex;*/
 /*    justify-content: space-between;*/
 /*}*/
-.cart-header, .cat-header {
+.cart-header ,.cat-header{
 
     font-size: 30px !important;
-    margin-bottom: 40px !important;
+    margin-bottom : 40px!important;
 }
-
 @media (max-width: 450px) {
-    .cart-header, .cat-header {
+    .cart-header , .cat-header{
         font-size: 20px !important;
-        margin-bottom: 40px !important;
+        margin-bottom : 40px!important;
     }
-
-    #empty-cart {
+    #empty-cart{
         margin-bottom: 30px;
         margin-top: -40px
     }
 }
-
-.checkout-right-basket {
+.checkout-right-basket{
     text-align: center;
 }
-
-#empty-cart {
+#empty-cart{
     margin-bottom: 30px;
     margin-top: -20px
 }
-
-.agile-login {
-    width: fit-content !important;
+.agile-login{
+    width: fit-content!important;
 }
 
 .radio-group label {
@@ -128,7 +116,6 @@ a:hover {
     overflow: hidden;
     background-color: #efefef;
 }
-
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 /*body {*/
 /*    background: #332f35;*/
@@ -140,50 +127,44 @@ a:hover {
     visibility: hidden;
     display: none;
 }
-
-.numbering {
+.numbering{
     text-align: center;
 }
-
-.cat-header {
+.cat-header{
     display: none;
 }
-
 @media (max-width: 450px) {
-    .categories {
+    html{
+        width:102%;
+    }
+    .categories{
         display: none;
     }
-
-    .cart-container {
+    .cart-container{
         text-align: center;
     }
-
-    .cat-header {
-        display: block !important;
-        visibility: visible !important;
+    .cat-header{
+        display: block!important;
+        visibility: visible!important;
     }
+    .sorting{
+        margin: auto!important;
 
-    .sorting {
-        margin: auto;
         /*padding-left: -20px*/
     }
-
-    .products {
-        text-align: center !important;
+    .products{
+        text-align: center!important;
     }
 }
-
-.sorting {
-    padding-left: 20px;
+.sorting{
+    margin-left: 20px;
 }
 
-.checkoutBtn {
-    margin-top: 20px;
+.checkoutBtn{
     text-align: center;
     width: 100%;
 }
-
-.checkoutBtn button {
+.checkoutBtn button{
     font-size: 14px;
     color: #fff;
     background: var(--main-color);
@@ -191,25 +172,22 @@ a:hover {
     position: relative;
     border: none;
     border-radius: 7px;
-    width: fit-content;
+    width:fit-content;
     /* text-transform: uppercase; */
     /*padding: 0.5em 0;*/
     outline: none;
     padding: 10px 20px;
 }
-
-#addTo {
+#addTo{
     margin-top: 15px;
     width: fit-content;
     padding: 10px 20px;
 }
-
-.badge {
+.badge{
 
 }
-
-.agile_top_brand_left_grid {
-    margin-bottom: 15px !important;
+.agile_top_brand_left_grid{
+    margin-bottom: 15px!important;
 }
 
 .card {

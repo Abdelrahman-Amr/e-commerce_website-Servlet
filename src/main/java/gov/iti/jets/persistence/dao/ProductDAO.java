@@ -1,13 +1,14 @@
 package gov.iti.jets.persistence.dao;
 
-import gov.iti.jets.entity.Category_;
-import gov.iti.jets.entity.OrderDetail;
+import gov.iti.jets.entity.*;
 import gov.iti.jets.entity.Product;
-import gov.iti.jets.entity.Product_;
 import gov.iti.jets.util.MyLocal;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 import java.util.List;
 import java.util.Map;
@@ -72,8 +73,9 @@ public class ProductDAO extends BaseDAO<Product> {
         if (params.get("price") != null) {
             if (params.get("price").equals("asc")) {
                 criteriaQuery.orderBy(criteriaBuilder.asc(productRoot.get("price")));
-            } else if (params.get("price").equals("desc")) {
-                criteriaQuery.orderBy(criteriaBuilder.desc(productRoot.get("price")));
+            }
+            else if (params.get("price").equals("desc")) {
+                  criteriaQuery.orderBy(criteriaBuilder.desc(productRoot.get("price")));
             }
         }
         List<Product> resultList = entityManager.createQuery(criteriaQuery).setMaxResults(maxNoOfRecordsPerPage).setFirstResult(offset).getResultList();
@@ -115,7 +117,7 @@ public class ProductDAO extends BaseDAO<Product> {
                         .count(productRoot))
                 .where(predicate);
         TypedQuery<Long> typedQuery = entityManager.createQuery(criteriaQuery);
-        System.out.println(typedQuery.unwrap(org.hibernate.query.Query.class).getQueryString());
+//        System.out.println(typedQuery.unwrap(org.hibernate.query.Query.class).getQueryString());
         return typedQuery.getResultList().get(0);
     }
 
@@ -149,19 +151,21 @@ public class ProductDAO extends BaseDAO<Product> {
         return products;
     }
 
-    public List<Product> getOffersProducts() {
-        Query query = entityManager.createQuery(" from Product p where p.discount>0 order by p.discount desc", Product.class).setMaxResults(3);
-        List<Product> products = query.getResultList();
-        System.out.println("products = " + products.size());
-        return products;
+    public List<Product> getOffersProducts()
+    {
+        Query query=entityManager.createQuery(" from Product p where p.discount>0 order by p.discount desc",Product.class).setMaxResults(3);
+        List<Product> products=query.getResultList();
+//        System.out.println("products = "+ products.size());
+        return  products;
     }
 
-    public List<Product> getRelatedProducts(long catId) {
-        Query query = entityManager.createQuery(" from Product p where p.catg.id  = :catId ", Product.class).setMaxResults(4);
-        query.setParameter("catId", catId);
-        List<Product> products = query.getResultList();
-        System.out.println("products = " + products.size());
-        return products;
+    public List<Product> getRelatedProducts(long catId)
+    {
+        Query query=entityManager.createQuery(" from Product p where p.catg.id  = :catId ",Product.class).setMaxResults(4);
+        query.setParameter("catId",catId);
+        List<Product> products=query.getResultList();
+//        System.out.println("products = "+ products.size());
+        return  products;
     }
 
     public Double getTotalRevenue() {

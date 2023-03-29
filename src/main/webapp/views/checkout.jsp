@@ -90,6 +90,7 @@
                             <%--						<li>Product3 <i>-</i> <span>$29.00 </span></li>--%>
                         <li>Delivery fee <i>-</i> <span>$${dev}</span></li>
                         <li>Total <i>-</i> <span id="total">${cartTotal}</span><span>$</span></li>
+						<hr>
                         <li>Payment <i>-</i> <span id="payment">
                     <ul class="payment-container">
 						<li>

@@ -1476,15 +1476,15 @@ td.invert-image a img {
     float: right;
 }
 
-.checkout-left-basket ul li:nth-child(5) {
-    font-size: 1em;
-    color: #212121;
-    font-weight: 600;
-    padding: 1em 0;
-    border-top: 1px solid #DDD;
-    border-bottom: 1px solid #DDD;
-    margin: 2em 0 0;
-}
+/*.checkout-left-basket ul li:nth-child(5) {*/
+/*    font-size: 1em;*/
+/*    color: #212121;*/
+/*    font-weight: 600;*/
+/*    padding: 1em 0;*/
+/*    border-top: 1px solid #DDD;*/
+/*    border-bottom: 1px solid #DDD;*/
+/*    margin: 2em 0 0;*/
+/*}*/
 
 .checkout-right-basket a {
     padding: 10px 30px;
@@ -3765,17 +3765,17 @@ h3.agileits-icons-title {
     }
 
     .value-minus, .value-plus {
-        margin: 4px 15px;
+        /*margin: 4px 15px;*/
         display: inline-block;
     }
 
     .value {
-        margin: 4px 15px;
+        /*margin: 4px 15px;*/
         display: inline-block;
     }
 
     .quantity-select .entry.value-minus {
-        margin-left: 15px;
+        /*margin-left: 15px;*/
     }
 
     .checkout-left-basket {
