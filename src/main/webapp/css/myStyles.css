@@ -149,7 +149,8 @@ a:hover{
         visibility: visible!important;
     }
     .sorting{
-        margin: auto;
+        margin: auto!important;
+
         /*padding-left: -20px*/
     }
     .products{
@@ -157,7 +158,7 @@ a:hover{
     }
 }
 .sorting{
-    padding-left: 20px;
+    margin-left: 20px;
 }
 
 .checkoutBtn{
