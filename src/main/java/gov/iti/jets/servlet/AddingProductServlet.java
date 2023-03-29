@@ -6,8 +6,8 @@ import gov.iti.jets.dto.ProductDto;
 import gov.iti.jets.entity.Product;
 import gov.iti.jets.service.CategoryService;
 import gov.iti.jets.service.ProductService;
+import gov.iti.jets.util.Constants;
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,17 +22,23 @@ import java.util.List;
 @MultipartConfig
 public class AddingProductServlet extends HttpServlet {
 
-    ProductService productService = ProductService.getInstance();
+    ProductService productService;
 
-    CategoryService categoryService = CategoryService.getInstance();
+    CategoryService categoryService;
 
-    List<CategoryDto> categoryList;
-
+    @Override
+    public void init()
+    {
+        productService = ProductService.getInstance();
+        categoryService = CategoryService.getInstance();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("/views/header.jsp");
         rd.include(request, response);
+
+        List<CategoryDto> categoryList;
 
         categoryList = categoryService.getAll();
 
@@ -52,8 +58,8 @@ public class AddingProductServlet extends HttpServlet {
         try {
             resp.setContentType("application/json");
 
-            ServletContext servletContext = req.getServletContext();
-            String path = servletContext.getRealPath("/images/");
+//            String path = servletContext.getRealPath("/images/");
+            String path = Constants.imgPath;
 
             Part part = req.getPart("file");
             if (part != null) {
@@ -62,15 +68,15 @@ public class AddingProductServlet extends HttpServlet {
 
                 String productJson = req.getParameter("productInfo");
 
-                System.out.println(productJson);
+//                System.out.println(productJson);
 
                 ProductDto productDTO = new Gson().fromJson(productJson, ProductDto.class);
 
-                System.out.println(productDTO.getName());
+//                System.out.println(productDTO.getName());
 
                 Product product = productService.addNewProduct(productDTO, true);
 
-                System.out.println(product.getName());
+//                System.out.println(product.getName());
 
                 productId = product.getId();
 

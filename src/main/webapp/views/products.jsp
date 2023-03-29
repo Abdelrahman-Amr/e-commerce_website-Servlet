@@ -24,7 +24,7 @@
             <ul class="row">
                 <c:forEach items="${cats}" var="cat">
                     <li class="col-md-3 col-sm-6 category-tabs column" >
-                        <a id="${cat.id}" href="products?catId=${cat.id}">
+                        <a id="${cat.id}" href="products?catId=${cat.id}" onclick="setCat('${cat.name}')">
                             <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                 ${cat.name}
                         </a>
@@ -32,9 +32,8 @@
                     <input type="hidden" id="catInput" value="${cat.name}">
                 </c:forEach>
             </ul>
-
         </div>
-        <h2 class="cat-header " id="currentCat"></h2>
+        <h2 class="cat-header " id="currentCat">${currentCat}</h2>
 
     </div>
     <div class="sorting">
@@ -87,9 +86,9 @@
                                     <form  method="post" action="cart" onsubmit="addToCartSmall(event)">
                                         <fieldset>
                                             <input type="hidden" name="pdId" value="${prod.id}">
+                                            <input type="hidden" name="item_name" value="${prod.name}">
                                             <input type="hidden" name="quantity" value="1">
                                             <input type="hidden" name="business" value=" ">
-                                            <input type="hidden" name="item_name" value="${prod.name}">
                                             <input type="hidden" name="amount" value="35.99">
                                             <input type="hidden" name="discount_amount" value="1.00">
                                             <input type="hidden" name="currency_code" value="USD">

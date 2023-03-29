@@ -2,7 +2,6 @@ package gov.iti.jets.servlet;
 
 import gov.iti.jets.dto.CustomerDto;
 import gov.iti.jets.dto.OrderDetailDto;
-import gov.iti.jets.dto.OrderMasterDto;
 import gov.iti.jets.entity.Customer;
 import gov.iti.jets.entity.OrderDetail;
 import gov.iti.jets.entity.OrderMaster;
@@ -69,7 +68,7 @@ public class OrderServlet  extends HttpServlet {
 
             orderMasterService.deleteCart(customer.getId());
             OrderMaster orderMaster = new OrderMaster();
-                    orderMaster.setDate(LocalDate.now());
+                    orderMaster.setDate(new Date());
                     orderMaster.setIsDone(false);
                     orderMaster.setTotal((double)session.getAttribute("cartTotal"));
                     orderMaster.setIsCart(false);
@@ -90,7 +89,7 @@ public class OrderServlet  extends HttpServlet {
                             return;
                         }
                         customer.setCreditLimit(customer.getCreditLimit() - orderMaster.getTotal());
-                        customerService.refresh(customer);
+                        customerService.merge(customer);
                         customerDto.setCreditLimit(customer.getCreditLimit());
                         session.setAttribute("customer",customerDto);
                     }

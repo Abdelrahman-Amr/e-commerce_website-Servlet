@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import gov.iti.jets.dto.CustomerDto;
 import gov.iti.jets.dto.RegistrationCustomerDTO;
 import gov.iti.jets.service.CustomerService;
+import gov.iti.jets.util.Constants;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -26,8 +27,11 @@ public class ProductImageServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = request.getServletContext();
         String imgName = request.getParameter("imgName") ;
-        String path = context.getRealPath("/images/")+imgName;
-        System.out.println(path);
+//        String path = context.getRealPath("/images/")+imgName;
+        String path= Constants.imgPath+imgName;
+        File f = new File("D:/x.txt");
+        f.createNewFile();
+//        System.out.println(path);
 //        String path = "images/product/mocha.png";
         BufferedImage bImage = ImageIO.read(new File(path));
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -46,7 +50,8 @@ public class ProductImageServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext context = req.getServletContext();
-        String path = context.getRealPath("/images/");
+        String path= Constants.imgPath;
+
         Part filePart = req.getPart("file");
         String fileName = filePart.getSubmittedFileName();
         filePart.write(path +fileName);

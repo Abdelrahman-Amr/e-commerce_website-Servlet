@@ -12,7 +12,7 @@ public class OrderMasterDAO extends BaseDAO<OrderMaster>{
 
     public OrderMasterDAO()
     {
-        super(OrderMaster.class, DBFactory.getInstance().createEntityManager());
+        super(OrderMaster.class, MyLocal.getInstance().get());
     }
 
 
@@ -28,10 +28,8 @@ public class OrderMasterDAO extends BaseDAO<OrderMaster>{
         Query query = entityManager.createQuery("from OrderMaster o where  o.cust.id =:customerId and o.isCart =true order by o.id desc");
         query.setParameter("customerId",customerId);
         List<OrderMaster> orders = query.getResultList();
-        System.out.println(orders.size());
         if(orders!= null && orders.size()>0)
         {
-            System.out.println("size = "+orders.get(0).getOrderDetails().size());
             return orders.get(0);
         }
         return  null;
@@ -51,6 +49,28 @@ public class OrderMasterDAO extends BaseDAO<OrderMaster>{
 //        query.setParameter("customerId",customerId);
 //        query.executeUpdate();
     }
+    public int getRecordsCount() {
+        return getAll().size();
+    }
 
+    public List<OrderMaster> getOrders(int index) {
+        Query query=entityManager.createQuery(" from OrderMaster o",OrderMaster.class).setFirstResult(index).setMaxResults(10);
+        List<OrderMaster> masterOrders=query.getResultList();
+        return masterOrders;
+    }
+    public void removeCart(long customerId)
+    {
+        try {
+            entityManager.getTransaction().begin();
+            OrderMaster orderMaster = searchForCart(customerId);
+            System.out.println(orderMaster);
+            entityManager.remove(orderMaster);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+        finally {
+            entityManager.getTransaction().commit();
+        }
+    }
 }
-

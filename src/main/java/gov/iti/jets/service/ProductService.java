@@ -4,6 +4,7 @@ import gov.iti.jets.dto.ProductDto;
 import gov.iti.jets.entity.Product;
 import gov.iti.jets.mapper.ProductMapper;
 import gov.iti.jets.persistence.dao.ProductDAO;
+import jakarta.persistence.Query;
 import org.mapstruct.factory.Mappers;
 
 import java.util.*;
@@ -123,5 +124,31 @@ public class ProductService extends BaseService<Product> {
     {
         productDAO = new ProductDAO();
         return productDAO.get(id);
+    }
+
+    public List<ProductDto> getPriorityProducts()
+    {
+        productDAO = new ProductDAO();
+        List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getPriorityProducts());
+        return  productDtos;
+    }
+    public List<ProductDto> getMostSellingProducts()
+    {
+        productDAO = new ProductDAO();
+        List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getMostSellingProducts());
+        return  productDtos;
+    }
+    public List<ProductDto> getOffersProducts()
+    {
+        productDAO = new ProductDAO();
+        List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getOffersProducts());
+        return  productDtos;
+    }
+
+    public List<ProductDto> getRelatedProducts(long catId)
+    {
+        productDAO = new ProductDAO();
+        List<ProductDto> productDtos = productMapper.toDTOs(productDAO.getRelatedProducts(catId));
+        return  productDtos;
     }
 }

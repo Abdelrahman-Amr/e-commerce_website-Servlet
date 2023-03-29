@@ -10,7 +10,7 @@
         </tr>
        
     </thead>
-    <tbody id="tableBody">
+    <tbody id="customerTableBody">
         <c:forEach items="${customerList}" var="current">
             <tr class="active-row">
                 <td>${current.email}</td>
@@ -24,9 +24,9 @@
 </table>
 <nav class="page-buttons">
     <div class="page-item">
-        <input type="button"  class="page-link" id="prevBTN" value="<" onclick="getPrevCustomerList()" disabled>
-        <label id="pageNo">${pageNo} of ${pageNUM}</label>
-        <input type="button" class="page-link" id="nextBTN" value=">" onclick="getNextCustomerList(${pageNo})">
+        <input type="button"  class="page-link" id="prevCustomerBTN" value="<" onclick="getPrevCustomerList()" disabled>
+        <label id="customerPageNo">${CustomerPageNo} of ${customerTotalPage}</label>
+        <input type="button" class="page-link" id="nextCustomerBTN" value=">" onclick="getNextCustomerList('${pageNo}')">
     </div>
 </nav>
 

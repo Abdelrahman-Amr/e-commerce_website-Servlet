@@ -28,6 +28,8 @@ jQuery(function ($) {
 });
 
 function loadList(el, evt) {
+    console.log("nooooooo");
+
     var currentCategory = $('.categories ul li a.active').attr('id');
     console.log($('#catInput').val());
 
@@ -62,4 +64,12 @@ function filterProducts(el, evt) {
     $.get('products?' + priceFilter + '&' + currentCategory, function (data) {
         $('#product-list').html(data);
     });
+
+}
+
+function  setCat(cat)
+{
+    console.log(cat);
+    $('#currentCat').html(cat);
+
 }

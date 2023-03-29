@@ -1,14 +1,8 @@
 package gov.iti.jets.servlet;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import com.google.gson.Gson;
-import gov.iti.jets.dto.CustomerDto;
 import gov.iti.jets.dto.RegistrationCustomerDTO;
 import gov.iti.jets.entity.OrderMaster;
 import gov.iti.jets.mapper.MyOrderDetailMapperImpl;

@@ -13,7 +13,8 @@ public class ThreadLocalListener implements ServletRequestListener {
 
     @Override
     public void requestInitialized(ServletRequestEvent sre){
-//         MyLocal.getInstance().set(DBFactory.getInstance().createEntityManager());
+         MyLocal.getInstance().set(DBFactory.getInstance().createEntityManager());
+//         MyLocal.getInstance().get().getTransaction().begin();
 
 //         CustomerService.getInstance().setManager(MyLocal.getInstance().get());
 //         CategoryService.getInstance().setManager(MyLocal.getInstance().get());
@@ -23,7 +24,7 @@ public class ThreadLocalListener implements ServletRequestListener {
     @Override
     public void requestDestroyed(ServletRequestEvent sre){
 
-//        MyLocal.getInstance().remove();
+        MyLocal.getInstance().remove();
     }
 
 }

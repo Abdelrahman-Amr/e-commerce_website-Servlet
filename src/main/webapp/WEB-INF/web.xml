@@ -5,7 +5,6 @@
          version= "5.0"
          metadata-complete= "true">
 
-
 <!--    //Servlets-->
     <servlet>
         <servlet-name>Main</servlet-name>
@@ -13,7 +12,7 @@
     </servlet>
 <!--    <servlet-mapping>-->
 <!--        <servlet-name>Main</servlet-name>-->
-<!--        <url-pattern>/</url-pattern>-->
+<!--        <url-pattern>/main</url-pattern>-->
 <!--    </servlet-mapping>-->
 
     <servlet>
@@ -145,6 +144,25 @@
         <servlet-name>order</servlet-name>
         <url-pattern>/order</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>reviewOrder</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.PreviewOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>reviewOrder</servlet-name>
+        <url-pattern>/PreviewOrder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>reviewOrderDetail</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.OrderDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>reviewOrderDetail</servlet-name>
+        <url-pattern>/PreviewOrderDetails</url-pattern>
+    </servlet-mapping>
+
 <!--    //Listeners-->
     <listener>
         <listener-class>
@@ -155,6 +173,11 @@
     <listener>
         <listener-class>
             gov.iti.jets.listener.ThreadLocalListener
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>
+            gov.iti.jets.listener.MySessionListener
         </listener-class>
     </listener>
 

@@ -5,13 +5,9 @@ import gov.iti.jets.dto.RegistrationCustomerDTO;
 import gov.iti.jets.entity.Customer;
 import gov.iti.jets.mapper.CustomerMapper;
 import gov.iti.jets.persistence.dao.CustomerDAO;
-import gov.iti.jets.util.MyLocal;
 import gov.iti.jets.util.Utility;
-import jakarta.ejb.Local;
-import jakarta.persistence.EntityManager;
 import org.mapstruct.factory.Mappers;
 
-import java.time.LocalDate;
 import java.util.*;
 
 
@@ -64,7 +60,7 @@ public class CustomerService extends BaseService<Customer>{
         boolean result  = customerDAO.save(customerEntity);
         if(result)
         {
-            customerDAO.refresh(customerEntity);
+            customerDAO.refreshCustomer(customerEntity);
             registrationCustomerDTO.setId(customerEntity.getId());
             registrationCustomerDTO.setBirthday(customerEntity.getBirthday());
         }
@@ -88,7 +84,7 @@ public class CustomerService extends BaseService<Customer>{
         boolean result =  customerDAO.update(customer);
         if(result)
         {
-            customerDAO.refresh(customer);
+            customerDAO.refreshCustomer(customer);
 //            Customer newCustomer =customerDAO.get(customer.getId());
             customerDTO.setId(customer.getId());
             customerDTO.setBirthday(customer.getBirthday());
@@ -110,10 +106,15 @@ public class CustomerService extends BaseService<Customer>{
         return customerDAO.getRecordsCount();
     }
 
-    public void  refresh(Customer customer)
+    public void merge(Customer customer)
     {
         customerDAO =  new CustomerDAO();
-         customerDAO.refresh(customer);
+         customerDAO.merge(customer);
+    }
+    public void refresh(Customer customer)
+    {
+        customerDAO =  new CustomerDAO();
+        customerDAO.refreshCustomer(customer);
     }
 }
 

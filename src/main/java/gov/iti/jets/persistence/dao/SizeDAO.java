@@ -12,7 +12,7 @@ import java.util.Optional;
 public class SizeDAO extends BaseDAO<Size> {
 
     public SizeDAO() {
-        super(Size.class, DBFactory.getInstance().createEntityManager());
+        super(Size.class,MyLocal.getInstance().get());
     }
 
 
