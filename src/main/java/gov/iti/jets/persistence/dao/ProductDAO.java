@@ -115,7 +115,6 @@ public class ProductDAO extends BaseDAO<Product> {
 //        System.out.println(typedQuery.unwrap(org.hibernate.query.Query.class).getQueryString());
         return typedQuery.getResultList().get(0);
     }
-
     public Long getNoOfRecords() {
         return noOfRecords;
     }
