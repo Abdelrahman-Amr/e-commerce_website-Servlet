@@ -28,10 +28,8 @@ public class OrderMasterDAO extends BaseDAO<OrderMaster>{
         Query query = entityManager.createQuery("from OrderMaster o where  o.cust.id =:customerId and o.isCart =true order by o.id desc");
         query.setParameter("customerId",customerId);
         List<OrderMaster> orders = query.getResultList();
-        System.out.println(orders.size());
         if(orders!= null && orders.size()>0)
         {
-            System.out.println("size = "+orders.get(0).getOrderDetails().size());
             return orders.get(0);
         }
         return  null;
@@ -65,6 +63,7 @@ public class OrderMasterDAO extends BaseDAO<OrderMaster>{
         try {
             entityManager.getTransaction().begin();
             OrderMaster orderMaster = searchForCart(customerId);
+            System.out.println(orderMaster);
             entityManager.remove(orderMaster);
         }catch(Exception ex){
             ex.printStackTrace();

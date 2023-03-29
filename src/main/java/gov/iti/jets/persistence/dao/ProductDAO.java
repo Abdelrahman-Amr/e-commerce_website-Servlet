@@ -112,7 +112,7 @@ public class ProductDAO extends BaseDAO<Product> {
                         .count(productRoot))
                 .where(predicate);
         TypedQuery<Long> typedQuery = entityManager.createQuery(criteriaQuery);
-        System.out.println(typedQuery.unwrap(org.hibernate.query.Query.class).getQueryString());
+//        System.out.println(typedQuery.unwrap(org.hibernate.query.Query.class).getQueryString());
         return typedQuery.getResultList().get(0);
     }
 
@@ -131,7 +131,7 @@ public class ProductDAO extends BaseDAO<Product> {
     {
         Query query=entityManager.createQuery(" select o.product from OrderDetail o group by o.product  order by sum(o.quantity) desc",Product.class).setMaxResults(6);
         List<Product> products=query.getResultList();
-        System.out.println("products = "+ products.size());
+//        System.out.println("products = "+ products.size());
         return  products;
     }
 
@@ -139,7 +139,7 @@ public class ProductDAO extends BaseDAO<Product> {
     {
         Query query=entityManager.createQuery(" from Product p where p.discount>0 order by p.discount desc",Product.class).setMaxResults(3);
         List<Product> products=query.getResultList();
-        System.out.println("products = "+ products.size());
+//        System.out.println("products = "+ products.size());
         return  products;
     }
 
@@ -148,7 +148,7 @@ public class ProductDAO extends BaseDAO<Product> {
         Query query=entityManager.createQuery(" from Product p where p.catg.id  = :catId ",Product.class).setMaxResults(4);
         query.setParameter("catId",catId);
         List<Product> products=query.getResultList();
-        System.out.println("products = "+ products.size());
+//        System.out.println("products = "+ products.size());
         return  products;
     }
 }

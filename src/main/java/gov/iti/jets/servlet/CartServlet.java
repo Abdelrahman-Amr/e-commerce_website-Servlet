@@ -72,7 +72,6 @@ public class CartServlet extends HttpServlet {
         }
         List<OrderDetailDto> cart = (List<OrderDetailDto>) session.getAttribute("cart");
         OrderDetailDto order =  orderMasterService.searchProduct(cart, productId, sizeDto.getName()) ;
-//        if(session != null && (session.getAttribute(Constants.IS_LOGIN)==null) || session.getAttribute(Constants.IS_LOGIN).equals("false") ) {
 
             if(order == null)
             {
@@ -88,23 +87,7 @@ public class CartServlet extends HttpServlet {
                     cart.remove(order);
                 }
             }
-//        }
-//        else{
-//           if(order == null)
-//           {
-//               orderMasterService.createOrderDetail(productDto, sizeDto, cart);
-//
-//           }
-//           else
-//           {
-//               orderMasterService.updateOrderDetail(productDto, sizeDto, order, op);
-//
-//               if(order.getQuantity()==0)
-//                       {
-//                           cart.remove(order);
-//                       }
-//           }
-//        }
+
         CustomerDto customerDto = (CustomerDto) session.getAttribute("customer");
         if(cart.size() == 0 && customerDto!=null)
         {
