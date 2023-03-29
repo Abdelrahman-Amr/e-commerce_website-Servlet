@@ -173,7 +173,7 @@ public class ProductDAO extends BaseDAO<Product> {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaDelete<Product> delete = cb.createCriteriaDelete(Product.class);
         Root<Product> root = delete.from(Product.class);
-        delete.where(cb.equal(root.get("id"), id));
+        delete.where(cb.and(cb.equal(root.get("active"),true),cb.equal(root.get("id"), id)));
         entityManager.getTransaction().begin();
         entityManager.createQuery(delete).executeUpdate();
         entityManager.getTransaction().commit();
