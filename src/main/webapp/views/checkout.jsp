@@ -57,6 +57,7 @@
 							</td>
 								<%--						<td class="invert" >${order.product.name}</td>--%>
 							<td class="invert">$<span id="p${order.product.id}${order.size}">${order.total / order.quantity}</span></td>
+
 								<%--							<td class="invert">--%>
 								<%--								<div class="rem">--%>
 								<%--									<div class="close1"> </div>--%>
@@ -82,7 +83,7 @@
 						<li>Delivery fee <i>-</i> <span>$${dev}</span></li>
 						<li>Total <i>-</i> <span id="total">${cartTotal}</span><span>$</span></li>
 					</ul>
-
+					<hr>
 					<p>Payment: </p>
 					<input type="radio" id="credit" name="payment" value="1">
 					<label for="credit">Credit</label>
