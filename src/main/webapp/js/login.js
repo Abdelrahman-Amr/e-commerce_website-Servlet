@@ -24,8 +24,16 @@ function login(event)
 function loginCallBack(responseTxt, statusTxt, xhr)
 {
     console.log(xhr.status);
-    if (statusTxt == "success" && responseTxt =="1" &&  xhr.status == 200){
-    successLogin("Logged in successfully");
+    if (statusTxt == "success" &&  xhr.status == 200){
+        if(responseTxt =="1") {
+            // customer
+            // go to home
+            successLogin("Logged in successfully");
+        } else if(responseTxt =="2") {
+            successLoginAdmin("Logged in successfully");
+        } else if(responseTxt == "0") {
+            failed('Invalid Email or Password !!');
+        }
     }else{
       failed('Invalid Email or Password !!');
     }
@@ -52,6 +60,30 @@ function loginCallBack(responseTxt, statusTxt, xhr)
 //    return false;
 //}
 
+function successLoginAdmin(msg) {
+    Swal.fire({
+            // position: 'top-end',
+            icon: 'success',
+            text:msg,
+            title: 'Success',
+            showConfirmButton: false,
+            timer: 1500,
+            toast:true,
+           iconColor:'#663300',
+           didDestroy:function(){
+              // $("#login-form").submit();
+               if(sessionStorage.getItem("toCart") && sessionStorage.getItem("toCart")=="true")
+               {
+                   sessionStorage.setItem("toCart","false");
+                   window.location.href="cart";
+               }else {
+                   window.location.href = "dashboard";
+               }
+//                 window.location.href="dashboard";
+
+            }
+          });
+}
 function successLogin(msg)
 {
    Swal.fire({

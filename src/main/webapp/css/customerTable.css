@@ -74,3 +74,7 @@ margin-left:50px;
     text-align: center;
     margin: 20px;
 }
+
+.styled-table .masterOrderTableBody tr:hover {
+    background-color: #f7c469;
+}

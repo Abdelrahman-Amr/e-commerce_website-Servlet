@@ -10,23 +10,26 @@ public class OrderMasterTableDto {
 
     Long id;
 
-    String customer;
+    String customerEmail;
+    String customerAddress;
 
     Date date;
 
     double total;
 
-    public OrderMasterTableDto(Long id, String customer, Date date, double total) {
+    public OrderMasterTableDto(Long id, String customerEmail, String customerAddress, Date date, double total) {
         this.id = id;
-        this.customer = customer;
+        this.customerEmail = customerEmail;
+        this.customerAddress = customerAddress;
         this.date = date;
         this.total = total;
     }
 
 
-    public OrderMasterTableDto(Long id, String customer, double total) {
+    public OrderMasterTableDto(Long id, String customerEmail, String customerAddress, double total) {
         this.id = id;
-        this.customer = customer;
+        this.customerEmail = customerEmail;
+        this.customerAddress = customerAddress;
         this.total = total;
     }
 
@@ -39,14 +42,6 @@ public class OrderMasterTableDto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(String customer) {
-        this.customer = customer;
     }
 
     public Date getDate() {
@@ -63,5 +58,21 @@ public class OrderMasterTableDto {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    public String getCustomerAddress() {
+        return customerAddress;
+    }
+
+    public void setCustomerAddress(String customerAddress) {
+        this.customerAddress = customerAddress;
     }
 }

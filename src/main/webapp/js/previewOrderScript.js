@@ -13,6 +13,19 @@
 //                              failed('loaded order List Failed !!');
 //                          });
 //}
+
+//const tableRows = document.querySelectorAll('.table-row');
+//
+//tableRows.forEach(row => {
+//  row.addEventListener('mouseover', () => {
+//    row.classList.add('table-row-hover');
+//  });
+//
+//  row.addEventListener('mouseout', () => {
+//    row.classList.remove('table-row-hover');
+//  });
+//});
+
 function getPrevOrderList() {
 
     console.log("previous list");
@@ -73,12 +86,12 @@ function drawOrderTable(customerList) {
     for(let current of customerList) {
         console.log(current)
         document.getElementById("masterOrderTableBody").innerHTML += `
-            <tr class="active-row">
+            <tr class="active-row" onclick="location.href='PreviewOrderDetails?orderId=${current.id}'">
                 <td>${current.id}</td>
-                <td>${current.customer}</td>
+                <td>${current.customerEmail}</td>
+                <td>${current.customerAddress}</td>
                 <td>${current.date}</td>
                 <td>${current.total}</td>
-                <td><input type="button" value="Order Details" onclick="location.href='PreviewOrderDetails?orderId=${current.id}'"></td>
             </tr>
         `
     }

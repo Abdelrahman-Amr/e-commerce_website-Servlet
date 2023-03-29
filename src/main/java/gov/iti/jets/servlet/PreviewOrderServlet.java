@@ -122,6 +122,6 @@ public class PreviewOrderServlet extends HttpServlet {
 
     OrderMasterTableDto toOrderMasterTableDto(OrderMaster orderMaster) {
         return new OrderMasterTableDto(orderMaster.getId(),
-                orderMaster.getCust().getEmail(),orderMaster.getDate() ,orderMaster.getTotal());
+                orderMaster.getCust().getEmail(), orderMaster.getCust().getAddress() , orderMaster.getDate() ,orderMaster.getTotal());
     }
 }
