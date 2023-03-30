@@ -14,6 +14,16 @@ This will take you to our website where you can browse our coffee products, sign
 and start shopping!
 
 # Demo
+## User Demo
+
+## Admin Demo
+
+# Team Members
+Our website was developed by the following team members:
+
+- [Mahmoud Elsaqqa](https://github.com/Mahmoud-Elsaqqa)
+- [Abd ElRahman Amr](https://github.com/Abdelrahman-Amr)
+- [Marwa Adel](https://github.com/MarowaAdel28)
 
 # Features
 Our website has the following features:
@@ -67,13 +77,6 @@ Our website uses the following technologies:
 - Servlet
 - JSP
 - AJAX
-
-# Team Members
-Our website was developed by the following team members:
-
-- [Mahmoud Elsaqqa](https://github.com/Mahmoud-Elsaqqa)
-- [Abd El-Rahman Amr](https://github.com/Abdelrahman-Amr)
-- [Marwa Adel](https://github.com/MarowaAdel28)
 
 # Conclusion
 Thank you for visiting our online coffee e-commerce website! 
