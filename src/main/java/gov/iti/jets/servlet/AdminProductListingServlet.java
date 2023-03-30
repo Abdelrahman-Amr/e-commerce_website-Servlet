@@ -17,11 +17,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProductListingServlet extends HttpServlet {
+public class AdminProductListingServlet extends HttpServlet {
 
     ProductService productService;
     ProductMapper productMapper;
-    private static final int PRODUCTS_PER_PAGE = 3;
+    private static final int PRODUCTS_PER_PAGE = 9;
 
     @Override
     public void init() {
@@ -60,7 +60,7 @@ public class ProductListingServlet extends HttpServlet {
         Gson gson = new Gson();
         String json = gson.toJson(productDtos);
 
-        pagination = (int) Math.ceil((double) productService.getNoOfReturnedProducts() / PRODUCTS_PER_PAGE);
+        pagination = (int) Math.ceil((double) productService.getNoOfReturnedProducts(params) / PRODUCTS_PER_PAGE);
 
         if (pagination < 1)
             pagination = 1;
@@ -77,7 +77,7 @@ public class ProductListingServlet extends HttpServlet {
             rd.include(req, response);
         }
 
-        rd = req.getRequestDispatcher("/views/products.jsp");
+        rd = req.getRequestDispatcher("/views/admin-products.jsp");
         rd.include(req, response);
 
         if (!isAJAX) {

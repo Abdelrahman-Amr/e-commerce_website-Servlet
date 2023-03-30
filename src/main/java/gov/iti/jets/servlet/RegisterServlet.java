@@ -53,6 +53,7 @@ public class RegisterServlet extends HttpServlet{
 
         if(customerService.signUp(customerDTO)) {
             HttpSession session = req.getSession(true);
+            session.setAttribute("isAdmin","false");
             session.setAttribute("isLogin","true");
             session.setAttribute("customer",customerDTO);
             OrderMaster cart = orderMasterService.searchForCart(customerDTO.getId());

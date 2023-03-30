@@ -29,10 +29,6 @@ public class ProductImageServlet extends HttpServlet {
         String imgName = request.getParameter("imgName") ;
 //        String path = context.getRealPath("/images/")+imgName;
         String path= Constants.imgPath+imgName;
-        File f = new File("D:/x.txt");
-        f.createNewFile();
-//        System.out.println(path);
-//        String path = "images/product/mocha.png";
         BufferedImage bImage = ImageIO.read(new File(path));
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         String tokens[] = path.split("[.]",0);

@@ -1,14 +1,13 @@
 package gov.iti.jets.persistence.dao;
 
-import gov.iti.jets.entity.*;
+import gov.iti.jets.entity.Category_;
+import gov.iti.jets.entity.OrderDetail;
 import gov.iti.jets.entity.Product;
+import gov.iti.jets.entity.Product_;
 import gov.iti.jets.util.MyLocal;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.*;
 
 import java.util.List;
 import java.util.Map;
@@ -68,14 +67,16 @@ public class ProductDAO extends BaseDAO<Product> {
         Predicate predicate = getPredicate(params, criteriaBuilder, productRoot);
         noOfRecords = getReturnedProductsCount(params);
 
-        criteriaQuery.select(productRoot).where(predicate);
+        criteriaQuery.select(productRoot).where(
+                criteriaBuilder.and(
+                        criteriaBuilder.equal(
+                                productRoot.get("active"), true), predicate));
         //execute query
         if (params.get("price") != null) {
             if (params.get("price").equals("asc")) {
                 criteriaQuery.orderBy(criteriaBuilder.asc(productRoot.get("price")));
-            }
-            else if (params.get("price").equals("desc")) {
-                  criteriaQuery.orderBy(criteriaBuilder.desc(productRoot.get("price")));
+            } else if (params.get("price").equals("desc")) {
+                criteriaQuery.orderBy(criteriaBuilder.desc(productRoot.get("price")));
             }
         }
         List<Product> resultList = entityManager.createQuery(criteriaQuery).setMaxResults(maxNoOfRecordsPerPage).setFirstResult(offset).getResultList();
@@ -96,6 +97,11 @@ public class ProductDAO extends BaseDAO<Product> {
                         Predicate newPredicate = criteriaBuilder.and(criteriaBuilder.equal(productRoot.get(Product_.catg).get(Category_.id), Long.valueOf(params.get("catId"))));
                         predicate = criteriaBuilder.and(predicate, newPredicate);
                         break;
+                    case "Search":
+                        value = value.trim();
+                        newPredicate = criteriaBuilder.and(criteriaBuilder.like(productRoot.get("name"), "%" + value + "%"));
+                        predicate = criteriaBuilder.and(predicate, newPredicate);
+                        break;
                 }
             }
         }
@@ -109,45 +115,70 @@ public class ProductDAO extends BaseDAO<Product> {
         Predicate predicate = getPredicate(params, criteriaBuilder, productRoot);
 
         criteriaQuery.select(criteriaBuilder
-                        .count(productRoot))
-                .where(predicate);
+                .count(productRoot)).where(
+                criteriaBuilder.and(
+                        criteriaBuilder.equal(
+                                productRoot.get("active"), true), predicate));
         TypedQuery<Long> typedQuery = entityManager.createQuery(criteriaQuery);
 //        System.out.println(typedQuery.unwrap(org.hibernate.query.Query.class).getQueryString());
         return typedQuery.getResultList().get(0);
     }
-    public Long getNoOfRecords() {
-        return noOfRecords;
+
+    public List<Product> getPriorityProducts() {
+        Query query = entityManager.createQuery(" from Product p where p.priority=1 and p.active=true", Product.class).setMaxResults(6);
+        List<Product> products = query.getResultList();
+        return products;
     }
 
-    public List<Product> getPriorityProducts()
-    {
-        Query query=entityManager.createQuery(" from Product p where p.priority=1",Product.class).setMaxResults(6);
-        List<Product> products=query.getResultList();
-        return  products;
+    public List<Product> getMostSellingProducts() {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Product> cq = cb.createQuery(Product.class);
+        Root<OrderDetail> orderDetail = cq.from(OrderDetail.class);
+
+        cq.select(orderDetail.get("product")).where(cb.equal(orderDetail.get("product").get("active"), true))
+                .groupBy(orderDetail.get("product"))
+                .orderBy(cb.desc(cb.sum(orderDetail.get("quantity"))));
+
+        List<Product> products = entityManager.createQuery(cq)
+                .setFirstResult(0)
+                .setMaxResults(6)
+                .getResultList();
+        return products;
     }
 
-    public List<Product> getMostSellingProducts()
-    {
-        Query query=entityManager.createQuery(" select o.product from OrderDetail o group by o.product  order by sum(o.quantity) desc",Product.class).setMaxResults(6);
-        List<Product> products=query.getResultList();
-//        System.out.println("products = "+ products.size());
-        return  products;
+    public List<Product> getOffersProducts() {
+        Query query = entityManager.createQuery(" from Product p where p.discount>0 and p.active=true order by p.discount desc", Product.class).setMaxResults(3);
+        List<Product> products = query.getResultList();
+        return products;
     }
 
-    public List<Product> getOffersProducts()
-    {
-        Query query=entityManager.createQuery(" from Product p where p.discount>0 order by p.discount desc",Product.class).setMaxResults(3);
-        List<Product> products=query.getResultList();
-//        System.out.println("products = "+ products.size());
-        return  products;
+    public List<Product> getRelatedProducts(long catId) {
+        Query query = entityManager.createQuery(" from Product p where p.catg.id  = :catId ", Product.class).setMaxResults(4);
+        query.setParameter("catId", catId);
+        List<Product> products = query.getResultList();
+        return products;
     }
 
-    public List<Product> getRelatedProducts(long catId)
-    {
-        Query query=entityManager.createQuery(" from Product p where p.catg.id  = :catId ",Product.class).setMaxResults(4);
-        query.setParameter("catId",catId);
-        List<Product> products=query.getResultList();
-//        System.out.println("products = "+ products.size());
-        return  products;
+    public Double getTotalRevenue() {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Double> cq = cb.createQuery(Double.class);
+        Root<OrderDetail> orderDetailRoot = cq.from(OrderDetail.class);
+        cq.select(cb.sum(orderDetailRoot.get("total")));
+        return entityManager.createQuery(cq).getSingleResult();
+    }
+
+    public void deleteProduct2(Long id) {
+
+        Query query = entityManager.createQuery(" from Product p where p.id  = :id ", Product.class);
+        query.setParameter("id", id);
+        List<Product> products = query.getResultList();
+        if (products != null && products.size() > 0) {
+            Product product = products.get(0);
+            entityManager.getTransaction().begin();
+            product.setActive(false);
+            entityManager.merge(product);
+            entityManager.getTransaction().commit();
+        }
+
     }
 }

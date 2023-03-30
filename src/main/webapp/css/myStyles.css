@@ -10,7 +10,6 @@
 a:hover{
     color: var(--main-color);
 }
-
 .register .error {
     color:red;
 
@@ -134,7 +133,17 @@ a:hover{
 .cat-header{
     display: none;
 }
-@media (max-width: 450px) {
+@media (max-width: 450px){
+    .dashboard h2 , #currentCat{
+        font-size: 1.7em!important;
+
+    }
+    #addTo{
+        margin-top: 25px;
+        width: fit-content;
+        padding: 10px 20px;
+        float: none!important;
+    }
     html{
         width:102%;
     }
@@ -183,10 +192,152 @@ a:hover{
     margin-top: 15px;
     width: fit-content;
     padding: 10px 20px;
+    float: left;
 }
 .badge{
 
 }
 .agile_top_brand_left_grid{
     margin-bottom: 15px!important;
+}
+
+.card {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    min-height: 230px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.card-title i {
+    font-size: 40px !important;
+    margin-right: 5px;
+    color: #b08a70;
+    display: block;
+    margin-bottom: 15px;
+    opacity: 60%;
+}
+
+#user-count {
+    font-weight: bold;
+}
+
+ul.row {
+    list-style: none;
+}
+
+button.btn-primary {
+    color: white;
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+button.btn-secondary {
+    color: white;
+    background-color: var(--secondary-color);
+    border-color: var(--main-color);
+}
+
+.admin-controls {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.tab-container, .payment-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+.tab-container li, .payment-container li{
+    position: relative;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.tab-container input[type="radio"],
+.payment-container input[type="radio"] {
+    display: none;
+}
+
+.tab-container label, .payment-container label {
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.tab-container input[type="radio"]:checked + label,
+.payment-container input[type="radio"]:checked + label {
+    background-color: var(--main-color);
+    color: #fff;
+}
+/*
+
+.payment-container label:hover {
+    background-color: #ddd;
+}
+
+!* Remove default radio button styles *!
+.payment-container input[type="radio"] {
+    display: none;
+}
+
+!* Style label as tabs *!
+.payment-container label {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+!* Style the checked label *!
+.payment-container input[type="radio"]:checked + label {
+    background-color: red;
+    border-bottom: 1px solid white;
+}
+*/
+.dashboard h2, .head{
+    text-align: center;
+    margin:30px;
+    position: relative;
+}
+#currentCat {
+    position: relative;
+    /*margin-bottom: 15px!important;*/
+}
+
+ .dashboard h2:after ,#currentCat:after, .head:after{
+    content: '';
+    background: var(--main-color);
+    height: 2px;
+    width: 15%;
+    position: absolute;
+    bottom: 0%;
+    left: 43%;
+    top: 50px;
 }

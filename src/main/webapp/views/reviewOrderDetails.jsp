@@ -1,4 +1,6 @@
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
+<h2 class="head" style="margin-bottom: 40px;">Orders Details</h2>
+
 <table class="styled-table">
     <thead>
         <tr>

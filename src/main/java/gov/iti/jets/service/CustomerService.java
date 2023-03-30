@@ -55,6 +55,7 @@ public class CustomerService extends BaseService<Customer>{
         customerDAO =  new CustomerDAO();
         Customer customerEntity = customerMapper.toEntity(registrationCustomerDTO);
         customerEntity.setCreationTime(new Date());
+        customerEntity.setIsAdmin(false);
         String hashedPass = Utility.hashPassword(registrationCustomerDTO.getPassword());
         customerEntity.setPassword(hashedPass);
         boolean result  = customerDAO.save(customerEntity);
@@ -96,8 +97,6 @@ public class CustomerService extends BaseService<Customer>{
         customerDAO =  new CustomerDAO();
 
         List<CustomerDto> l = customerMapper.toDTOs(customerDAO.getCustomerList((index-1)*10));
-//        l.forEach((e)->System.out.println(e.getUserName()));
-//        System.out.println(l);
         return l;
     }
 

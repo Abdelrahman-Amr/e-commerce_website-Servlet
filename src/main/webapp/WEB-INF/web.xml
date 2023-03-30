@@ -5,6 +5,7 @@
          version= "5.0"
          metadata-complete= "true">
 
+
 <!--    //Servlets-->
     <servlet>
         <servlet-name>Main</servlet-name>
@@ -12,7 +13,7 @@
     </servlet>
 <!--    <servlet-mapping>-->
 <!--        <servlet-name>Main</servlet-name>-->
-<!--        <url-pattern>/main</url-pattern>-->
+<!--        <url-pattern>/</url-pattern>-->
 <!--    </servlet-mapping>-->
 
     <servlet>
@@ -164,6 +165,86 @@
     </servlet-mapping>
 
 <!--    //Listeners-->
+    <servlet>
+        <servlet-name>adminDashboard</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.AdminDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminDashboard</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>adminProductListing</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.AdminProductListingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminProductListing</servlet-name>
+        <url-pattern>/adminProductListing</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteProduct</servlet-name>
+        <servlet-class>gov.iti.jets.servlet.DeleteProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteProduct</servlet-name>
+        <url-pattern>/deleteProduct</url-pattern>
+    </servlet-mapping>
+
+    <!-- filters   -->
+
+    <filter>
+        <filter-name>userFilter</filter-name>
+        <filter-class>gov.iti.jets.filter.UserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>userFilter</filter-name>
+        <url-pattern> /Profile </url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>adminFilter</filter-name>
+        <filter-class>gov.iti.jets.filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /PreviewCustomer </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /adminProductListing </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /AddingProduct </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /EditingProduct </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /deleteProduct </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /dashboard </url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /PreviewOrder </url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern> /PreviewOrderDetails </url-pattern>
+    </filter-mapping>
+
+    <!--    //Listeners-->
     <listener>
         <listener-class>
             gov.iti.jets.listener.MainListener

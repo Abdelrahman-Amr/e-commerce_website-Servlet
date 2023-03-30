@@ -50,6 +50,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="css/myStyles.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/customerTable.css" rel="stylesheet" type="text/css" media="all">
 
+
     <!-- Our scripts -->
     <script src="js/item.js"></script>
     <script src="js/productListing.js"></script>
@@ -65,7 +66,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="js/editingProductScript.js"></script>
     <script src="js/previewOrderScript.js"></script>
     <script src="js/previewOrderDetailsScript.js"></script>
-
 
     <!-- start-smoth-scrolling -->
 </head>
@@ -92,6 +92,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                     <li title="MyProfile" ><a href="Profile">Welcome, ${customer.userName}</a></li>
                     <li ><a href="Profile" id="balance">Credit: $<span>${customer. creditLimit}</span></a></li>
+                    <c:if test="${isAdmin =='true'}">
+                        <li ><a href="dashboard" id="adminDashboard">Dashboard</span></a></li>
+                    </c:if>
                 </c:if>
             </ul>
         </div>

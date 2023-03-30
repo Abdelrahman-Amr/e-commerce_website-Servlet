@@ -67,6 +67,7 @@ public class OrderMasterService extends BaseService<OrderMaster>{
     }
 
     public OrderMaster getOrderMasterById(Long id) {
+        orderMasterDAO =  new OrderMasterDAO();
         return orderMasterDAO.get(id);
     }
 

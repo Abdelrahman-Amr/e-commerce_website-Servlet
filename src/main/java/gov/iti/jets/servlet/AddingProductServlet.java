@@ -68,8 +68,6 @@ public class AddingProductServlet extends HttpServlet {
 
                 String productJson = req.getParameter("productInfo");
 
-//                System.out.println(productJson);
-
                 ProductDto productDTO = new Gson().fromJson(productJson, ProductDto.class);
 
 //                System.out.println(productDTO.getName());

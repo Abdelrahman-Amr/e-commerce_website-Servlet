@@ -20,9 +20,11 @@
                         <input type="hidden" id="discount" value="${product.discount}">
 
 
-                        <h3 class="m-sing" style="display: inline; margin-right: 10px" id="orgPrice">$${product.price}</h3>
+                        <h3 class="m-sing" style="display: inline; margin-right: 10px" id="orgPrice">
+                            $${product.price}</h3>
                         <c:if test="${product.discount>0}">
-                            <span id="discSpan" style="text-decoration: line-through">$${product.price + product.price*(product.discount/100)}</span>
+                            <span id="discSpan"
+                                  style="text-decoration: line-through">$${product.price + product.price*(product.discount/100)}</span>
                         </c:if>
 
                         <%--                        </input>--%>
@@ -31,28 +33,26 @@
                     <div class="snipcart-details agileinfo_single_right_details">
                         <form action="cart" method="post" onsubmit="addToCart(event,2)" onchange="updatePrice()">
                             <fieldset>
-                                <ul style="  list-style-type: none;">
+                                <ul class="tab-container">
                                     <input type="hidden" name="pdId" value="${product.id}">
-                                    <%--                                <p>Please select your favorite Web language:</p>--%>
                                     <c:forEach items="${sizes}" var="size" varStatus="counter">
                                         <li>
                                             <c:if test="${size.name =='Small'}">
-                                                <input type="radio" id="${size.id}"  name="sizes" value="${size.id}" checked="checked">
+                                                <input type="radio" id="${size.id}" name="sizes" value="${size.id}" checked>
                                                 <label for="${size.id}">${size.name}</label>
                                             </c:if>
                                             <c:if test="${size.name !='Small'}">
-                                                <input type="radio" id="${size.id}" name="sizes" value="${size.id}">
+                                                <input type="radio" id="${size.id}" name="sizes" value="${size.id}" >
                                                 <label for="${size.id}">${size.name}</label>
+
                                             </c:if>
-                                                <%--                                     <input type="radio" id="${size.id}" name="sizes" value="${size.id}">--%>
                                             <input type="hidden" name="$sizePrec" id="p${size.id}" value="${size.percentage}">
-                                                <%--                                     <label for="${size.id}">${size.name}</label>--%>
                                             <input type="hidden" id="n${size.id}" value="${size.name}">
                                         </li>
                                     </c:forEach>
                                 </ul>
                                 <input type="hidden" name="cancel_return" value=" ">
-                                <input type="submit" name="submit" value="Add to cart" class="button" id="addTo"  style="margin-top: 15px; width: fit-content; padding: 10px 20px;" >
+                                <input type="submit" name="submit" value="Add to cart" class="button" id="addTo" >
                             </fieldset>
                         </form>
                     </div>
@@ -81,7 +81,8 @@
                                 <figure>
                                     <div class="snipcart-item block">
                                         <div class="snipcart-thumb">
-                                            <a href="item?productId=${prod.id}"><img title=" " alt=" " src="image?imgName=${prod.imageUrl}"></a>
+                                            <a href="item?productId=${prod.id}"><img title=" " alt=" "
+                                                                                     src="image?imgName=${prod.imageUrl}"></a>
                                             <h4>${prod.name}</h4>
                                             <br>
                                             <h4>$${prod.price}
@@ -92,7 +93,7 @@
                                             </h4>
                                         </div>
                                         <div class="snipcart-details top_brand_home_details">
-                                            <form  method="post" action="cart" onsubmit="addToCartSmall(event)">
+                                            <form method="post" action="cart" onsubmit="addToCartSmall(event)">
                                                 <fieldset>
                                                     <input type="hidden" name="cmd" value="_cart">
                                                     <input type="hidden" name="pdId" value="${prod.id}">
@@ -105,7 +106,8 @@
                                                     <input type="hidden" name="currency_code" value="USD">
                                                     <input type="hidden" name="return" value=" ">
                                                     <input type="hidden" name="cancel_return" value=" ">
-                                                    <input type="submit" name="submit" value="Add to cart" class="button">
+                                                    <input type="submit" name="submit" value="Add to cart"
+                                                           class="button">
                                                 </fieldset>
                                             </form>
                                         </div>

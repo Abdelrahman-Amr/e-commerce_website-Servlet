@@ -19,7 +19,7 @@
 				<input type="number" placeholder="Discount" required id="productDiscount" name="productDiscount" min="0" max="100" value="${currentProduct.discount}">
 				<input type="hidden" placeholder="Quantity*" value="100" id="productQuantity" name="productQuantity" min="0" max="50000"value="${currentProduct.quantity}">
 				<input type="number" placeholder="Priority*" required id="productPriority" name="productPriority" min="0" max="1" step="1"  value="${currentProduct.priority}">
-				<input type="text" placeholder="Description*" required id="productDescription" name="productDescription" minlength="20" maxlength="1000" value="${currentProduct.description}">
+				<textarea  placeholder="Description*" required id="productDescription" name="productDescription" minlength="20" maxlength="1000" rows="5" style="width: 100%;margin-top:20px">${currentProduct.description}</textarea>
 				<input type="file" id="productImage" name="productImage">
 				<input type="submit" value="Edit" >
 			</form>
