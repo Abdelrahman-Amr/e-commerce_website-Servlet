@@ -18,6 +18,9 @@ and start shopping!
 
 ## Admin Demo
 
+https://user-images.githubusercontent.com/117987620/228956484-3bf74ff7-6b2e-43bf-a6fc-d2f93b619d43.mp4
+
+
 # Team Members
 Our website was developed by the following team members:
 
