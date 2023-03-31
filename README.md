@@ -14,11 +14,15 @@ This will take you to our website where you can browse our coffee products, sign
 and start shopping!
 
 # Demo
-## User Demo
 
+## User Demo
+### Web View
 
 https://user-images.githubusercontent.com/117987620/229133724-0ef2b4f0-e6c6-40ad-b7b3-3c6f37d84b01.mp4
 
+### Mobile View
+
+https://user-images.githubusercontent.com/117987620/229139324-d3a5890c-4ef7-4bc7-8983-05a8163ef287.mp4
 
 ## Admin Demo
 
