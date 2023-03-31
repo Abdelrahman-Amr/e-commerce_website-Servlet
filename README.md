@@ -16,6 +16,10 @@ and start shopping!
 # Demo
 ## User Demo
 
+
+https://user-images.githubusercontent.com/117987620/229133724-0ef2b4f0-e6c6-40ad-b7b3-3c6f37d84b01.mp4
+
+
 ## Admin Demo
 
 https://user-images.githubusercontent.com/117987620/228956484-3bf74ff7-6b2e-43bf-a6fc-d2f93b619d43.mp4
