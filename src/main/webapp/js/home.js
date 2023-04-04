@@ -31,7 +31,6 @@ function priorityCallback(responseTxt, statusTxt, xhr) {
 function mostSellingCallback(responseTxt, statusTxt, xhr) {
     // window.location.href-""
     if (statusTxt == "success" && xhr.status == 200) {
-
         var products = responseTxt;
         console.log(products);
         for (let i = 0; i < products.length; i++) {
