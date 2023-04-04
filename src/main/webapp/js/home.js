@@ -41,7 +41,6 @@ function mostSellingCallback(responseTxt, statusTxt, xhr) {
                 var p= products[i].price + products[i].price* (products[i].discount/100);
                 $('#d'+products[i].id).html('$'+p);
             }
-
         }
 
     }
