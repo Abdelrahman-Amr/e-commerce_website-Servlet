@@ -22,7 +22,6 @@ public class AdminProductListingServlet extends HttpServlet {
     ProductService productService;
     ProductMapper productMapper;
     private static final int PRODUCTS_PER_PAGE = 9;
-
     @Override
     public void init() {
         productService =  ProductService.getInstance();
